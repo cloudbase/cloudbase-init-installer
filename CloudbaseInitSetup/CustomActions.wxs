@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <Binary Id="ActionsCommon" SourceFile="Actions\Common.js"/>
+    <Binary Id="GenericActions" SourceFile="Actions\GenericActions.js"/>
+    <Binary Id="PythonActions" SourceFile="Actions\PythonActions.js"/>
+    <Binary Id="ConfFileActions" SourceFile="Actions\ConfFileActions.js"/>
+    <Binary Id="ConfigDlgActions" SourceFile="Actions\ConfigDlgActions.js"/>
+
+    <CustomAction Id="CreateCommonIncludeFile"
+                  BinaryKey="ActionsCommon"
+                  JScriptCall="createCommonIncludeFileAction" />
+
+    <CustomAction Id="InitConfigDlg"
+                  BinaryKey="ConfigDlgActions"
+                  JScriptCall="initConfigDlgAction" />
+
+    <CustomAction Id="UpdatePythonShellInScripts_Prop" Return="check" Property="UpdatePythonShellInScripts" Value="[INSTALLDIR]Python27\Scripts\|[INSTALLDIR]Python27\python.exe" />
+    <CustomAction Id="UpdatePythonShellInScripts"
+              BinaryKey="PythonActions"
+              JScriptCall="updatePythonShellInScriptsAction" Execute="deferred" Return="check" Impersonate="no" />
+
+    <CustomAction Id="PyWin32PostInstall_Prop" Property="PyWin32PostInstall"
+                  Value='"[INSTALLDIR]Python27\python.exe" "[INSTALLDIR]Python27\Scripts\pywin32_postinstall.py" -install -silent -quiet|0|Cannot find the Microsoft VC90 CRT x86 DLL. Please install the VC++ 2008 SP1 x86 redistributable package before installing this software.'
+                  Execute="immediate"/>
+    <CustomAction Id="PyWin32PostInstall" BinaryKey="GenericActions" JScriptCall="runCommandAction"
+                  Execute="deferred" Return="check" Impersonate="no"/>
+
+    <CustomAction Id="GenerateCloudbaseInitConfFile_Prop" Return="check" Property="GenerateCloudbaseInitConfFile"
+                  Value="[CLOUDBASEINITCONFFOLDER]|[LOGFOLDER]|[USERNAME]|[INJECTMETADATAPASSWORD]|[USERGROUPS]|[NETWORKADAPTERNAME]" />
+    <CustomAction Id="GenerateCloudbaseInitConfFile"
+              BinaryKey="ConfFileActions"
+              JScriptCall="writeCloudbaseInitConfFileAction" Execute="deferred" Return="check" Impersonate="no" />
+  </Fragment>
+</Wix>

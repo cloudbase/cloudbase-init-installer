@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="{ED85F19F-057A-4EE6-BC8D-F576DEACE78D}" Name="Cloudbase-Init" Language="1033" Version="1.0.0.0" Manufacturer="Cloudbase Solutions Srl" UpgradeCode="BA8F3CDD-9340-4852-8515-CF0BD5CA20E3">
+		<Package InstallerVersion="300" Compressed="yes" InstallScope="perMachine" InstallPrivileges="elevated" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" CompressionLevel="mszip" />
+
+    <Feature Id="CloudbaseInit" Title="Windows Cloud Init" Level="1" Absent="disallow" InstallDefault="local" TypicalDefault="install" AllowAdvertise="no"
+             Description="Installs and configures the cloudbase-init service."
+             ConfigurableDirectory="INSTALLDIR" Display="expand">
+      <ComponentGroupRef Id="Python27ComponentGroup" />
+      <ComponentGroupRef Id="CloudbaseInitFolders"/>
+      <ComponentRef Id="CloudbaseInitService" />
+      <!--
+      <ComponentRef Id="CleanupPyWin32Folder" />
+      -->
+      <Feature Id="VC90Redist" Title="Visual C++ 9.0 Runtime" AllowAdvertise="no" Display="hidden" Level="1">
+        <MergeRef Id="VC90Redist"/>
+        <MergeRef Id="VC90Policy"/>
+      </Feature>
+    </Feature>
+
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+    
+    <UIRef Id="MyWixUI_FeatureTree" />
+    <UIRef Id="WixUI_ErrorProgressText" />
+
+    <WixVariable Id="WixUIBannerBmp" Value="images\bannrbmp.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="images\dlgbmp.bmp" />
+    <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+
+    <InstallExecuteSequence>
+      <Custom Action="UpdatePythonShellInScripts_Prop" After="CostFinalize"/>
+      <Custom Action="UpdatePythonShellInScripts" Before="InstallFinalize">NOT Installed</Custom>
+
+      <Custom Action="GenerateCloudbaseInitConfFile_Prop" After="CostFinalize"/>
+      <Custom Action="GenerateCloudbaseInitConfFile" Before="InstallFinalize"><![CDATA[REMOVE <> "ALL"]]></Custom>
+
+      <Custom Action="PyWin32PostInstall_Prop" After="CostFinalize"/>
+      <Custom Action="PyWin32PostInstall" Before="InstallFinalize">NOT Installed</Custom>
+    </InstallExecuteSequence>
+
+    <InstallUISequence>
+      <Custom Action="CreateCommonIncludeFile" Before="CostFinalize"></Custom>
+    </InstallUISequence>
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="CompanyFolder" Name="Cloudbase Solutions">
+          <Directory Id="INSTALLDIR" Name="Cloudbase-Init" />
+        </Directory>
+      </Directory>
+    </Directory>
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="INSTALLDIR">
+      <Directory Id="BINFOLDER" Name="bin" />
+    </DirectoryRef>
+
+    <DirectoryRef Id="INSTALLDIR">
+      <Directory Id="LOGFOLDER" Name="log" />
+    </DirectoryRef>
+
+    <DirectoryRef Id="INSTALLDIR">
+      <Directory Id="CLOUDBASEINITCONFFOLDER" Name="conf" />
+    </DirectoryRef>
+
+    <DirectoryRef Id="CLOUDBASEINITCONFFOLDER">
+      <Component Id="CloudbaseInitConfFolder" Guid="{7A719841-4A02-4DA6-8114-C784251CBA9D}">
+        <CreateFolder/>
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="LOGFOLDER">
+      <Component Id="CloudbaseInitLogFolder" Guid="{3D4E7A44-01FE-4DE9-83B5-689B7E8C671B}">
+        <CreateFolder/>
+      </Component>
+    </DirectoryRef>
+
+    <ComponentGroup Id="CloudbaseInitFolders">
+      <ComponentRef Id="CloudbaseInitConfFolder" />
+      <ComponentRef Id="CloudbaseInitLogFolder" />
+    </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="TARGETDIR">
+      <Merge Id="VC90Redist" SourceFile="Microsoft_VC90_CRT_x86.msm" DiskId="1" Language="0"/>
+      <Merge Id="VC90Policy" SourceFile="policy_9_0_Microsoft_VC90_CRT_x86.msm" DiskId="1" Language="0"/>
+    </DirectoryRef>
+  </Fragment>
+
+  <Fragment>
+    <Component Id="CloudbaseInitService" Directory="BINFOLDER" Guid="{234DDD41-5BA4-4777-A0B0-8462D47777E3}">
+      <File Id="OpenStackService.exe" Source="Binaries\OpenStackService.exe" KeyPath="yes" Checksum="yes"/>
+      <ServiceInstall
+               Arguments='cloudbase-init "[INSTALLDIR]Python27\Scripts\cloudbase-init.exe" --config-file "[CLOUDBASEINITCONFFOLDER]cloudbase-init.conf"'
+               Id="CloudbaseInitServiceInstaller"
+               Type="ownProcess"
+               Vital="yes"
+               Name="cloudbase-init"
+               DisplayName="Cloud Initialization Service"
+               Description="Service wrapper for cloudbase-init"
+               Start="auto"
+               Account="LocalSystem"
+               ErrorControl="ignore"
+               Interactive="no">
+      </ServiceInstall>
+      <!-- Start service at the end of the setup, not here -->
+      <ServiceControl
+        Id="CloudbaseInitStartService"
+        Stop="both"
+        Remove="uninstall"
+        Name="cloudbase-init"
+        Wait="yes" />
+    </Component>
+  </Fragment>
+</Wix>

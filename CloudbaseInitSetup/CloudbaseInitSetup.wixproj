@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>3.7</ProductVersion>
+    <ProjectGuid>72504ea8-de95-42da-91ea-4359ba85699e</ProjectGuid>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputName>CloudbaseInitSetup</OutputName>
+    <OutputType>Package</OutputType>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <DefineConstants>Debug</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
+    <DefineConstants>Python27SourcePath=C:\Python27</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="CustomActions.wxs" />
+    <Compile Include="Dialogs\ConfigDlg.wxs" />
+    <Compile Include="Dialogs\ExitDialog.wxs" />
+    <Compile Include="Dialogs\MaintenanceWelcomeDlg.wxs" />
+    <Compile Include="Dialogs\UserExit.wxs" />
+    <Compile Include="Dialogs\WelcomeDlg.wxs" />
+    <Compile Include="Product.wxs" />
+    <Compile Include="Python27.wxs" />
+    <Compile Include="UI.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="WixUtilExtension">
+      <HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
+      <Name>WixUtilExtension</Name>
+    </WixExtension>
+    <WixExtension Include="WixUIExtension">
+      <HintPath>$(WixExtDir)\WixUIExtension.dll</HintPath>
+      <Name>WixUIExtension</Name>
+    </WixExtension>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Actions\Common.js" />
+    <Content Include="Actions\ConfFileActions.js" />
+    <Content Include="Actions\ConfigDlgActions.js" />
+    <Content Include="Actions\GenericActions.js" />
+    <Content Include="Actions\PythonActions.js" />
+    <Content Include="Binaries\OpenStackService.exe" />
+    <Content Include="images\bannrbmp.bmp" />
+    <Content Include="images\dlgbmp.bmp" />
+    <Content Include="License.rtf" />
+    <Content Include="Microsoft_VC90_CRT_x86.msm" />
+    <Content Include="policy_9_0_Microsoft_VC90_CRT_x86.msm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Actions\" />
+    <Folder Include="Binaries\" />
+    <Folder Include="Dialogs\" />
+    <Folder Include="images\" />
+  </ItemGroup>
+  <Import Project="$(WixTargetsPath)" />
+  <Target Name="BeforeBuild">
+    <HeatDirectory DirectoryRefId="INSTALLDIR" OutputFile="Python27.wxs" Directory="C:\Python27" ComponentGroupName="Python27ComponentGroup" ToolPath="$(WixToolPath)" PreprocessorVariable="var.Python27SourcePath" GenerateGuidsNow="true" SuppressCom="true" SuppressRegistry="true">
+    </HeatDirectory>
+  </Target>
+  <!--
+	To modify your build process, add your task inside one of the targets below and uncomment it.
+	Other similar extension points exist, see Wix.targets.
+	<Target Name="BeforeBuild">
+	</Target>
+	<Target Name="AfterBuild">
+	</Target>
+	-->
+</Project>
