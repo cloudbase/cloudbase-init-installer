@@ -31,6 +31,8 @@
     <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
 
     <InstallExecuteSequence>
+      <Custom Action="CreateCommonIncludeFile" After="CostFinalize"/>
+
       <Custom Action="UpdatePythonShellInScripts_Prop" After="CostFinalize"/>
       <Custom Action="UpdatePythonShellInScripts" Before="InstallFinalize">NOT Installed</Custom>
 
@@ -42,6 +44,7 @@
     </InstallExecuteSequence>
 
     <InstallUISequence>
+      <!-- Create the JS common include files for UI actions, note that this is not executed in unattended mode -->
       <Custom Action="CreateCommonIncludeFile" Before="CostFinalize"></Custom>
     </InstallUISequence>
   </Product>
