@@ -23,7 +23,7 @@ function getNetworkAdapters() {
     deleteViewRecords(view);
 
     var wmiSvc = getWmiCimV2Svc();
-    var networkAdapters = wmiSvc.ExecQuery("SELECT * FROM Win32_NetworkAdapter where AdapterTypeId = 0")
+    var networkAdapters = wmiSvc.ExecQuery("SELECT * FROM Win32_NetworkAdapter WHERE AdapterTypeId = 0 AND PhysicalAdapter = True")
 
     var index = 1;
     for (var e = new Enumerator(networkAdapters) ; !e.atEnd() ; e.moveNext()) {
