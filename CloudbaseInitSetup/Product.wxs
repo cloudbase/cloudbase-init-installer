@@ -112,6 +112,7 @@
                Account="LocalSystem"
                ErrorControl="ignore"
                Interactive="no">
+        <ServiceDependency Id="Winmgmt" />
       </ServiceInstall>
       <!-- Start service at the end of the setup, not here -->
       <ServiceControl
