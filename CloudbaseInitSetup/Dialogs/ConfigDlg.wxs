@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Fragment>
+  <Fragment>
     <UI>
       <Dialog Id="ConfigDlg" Width="370" Height="270">
 
         <Control Type="Text" Id="usernameText" Width="77" Height="12" X="10" Y="52" Text="&amp;Username:" />
         <Control Type="Edit" Id="usernameEdit" Width="150" Height="17" X="10" Y="68" Property="USERNAME">
-          <Property Id="USERNAME" Value="Admin"/>
+          <Property Id="USERNAME" Value="Admin" />
         </Control>
 
         <Control Type="CheckBox" Id="injectPasswordCheckBox" Width="120" Height="17" X="10" Y="90" Text="Use metadata &amp;password" CheckBoxValue="1"
                  ToolTip="Inject the password provided by the metadata" Property="INJECTMETADATAPASSWORD">
-          <Property Id="INJECTMETADATAPASSWORD" Value="1"/>
+          <Property Id="INJECTMETADATAPASSWORD" Value="1" />
         </Control>
 
         <Control Type="Text" Id="groupsText" Width="220" Height="12" X="10" Y="120" Text="User's local &amp;groups (comma separated list):" />
         <Control Type="Edit" Id="groupsEdit" Width="200" Height="17" X="10" Y="136" Property="USERGROUPS">
-          <Property Id="USERGROUPS" Value="Administrators"/>
+          <Property Id="USERGROUPS" Value="Administrators" />
         </Control>
 
-        <Control Type="ComboBox" Property="dummy" Id="DummyComboBox" Width="0" Height="0" X="0" Y="0" Disabled="yes" Hidden="yes" >
+        <Control Type="ComboBox" Property="dummy" Id="DummyComboBox" Width="0" Height="0" X="0" Y="0" Disabled="yes" Hidden="yes">
           <ComboBox Property="dummy">
             <ListItem Value="dummy" />
           </ComboBox>
@@ -30,11 +30,11 @@
         <Control Type="ComboBox" Property="NETWORKADAPTERNAME" Id="NetworkAdapterComboBox" Width="260" Height="16" X="10" Y="176" ComboList="yes">
           <ComboBox Property="NETWORKADAPTERNAME" />
         </Control>
-        
+
         <Control Id="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Text="&amp;Back">
           <Publish Event="NewDialog" Value="CustomizeDlg">1</Publish>
         </Control>
-        <Control Id="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Text="&amp;Next">                    
+        <Control Id="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Text="&amp;Next">
           <Publish Event="NewDialog" Value="VerifyReadyDlg"></Publish>
         </Control>
         <Control Id="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Cancel="yes" Text="Cancel">
@@ -48,8 +48,8 @@
         <Control Id="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Transparent="yes" NoPrefix="yes">
           <Text>{\WixUI_Font_Title}Configuration options</Text>
         </Control>
-        <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />        
+        <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
       </Dialog>
-    </UI>    
-	</Fragment>
+    </UI>
+  </Fragment>
 </Wix>

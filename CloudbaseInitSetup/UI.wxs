@@ -55,5 +55,5 @@
 
       <UIRef Id="WixUI_Common" />
     </UI>
-  </Fragment>  
+  </Fragment>
 </Wix>

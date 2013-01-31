@@ -23,7 +23,7 @@ function writeConfigFile(path, config) {
     logMessage("Writing file " + path);
 
     fs.WriteLine("[DEFAULT]");
-    for(var k in config)
+    for (var k in config)
         fs.WriteLine(k + "=" + config[k]);
     fs.Close();
 }
@@ -36,25 +36,25 @@ function writeCloudbaseInitConfFileAction() {
 
         var i = 0;
         var cloudbaseInitConfFolder = data[i++];
-        var logFolder               = data[i++];
-        var userName                = data[i++];
-        var injectMetadataPassword  = data[i++];
-        var userGroups              = data[i++];
-        var networkAdapterName      = data[i++];
+        var logFolder = data[i++];
+        var userName = data[i++];
+        var injectMetadataPassword = data[i++];
+        var userGroups = data[i++];
+        var networkAdapterName = data[i++];
 
         var cloudbaseInitConfFile = cloudbaseInitConfFolder + "cloudbase-init.conf";
 
         var config = {
-            "username" : trim(userName),
+            "username": trim(userName),
             "groups": trim(userGroups),
             "inject_user_password": checkBoxValueToBool(injectMetadataPassword),
             "network_adapter": trim(networkAdapterName),
             "config_drive_raw_hhd": "true",
             "config_drive_cdrom": "true",
             "verbose": "true",
-            "logdir":trim(logFolder)
+            "logdir": trim(logFolder)
         };
-                       
+
         writeConfigFile(cloudbaseInitConfFile, config);
 
         return MsiActionStatus.Ok;

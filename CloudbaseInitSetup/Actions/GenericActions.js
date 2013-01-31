@@ -14,7 +14,7 @@ eval(loadCommonIncludeFile(commonIncludeFileName));
 
 function runCommandAction() {
     var exceptionMsg = null;
-    
+
     try {
         var data = Session.Property("CustomActionData").split('|');
         var i = 0;

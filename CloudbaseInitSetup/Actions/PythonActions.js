@@ -23,8 +23,8 @@ function deleteLocalCRTDlls(path) {
                 fso.DeleteFile(filePath);
             }
             catch (ex) {
-                // Ignore it
-            }       
+            // Ignore it
+            }
     }
 }
 
@@ -33,8 +33,8 @@ function updatePythonShellInScriptsAction() {
         logMessage("Replacing Python shell path in *-script.py files");
 
         var data = Session.Property("CustomActionData").split('|');
-        var novaScriptsFolder   = data[0];
-        var pythonExePath       = data[1];
+        var novaScriptsFolder = data[0];
+        var pythonExePath = data[1];
 
         replaceInFolder(novaScriptsFolder, /.+-script.py$/i, /^#!.+python.exe/igm, "#!\"" + pythonExePath + "\"");
 
