@@ -12,19 +12,21 @@ function loadCommonIncludeFile(fileName) {
 eval(loadCommonIncludeFile(commonIncludeFileName));
 // End workaround
 
-function getWmiCimV2Svc() {
-    return GetObject("winmgmts:\\\\.\\root\\cimv2");
-}
-
 function getNetworkAdapters() {
     var property = "NETWORKADAPTERNAME";
     var view = getComboBoxView(property);
 
     deleteViewRecords(view);
 
-    var wmiSvc = getWmiCimV2Svc();
-    var networkAdapters = wmiSvc.ExecQuery("SELECT * FROM Win32_NetworkAdapter WHERE AdapterTypeId = 0 AND PhysicalAdapter = True")
+    var osVersion = getWindowsVersion()
 
+    var wmiSvc = getWmiCimV2Svc();
+
+    var query = "SELECT * FROM Win32_NetworkAdapter WHERE AdapterTypeId = 0"
+    if (osVersion[0] >= 6)
+        query += " AND PhysicalAdapter = True"
+
+    var networkAdapters = wmiSvc.ExecQuery(query)
     var index = 1;
     for (var e = new Enumerator(networkAdapters) ; !e.atEnd() ; e.moveNext()) {
         var networkAdapter = e.item();

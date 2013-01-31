@@ -14,7 +14,6 @@ var MsiViewModify =
     ValidateDelete: 11
 };
 
-
 // http://msdn.microsoft.com/en-us/library/sfw6660x(VS.85).aspx
 var Buttons =
 {
@@ -51,7 +50,7 @@ var MsiActionStatus =
     Ignore: 5  // skip remaining actions; this is not an error.
 };
 
-// spool an informational message into the MSI log, if it is enabled. 
+// spool an informational message into the MSI log, if it is enabled.
 function logMessage(msg) {
     var record = Session.Installer.CreateRecord(0);
     record.StringData(0) = "CustomActions: " + msg;
@@ -64,7 +63,7 @@ function logMessageEx(msg, type) {
     Session.Message(type, record);
 }
 
-// Pop a message box.  also spool a message into the MSI log, if it is enabled. 
+// Pop a message box.  also spool a message into the MSI log, if it is enabled.
 function logException(exc) {
     var record = Session.Installer.CreateRecord(0);
     record.StringData(0) = exc.message == "" ? "An exception occurred: 0x" + decimalToHexString(exc.number) : exc.message;
@@ -146,7 +145,14 @@ function invokeWMIMethod(svc, methodName, inParamsValues, wmiSvc, jobOutParamNam
 }
 
 function getWmiCimV2Svc() {
-    return GetObject("winmgmts:\\\\127.0.0.1\\root\\cimv2");
+    return GetObject("winmgmts:\\\\.\\root\\cimv2");
+}
+
+function getWindowsVersion() {
+    var wmiSvc = getWmiCimV2Svc();
+    var q = wmiSvc.InstancesOf("Win32_OperatingSystem")
+    var os = new Enumerator(q).item()
+    return os.Version.split('.')
 }
 
 function createPath(path) {
@@ -158,7 +164,6 @@ function createPath(path) {
         if (!fso.FolderExists(currPath))
             fso.CreateFolder(currPath);
     }
-
 }
 
 function runCommand(cmd, expectedReturnValue, envVars) {
@@ -240,7 +245,6 @@ function deleteViewRecords(view) {
     }
 }
 
-
 var commonIncludeFileName = "82311161-875A-4587-A86C-9784581D8F56.js";
 
 // Awful workaround to include common js features
@@ -251,7 +255,7 @@ function createCommonIncludeFileAction() {
     var size = record.DataSize(1);
     var data = record.ReadStream(1, size, 2);
 
-    // Cannot use the user's %TEMP% folder as the file needs to be accessed also by non impersonated scripts 
+    // Cannot use the user's %TEMP% folder as the file needs to be accessed also by non impersonated scripts
     var shell = new ActiveXObject("WScript.Shell");
     var windir = shell.ExpandEnvironmentStrings("%WINDIR%");
     var path = windir + "\\Temp\\" + commonIncludeFileName;
@@ -263,4 +267,3 @@ function createCommonIncludeFileAction() {
 
     return MsiActionStatus.Ok;
 }
-
