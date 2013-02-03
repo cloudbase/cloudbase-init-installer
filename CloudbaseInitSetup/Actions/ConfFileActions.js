@@ -52,7 +52,8 @@ function writeCloudbaseInitConfFileAction() {
             "config_drive_raw_hhd": "true",
             "config_drive_cdrom": "true",
             "verbose": "true",
-            "logdir": trim(logFolder)
+            "logdir": trim(logFolder),
+            "logfile": "cloudbase-init.log"
         };
 
         writeConfigFile(cloudbaseInitConfFile, config);
