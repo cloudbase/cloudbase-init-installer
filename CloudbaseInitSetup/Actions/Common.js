@@ -166,7 +166,7 @@ function createPath(path) {
     }
 }
 
-function runCommand(cmd, expectedReturnValue, envVars) {
+function runCommand(cmd, expectedReturnValue, envVars, windowStyle, waitOnReturn) {
     var shell = new ActiveXObject("WScript.Shell");
     logMessage("Running command: " + cmd);
 
@@ -176,9 +176,15 @@ function runCommand(cmd, expectedReturnValue, envVars) {
             env(k) = envVars[k];
     }
 
-    var retVal = shell.run(cmd, 0, true);
+    if (typeof windowStyle == 'undefined')
+        windowStyle = 0;
 
-    if (expectedReturnValue != undefined && retVal != expectedReturnValue)
+    if (typeof waitOnReturn == 'undefined')
+        waitOnReturn = true;
+
+    var retVal = shell.run(cmd, windowStyle, waitOnReturn);
+
+    if (waitOnReturn && expectedReturnValue != undefined && expectedReturnValue != null && retVal != expectedReturnValue)
         throwException(-1, "Command failed. Return value: " + retVal.toString());
 
     logMessage("Command completed. Return value: " + retVal);
@@ -266,4 +272,9 @@ function createCommonIncludeFileAction() {
     fs.Close();
 
     return MsiActionStatus.Ok;
+}
+
+function getShortPath(path) {
+    var fso = new ActiveXObject("Scripting.FileSystemObject");
+    return fso.GetFile(path).ShortPath;
 }

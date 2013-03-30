@@ -74,7 +74,7 @@
 
     <DirectoryRef Id="CLOUDBASEINITCONFFOLDER">
       <Component Id="CloudbaseInitConfFolder" Guid="{7A719841-4A02-4DA6-8114-C784251CBA9D}">
-        <CreateFolder />
+        <File Id="Unattend.xml" Source="Unattend.xml" Checksum="yes" KeyPath="yes" />
       </Component>
     </DirectoryRef>
 

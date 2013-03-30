@@ -6,6 +6,7 @@
     <Binary Id="PythonActions" SourceFile="Actions\PythonActions.js" />
     <Binary Id="ConfFileActions" SourceFile="Actions\ConfFileActions.js" />
     <Binary Id="ConfigDlgActions" SourceFile="Actions\ConfigDlgActions.js" />
+    <Binary Id="SysprepActions" SourceFile="Actions\SysprepActions.js" />
 
     <CustomAction Id="CreateCommonIncludeFile"
                   BinaryKey="ActionsCommon"
@@ -31,5 +32,7 @@
     <CustomAction Id="GenerateCloudbaseInitConfFile"
               BinaryKey="ConfFileActions"
               JScriptCall="writeCloudbaseInitConfFileAction" Execute="deferred" Return="check" Impersonate="no" />
+
+    <CustomAction Id="RunSysprep" BinaryKey="SysprepActions" JScriptCall="runSysprepAction" Execute="immediate" Impersonate="yes" Return="check" />
   </Fragment>
 </Wix>

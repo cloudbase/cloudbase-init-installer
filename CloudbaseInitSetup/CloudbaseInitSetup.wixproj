@@ -48,12 +48,14 @@
     <Content Include="Actions\ConfigDlgActions.js" />
     <Content Include="Actions\GenericActions.js" />
     <Content Include="Actions\PythonActions.js" />
+    <Content Include="Actions\SysprepActions.js" />
     <Content Include="Binaries\OpenStackService.exe" />
     <Content Include="images\bannrbmp.bmp" />
     <Content Include="images\dlgbmp.bmp" />
     <Content Include="License.rtf" />
     <Content Include="Microsoft_VC90_CRT_x86.msm" />
     <Content Include="policy_9_0_Microsoft_VC90_CRT_x86.msm" />
+    <Content Include="Unattend.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Actions\" />
