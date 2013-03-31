@@ -14,12 +14,18 @@ eval(loadCommonIncludeFile(commonIncludeFileName));
 
 function runSysprepAction() {
     try {
+        cmd = "\"%SystemRoot%\\Sysnative\\Sysprep\\sysprep.exe\" /generalize /oobe";
+
         var confFolder = Session.Property("CLOUDBASEINITCONFFOLDER");
         // Sysprep.exe doesn't work with paths containing spaces
-        var unattendXmlPath = getShortPath(confFolder + "\\unattend.xml")
-        cmd = "\"%SystemRoot%\\Sysnative\\Sysprep\\sysprep.exe\" /generalize /oobe /unattend:\"" + unattendXmlPath + "\"";
+        var unattendXmlPath = getShortPath(confFolder + "\\Unattend.xml")
+        cmd += " /unattend:\"" + unattendXmlPath + "\"";
 
-        runCommand(cmd, null, null, 5, false);
+        var shutdown = parseInt(Session.Property("SYSPREPSHUTDOWN"));
+        if (!shutdown)
+            cmd += " /quit";
+
+        runCommand(cmd, null, null, 1, false);
         return MsiActionStatus.Ok;
     }
     catch (ex) {
