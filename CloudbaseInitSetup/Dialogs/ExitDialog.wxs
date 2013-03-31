@@ -24,7 +24,8 @@
         <Control Id="SysprepCheckBox" Type="CheckBox" X="135" Y="110" Width="10" Height="10" Property="SYSPREP" CheckBoxValue="1" Hidden="yes">
           <Condition Action="show"><![CDATA[NOT (VersionNT64 < 600 OR Installed)]]></Condition>
         </Control>
-        <Control Id="SysprepText" Type="Text" X="150" Y="110" Width="212" Height="38" Transparent="yes" NoPrefix="yes" Hidden="yes" Text="Run Sysprep to create a generalized image. This is necessary if you plan to duplicate this instance, for example by creating a Glance image.">
+        <Control Id="SysprepText" Type="Text" X="150" Y="110" Width="212" Height="38" Transparent="yes" NoPrefix="yes" Hidden="yes" 
+                 Text="Run Sysprep to create a generalized image. This is necessary if you plan to duplicate this instance, for example by creating a Glance image.">
           <Condition Action="show"><![CDATA[NOT (VersionNT64 < 600 OR Installed)]]></Condition>
         </Control>
 
@@ -36,6 +37,12 @@
         <Control Id="SysprepShutdownText" Type="Text" X="150" Y="160" Width="212" Height="38" Transparent="yes" NoPrefix="yes" Hidden="yes" Text="Shutdown when Sysprep terminates.">
           <Condition Action="show"><![CDATA[NOT (VersionNT64 < 600 OR Installed)]]></Condition>
         </Control>
+        
+        <Control Id="SysprepNotAvailableText" Type="Text" X="135" Y="110" Width="212" Height="80" Transparent="yes" NoPrefix="yes" Hidden="yes" 
+                 Text="IMPORTANT: You should now run Sysprep if you plan to duplicate this instance, for example by creating a Glance image. Sysprep will generalize it by generating a new SID when a new copy is deployed.">
+          <Condition Action="show"><![CDATA[NOT (VersionNT64 > 600) AND NOT Installed]]></Condition>                   
+        </Control>
+
       </Dialog>
 
       <InstallUISequence>
