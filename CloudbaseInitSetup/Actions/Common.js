@@ -1,3 +1,5 @@
+// Copyright (c) 2012, Cloudbase Solutions Srl. All rights reserved.
+
 var MsiViewModify =
 {
     Refresh: 0,

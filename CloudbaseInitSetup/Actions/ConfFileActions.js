@@ -1,3 +1,5 @@
+// Copyright (c) 2012, Cloudbase Solutions Srl. All rights reserved.
+
 // Begin common utils (as there's no practival way to include a separate script)
 
 // Awful workaround to include common js features
