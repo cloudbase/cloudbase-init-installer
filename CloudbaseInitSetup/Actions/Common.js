@@ -1,4 +1,4 @@
-// Copyright (c) 2012, Cloudbase Solutions Srl. All rights reserved.
+// Copyright (c) 2012 Cloudbase Solutions Srl. All rights reserved.
 
 var MsiViewModify =
 {
