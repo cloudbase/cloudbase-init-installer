@@ -62,7 +62,7 @@ popd
 git config --global user.name "Alessandro Pilotti"
 git config --global user.email "ap@pilotti.it"
 
-PullInstall "cloudbaseinit" "https://github.com/cloudbase/cloudbase-init.git"
+PullInstall "cloudbase-init" "https://github.com/cloudbase/cloudbase-init.git"
 
 pushd .
 
