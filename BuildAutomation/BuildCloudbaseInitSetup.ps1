@@ -37,7 +37,7 @@ if (!(Test-Path -path $basepath))
 }
 cd $basepath
 
-$python_dir = "C:\Python27_Cloudbaseinit"
+$python_dir = "C:\Python27_CloudbaseInit"
 $python_template_dir = $python_dir + "_Template"
 
 if (Test-Path $python_dir) {
