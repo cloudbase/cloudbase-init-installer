@@ -3,6 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "CloudbaseInitSetup", "CloudbaseInitSetup\CloudbaseInitSetup.wixproj", "{72504EA8-DE95-42DA-91EA-4359BA85699E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildAutomation", "BuildAutomation", "{2F8164AD-5423-46D8-BC71-554873129841}"
+	ProjectSection(SolutionItems) = preProject
+		BuildAutomation\BuildCloudbaseInitSetup.cmd = BuildAutomation\BuildCloudbaseInitSetup.cmd
+		BuildAutomation\BuildCloudbaseInitSetup.ps1 = BuildAutomation\BuildCloudbaseInitSetup.ps1
+		BuildAutomation\CheckBuildTask_CloudbaseInitSetup.cmd = BuildAutomation\CheckBuildTask_CloudbaseInitSetup.cmd
+		BuildAutomation\CreateBuildTask_CloudbaseInitSetup.cmd = BuildAutomation\CreateBuildTask_CloudbaseInitSetup.cmd
+		BuildAutomation\DeleteBuildTask_CloudbaseInitSetup.cmd = BuildAutomation\DeleteBuildTask_CloudbaseInitSetup.cmd
+		BuildAutomation\StartBuildTask_CloudbaseInitSetup.cmd = BuildAutomation\StartBuildTask_CloudbaseInitSetup.cmd
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True

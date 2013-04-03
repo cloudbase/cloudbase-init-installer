@@ -1,0 +1,1 @@
+schtasks /query /tn CloudbaseInitSetupAutoBuild
