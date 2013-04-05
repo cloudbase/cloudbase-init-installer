@@ -15,7 +15,7 @@ function PullInstall($path, $url)
     cd $path
     if ($needspull)
     {
-        git pull $url
+        git pull
         if ($LastExitCode) { throw "git pull failed" }
     }
     python setup.py build --force
