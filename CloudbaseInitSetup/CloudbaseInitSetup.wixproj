@@ -49,6 +49,8 @@
     <Content Include="Actions\GenericActions.js" />
     <Content Include="Actions\PythonActions.js" />
     <Content Include="Actions\SysprepActions.js" />
+    <Content Include="Binaries\Elevate_x64.exe" />
+    <Content Include="Binaries\Elevate_x86.exe" />
     <Content Include="Binaries\OpenStackService.exe" />
     <Content Include="images\bannrbmp.bmp" />
     <Content Include="images\dlgbmp.bmp" />

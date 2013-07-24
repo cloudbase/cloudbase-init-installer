@@ -12,6 +12,7 @@
       <ComponentGroupRef Id="Python27ComponentGroup" />
       <ComponentGroupRef Id="CloudbaseInitFolders" />
       <ComponentRef Id="CloudbaseInitService" />
+      <ComponentRef Id="ElevateUtils" />
       <!--
       <ComponentRef Id="CleanupPyWin32Folder" />
       -->
@@ -97,6 +98,13 @@
     </DirectoryRef>
   </Fragment>
 
+  <Fragment>
+    <Component Id="ElevateUtils" Directory="BINFOLDER" Guid="{90A6F90D-34DF-4226-B368-0C2AA4F08BB8}">
+      <File Id="Elevate_x86.exe" Source="Binaries\Elevate_x86.exe" Checksum="yes" />
+      <File Id="Elevate_x64.exe" Source="Binaries\Elevate_x64.exe" KeyPath="yes" Checksum="yes" />
+    </Component> 
+  </Fragment>
+  
   <Fragment>
     <Component Id="CloudbaseInitService" Directory="BINFOLDER" Guid="{234DDD41-5BA4-4777-A0B0-8462D47777E3}">
       <File Id="OpenStackService.exe" Source="Binaries\OpenStackService.exe" KeyPath="yes" Checksum="yes" />

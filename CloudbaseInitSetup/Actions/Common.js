@@ -150,6 +150,19 @@ function getWmiCimV2Svc() {
     return GetObject("winmgmts:\\\\.\\root\\cimv2");
 }
 
+var OSArchitectures = {
+    X86: "32-bit",
+    X64: "64-bit"
+}
+
+function getWindowsArchitecture() {
+    var wmiSvc = getWmiCimV2Svc();
+    var q = wmiSvc.InstancesOf("Win32_OperatingSystem")
+    var os = new Enumerator(q).item()
+    // NOTE: does not work on Windows XP / 2003
+    return os.OSArchitecture
+}
+
 function getWindowsVersion() {
     var wmiSvc = getWmiCimV2Svc();
     var q = wmiSvc.InstancesOf("Win32_OperatingSystem")

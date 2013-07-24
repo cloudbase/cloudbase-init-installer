@@ -16,7 +16,7 @@ eval(loadCommonIncludeFile(commonIncludeFileName));
 
 function runSysprepAction() {
     try {
-        cmd = "\"%SystemRoot%\\Sysnative\\Sysprep\\sysprep.exe\" /generalize /oobe";
+        cmd = "\"%SystemRoot%\\System32\\Sysprep\\sysprep.exe\" /generalize /oobe";
 
         var confFolder = Session.Property("CLOUDBASEINITCONFFOLDER");
         // Sysprep.exe doesn't work with paths containing spaces
@@ -27,7 +27,17 @@ function runSysprepAction() {
         if (!shutdown)
             cmd += " /quit";
 
-        runCommand(cmd, null, null, 1, false);
+        elevateCmd = Session.Property("BINFOLDER") + "\\Elevate_";
+
+        osArch = getWindowsArchitecture();
+        if (osArch == OSArchitectures.X64)
+            elevateCmd += "x64";
+        else
+            elevateCmd += "x86";
+
+        cmd = "\"" + elevateCmd + "\" " + cmd;
+
+        runCommand(cmd, null, null, 0, false);
         return MsiActionStatus.Ok;
     }
     catch (ex) {
