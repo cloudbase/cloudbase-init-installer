@@ -32,8 +32,8 @@ function getNetworkAdapters() {
     var index = 1;
     for (var e = new Enumerator(networkAdapters) ; !e.atEnd() ; e.moveNext()) {
         // On XP / 2003 check the DeviceID to avoid including Miniport and other not relevant adapters
+        var networkAdapter = e.item();
         if (osVersion[0] >= 6 || networkAdapter.PNPDeviceID.indexOf("PCI") == 0) {
-            var networkAdapter = e.item();
             addComboBoxEntry(view, property, index++, networkAdapter.Name, networkAdapter.Name);
         }
     }
