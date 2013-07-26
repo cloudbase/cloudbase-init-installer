@@ -40,7 +40,7 @@
         
         <Control Id="SysprepNotAvailableText" Type="Text" X="135" Y="110" Width="212" Height="80" Transparent="yes" NoPrefix="yes" Hidden="yes" 
                  Text="IMPORTANT: You should now run Sysprep if you plan to duplicate this instance, for example by creating a Glance image. Sysprep will generalize it by generating a new SID when a new copy is deployed.">
-          <Condition Action="show"><![CDATA[NOT (VersionNT > 600) AND NOT Installed]]></Condition>                   
+          <Condition Action="show"><![CDATA[VersionNT < 600 AND NOT Installed]]></Condition>                   
         </Control>
 
       </Dialog>
