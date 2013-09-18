@@ -24,7 +24,7 @@ function getNetworkAdapters() {
 
     var wmiSvc = getWmiCimV2Svc();
 
-    var query = "SELECT * FROM Win32_NetworkAdapter WHERE AdapterTypeId = 0"
+    var query = "SELECT * FROM Win32_NetworkAdapter WHERE AdapterTypeId = 0 AND MACAddress IS NOT NULL"
     if (osVersion[0] >= 6)
         query += " AND PhysicalAdapter = True"
 
