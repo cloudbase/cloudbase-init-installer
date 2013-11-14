@@ -28,4 +28,24 @@
       </OOBE>
     </component>
   </settings>
+  <settings pass="specialize">
+    <component name="Microsoft-Windows-Deployment" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <RunSynchronous>
+        <RunSynchronousCommand wcm:action="add">
+          <Order>1</Order>
+          <Path>"C:\Program Files (x86)\Cloudbase Solutions\Cloudbase-Init\Python27\Scripts\cloudbase-init.exe" --config-file "C:\Program Files (x86)\Cloudbase Solutions\Cloudbase-Init\conf\cloudbase-init-unattend.conf"</Path>
+          <Description>Run Cloudbase-Init to set the hostname</Description>
+        </RunSynchronousCommand>
+      </RunSynchronous>
+    </component>
+    <component name="Microsoft-Windows-Deployment" processorArchitecture="x86" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <RunSynchronous>
+        <RunSynchronousCommand wcm:action="add">
+          <Order>1</Order>
+          <Path>"C:\Program Files\Cloudbase Solutions\Cloudbase-Init\Python27\Scripts\cloudbase-init.exe" --config-file "C:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\cloudbase-init-unattend.conf"</Path>
+          <Description>Run Cloudbase-Init to set the hostname</Description>
+        </RunSynchronousCommand>
+      </RunSynchronous>
+    </component>
+  </settings>
 </unattend>

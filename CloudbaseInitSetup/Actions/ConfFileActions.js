@@ -60,6 +60,21 @@ function writeCloudbaseInitConfFileAction() {
 
         writeConfigFile(cloudbaseInitConfFile, config);
 
+        var cloudbaseInitConfFileUnattend = cloudbaseInitConfFolder + "cloudbase-init-unattend.conf";
+
+        var config = {
+            "plugins": "cloudbaseinit.plugins.windows.sethostname.SetHostNamePlugin",
+            "metadata_services": "cloudbaseinit.metadata.services.configdrive.configdrive.ConfigDriveService,cloudbaseinit.metadata.services.httpservice.HttpService,cloudbaseinit.metadata.services.ec2service.EC2Service",
+            "allow_reboot": false,
+            "config_drive_raw_hhd": "false",
+            "config_drive_cdrom": "true",
+            "verbose": "true",
+            "logdir": trim(logFolder),
+            "logfile": "cloudbase-init.log"
+        };
+
+        writeConfigFile(cloudbaseInitConfFileUnattend, config);
+
         return MsiActionStatus.Ok;
     }
     catch (ex) {
