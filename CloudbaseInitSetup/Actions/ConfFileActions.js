@@ -62,16 +62,11 @@ function writeCloudbaseInitConfFileAction() {
 
         var cloudbaseInitConfFileUnattend = cloudbaseInitConfFolder + "cloudbase-init-unattend.conf";
 
-        var config = {
-            "plugins": "cloudbaseinit.plugins.windows.sethostname.SetHostNamePlugin",
-            "metadata_services": "cloudbaseinit.metadata.services.configdrive.configdrive.ConfigDriveService,cloudbaseinit.metadata.services.httpservice.HttpService,cloudbaseinit.metadata.services.ec2service.EC2Service",
-            "allow_reboot": false,
-            "config_drive_raw_hhd": "false",
-            "config_drive_cdrom": "true",
-            "verbose": "true",
-            "logdir": trim(logFolder),
-            "logfile": "cloudbase-init.log"
-        };
+        config["plugins"] = "cloudbaseinit.plugins.windows.sethostname.SetHostNamePlugin";
+        config["metadata_services"] = "cloudbaseinit.metadata.services.configdrive.configdrive.ConfigDriveService,cloudbaseinit.metadata.services.httpservice.HttpService,cloudbaseinit.metadata.services.ec2service.EC2Service";
+        config["allow_reboot"] = false;
+        config["config_drive_raw_hhd"] = false;
+        config["stop_service_on_exit"] = false;
 
         writeConfigFile(cloudbaseInitConfFileUnattend, config);
 
