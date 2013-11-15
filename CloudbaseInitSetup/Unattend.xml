@@ -33,7 +33,7 @@
       <RunSynchronous>
         <RunSynchronousCommand wcm:action="add">
           <Order>1</Order>
-          <Path>"C:\Program Files (x86)\Cloudbase Solutions\Cloudbase-Init\Python27\Scripts\cloudbase-init.exe" --config-file "C:\Program Files (x86)\Cloudbase Solutions\Cloudbase-Init\conf\cloudbase-init-unattend.conf"</Path>
+          <Path>"%INSTALLDIR%Python27\Scripts\cloudbase-init.exe" --config-file "%CLOUDBASEINITCONFFOLDER%cloudbase-init-unattend.conf"</Path>
           <Description>Run Cloudbase-Init to set the hostname</Description>
         </RunSynchronousCommand>
       </RunSynchronous>

@@ -33,6 +33,11 @@
               BinaryKey="ConfFileActions"
               JScriptCall="writeCloudbaseInitConfFileAction" Execute="deferred" Return="check" Impersonate="no" />
 
+    <CustomAction Id="UpdateUnattendXmlAction_Prop" Return="check" Property="UpdateUnattendXmlAction"
+                  Value="[INSTALLDIR]|[CLOUDBASEINITCONFFOLDER]" />
+    <CustomAction Id="UpdateUnattendXmlAction" BinaryKey="SysprepActions" JScriptCall="updateUnattendXmlAction" Execute="deferred"
+                  Return="check" Impersonate="no" />
+
     <CustomAction Id="RunSysprep" BinaryKey="SysprepActions" JScriptCall="runSysprepAction" Execute="immediate" Impersonate="yes" Return="check" />
   </Fragment>
 </Wix>

@@ -40,6 +40,9 @@
       <Custom Action="GenerateCloudbaseInitConfFile_Prop" After="CostFinalize" />
       <Custom Action="GenerateCloudbaseInitConfFile" Before="InstallFinalize"><![CDATA[REMOVE <> "ALL"]]></Custom>
 
+      <Custom Action="UpdateUnattendXmlAction_Prop" After="CostFinalize" />
+      <Custom Action="UpdateUnattendXmlAction" Before="InstallFinalize"><![CDATA[REMOVE <> "ALL"]]></Custom>
+
       <Custom Action="PyWin32PostInstall_Prop" After="CostFinalize" />
       <Custom Action="PyWin32PostInstall" Before="InstallFinalize">NOT Installed</Custom>
     </InstallExecuteSequence>

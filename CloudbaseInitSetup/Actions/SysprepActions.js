@@ -49,3 +49,26 @@ function runSysprepAction() {
         return MsiActionStatus.Abort;
     }
 }
+
+function updateUnattendXmlAction() {
+    try {
+        logMessage("Updating Unattend.xml file");
+
+        var data = Session.Property("CustomActionData").split('|');
+
+        var i = 0;
+        var installDir = data[i++];
+        var confFolder = data[i++];
+
+        var unattendXmlPath = confFolder + "Unattend.xml";
+
+        replaceInFile(unattendXmlPath, "%INSTALLDIR%", installDir);
+        replaceInFile(unattendXmlPath, "%CLOUDBASEINITCONFFOLDER%", confFolder);
+
+        return MsiActionStatus.Ok;
+    }
+    catch (ex) {
+        logException(ex);
+        return MsiActionStatus.Abort;
+    }
+}
