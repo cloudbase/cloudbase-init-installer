@@ -14,8 +14,29 @@ function loadCommonIncludeFile(fileName) {
 eval(loadCommonIncludeFile(commonIncludeFileName));
 // End workaround
 
+function runCommandElevated(cmd, wait) {
+    elevateCmd = Session.Property("BINFOLDER") + "\\Elevate_";
+
+    osArch = getWindowsArchitecture();
+    if (osArch == OSArchitectures.X64)
+        elevateCmd += "x64";
+    else
+        elevateCmd += "x86";
+
+    elevateCmd = "\"" + elevateCmd + "\"";
+    if (wait)
+        elevateCmd += " -wait";
+    elevateCmd += " " + cmd;
+
+    runCommand(elevateCmd, null, null, 0, false);
+}
+
 function runSysprepAction() {
     try {
+        // Make sure that the service doesn't start before the setup ends
+        cmd = Session.Property("BINFOLDER") + "\\SetSetupComplete.cmd";
+        runCommandElevated(cmd, true);
+
         cmd = "\"%SystemRoot%\\System32\\Sysprep\\sysprep.exe\" /generalize /oobe";
 
         var confFolder = Session.Property("CLOUDBASEINITCONFFOLDER");
@@ -27,17 +48,8 @@ function runSysprepAction() {
         if (!shutdown)
             cmd += " /quit";
 
-        elevateCmd = Session.Property("BINFOLDER") + "\\Elevate_";
+        runCommandElevated(cmd, false);
 
-        osArch = getWindowsArchitecture();
-        if (osArch == OSArchitectures.X64)
-            elevateCmd += "x64";
-        else
-            elevateCmd += "x86";
-
-        cmd = "\"" + elevateCmd + "\" " + cmd;
-
-        runCommand(cmd, null, null, 0, false);
         return MsiActionStatus.Ok;
     }
     catch (ex) {

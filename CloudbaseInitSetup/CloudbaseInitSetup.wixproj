@@ -58,6 +58,7 @@
     <Content Include="Microsoft_VC90_CRT_x86.msm" />
     <Content Include="policy_9_0_Microsoft_VC90_CRT_x86.msm" />
     <Content Include="Python27.xslt" />
+    <Content Include="SetSetupComplete.cmd" />
     <Content Include="Unattend.xml" />
   </ItemGroup>
   <ItemGroup>
