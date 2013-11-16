@@ -67,6 +67,7 @@ function writeCloudbaseInitConfFileAction() {
         config["allow_reboot"] = false;
         config["config_drive_raw_hhd"] = false;
         config["stop_service_on_exit"] = false;
+        config["logfile"] = "cloudbase-init-unattend.log";
 
         writeConfigFile(cloudbaseInitConfFileUnattend, config);
 
