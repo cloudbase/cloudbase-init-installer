@@ -60,10 +60,16 @@ function updateUnattendXmlAction() {
         var installDir = data[i++];
         var confFolder = data[i++];
 
+        var arch = "x86";
+        osArch = getWindowsArchitecture();
+        if (osArch == OSArchitectures.X64)
+            arch = "amd64";
+
         var unattendXmlPath = confFolder + "Unattend.xml";
 
         replaceInFile(unattendXmlPath, "%INSTALLDIR%", installDir);
         replaceInFile(unattendXmlPath, "%CLOUDBASEINITCONFFOLDER%", confFolder);
+        replaceInFile(unattendXmlPath, "%ARCH%", arch);
 
         return MsiActionStatus.Ok;
     }
