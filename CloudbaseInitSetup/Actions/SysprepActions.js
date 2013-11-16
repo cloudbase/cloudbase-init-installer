@@ -79,9 +79,9 @@ function updateUnattendXmlAction() {
 
         var unattendXmlPath = confFolder + "Unattend.xml";
 
-        replaceInFile(unattendXmlPath, "/%INSTALLDIR%/g", installDir);
-        replaceInFile(unattendXmlPath, "/%CLOUDBASEINITCONFFOLDER%/g", confFolder);
-        replaceInFile(unattendXmlPath, "/%ARCH%/g", arch);
+        replaceInFile(unattendXmlPath, /%INSTALLDIR%/g, installDir);
+        replaceInFile(unattendXmlPath, /%CLOUDBASEINITCONFFOLDER%/g, confFolder);
+        replaceInFile(unattendXmlPath, /%ARCH%/g, arch);
 
         return MsiActionStatus.Ok;
     }
