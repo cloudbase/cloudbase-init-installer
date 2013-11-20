@@ -23,6 +23,7 @@
           <Order>1</Order>
           <Path>"%INSTALLDIR%Python27\Scripts\cloudbase-init.exe" --config-file "%CLOUDBASEINITCONFFOLDER%cloudbase-init-unattend.conf"</Path>
           <Description>Run Cloudbase-Init to set the hostname</Description>
+          <WillReboot>Always</WillReboot>
         </RunSynchronousCommand>
       </RunSynchronous>
     </component>
