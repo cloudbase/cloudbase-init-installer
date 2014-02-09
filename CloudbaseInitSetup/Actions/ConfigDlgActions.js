@@ -14,6 +14,37 @@ function loadCommonIncludeFile(fileName) {
 eval(loadCommonIncludeFile(commonIncludeFileName));
 // End workaround
 
+function getSerialPortNames() {
+    var serialPortNames = [];
+
+    var wmiSvc = getWmiCimV2Svc();
+
+    var serialPorts = wmiSvc.ExecQuery("SELECT * FROM Win32_SerialPort");
+    for (var e = new Enumerator(serialPorts) ; !e.atEnd() ; e.moveNext()) {
+        var serialPort = e.item();
+        serialPortNames.push(serialPort.DeviceID);
+    }
+
+    return serialPortNames;
+}
+
+function setupLoggingSerialPortsComboBox() {
+    var property = "LOGGINGSERIALPORTNAME";
+    var view = getComboBoxView(property);
+
+    deleteViewRecords(view);
+
+    serialPortNames = getSerialPortNames();
+    var index = 1;
+
+    for (var i in serialPortNames) {
+        serialPortName = serialPortNames[i];
+        addComboBoxEntry(view, property, index++, serialPortName, serialPortName);
+    }
+
+    view.Close();
+}
+
 function getNetworkAdapters() {
     var property = "NETWORKADAPTERNAME";
     var view = getComboBoxView(property);
@@ -45,6 +76,7 @@ function initConfigDlgAction() {
         logMessage("Initializing ConfigDlg");
 
         getNetworkAdapters();
+        setupLoggingSerialPortsComboBox();
 
         return MsiActionStatus.Ok;
     }

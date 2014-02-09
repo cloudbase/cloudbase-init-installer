@@ -43,8 +43,14 @@ function writeCloudbaseInitConfFileAction() {
         var injectMetadataPassword = data[i++];
         var userGroups = data[i++];
         var networkAdapterName = data[i++];
+        var loggingSerialPortName = data[i++];
 
         var cloudbaseInitConfFile = cloudbaseInitConfFolder + "cloudbase-init.conf";
+
+        var loggingSerialPortSettings = "";
+        if (loggingSerialPortName) {
+            loggingSerialPortSettings = loggingSerialPortName + ",115200,N,8";
+        }
 
         var config = {
             "username": trim(userName),
@@ -55,7 +61,8 @@ function writeCloudbaseInitConfFileAction() {
             "config_drive_cdrom": "true",
             "verbose": "true",
             "logdir": trim(logFolder),
-            "logfile": "cloudbase-init.log"
+            "logfile": "cloudbase-init.log",
+            "logging_serial_port_settings": trim(loggingSerialPortSettings)
         };
 
         writeConfigFile(cloudbaseInitConfFile, config);

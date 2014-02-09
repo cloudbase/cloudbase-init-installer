@@ -28,7 +28,7 @@
                   Execute="deferred" Return="check" Impersonate="no" />
 
     <CustomAction Id="GenerateCloudbaseInitConfFile_Prop" Return="check" Property="GenerateCloudbaseInitConfFile"
-                  Value="[CLOUDBASEINITCONFFOLDER]|[LOGFOLDER]|[USERNAME]|[INJECTMETADATAPASSWORD]|[USERGROUPS]|[NETWORKADAPTERNAME]" />
+                  Value="[CLOUDBASEINITCONFFOLDER]|[LOGFOLDER]|[USERNAME]|[INJECTMETADATAPASSWORD]|[USERGROUPS]|[NETWORKADAPTERNAME]|[LOGGINGSERIALPORTNAME]" />
     <CustomAction Id="GenerateCloudbaseInitConfFile"
               BinaryKey="ConfFileActions"
               JScriptCall="writeCloudbaseInitConfFileAction" Execute="deferred" Return="check" Impersonate="no" />
