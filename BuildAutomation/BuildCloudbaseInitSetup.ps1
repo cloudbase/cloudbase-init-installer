@@ -75,9 +75,6 @@ if ($LastExitCode) { throw "pip install failed" }
 python $python_dir\scripts\pip-script.py install -U distribute
 if ($LastExitCode) { throw "pip install failed" }
 
-python $python_dir\scripts\pip-script.py install -U babel
-if ($LastExitCode) { throw "pip install failed" }
-
 PullInstall "cloudbase-init" "https://github.com/cloudbase/cloudbase-init.git"
 
 pushd .
