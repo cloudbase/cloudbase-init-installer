@@ -60,6 +60,7 @@ function writeCloudbaseInitConfFileAction() {
             "config_drive_raw_hhd": "true",
             "config_drive_cdrom": "true",
             "verbose": "true",
+            "debug": "true",
             "logdir": trim(logFolder),
             "logfile": "cloudbase-init.log",
             "logging_serial_port_settings": trim(loggingSerialPortSettings)
