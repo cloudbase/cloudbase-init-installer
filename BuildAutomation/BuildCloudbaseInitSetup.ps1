@@ -63,8 +63,14 @@ git config --global user.name "Alessandro Pilotti"
 git config --global user.email "ap@pilotti.it"
 
 python $python_dir\scripts\pip-2.7-script.py install -U pbr==0.5.22
-python $python_dir\scripts\pip-2.7-script.py install -U distribute
-python $python_dir\scripts\pip-2.7-script.py install -U babel
+if ($LastExitCode) { throw "pip install failed" }
+
+# Note: pbr updates pip
+python $python_dir\scripts\pip-script.py install -U distribute
+if ($LastExitCode) { throw "pip install failed" }
+
+python $python_dir\scripts\pip-script.py install -U babel
+if ($LastExitCode) { throw "pip install failed" }
 
 PullInstall "cloudbase-init" "https://github.com/cloudbase/cloudbase-init.git"
 
