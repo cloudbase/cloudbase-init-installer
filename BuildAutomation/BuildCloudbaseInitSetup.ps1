@@ -62,6 +62,12 @@ popd
 git config --global user.name "Alessandro Pilotti"
 git config --global user.email "ap@pilotti.it"
 
+# Make sure that we don't have temp files from a previous build
+$python_build_path = "$ENV:LOCALAPPDATA\Temp\pip_build_$ENV:USERNAME"
+if (Test-Path $python_build_path) {
+	Remove-Item -Recurse -Force $python_build_path
+}
+
 python $python_dir\scripts\pip-2.7-script.py install -U pbr==0.5.22
 if ($LastExitCode) { throw "pip install failed" }
 
