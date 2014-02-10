@@ -31,9 +31,7 @@ if (Test-Path $python_build_path) {
 python $python_dir\scripts\pip-2.7-script.py install -U pbr==0.5.22
 if ($LastExitCode) { throw "pip install failed" }
 
-# Note: pbr updates pip
-python $python_dir\scripts\pip-script.py install -U distribute
-if ($LastExitCode) { throw "pip install failed" }
+PipInstall $python_dir "distribute"
 
 PullInstall "cloudbase-init" "https://github.com/cloudbase/cloudbase-init.git"
 
