@@ -63,6 +63,8 @@ git config --global user.name "Alessandro Pilotti"
 git config --global user.email "ap@pilotti.it"
 
 python $python_dir\scripts\pip-2.7-script.py install -U pbr==0.5.22
+python $python_dir\scripts\pip-2.7-script.py install -U distribute
+python $python_dir\scripts\pip-2.7-script.py install -U babel
 
 PullInstall "cloudbase-init" "https://github.com/cloudbase/cloudbase-init.git"
 
