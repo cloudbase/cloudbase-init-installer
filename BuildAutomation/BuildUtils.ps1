@@ -78,6 +78,12 @@ function PullInstall($path, $url)
     {
         cd $path
 
+        # Remove build directory
+        CheckRemoveDir "build"
+
+        # Remove Python compiled files 
+        Get-ChildItem  -include "*.pyc" -recurse | foreach ($_) {remove-item $_.fullname}
+
         python setup.py build --force
         if ($LastExitCode) { throw "python setup.py build failed" }
 
