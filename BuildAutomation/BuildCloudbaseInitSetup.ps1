@@ -3,7 +3,7 @@ $ErrorActionPreference = "Stop"
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
 . "$scriptPath\BuildUtils.ps1"
 
-$basepath = "C:\OpenStack"
+$basepath = "C:\OpenStack\build\cloudbase-init"
 CheckDir $basepath
 cd $basepath
 
