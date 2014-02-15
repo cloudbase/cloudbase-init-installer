@@ -19,7 +19,8 @@ $ENV:PATH += ";$ENV:ProgramFiles\TortoiseSVN\bin"
 
 # Don't use the default pip temp directory to avoid concurrency issues
 $ENV:TMPDIR = Join-Path $basepath "temp"
-CheckDir $ENV:TMPDIR
+CheckRemoveDir $ENV:TMPDIR
+mkdir $ENV:TMPDIR
 
 SetVCVars
 
