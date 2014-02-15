@@ -17,6 +17,10 @@ $ENV:PATH += ";C:\Tools\AlexFTPS-1.1.0"
 $ENV:PATH += ";$python_dir\;$python_dir\scripts"
 $ENV:PATH += ";$ENV:ProgramFiles\TortoiseSVN\bin"
 
+# Don't use the default pip temp directory to avoid concurrency issues
+$ENV:TMPDIR = Join-Path $basepath "temp"
+CheckDir $ENV:TMPDIR
+
 SetVCVars
 
 git config --global user.name "Alessandro Pilotti"
