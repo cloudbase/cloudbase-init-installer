@@ -71,10 +71,10 @@ function updateUnattendXmlAction() {
         var i = 0;
         var installDir = data[i++];
         var confFolder = data[i++];
+        var versionNt64 = data[i++];
 
         var arch = "x86";
-        osArch = getWindowsArchitecture();
-        if (osArch == OSArchitectures.X64)
+        if (versionNt64)
             arch = "amd64";
 
         var unattendXmlPath = confFolder + "Unattend.xml";
