@@ -25,6 +25,12 @@
 
     <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
 
+    <Property Id="MAAS_METADATA_URL" />
+    <Property Id="MAAS_OAUTH_CONSUMER_KEY" />
+    <Property Id="MAAS_OAUTH_CONSUMER_SECRET" />
+    <Property Id="MAAS_OAUTH_TOKEN_KEY" />
+    <Property Id="MAAS_OAUTH_TOKEN_SECRET" />
+
     <UIRef Id="MyWixUI_FeatureTree" />
     <UIRef Id="WixUI_ErrorProgressText" />
 

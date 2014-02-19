@@ -44,6 +44,11 @@ function writeCloudbaseInitConfFileAction() {
         var userGroups = data[i++];
         var networkAdapterName = data[i++];
         var loggingSerialPortName = data[i++];
+        var maasMetadataUrl = trim(data[i++]);
+        var maasOAuthConsumerKey = trim(data[i++]);
+        var maasOAuthConsumerSecret = trim(data[i++]);
+        var maasOAuthTokenKey = trim(data[i++]);
+        var maasOAuthTokenSecret = trim(data[i++]);
 
         var cloudbaseInitConfFile = cloudbaseInitConfFolder + "cloudbase-init.conf";
 
@@ -66,12 +71,24 @@ function writeCloudbaseInitConfFileAction() {
             "logging_serial_port_settings": trim(loggingSerialPortSettings)
         };
 
+        if (maasMetadataUrl) {
+            config["metadata_services"] = "cloudbaseinit.metadata.services.maasservice.MaaSHttpService";
+            config["maas_metadata_url"] = maasMetadataUrl;
+            config["maas_oauth_consumer_key"] = maasOAuthConsumerKey;
+            config["maas_oauth_consumer_secret"] = maasOAuthConsumerSecret;
+            config["maas_oauth_token_key"] = maasOAuthTokenKey;
+            config["maas_oauth_token_secret"] = maasOAuthTokenSecret;
+        }
+
         writeConfigFile(cloudbaseInitConfFile, config);
 
         var cloudbaseInitConfFileUnattend = cloudbaseInitConfFolder + "cloudbase-init-unattend.conf";
 
+        if (!maasMetadataUrl) {
+            config["metadata_services"] = "cloudbaseinit.metadata.services.configdrive.ConfigDriveService,cloudbaseinit.metadata.services.httpservice.HttpService,cloudbaseinit.metadata.services.maasservice.MaaSHttpService";
+        }
+
         config["plugins"] = "cloudbaseinit.plugins.windows.sethostname.SetHostNamePlugin";
-        config["metadata_services"] = "cloudbaseinit.metadata.services.configdrive.ConfigDriveService,cloudbaseinit.metadata.services.httpservice.HttpService,cloudbaseinit.metadata.services.maasservice.MaaSHttpService";
         config["allow_reboot"] = false;
         config["config_drive_raw_hhd"] = false;
         config["stop_service_on_exit"] = false;
