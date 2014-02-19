@@ -71,7 +71,7 @@ function writeCloudbaseInitConfFileAction() {
         var cloudbaseInitConfFileUnattend = cloudbaseInitConfFolder + "cloudbase-init-unattend.conf";
 
         config["plugins"] = "cloudbaseinit.plugins.windows.sethostname.SetHostNamePlugin";
-        config["metadata_services"] = "cloudbaseinit.metadata.services.configdrive.configdrive.ConfigDriveService,cloudbaseinit.metadata.services.httpservice.HttpService,cloudbaseinit.metadata.services.ec2service.EC2Service";
+        config["metadata_services"] = "cloudbaseinit.metadata.services.configdrive.ConfigDriveService,cloudbaseinit.metadata.services.httpservice.HttpService,cloudbaseinit.metadata.services.maasservice.MaaSHttpService";
         config["allow_reboot"] = false;
         config["config_drive_raw_hhd"] = false;
         config["stop_service_on_exit"] = false;
