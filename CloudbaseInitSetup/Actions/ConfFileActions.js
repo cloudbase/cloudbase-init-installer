@@ -85,7 +85,7 @@ function writeCloudbaseInitConfFileAction() {
         var cloudbaseInitConfFileUnattend = cloudbaseInitConfFolder + "cloudbase-init-unattend.conf";
 
         if (!maasMetadataUrl) {
-            config["metadata_services"] = "cloudbaseinit.metadata.services.configdrive.ConfigDriveService,cloudbaseinit.metadata.services.httpservice.HttpService,cloudbaseinit.metadata.services.maasservice.MaaSHttpService";
+            config["metadata_services"] = "cloudbaseinit.metadata.services.configdrive.ConfigDriveService,cloudbaseinit.metadata.services.httpservice.HttpService,cloudbaseinit.metadata.services.ec2service.EC2Service,cloudbaseinit.metadata.services.maasservice.MaaSHttpService";
         }
 
         config["plugins"] = "cloudbaseinit.plugins.windows.sethostname.SetHostNamePlugin";
