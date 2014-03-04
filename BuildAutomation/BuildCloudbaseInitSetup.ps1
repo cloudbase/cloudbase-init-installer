@@ -15,7 +15,9 @@ CheckCopyDir $python_template_dir $python_dir
 $ENV:PATH += ";$ENV:ProgramFiles (x86)\Git\bin\"
 $ENV:PATH += ";C:\Tools\AlexFTPS-1.1.0"
 $ENV:PATH += ";$python_dir\;$python_dir\scripts"
-$ENV:PATH += ";$ENV:ProgramFiles\TortoiseSVN\bin"
+
+# Needed for SSH
+$ENV:HOME = $ENV:USERPROFILE
 
 # Don't use the default pip temp directory to avoid concurrency issues
 $ENV:TMPDIR = Join-Path $basepath "temp"
@@ -42,14 +44,11 @@ PullInstall "cloudbase-init" "https://github.com/cloudbase/cloudbase-init.git"
 
 pushd .
 
-$setupdir = "CloudbaseInitSetup" 
-CheckDir $setupdir
-cd $setupdir
+# Make sure to have a private key that matches a github deployer key in $ENV:HOME\.ssh\id_rsa
+GitClonePull "cloudbase-init-installer" "git@github.com:/cloudbase/cloudbase-init-installer.git"
 
-svn co https://srv1.cloudbase.it/svn/cloudbaseinitsetup/CloudbaseInitSetup/trunk/ --username autobuild --password LsdU3mGMnj --non-interactive --trust-server-cert
-if ($LastExitCode) { throw "svn checkout failed" }
+cd cloudbase-init-installer\CloudbaseInitSetup
 
-cd trunk\CloudbaseInitSetup
 &msbuild CloudbaseInitSetup.wixproj /p:Platform=x86 /p:Configuration=Release /p:DefineConstants=`"Python27SourcePath=$python_dir`"
 if ($LastExitCode) { throw "MSBuild failed" }
 
