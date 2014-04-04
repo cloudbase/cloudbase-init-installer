@@ -204,7 +204,7 @@ function SetRuntimeLibrary($runtimeLibrary)
 	}
 }
 
-function PatchFromGitCommit($sourcePath, $destPath, $gitRef, $gerritUrl, $gerritRef)
+function PatchFromGitCommit($sourcePath, $destPath, $gitRef, $gerritUrl, $gerritRef, $filesToPatch)
 {
     pushd .
     try
@@ -219,7 +219,7 @@ function PatchFromGitCommit($sourcePath, $destPath, $gitRef, $gerritUrl, $gerrit
             $gitRef = "FETCH_HEAD"
         }
 
-        $patch = &git format-patch -1 --stdout $gitRef
+        $patch = &git format-patch -1 --stdout $gitRef -- $filesToPatch
         if ($LastExitCode) { throw "git format-patch failed for commit: $gitRef" }
         popd
 
@@ -233,8 +233,52 @@ function PatchFromGitCommit($sourcePath, $destPath, $gitRef, $gerritUrl, $gerrit
     }
 }
 
-function PatchRelease($project, $version, $gitRef, $gerritUrl, $gerritRef)
+function PatchRelease($project, $version, $gitRef, $gerritUrl, $gerritRef, $filesToPatch)
 {
     $destPath = ".\dist\$project-$version"
-    PatchFromGitCommit $project $destPath $gitRef $gerritUrl $gerritRef
+    PatchFromGitCommit $project $destPath $gitRef $gerritUrl $gerritRef $filesToPatch
+}
+
+function ExecRetry($command, $maxRetryCount = 10, $retryInterval=2)
+{
+    $currErrorActionPreference = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+
+    $retryCount = 0
+    while ($true)
+    {
+        try
+        {
+            & $command
+            break
+        }
+        catch [System.Exception]
+        {
+            $retryCount++
+            if ($retryCount -ge $maxRetryCount)
+            {
+                $ErrorActionPreference = $currErrorActionPreference
+                throw
+            }
+            else
+            {
+                Write-Error $_.Exception
+                Start-Sleep $retryInterval
+            }
+        }
+    }
+
+    $ErrorActionPreference = $currErrorActionPreference
+}
+
+function GetCredentialsFromFile($path)
+{
+    # To populate the credentials file use:
+    # $username | Out-File $path
+    # read-host -assecurestring | convertfrom-securestring | Add-Content $path
+
+    $data = Get-Content $path
+    $username = $data[0]
+    $securePass = $data[1] | convertto-securestring
+    return new-object -typename System.Management.Automation.PSCredential -argumentlist $username,$securePass
 }
