@@ -60,6 +60,7 @@ signtool.exe sign /sha1 $sign_cert_thumbprint /t http://timestamp.verisign.com/s
 if ($LastExitCode) { throw "signtool failed" }
 
 &ftps -h www.cloudbase.it -ssl All -U ociuhandu -P nnxwf5wu -sslInvalidServerCertHandling Accept -p $msi_path /cloudbase.it/main/downloads/CloudbaseInitSetup_Beta.msi
+if ($LastExitCode) { throw "ftps failed" }
 
 Remove-Item -Recurse -Force $python_dir
 
