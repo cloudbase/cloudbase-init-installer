@@ -24,6 +24,8 @@ $ENV:TMPDIR = Join-Path $basepath "temp"
 CheckRemoveDir $ENV:TMPDIR
 mkdir $ENV:TMPDIR
 
+$sign_cert_thumbprint = "65c29b06eb665ce202676332e8129ac48d613c61"
+
 SetVCVars
 
 git config --global user.name "Alessandro Pilotti"
@@ -52,7 +54,12 @@ cd cloudbase-init-installer\CloudbaseInitSetup
 &msbuild CloudbaseInitSetup.wixproj /p:Platform=x86 /p:Configuration=Release /p:DefineConstants=`"Python27SourcePath=$python_dir`"
 if ($LastExitCode) { throw "MSBuild failed" }
 
-&ftps -h www.cloudbase.it -ssl All -U ociuhandu -P nnxwf5wu -sslInvalidServerCertHandling Accept -p bin\Release\CloudbaseInitSetup.msi /cloudbase.it/main/downloads/CloudbaseInitSetup_Beta.msi
+$msi_path = "bin\Release\CloudbaseInitSetup.msi"
+
+signtool.exe sign /sha1 $sign_cert_thumbprint /t http://timestamp.verisign.com/scripts/timstamp.dll /v $msi_path
+if ($LastExitCode) { throw "signtool failed" }
+
+&ftps -h www.cloudbase.it -ssl All -U ociuhandu -P nnxwf5wu -sslInvalidServerCertHandling Accept -p $msi_path /cloudbase.it/main/downloads/CloudbaseInitSetup_Beta.msi
 
 Remove-Item -Recurse -Force $python_dir
 
