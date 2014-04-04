@@ -25,6 +25,7 @@ CheckRemoveDir $ENV:TMPDIR
 mkdir $ENV:TMPDIR
 
 $sign_cert_thumbprint = "65c29b06eb665ce202676332e8129ac48d613c61"
+$ftpsCredentials = GetCredentialsFromFile "$ENV:UserProfile\ftps.txt"
 
 SetVCVars
 
@@ -59,7 +60,10 @@ $msi_path = "bin\Release\CloudbaseInitSetup.msi"
 signtool.exe sign /sha1 $sign_cert_thumbprint /t http://timestamp.verisign.com/scripts/timstamp.dll /v $msi_path
 if ($LastExitCode) { throw "signtool failed" }
 
-&ftps -h www.cloudbase.it -ssl All -U ociuhandu -P nnxwf5wu -sslInvalidServerCertHandling Accept -p $msi_path /cloudbase.it/main/downloads/CloudbaseInitSetup_Beta.msi
+$ftpsUsername = $ftpsCredentials.UserName
+$ftpsPassword = $ftpsCredentials.GetNetworkCredential().Password
+
+&ftps -h www.cloudbase.it -ssl All -U $ftpsUsername -P $ftpsPassword -sslInvalidServerCertHandling Accept -p $msi_path /cloudbase.it/main/downloads/CloudbaseInitSetup_Beta.msi
 if ($LastExitCode) { throw "ftps failed" }
 
 Remove-Item -Recurse -Force $python_dir
