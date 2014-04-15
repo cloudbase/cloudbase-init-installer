@@ -33,6 +33,9 @@ UINT __stdcall GenerateRandomPassword(MSIHANDLE hInstall)
 	    for (DWORD i = 0; i < dwLength; ++i)
 		    passwordss << std::hex << static_cast<unsigned int>(pbBuffer[i]);
 
+        // Add a non alphanumeric character
+        passwordss << L"$";
+
         retValue = ::MsiSetProperty(hInstall, PASSWORD_MSI_PROPERTY, passwordss.str().c_str());
 
         LogMessage(hInstall, L"Random password generated");
