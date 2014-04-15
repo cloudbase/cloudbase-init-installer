@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
   <Product Id="{ED85F19F-057A-4EE6-BC8D-F576DEACE78D}" Name="Cloudbase-Init" Language="1033" Version="1.0.0.0" Manufacturer="Cloudbase Solutions Srl" UpgradeCode="BA8F3CDD-9340-4852-8515-CF0BD5CA20E3">
     <Package InstallerVersion="300" Compressed="yes" InstallScope="perMachine" InstallPrivileges="elevated" />
 
@@ -49,6 +49,8 @@
 
       <Custom Action="UpdateUnattendXmlAction_Prop" After="CostFinalize" />
       <Custom Action="UpdateUnattendXmlAction" Before="InstallFinalize"><![CDATA[REMOVE <> "ALL"]]></Custom>
+
+      <Custom Action="GenerateRandomPassword" After="CostFinalize" />
 
       <Custom Action="PyWin32PostInstall_Prop" After="CostFinalize" />
       <Custom Action="PyWin32PostInstall" Before="InstallFinalize">NOT Installed</Custom>
@@ -120,7 +122,19 @@
   </Fragment>
     
   <Fragment>
+    <!--
+    TODO: Split [WIX_ACCOUNT_ADMINISTRATORS] on "\" and get the localized name of the group instead of hardcoding it
+    -->
+    <util:Group Id="AdministratorsGroup" Name="Administrators"/>
+    <Property Id="GENERATED_PASSWORD" Hidden="yes" />
+
     <Component Id="CloudbaseInitService" Directory="BINFOLDER" Guid="{234DDD41-5BA4-4777-A0B0-8462D47777E3}">
+
+      <util:User Id="cloudbaseinituser" LogonAsService="yes" CreateUser="yes" CanNotChangePassword="yes" Disabled="no" Name="Cloudbase-Init"
+                 Password="[GENERATED_PASSWORD]" PasswordExpired="no" PasswordNeverExpires="yes" RemoveOnUninstall="yes" UpdateIfExists="yes">
+        <util:GroupRef Id="AdministratorsGroup"/>
+      </util:User>
+
       <File Id="OpenStackService.exe" Source="Binaries\OpenStackService.exe" KeyPath="yes" Checksum="yes" />
       <ServiceInstall
                Arguments='cloudbase-init "[INSTALLDIR]Python27\Scripts\cloudbase-init.exe" --config-file "[CLOUDBASEINITCONFFOLDER]cloudbase-init.conf"'
@@ -131,7 +145,8 @@
                DisplayName="Cloud Initialization Service"
                Description="Service wrapper for cloudbase-init"
                Start="auto"
-               Account="LocalSystem"
+               Account=".\Cloudbase-Init"
+               Password="[GENERATED_PASSWORD]"
                ErrorControl="ignore"
                Interactive="no">
         <ServiceDependency Id="Winmgmt" />

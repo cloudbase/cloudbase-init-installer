@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "CloudbaseInitSetup", "CloudbaseInitSetup\CloudbaseInitSetup.wixproj", "{72504EA8-DE95-42DA-91EA-4359BA85699E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{03E4CD9D-2149-424A-9092-9162DE22F105} = {03E4CD9D-2149-424A-9092-9162DE22F105}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildAutomation", "BuildAutomation", "{2F8164AD-5423-46D8-BC71-554873129841}"
 	ProjectSection(SolutionItems) = preProject
@@ -9,16 +12,48 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildAutomation", "BuildAut
 		BuildAutomation\BuildUtils.ps1 = BuildAutomation\BuildUtils.ps1
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UtilsActions", "UtilsActions\UtilsActions.vcxproj", "{03E4CD9D-2149-424A-9092-9162DE22F105}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|Win32 = Debug|Win32
 		Debug|x86 = Debug|x86
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|Win32 = Release|Win32
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{72504EA8-DE95-42DA-91EA-4359BA85699E}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{72504EA8-DE95-42DA-91EA-4359BA85699E}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{72504EA8-DE95-42DA-91EA-4359BA85699E}.Debug|Win32.ActiveCfg = Debug|x86
+		{72504EA8-DE95-42DA-91EA-4359BA85699E}.Debug|Win32.Build.0 = Debug|x86
 		{72504EA8-DE95-42DA-91EA-4359BA85699E}.Debug|x86.ActiveCfg = Debug|x86
 		{72504EA8-DE95-42DA-91EA-4359BA85699E}.Debug|x86.Build.0 = Debug|x86
+		{72504EA8-DE95-42DA-91EA-4359BA85699E}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{72504EA8-DE95-42DA-91EA-4359BA85699E}.Release|Mixed Platforms.Build.0 = Release|x86
+		{72504EA8-DE95-42DA-91EA-4359BA85699E}.Release|Win32.ActiveCfg = Release|x86
+		{72504EA8-DE95-42DA-91EA-4359BA85699E}.Release|Win32.Build.0 = Release|x86
 		{72504EA8-DE95-42DA-91EA-4359BA85699E}.Release|x86.ActiveCfg = Release|x86
 		{72504EA8-DE95-42DA-91EA-4359BA85699E}.Release|x86.Build.0 = Release|x86
+		{03E4CD9D-2149-424A-9092-9162DE22F105}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{03E4CD9D-2149-424A-9092-9162DE22F105}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{03E4CD9D-2149-424A-9092-9162DE22F105}.Debug|Mixed Platforms.Deploy.0 = Debug|Win32
+		{03E4CD9D-2149-424A-9092-9162DE22F105}.Debug|Win32.ActiveCfg = Debug|Win32
+		{03E4CD9D-2149-424A-9092-9162DE22F105}.Debug|Win32.Build.0 = Debug|Win32
+		{03E4CD9D-2149-424A-9092-9162DE22F105}.Debug|Win32.Deploy.0 = Debug|Win32
+		{03E4CD9D-2149-424A-9092-9162DE22F105}.Debug|x86.ActiveCfg = Debug|Win32
+		{03E4CD9D-2149-424A-9092-9162DE22F105}.Debug|x86.Build.0 = Debug|Win32
+		{03E4CD9D-2149-424A-9092-9162DE22F105}.Debug|x86.Deploy.0 = Debug|Win32
+		{03E4CD9D-2149-424A-9092-9162DE22F105}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{03E4CD9D-2149-424A-9092-9162DE22F105}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{03E4CD9D-2149-424A-9092-9162DE22F105}.Release|Mixed Platforms.Deploy.0 = Release|Win32
+		{03E4CD9D-2149-424A-9092-9162DE22F105}.Release|Win32.ActiveCfg = Release|Win32
+		{03E4CD9D-2149-424A-9092-9162DE22F105}.Release|Win32.Build.0 = Release|Win32
+		{03E4CD9D-2149-424A-9092-9162DE22F105}.Release|Win32.Deploy.0 = Release|Win32
+		{03E4CD9D-2149-424A-9092-9162DE22F105}.Release|x86.ActiveCfg = Release|Win32
+		{03E4CD9D-2149-424A-9092-9162DE22F105}.Release|x86.Build.0 = Release|Win32
+		{03E4CD9D-2149-424A-9092-9162DE22F105}.Release|x86.Deploy.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

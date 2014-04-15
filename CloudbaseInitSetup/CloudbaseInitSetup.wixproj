@@ -60,6 +60,7 @@
     <Content Include="Python27.xslt" />
     <Content Include="SetSetupComplete.cmd" />
     <Content Include="Unattend.xml" />
+    <Content Include="UtilsActions.dll" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Actions\" />

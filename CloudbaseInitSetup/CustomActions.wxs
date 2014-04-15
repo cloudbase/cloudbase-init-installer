@@ -7,6 +7,13 @@
     <Binary Id="ConfFileActions" SourceFile="Actions\ConfFileActions.js" />
     <Binary Id="ConfigDlgActions" SourceFile="Actions\ConfigDlgActions.js" />
     <Binary Id="SysprepActions" SourceFile="Actions\SysprepActions.js" />
+    <Binary Id="UtilsActionsDLL" SourceFile="UtilsActions.dll" />
+
+    <CustomAction Id="GenerateRandomPassword"
+                  BinaryKey="UtilsActionsDLL"
+                  DllEntry="GenerateRandomPassword"
+                  Execute="immediate"
+                  Return="check" />
 
     <CustomAction Id="CreateCommonIncludeFile"
                   BinaryKey="ActionsCommon"
