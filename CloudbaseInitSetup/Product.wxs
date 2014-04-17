@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
   <Product Id="{ED85F19F-057A-4EE6-BC8D-F576DEACE78D}" Name="Cloudbase-Init" Language="1033" Version="1.0.0.0" Manufacturer="Cloudbase Solutions Srl" UpgradeCode="BA8F3CDD-9340-4852-8515-CF0BD5CA20E3">
-    <Package InstallerVersion="300" Compressed="yes" InstallScope="perMachine" InstallPrivileges="elevated" />
+    <Package InstallerVersion="300" Compressed="yes" InstallScope="perMachine" InstallPrivileges="elevated" Platform="x64"/>
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate EmbedCab="yes" CompressionLevel="mszip" />
@@ -20,6 +20,11 @@
       <Feature Id="VC90Redist" Title="Visual C++ 9.0 Runtime" AllowAdvertise="no" Display="hidden" Level="1">
         <MergeRef Id="VC90Redist" />
         <MergeRef Id="VC90Policy" />
+      </Feature>
+
+      <Feature Id="Carbon" Title="Carbon PowerShell Module" AllowAdvertise="no" Level="1" InstallDefault="followParent" Absent="allow"
+               Description="Carbon is an open source PowerShell module with lots of features useful for deployment automation. More info: http://get-carbon.org/">
+        <ComponentGroupRef Id="CarbonComponentGroup" />
       </Feature>
     </Feature>
 
@@ -101,6 +106,18 @@
       <ComponentRef Id="CloudbaseInitConfFolder" />
       <ComponentRef Id="CloudbaseInitLogFolder" />
     </ComponentGroup>
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="TARGETDIR">
+      <Directory Id="System64Folder" Name="System64Folder">
+        <Directory Id="WindowsPowerShell" Name="WindowsPowerShell">
+          <Directory Id="v1.0" Name="v1.0">
+            <Directory Id="PowershellModules" Name="Modules" />
+          </Directory>
+        </Directory>
+      </Directory>
+    </DirectoryRef>
   </Fragment>
 
   <Fragment>

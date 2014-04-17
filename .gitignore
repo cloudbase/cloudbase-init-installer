@@ -17,6 +17,7 @@ bld/
 [Oo]bj/
 
 CloudbaseInitSetup/Python27.wxs
+CloudbaseInitSetup/Carbon.wxs
 
 # MSTest test Results
 [Tt]est[Rr]esult*/

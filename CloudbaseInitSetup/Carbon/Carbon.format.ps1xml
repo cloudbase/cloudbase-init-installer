@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+   Copyright 2012 Aaron Jensen
+ 
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+ 
+       http://www.apache.org/licenses/LICENSE-2.0
+ 
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License. 
+-->
+<Configuration>
+  <ViewDefinitions>
+	  <View>
+		<Name>CarbonIniIniNodeView</Name>
+		<ViewSelectedBy>
+			<TypeName>Carbon.Ini.IniNode</TypeName>
+		</ViewSelectedBy>
+		<TableControl>
+			<TableHeaders>
+				<TableColumnHeader>
+					<Label>Line</Label>
+					<Width>4</Width>
+					<Alignment>Right</Alignment>
+				</TableColumnHeader>
+				<TableColumnHeader>
+					<Width>20</Width>
+				</TableColumnHeader>
+				<TableColumnHeader>
+					<Width>20</Width>
+				</TableColumnHeader>
+				<TableColumnHeader>
+					<Width>35</Width>
+				</TableColumnHeader>
+			</TableHeaders>
+			<TableRowEntries>
+				<TableRowEntry>
+					<TableColumnItems>
+						<TableColumnItem>
+							<PropertyName>LineNumber</PropertyName>
+						</TableColumnItem>
+						<TableColumnItem>
+							<PropertyName>Section</PropertyName>
+						</TableColumnItem>
+						<TableColumnItem>
+							<PropertyName>Name</PropertyName>
+						</TableColumnItem>
+						<TableColumnItem>
+							<PropertyName>Value</PropertyName>
+						</TableColumnItem>
+					</TableColumnItems>
+					</TableRowEntry>
+				</TableRowEntries>
+			</TableControl>
+		</View>
+	  <View>
+		<Name>CarbonCertificatesSslCertificateBindingView</Name>
+		<ViewSelectedBy>
+			<TypeName>Carbon.Certificates.SslCertificateBinding</TypeName>
+		</ViewSelectedBy>
+		<TableControl>
+			<TableHeaders>
+				<TableColumnHeader>
+					<Label>IPAddress</Label>
+					<Width>15</Width>
+				</TableColumnHeader>
+				<TableColumnHeader>
+					<Width>5</Width>
+					<Alignment>Right</Alignment>
+				</TableColumnHeader>
+				<TableColumnHeader>
+					<Label>CertificateHash</Label>
+					<Width>40</Width>
+				</TableColumnHeader>
+				<TableColumnHeader>
+					<Label>CertificateStoreName</Label>
+					<Width>20</Width>
+				</TableColumnHeader>
+			</TableHeaders>
+			<TableRowEntries>
+				<TableRowEntry>
+					<TableColumnItems>
+						<TableColumnItem>
+							<PropertyName>IPAddress</PropertyName>
+						</TableColumnItem>
+						<TableColumnItem>
+							<PropertyName>Port</PropertyName>
+						</TableColumnItem>
+						<TableColumnItem>
+							<PropertyName>CertificateHash</PropertyName>
+						</TableColumnItem>
+						<TableColumnItem>
+							<PropertyName>CertificateStoreName</PropertyName>
+						</TableColumnItem>
+					</TableColumnItems>
+					</TableRowEntry>
+				</TableRowEntries>
+			</TableControl>
+		</View>
+	  <View>
+		<Name>CarbonIisHttpRedirectConfigurationSection</Name>
+		<ViewSelectedBy>
+			<TypeName>Carbon.Iis.HttpRedirectConfigurationSection</TypeName>
+		</ViewSelectedBy>
+		<TableControl>
+			<TableHeaders>
+				<TableColumnHeader>
+					<Label>Destination</Label>
+					<Width>41</Width>
+				</TableColumnHeader>
+				<TableColumnHeader>
+					<Label>HTTP Status</Label>
+					<Width>14</Width>
+					<Alignment>Right</Alignment>
+				</TableColumnHeader>
+				<TableColumnHeader>
+					<Width>8</Width>
+					<Alignment>Right</Alignment>
+				</TableColumnHeader>
+				<TableColumnHeader>
+					<Width>10</Width>
+					<Alignment>Right</Alignment>
+				</TableColumnHeader>
+				<TableColumnHeader>
+					<Label>Exact?</Label>
+					<Width>7</Width>
+					<Alignment>Right</Alignment>
+				</TableColumnHeader>
+			</TableHeaders>
+			<TableRowEntries>
+				<TableRowEntry>
+					<TableColumnItems>
+						<TableColumnItem>
+							<PropertyName>Destination</PropertyName>
+						</TableColumnItem>
+						<TableColumnItem>
+							<ScriptBlock>"{0} {1}" -f $_.HttpResponseStatus.ToString("d"),$_.HttpResponseStatus</ScriptBlock>
+						</TableColumnItem>
+						<TableColumnItem>
+							<PropertyName>Enabled</PropertyName>
+						</TableColumnItem>
+						<TableColumnItem>
+							<PropertyName>ChildOnly</PropertyName>
+						</TableColumnItem>
+						<TableColumnItem>
+							<PropertyName>ExactDestination</PropertyName>
+						</TableColumnItem>
+					</TableColumnItems>
+					</TableRowEntry>
+				</TableRowEntries>
+			</TableControl>
+        </View>
+        <View>
+		    <Name>CarbonIisMimeMap</Name>
+		    <ViewSelectedBy>
+			    <TypeName>Carbon.Iis.MimeMap</TypeName>
+		    </ViewSelectedBy>
+		    <TableControl>
+			    <TableHeaders>
+				    <TableColumnHeader>
+					    <Label>File Extension</Label>
+					    <Width>15</Width>
+				    </TableColumnHeader>
+				    <TableColumnHeader>
+					    <Label>MIME Type</Label>
+					    <Width>64</Width>
+				    </TableColumnHeader>
+			    </TableHeaders>
+			    <TableRowEntries>
+				    <TableRowEntry>
+					    <TableColumnItems>
+						    <TableColumnItem>
+							    <PropertyName>FileExtension</PropertyName>
+						    </TableColumnItem>
+						    <TableColumnItem>
+							    <PropertyName>MimeType</PropertyName>
+						    </TableColumnItem>
+					    </TableColumnItems>
+				    </TableRowEntry>
+			    </TableRowEntries>
+		    </TableControl>
+	    </View>
+        <View>
+            <Name>CarbonIdentity</Name>
+            <ViewSelectedBy>
+                <TypeName>Carbon.Identity</TypeName>
+            </ViewSelectedBy>
+            <TableControl>
+			    <TableHeaders>
+				    <TableColumnHeader>
+					    <Label>FullName</Label>
+					    <Width>32</Width>
+				    </TableColumnHeader>
+				    <TableColumnHeader>
+					    <Label>Sid</Label>
+					    <Width>46</Width>
+				    </TableColumnHeader>
+				    <TableColumnHeader>
+					    <Label>Type</Label>
+					    <Width>14</Width>
+				    </TableColumnHeader>
+			    </TableHeaders>
+			    <TableRowEntries>
+				    <TableRowEntry>
+					    <TableColumnItems>
+						    <TableColumnItem>
+							    <PropertyName>FullName</PropertyName>
+						    </TableColumnItem>
+						    <TableColumnItem>
+							    <PropertyName>Sid</PropertyName>
+						    </TableColumnItem>
+						    <TableColumnItem>
+							    <PropertyName>Type</PropertyName>
+						    </TableColumnItem>
+					    </TableColumnItems>
+				    </TableRowEntry>
+			    </TableRowEntries>
+            </TableControl>
+		</View>
+	</ViewDefinitions>
+</Configuration>
