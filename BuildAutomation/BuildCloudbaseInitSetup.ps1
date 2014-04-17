@@ -52,7 +52,7 @@ GitClonePull "cloudbase-init-installer" "git@github.com:/cloudbase/cloudbase-ini
 
 cd cloudbase-init-installer\CloudbaseInitSetup
 
-&msbuild CloudbaseInitSetup.wixproj /p:Platform=x86 /p:Configuration=Release /p:DefineConstants=`"Python27SourcePath=$python_dir`"
+&msbuild CloudbaseInitSetup.wixproj /p:Platform=x86 /p:Configuration=Release /p:DefineConstants=`"Python27SourcePath=$python_dir;CarbonSourcePath=Carbon`"
 if ($LastExitCode) { throw "MSBuild failed" }
 
 $msi_path = "bin\Release\CloudbaseInitSetup.msi"
