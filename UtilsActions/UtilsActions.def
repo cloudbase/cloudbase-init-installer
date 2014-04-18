@@ -2,4 +2,5 @@ LIBRARY "UtilsActions"
 
 EXPORTS
 
-GenerateRandomPassword
+GenerateRandomPasswordAction
+AssignUserRightsAction

@@ -1,6 +1,8 @@
 #pragma once
 
 #include <vector>
+#include <Ntstatus.h>
+#include <LsaLookup.h>
 
 class MessageException : public std::exception
 {
@@ -77,6 +79,7 @@ void LogMessage(MSIHANDLE hInstall, PCWSTR message);
 void LogWarning(MSIHANDLE hInstall, PCWSTR message);
 void LogException(MSIHANDLE hInstall, UINT code, PCWSTR message);
 void LogException(MSIHANDLE hInstall, const MessageException& ex);
+void LogException(MSIHANDLE hInstall, const std::exception& ex);
 void GetGUID(PWSTR guid);
 void Split(PCWSTR str, WCHAR delim, std::vector<std::wstring> &elems);
 void SplitCustomData(MSIHANDLE hInstall, std::vector<std::wstring> &data, WCHAR delim = L'|');
@@ -85,3 +88,5 @@ void WriteLogFile(PWSTR path, PCSTR msg);
 void CheckRetVal(HRESULT hres);
 std::wstring Trim(const std::wstring& str, const std::wstring& whitespace = L" \t");
 bool IsElevated();
+void CheckLsaRetValue(NTSTATUS retValue);
+void WStringToLsaUnicodeString(const std::wstring& str, LSA_UNICODE_STRING& lsaUnicodeStr);

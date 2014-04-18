@@ -2,10 +2,12 @@
 #include "MSIUtils.h"
 #include <comdef.h>
 #include <Wbemidl.h>
+#include <Ntsecapi.h>
 #include <typeinfo>
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <exception>
 
 using namespace std;
 
@@ -131,6 +133,13 @@ void LogException(MSIHANDLE hInstall, const MessageException& ex)
 	LogException(hInstall, ex.GetCode(), ex.GetMessage().c_str());
 }
 
+void LogException(MSIHANDLE hInstall, const exception& ex)
+{
+    string what(ex.what());
+    wstring msg(what.begin(), what.end());
+    LogException(hInstall, 0, msg.c_str());
+}
+
 void Split(PCWSTR str, WCHAR delim, vector<wstring> &elems) {
 	wstringstream ss(str);
 	wstring item;
@@ -189,3 +198,18 @@ bool IsElevated()
 
 	return isElevated;
 }
+
+void CheckLsaRetValue(NTSTATUS retValue)
+{
+    if(retValue != STATUS_SUCCESS)
+        throw  Win32Exception(::LsaNtStatusToWinError(retValue));
+}
+
+void WStringToLsaUnicodeString(const wstring& str, LSA_UNICODE_STRING& lsaUnicodeStr)
+{
+    // str lifetime must encompass lsaUnicodeStr's!
+    lsaUnicodeStr.Buffer = (PWSTR)str.c_str();
+    lsaUnicodeStr.Length = str.length() * sizeof(WCHAR);
+    lsaUnicodeStr.MaximumLength = (str.length() + 1) * sizeof(WCHAR);
+}
+

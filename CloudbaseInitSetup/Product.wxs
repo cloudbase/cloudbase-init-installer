@@ -23,7 +23,7 @@
       </Feature>
 
       <Feature Id="Carbon" Title="Carbon PowerShell Module" AllowAdvertise="no" Level="1" InstallDefault="followParent" Absent="allow"
-               Description="Carbon is an open source PowerShell module with lots of features useful for deployment automation. More info: http://get-carbon.org/">
+               Description="Carbon is an open source PowerShell module with lots of features for deployment automation. More info: http://get-carbon.org/">
         <ComponentGroupRef Id="CarbonComponentGroup" />
       </Feature>
     </Feature>
@@ -46,6 +46,8 @@
     <InstallExecuteSequence>
       <Custom Action="CreateCommonIncludeFile" After="CostFinalize" />
 
+      <Custom Action="GenerateRandomPassword" After="CostFinalize" />
+
       <Custom Action="UpdatePythonShellInScripts_Prop" After="CostFinalize" />
       <Custom Action="UpdatePythonShellInScripts" Before="InstallFinalize">NOT Installed</Custom>
 
@@ -55,7 +57,8 @@
       <Custom Action="UpdateUnattendXmlAction_Prop" After="CostFinalize" />
       <Custom Action="UpdateUnattendXmlAction" Before="InstallFinalize"><![CDATA[REMOVE <> "ALL"]]></Custom>
 
-      <Custom Action="GenerateRandomPassword" After="CostFinalize" />
+      <Custom Action="AssignUserRights_Prop" After="CostFinalize" />
+      <Custom Action="AssignUserRights" Before="InstallFinalize"><![CDATA[REMOVE <> "ALL"]]></Custom>
 
       <Custom Action="PyWin32PostInstall_Prop" After="CostFinalize" />
       <Custom Action="PyWin32PostInstall" Before="InstallFinalize">NOT Installed</Custom>
