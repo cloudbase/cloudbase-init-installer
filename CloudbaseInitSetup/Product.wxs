@@ -36,6 +36,12 @@
     <Property Id="MAAS_OAUTH_TOKEN_KEY" />
     <Property Id="MAAS_OAUTH_TOKEN_SECRET" />
 
+    <!--
+    Comma separated list of user rights. "SeServiceLogonRight" is already assigned.
+    See: http://technet.microsoft.com/en-us/library/bb457125.aspx
+    -->
+    <Property Id="SERVICE_USER_RIGHTS" Value="SeAssignPrimaryTokenPrivilege" />
+
     <UIRef Id="MyWixUI_FeatureTree" />
     <UIRef Id="WixUI_ErrorProgressText" />
 

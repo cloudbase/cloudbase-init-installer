@@ -15,7 +15,7 @@
                   Execute="immediate"
                   Return="check" />
 
-    <CustomAction Id="AssignUserRights_Prop" Return="check" Property="AssignUserRights" Value="Cloudbase-Init|SeAssignPrimaryTokenPrivilege" />
+    <CustomAction Id="AssignUserRights_Prop" Return="check" Property="AssignUserRights" Value="Cloudbase-Init|[SERVICE_USER_RIGHTS]" />
     <CustomAction Id="AssignUserRights" BinaryKey="UtilsActionsDLL" DllEntry="AssignUserRightsAction" Execute="deferred" Return="check" Impersonate="no" />
 
     <CustomAction Id="CreateCommonIncludeFile"
