@@ -38,6 +38,7 @@ function writeCloudbaseInitConfFileAction() {
 
         var i = 0;
         var cloudbaseInitConfFolder = data[i++];
+        var binFolder = data[i++];
         var logFolder = data[i++];
         var userName = data[i++];
         var injectMetadataPassword = data[i++];
@@ -57,6 +58,8 @@ function writeCloudbaseInitConfFileAction() {
             loggingSerialPortSettings = loggingSerialPortName + ",115200,N,8";
         }
 
+        var bsdtarPath = binFolder + "bsdtar.exe";
+
         var config = {
             "username": trim(userName),
             "groups": trim(userGroups),
@@ -64,6 +67,7 @@ function writeCloudbaseInitConfFileAction() {
             "network_adapter": trim(networkAdapterName),
             "config_drive_raw_hhd": "true",
             "config_drive_cdrom": "true",
+            "bsdtar_path": bsdtarPath,
             "verbose": "true",
             "debug": "true",
             "logdir": trim(logFolder),

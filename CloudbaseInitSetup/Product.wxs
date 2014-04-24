@@ -13,6 +13,7 @@
       <ComponentGroupRef Id="CloudbaseInitFolders" />
       <ComponentRef Id="CloudbaseInitService" />
       <ComponentRef Id="ElevateUtils" />
+      <ComponentRef Id="bsdtar" />
       <ComponentRef Id="SetSetupComplete" />
       <!--
       <ComponentRef Id="CleanupPyWin32Folder" />
@@ -140,6 +141,11 @@
     <Component Id="ElevateUtils" Directory="BINFOLDER" Guid="{90A6F90D-34DF-4226-B368-0C2AA4F08BB8}">
       <File Id="Elevate_x86.exe" Source="Binaries\Elevate_x86.exe" Checksum="yes" />
       <File Id="Elevate_x64.exe" Source="Binaries\Elevate_x64.exe" KeyPath="yes" Checksum="yes" />
+    </Component>
+
+    <Component Id="bsdtar" Directory="BINFOLDER" Guid="{1DBADEF2-ED7B-4F98-845C-4E049D7E26F0}">
+      <File Id="bsdtar.exe" Source="Binaries\bsdtar.exe" KeyPath="yes" Checksum="yes" />
+      <File Id="bsdtar.COPYING" Source="Binaries\bsdtar.COPYING" Checksum="yes" />
     </Component>
 
     <Component Id="SetSetupComplete" Directory="BINFOLDER" Guid="{4507F735-3BD0-403B-96C9-6959B6B617C1}">
