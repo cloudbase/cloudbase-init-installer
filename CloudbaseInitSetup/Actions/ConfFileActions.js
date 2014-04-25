@@ -94,7 +94,6 @@ function writeCloudbaseInitConfFileAction() {
 
         config["plugins"] = "cloudbaseinit.plugins.windows.sethostname.SetHostNamePlugin";
         config["allow_reboot"] = false;
-        config["config_drive_raw_hhd"] = false;
         config["stop_service_on_exit"] = false;
         config["logfile"] = "cloudbase-init-unattend.log";
 
