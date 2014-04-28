@@ -7,532 +7,532 @@
     </Fragment>
     <Fragment>
         <ComponentGroup Id="CarbonComponentGroup">
-            <Component Win64="yes" Id="cmp3538A42541542A921598501C0CA58843" Directory="dir5D78886C668DB917E29B309210F47D4A" Guid="{2A83866B-6611-4E4B-AFC7-64A28ADAE687}">
+            <Component Win64="yes" Id="cmp3538A42541542A921598501C0CA58843" Directory="dir5D78886C668DB917E29B309210F47D4A" Guid="{F082DB2A-30EA-4D24-BDF0-8286F6AA11A6}">
                 <File Id="filCC219A3CB2A1C24501FD0EED3AFE343D" KeyPath="yes" Source="$(var.CarbonSourcePath)\about_Carbon.help.txt" />
             </Component>
-            <Component Win64="yes" Id="cmpA945BE5B14C61DA19FA9299973B89882" Directory="dir5D78886C668DB917E29B309210F47D4A" Guid="{3329A00C-1246-4B55-8C75-DCD90766C182}">
+            <Component Win64="yes" Id="cmpA945BE5B14C61DA19FA9299973B89882" Directory="dir5D78886C668DB917E29B309210F47D4A" Guid="{32AC6B95-57B8-4ED4-A11F-6C9E42AB385D}">
                 <File Id="filE3142493DBEAD78680BAB1A8125EC8E3" KeyPath="yes" Source="$(var.CarbonSourcePath)\Carbon.format.ps1xml" />
             </Component>
-            <Component Win64="yes" Id="cmp8FB2D651419FA785C6BBC5407E448DC3" Directory="dir5D78886C668DB917E29B309210F47D4A" Guid="{6904A3C9-395B-4D9E-9361-9675716729BE}">
+            <Component Win64="yes" Id="cmp8FB2D651419FA785C6BBC5407E448DC3" Directory="dir5D78886C668DB917E29B309210F47D4A" Guid="{D85532B7-C73F-4021-B9E0-B1AC49120541}">
                 <File Id="filF04161A89C8E1EE9FC9F0B2530EA94ED" KeyPath="yes" Source="$(var.CarbonSourcePath)\Carbon.psd1" />
             </Component>
-            <Component Win64="yes" Id="cmpB7E934B2988AD95D6FB9BFA2F6EE9F4C" Directory="dir5D78886C668DB917E29B309210F47D4A" Guid="{34BFBA7A-D74E-4A4E-ADF7-AA8BBC5665BB}">
+            <Component Win64="yes" Id="cmpB7E934B2988AD95D6FB9BFA2F6EE9F4C" Directory="dir5D78886C668DB917E29B309210F47D4A" Guid="{13ED24E9-D7DB-424D-8172-2757904F066B}">
                 <File Id="fil855035A3BCB995A3517F70A38514FE27" KeyPath="yes" Source="$(var.CarbonSourcePath)\Carbon.psm1" />
             </Component>
-            <Component Win64="yes" Id="cmpC31A2585BFA15CB9BED4326C038F8F09" Directory="dir5D78886C668DB917E29B309210F47D4A" Guid="{72441D86-26D2-4118-B296-A37410329565}">
+            <Component Win64="yes" Id="cmpC31A2585BFA15CB9BED4326C038F8F09" Directory="dir5D78886C668DB917E29B309210F47D4A" Guid="{96E37CB6-3318-47BC-9C14-C528857292B3}">
                 <File Id="fil3F22DDEA20F0DDF98D91E1582CFDBA26" KeyPath="yes" Source="$(var.CarbonSourcePath)\Carbon.types.ps1xml" />
             </Component>
-            <Component Win64="yes" Id="cmp9D99A87B3CC6A8747B7C3DDECA05DC51" Directory="dir5D78886C668DB917E29B309210F47D4A" Guid="{F8F0DCDA-90F8-45B4-8B68-FD8774DB021B}">
+            <Component Win64="yes" Id="cmp9D99A87B3CC6A8747B7C3DDECA05DC51" Directory="dir5D78886C668DB917E29B309210F47D4A" Guid="{E9E2B559-C727-40C8-8DA9-FA40BC9A6D37}">
                 <File Id="fil4D49E99EE8B0D482F26E924A2B213C6F" KeyPath="yes" Source="$(var.CarbonSourcePath)\Import-Carbon.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpBD6FB56AEB1F6E3C7DAD32F043F6923D" Directory="dir5D78886C668DB917E29B309210F47D4A" Guid="{E9F05055-2E97-4BD2-83FF-42DD9623CAB7}">
+            <Component Win64="yes" Id="cmpBD6FB56AEB1F6E3C7DAD32F043F6923D" Directory="dir5D78886C668DB917E29B309210F47D4A" Guid="{5E1BE43D-AEC3-467A-86FE-7B26A50713AB}">
                 <File Id="fil203EC4592C6E816150B4E2C3AEDDD833" KeyPath="yes" Source="$(var.CarbonSourcePath)\LICENSE.txt" />
             </Component>
-            <Component Win64="yes" Id="cmp8AEC0A68E2469D0718BDA297C409237F" Directory="dirA44C0EB562286840F05AC832919B55C0" Guid="{B53C8A68-47C5-4779-9CD3-3BBC5AE17BD8}">
+            <Component Win64="yes" Id="cmp8AEC0A68E2469D0718BDA297C409237F" Directory="dirA44C0EB562286840F05AC832919B55C0" Guid="{91BE115D-AE3E-46A8-8375-5EA2AC9331D7}">
                 <File Id="filF0243524F0AB5EA26230F1D2E2F98F1E" KeyPath="yes" Source="$(var.CarbonSourcePath)\ActiveDirectory\Find-ADUser.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp137CD31EEE851AEB225B08C7365C7314" Directory="dirA44C0EB562286840F05AC832919B55C0" Guid="{11ED0F7F-E84B-4B24-A27B-4383BC797CE6}">
+            <Component Win64="yes" Id="cmp137CD31EEE851AEB225B08C7365C7314" Directory="dirA44C0EB562286840F05AC832919B55C0" Guid="{D35FCE1E-96FD-47F6-85BB-4D6BC2CFC88B}">
                 <File Id="fil10B6268E6406DE93FB787F981803995C" KeyPath="yes" Source="$(var.CarbonSourcePath)\ActiveDirectory\Format-ADSearchFilterValue.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp884C94DC7E5568D943C7DB82B976E4B0" Directory="dirA44C0EB562286840F05AC832919B55C0" Guid="{35789127-8A00-49B3-8B28-BEC912BC4D0F}">
+            <Component Win64="yes" Id="cmp884C94DC7E5568D943C7DB82B976E4B0" Directory="dirA44C0EB562286840F05AC832919B55C0" Guid="{441A494D-8595-467F-9549-A80F29335DB4}">
                 <File Id="fil539048AD461E2815E3A9CC10C932FD79" KeyPath="yes" Source="$(var.CarbonSourcePath)\ActiveDirectory\Get-ADDomainController.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpA2B6B77E7327E6E608FAC9CF6C4E038B" Directory="dir6AA850E2BF29EEE54A0348142B567C82" Guid="{2C3F3735-6DA5-466A-BF79-193BAB57FF2D}">
+            <Component Win64="yes" Id="cmpA2B6B77E7327E6E608FAC9CF6C4E038B" Directory="dir6AA850E2BF29EEE54A0348142B567C82" Guid="{E3E13525-B1E2-4EB6-B4DC-0B708689E6BD}">
                 <File Id="fil8FD8E162D1595426A6FEB23781F63170" KeyPath="yes" Source="$(var.CarbonSourcePath)\bin\Carbon.dll" />
             </Component>
-            <Component Win64="yes" Id="cmpD86C80FD3EEB16DBABC5CDD4D562DDAB" Directory="dir6AA850E2BF29EEE54A0348142B567C82" Guid="{307B7302-8A81-451F-9106-B7B685F79EAB}">
+            <Component Win64="yes" Id="cmpD86C80FD3EEB16DBABC5CDD4D562DDAB" Directory="dir6AA850E2BF29EEE54A0348142B567C82" Guid="{B29454E3-824D-4EA9-A3EC-B62F6F76FCC4}">
                 <File Id="fil3062EF24F6EEDAE4B51833795A3B1817" KeyPath="yes" Source="$(var.CarbonSourcePath)\bin\Carbon.Iis.dll" />
             </Component>
-            <Component Win64="yes" Id="cmp2340252CB266E9056E6FD2E09897D671" Directory="dir6AA850E2BF29EEE54A0348142B567C82" Guid="{9A5F9A77-1FC9-4397-A662-C06AE1186C80}">
+            <Component Win64="yes" Id="cmp2340252CB266E9056E6FD2E09897D671" Directory="dir6AA850E2BF29EEE54A0348142B567C82" Guid="{FBC754DE-ADEE-43C3-B63D-74594842CF6A}">
                 <File Id="fil8CC6DA29177BC04DCA2049948970D9E1" KeyPath="yes" Source="$(var.CarbonSourcePath)\bin\Carbon.Xdt.dll" />
             </Component>
-            <Component Win64="yes" Id="cmpDA0CCD158296DBBB5CFA5DD3CBD61864" Directory="dir6AA850E2BF29EEE54A0348142B567C82" Guid="{AA4D329D-6D59-43E0-9296-DD18B5BA9B59}">
+            <Component Win64="yes" Id="cmpDA0CCD158296DBBB5CFA5DD3CBD61864" Directory="dir6AA850E2BF29EEE54A0348142B567C82" Guid="{C508ABEF-60B2-4E66-B479-717AAA47DC9E}">
                 <File Id="filF869DE74D1B84EB7C022B37DA74A59FC" KeyPath="yes" Source="$(var.CarbonSourcePath)\bin\Microsoft.Web.XmlTransform.dll" />
             </Component>
-            <Component Win64="yes" Id="cmpA06DE3AC20A5E85119573099CD27F38F" Directory="dir6AA850E2BF29EEE54A0348142B567C82" Guid="{A8496E79-83DE-436C-B7D5-F342FB5356A7}">
+            <Component Win64="yes" Id="cmpA06DE3AC20A5E85119573099CD27F38F" Directory="dir6AA850E2BF29EEE54A0348142B567C82" Guid="{AB87FC12-7E53-4639-A79A-826A5D485BC5}">
                 <File Id="fil88E3E5A02592DE5A75B52F1CA220F3E3" KeyPath="yes" Source="$(var.CarbonSourcePath)\bin\Set-DotNetAppSetting.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpE94078D7F9ACF7ECE88515EF7ABB11B3" Directory="dir6AA850E2BF29EEE54A0348142B567C82" Guid="{F49CDCD1-7200-4811-9859-6AC91BA43E1A}">
+            <Component Win64="yes" Id="cmpE94078D7F9ACF7ECE88515EF7ABB11B3" Directory="dir6AA850E2BF29EEE54A0348142B567C82" Guid="{3C199329-A5FE-49A1-A3CF-32F029E95DAB}">
                 <File Id="filED0003423FB6A7DAA976B4F190F6825D" KeyPath="yes" Source="$(var.CarbonSourcePath)\bin\Set-DotNetConnectionString.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp86036AEB02C2B3B45DC83A51F80FD0E1" Directory="dir073306A3CEADC4F823B31AE05187ABD8" Guid="{57FE7A81-B735-4D6F-9DF5-1278BCA4E75E}">
+            <Component Win64="yes" Id="cmp86036AEB02C2B3B45DC83A51F80FD0E1" Directory="dir073306A3CEADC4F823B31AE05187ABD8" Guid="{75C4C0A2-BF32-4734-9AF6-BE182F1CFC95}">
                 <File Id="fil7A2CAF42AC8F25A844DD7F91FC1ECC4A" KeyPath="yes" Source="$(var.CarbonSourcePath)\Certificates\Get-Certificate.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp5332F74412CFA4E93B6FB468C82FE1F2" Directory="dir073306A3CEADC4F823B31AE05187ABD8" Guid="{E68C098A-CBC3-4C48-818D-FFA051D4AB37}">
+            <Component Win64="yes" Id="cmp5332F74412CFA4E93B6FB468C82FE1F2" Directory="dir073306A3CEADC4F823B31AE05187ABD8" Guid="{0BD66618-2BB9-4AB6-A9D2-CD2F43B8EE8E}">
                 <File Id="filFCACB37F4C0737AF71DB06B95FC7EB6A" KeyPath="yes" Source="$(var.CarbonSourcePath)\Certificates\Get-CertificateStore.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp82EE9179963F1292C722D182F341627C" Directory="dir073306A3CEADC4F823B31AE05187ABD8" Guid="{4AC414DC-359B-4E61-9A26-1524304BD0D3}">
+            <Component Win64="yes" Id="cmp82EE9179963F1292C722D182F341627C" Directory="dir073306A3CEADC4F823B31AE05187ABD8" Guid="{531FF869-AC58-43C2-9E22-C5016C2562BC}">
                 <File Id="fil77E4AF047923DB89C0098A7342C5A3BC" KeyPath="yes" Source="$(var.CarbonSourcePath)\Certificates\Get-SslCertificateBinding.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp9CB57F582BFC038ECC6B47FEDE84D2EC" Directory="dir073306A3CEADC4F823B31AE05187ABD8" Guid="{26BEE09A-CCA3-48F2-B9BF-47B2FCFB68F8}">
+            <Component Win64="yes" Id="cmp9CB57F582BFC038ECC6B47FEDE84D2EC" Directory="dir073306A3CEADC4F823B31AE05187ABD8" Guid="{72BFC10B-CB11-44CD-815D-F7D974357ED6}">
                 <File Id="filB8C4F280F10AE49A0A05D23A9EFB179D" KeyPath="yes" Source="$(var.CarbonSourcePath)\Certificates\Install-Certificate.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp3D93E1D2D92BD12C57CF9A743CF897EC" Directory="dir073306A3CEADC4F823B31AE05187ABD8" Guid="{E69CEAA8-960A-40CD-9D61-C903041FF2F6}">
+            <Component Win64="yes" Id="cmp3D93E1D2D92BD12C57CF9A743CF897EC" Directory="dir073306A3CEADC4F823B31AE05187ABD8" Guid="{C8717E7F-1F54-40A8-BF59-641DCC1CE1AC}">
                 <File Id="filB44BFAEAAE91153BD7C02AE82299E0BB" KeyPath="yes" Source="$(var.CarbonSourcePath)\Certificates\Remove-SslCertificateBinding.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpB5792DA834828033BB563E41D237BD15" Directory="dir073306A3CEADC4F823B31AE05187ABD8" Guid="{E9C10222-3BEA-41F8-8754-EA1F67B56194}">
+            <Component Win64="yes" Id="cmpB5792DA834828033BB563E41D237BD15" Directory="dir073306A3CEADC4F823B31AE05187ABD8" Guid="{86C91DA6-1678-4747-9041-33809382CF48}">
                 <File Id="filBE17A49ACC64E624F725E1661B3AA80A" KeyPath="yes" Source="$(var.CarbonSourcePath)\Certificates\Set-SslCertificateBinding.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpE7C00C39284F90C3E021F5D85903FE91" Directory="dir073306A3CEADC4F823B31AE05187ABD8" Guid="{37F575EC-EC89-4109-996C-9D25FCFCBAE1}">
+            <Component Win64="yes" Id="cmpE7C00C39284F90C3E021F5D85903FE91" Directory="dir073306A3CEADC4F823B31AE05187ABD8" Guid="{94338043-5DAB-4561-9F90-F894127D0149}">
                 <File Id="fil66594C780CC37E98E26C1914A73FCCE7" KeyPath="yes" Source="$(var.CarbonSourcePath)\Certificates\Test-SslCertificateBinding.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp7D6046FA6B9004C011F92A447528B43D" Directory="dir073306A3CEADC4F823B31AE05187ABD8" Guid="{ED1B59E7-AD86-4E5D-8057-CF9F906277A4}">
+            <Component Win64="yes" Id="cmp7D6046FA6B9004C011F92A447528B43D" Directory="dir073306A3CEADC4F823B31AE05187ABD8" Guid="{5DBD6E09-B34E-4073-98E5-450ED5EE3E8E}">
                 <File Id="fil2B410D6D845924692A0FD133F8C45E18" KeyPath="yes" Source="$(var.CarbonSourcePath)\Certificates\Uninstall-Certificate.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpF01CF6F6CCFAC1838CDF36B5B1435B3F" Directory="dir9F95B8E1201E91CED34D6D892BF1E540" Guid="{13757689-3897-4D6B-881F-4387DB03FF01}">
+            <Component Win64="yes" Id="cmpF01CF6F6CCFAC1838CDF36B5B1435B3F" Directory="dir9F95B8E1201E91CED34D6D892BF1E540" Guid="{81BAC7CA-F19F-4CC2-B4AF-940C72284CFD}">
                 <File Id="fil6718E721E2AE1B85CE93FC303A8126E2" KeyPath="yes" Source="$(var.CarbonSourcePath)\COM\Get-ComPermission.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp442A0555284F4E8D97B658A834729BB7" Directory="dir9F95B8E1201E91CED34D6D892BF1E540" Guid="{3FB6FE7E-ECE0-48F5-8331-9269C9B5F83C}">
+            <Component Win64="yes" Id="cmp442A0555284F4E8D97B658A834729BB7" Directory="dir9F95B8E1201E91CED34D6D892BF1E540" Guid="{59F48051-CF66-4B86-B852-24F84A5BE143}">
                 <File Id="fil77A028A2D667C25AB815F4FEF189FC79" KeyPath="yes" Source="$(var.CarbonSourcePath)\COM\Get-ComSecurityDescriptor.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp9A9E25C5A9A19E974C326A1F9A4852B0" Directory="dir9F95B8E1201E91CED34D6D892BF1E540" Guid="{FBA94BD5-E201-4DC2-B1B2-7A03514C4FD6}">
+            <Component Win64="yes" Id="cmp9A9E25C5A9A19E974C326A1F9A4852B0" Directory="dir9F95B8E1201E91CED34D6D892BF1E540" Guid="{73419C89-3F27-45A3-A7F2-48435CDA8891}">
                 <File Id="fil24F8D1C992D1894F05C16C39F934AA42" KeyPath="yes" Source="$(var.CarbonSourcePath)\COM\Grant-ComPermission.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp102B9A1B66A08CC4FA6EF59ED0C9AD15" Directory="dir9F95B8E1201E91CED34D6D892BF1E540" Guid="{D0059F41-88BA-4A8C-AACD-B1DEB3BA6FCC}">
+            <Component Win64="yes" Id="cmp102B9A1B66A08CC4FA6EF59ED0C9AD15" Directory="dir9F95B8E1201E91CED34D6D892BF1E540" Guid="{C90FCD00-B97A-486E-997B-8B0A25569D20}">
                 <File Id="fil08906F10F58B0F576E5C78143D8402F8" KeyPath="yes" Source="$(var.CarbonSourcePath)\COM\Revoke-ComPermission.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp597005A1475EB35F794721A9B2DA5FA0" Directory="dir806D97DA41A5C3D4C5ED818474CEFCEC" Guid="{03F73383-3770-4D4D-8600-50815DBFCFEE}">
+            <Component Win64="yes" Id="cmp597005A1475EB35F794721A9B2DA5FA0" Directory="dir806D97DA41A5C3D4C5ED818474CEFCEC" Guid="{77776793-1AA8-4B1C-88BD-D0DEA3C4914E}">
                 <File Id="fil250233FBF33035D0A2D7A8EF01EBDCB2" KeyPath="yes" Source="$(var.CarbonSourcePath)\Computer\Remove-EnvironmentVariable.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp5E2459C4EE21B90A8F4833EA81AF4035" Directory="dir806D97DA41A5C3D4C5ED818474CEFCEC" Guid="{CF59BE63-26AB-4D5C-AF62-25069D70DA90}">
+            <Component Win64="yes" Id="cmp5E2459C4EE21B90A8F4833EA81AF4035" Directory="dir806D97DA41A5C3D4C5ED818474CEFCEC" Guid="{0B5E31D1-D4BE-4C45-9E60-FFD6D3FC107E}">
                 <File Id="fil05E743BB66DD9727D091A61129EFBDE3" KeyPath="yes" Source="$(var.CarbonSourcePath)\Computer\Resolve-NetPath.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpD273BB229DC7FBBBA4A07D933218E2DE" Directory="dir806D97DA41A5C3D4C5ED818474CEFCEC" Guid="{E77AF3C6-BA1A-4B99-B199-95E9958F8D10}">
+            <Component Win64="yes" Id="cmpD273BB229DC7FBBBA4A07D933218E2DE" Directory="dir806D97DA41A5C3D4C5ED818474CEFCEC" Guid="{53FF4523-F60B-4B80-A8AE-1B787219F468}">
                 <File Id="filC2C706E1207F2A77BC185C0E94567FCD" KeyPath="yes" Source="$(var.CarbonSourcePath)\Computer\Set-EnvironmentVariable.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp92AB18AE52958A72A7ED454AA8788E76" Directory="dir806D97DA41A5C3D4C5ED818474CEFCEC" Guid="{4CFFC384-7128-4A82-9BB7-90E820C2E3A1}">
+            <Component Win64="yes" Id="cmp92AB18AE52958A72A7ED454AA8788E76" Directory="dir806D97DA41A5C3D4C5ED818474CEFCEC" Guid="{1625492E-7831-4CBC-831F-56975BE9E3D3}">
                 <File Id="filE7FF78C156E2A00858810C2F391F8BB0" KeyPath="yes" Source="$(var.CarbonSourcePath)\Computer\Test-OSIs32Bit.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp576F473F65BC2B0834E3C8302D7645A5" Directory="dir806D97DA41A5C3D4C5ED818474CEFCEC" Guid="{92BDBF70-D860-403B-B1E4-761BEAADAD88}">
+            <Component Win64="yes" Id="cmp576F473F65BC2B0834E3C8302D7645A5" Directory="dir806D97DA41A5C3D4C5ED818474CEFCEC" Guid="{CBA1064F-28C6-4619-9B04-7650D326713C}">
                 <File Id="filBE5559E93D79257D24ADE31F400F7905" KeyPath="yes" Source="$(var.CarbonSourcePath)\Computer\Test-OSIs64Bit.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpD7C23CEB43DB4447D6CDA71527B9698A" Directory="dir9F2737737D629248D3F791BD95FA587C" Guid="{9FD6F340-BB27-40BA-80AB-30294E17B900}">
+            <Component Win64="yes" Id="cmpD7C23CEB43DB4447D6CDA71527B9698A" Directory="dir9F2737737D629248D3F791BD95FA587C" Guid="{33888AA4-BF7A-4297-9B6C-3A766416B310}">
                 <File Id="fil6C82DF1B90CFFDBC7C9F30EC4FA60F8E" KeyPath="yes" Source="$(var.CarbonSourcePath)\Cryptography\Protect-String.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp08CFCC0C3234C367B40BF1F8DAE8640B" Directory="dir9F2737737D629248D3F791BD95FA587C" Guid="{7147F1D7-B467-438F-954B-4446D5E0325A}">
+            <Component Win64="yes" Id="cmp08CFCC0C3234C367B40BF1F8DAE8640B" Directory="dir9F2737737D629248D3F791BD95FA587C" Guid="{CAB81236-AC82-4095-91CA-E6867A5020C7}">
                 <File Id="fil058AB469DF10A1EEB09A166666C9020F" KeyPath="yes" Source="$(var.CarbonSourcePath)\Cryptography\Unprotect-String.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpC3AA5D482A227F977DB407A714B2EA79" Directory="dir93257D200D0FA57ECD495B66AE58DA61" Guid="{9BC97FB4-F401-45DE-BF55-1DED94F23A4F}">
+            <Component Win64="yes" Id="cmpC3AA5D482A227F977DB407A714B2EA79" Directory="dir93257D200D0FA57ECD495B66AE58DA61" Guid="{E7AB6717-5AC3-4589-909B-26F0FBA47E8C}">
                 <File Id="fil0CF705589269A4394330C6A88F620B7C" KeyPath="yes" Source="$(var.CarbonSourcePath)\DotNet\Set-DotNetAppSetting.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp891392ECB6D312223B660EC2D4C4D41D" Directory="dir93257D200D0FA57ECD495B66AE58DA61" Guid="{2EA9C807-8478-4D56-B192-19D5E7A07FAB}">
+            <Component Win64="yes" Id="cmp891392ECB6D312223B660EC2D4C4D41D" Directory="dir93257D200D0FA57ECD495B66AE58DA61" Guid="{C02FD7D0-AFAB-4EA5-B520-1ED9510036D4}">
                 <File Id="fil743F7A3FD36E8FF9C0EBEC6E5E92F084" KeyPath="yes" Source="$(var.CarbonSourcePath)\DotNet\Set-DotNetConnectionString.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp23342B3336A28B6E7260D557F0E810D5" Directory="dir93257D200D0FA57ECD495B66AE58DA61" Guid="{A50F5393-35BE-4819-B880-51610AB9ECD3}">
+            <Component Win64="yes" Id="cmp23342B3336A28B6E7260D557F0E810D5" Directory="dir93257D200D0FA57ECD495B66AE58DA61" Guid="{F1C79324-3EF5-4E7D-8F56-C1FF3DD23B8F}">
                 <File Id="fil85DDDC1FFDD479ABCBCDE271611038F2" KeyPath="yes" Source="$(var.CarbonSourcePath)\DotNet\Test-DotNet.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp86B9A916D32BA532C5982AA7B56E4358" Directory="dir952AE87AF936B65D60EBEAD724F4F08A" Guid="{100A751A-E9FA-4622-9905-F0503D6673E7}">
+            <Component Win64="yes" Id="cmp86B9A916D32BA532C5982AA7B56E4358" Directory="dir952AE87AF936B65D60EBEAD724F4F08A" Guid="{35ACA38F-F2A8-4BF9-B42B-A9E4F1DBBCCD}">
                 <File Id="fil7F1A2803AC254F9CFD59F0FBD95C652A" KeyPath="yes" Source="$(var.CarbonSourcePath)\FileSystem\Disable-NtfsCompression.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp36B84FB761D086CC0A16BBA5365DB682" Directory="dir952AE87AF936B65D60EBEAD724F4F08A" Guid="{2CCBA8C1-9011-4F03-AED3-02730279A771}">
+            <Component Win64="yes" Id="cmp36B84FB761D086CC0A16BBA5365DB682" Directory="dir952AE87AF936B65D60EBEAD724F4F08A" Guid="{51328B22-05E5-45E6-BA34-4022999B2051}">
                 <File Id="filAED0816C8732CF04ED29F38220729AED" KeyPath="yes" Source="$(var.CarbonSourcePath)\FileSystem\Enable-NtfsCompression.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp0F23E2AF6F813ED9D4792F82047113A0" Directory="dir952AE87AF936B65D60EBEAD724F4F08A" Guid="{4753FCFF-3440-4CD4-A434-91A15A6A954C}">
+            <Component Win64="yes" Id="cmp0F23E2AF6F813ED9D4792F82047113A0" Directory="dir952AE87AF936B65D60EBEAD724F4F08A" Guid="{90C98C4A-1CCE-4F02-8A46-040D3097031E}">
                 <File Id="fil905BA6199582294309C5BAFAB5D175E1" KeyPath="yes" Source="$(var.CarbonSourcePath)\FileSystem\Install-Junction.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp85BBA896733C736BDAC78B3AF226943C" Directory="dir952AE87AF936B65D60EBEAD724F4F08A" Guid="{80745EEC-0EFD-4999-90AF-CCB667A35D00}">
+            <Component Win64="yes" Id="cmp85BBA896733C736BDAC78B3AF226943C" Directory="dir952AE87AF936B65D60EBEAD724F4F08A" Guid="{594BBF4D-BD06-427C-A8ED-3598842CFF72}">
                 <File Id="fil0BFC7A4E97754AC98AA7749A274CDB12" KeyPath="yes" Source="$(var.CarbonSourcePath)\FileSystem\New-Junction.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp54E0C8EDB566BA52CB6C8E73F492461C" Directory="dir952AE87AF936B65D60EBEAD724F4F08A" Guid="{2F068EE5-52AF-4568-A6CE-AFE326F46F5A}">
+            <Component Win64="yes" Id="cmp54E0C8EDB566BA52CB6C8E73F492461C" Directory="dir952AE87AF936B65D60EBEAD724F4F08A" Guid="{2DBAE165-A2FF-42B7-AE8A-97745215B309}">
                 <File Id="filA92143EDCEE852ACAA2A80619BD4337F" KeyPath="yes" Source="$(var.CarbonSourcePath)\FileSystem\New-TempDir.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp6388E26B72A5D1AD684355B2C701461F" Directory="dir952AE87AF936B65D60EBEAD724F4F08A" Guid="{50FBBFFC-3BCF-4CF8-92C8-07BA5168CF99}">
+            <Component Win64="yes" Id="cmp6388E26B72A5D1AD684355B2C701461F" Directory="dir952AE87AF936B65D60EBEAD724F4F08A" Guid="{4318BE3A-94E5-4755-A744-E4C9596675F7}">
                 <File Id="fil4C86BA1979EE7D4AFCE52C9CEB591C9F" KeyPath="yes" Source="$(var.CarbonSourcePath)\FileSystem\Remove-Junction.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp70ADF27B8A05E8E5745F65B2B42BEC53" Directory="dir952AE87AF936B65D60EBEAD724F4F08A" Guid="{64824B04-69DF-4A51-ADAB-DADFB3202AFD}">
+            <Component Win64="yes" Id="cmp70ADF27B8A05E8E5745F65B2B42BEC53" Directory="dir952AE87AF936B65D60EBEAD724F4F08A" Guid="{6C5AB3F7-21BD-45D2-BA69-A2EBA91C78EB}">
                 <File Id="fil973180F216D137452E25D04404E6A926" KeyPath="yes" Source="$(var.CarbonSourcePath)\FileSystem\Test-NtfsCompression.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp33D86BA62F6E00CCBE8C6369A14E3713" Directory="dir952AE87AF936B65D60EBEAD724F4F08A" Guid="{80F478B3-2504-44AD-B63E-481167C2D7C4}">
+            <Component Win64="yes" Id="cmp33D86BA62F6E00CCBE8C6369A14E3713" Directory="dir952AE87AF936B65D60EBEAD724F4F08A" Guid="{8458027C-2E20-49B6-BA3E-8AAC8C03ADF7}">
                 <File Id="fil407ACE55AC051ADEEA827E8C9624ADA2" KeyPath="yes" Source="$(var.CarbonSourcePath)\FileSystem\Test-PathIsJunction.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpEF1E2169785F97C7CEC83AEAE20BA67E" Directory="dirE90575487A04894898FCF770F18F0DE0" Guid="{09F6AAEF-1555-45CB-8DBB-4DC1C6D053D4}">
+            <Component Win64="yes" Id="cmpEF1E2169785F97C7CEC83AEAE20BA67E" Directory="dirE90575487A04894898FCF770F18F0DE0" Guid="{CA6D70F6-0BC4-4E8F-B0D1-70D6251D1A18}">
                 <File Id="fil4F1F1DF91D6B1803575814E4896E87D2" KeyPath="yes" Source="$(var.CarbonSourcePath)\Firewall\Assert-FirewallConfigurable.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp74512906CD460BFDA83930784CC1117E" Directory="dirE90575487A04894898FCF770F18F0DE0" Guid="{846C2FC6-3775-4B81-A37B-31E07877653E}">
+            <Component Win64="yes" Id="cmp74512906CD460BFDA83930784CC1117E" Directory="dirE90575487A04894898FCF770F18F0DE0" Guid="{BC2FEB71-1BCF-4C2D-8DE3-6D1F59E17142}">
                 <File Id="fil69A5FE728CC79EC07454485D729324AC" KeyPath="yes" Source="$(var.CarbonSourcePath)\Firewall\Disable-FirewallStatefulFtp.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpB876F46B0C3EF008583E9C01E5FDD805" Directory="dirE90575487A04894898FCF770F18F0DE0" Guid="{86F977D5-737E-4F6E-B3B3-A709C857EA72}">
+            <Component Win64="yes" Id="cmpB876F46B0C3EF008583E9C01E5FDD805" Directory="dirE90575487A04894898FCF770F18F0DE0" Guid="{188138AD-FD2B-4C66-A0FE-0819865942FD}">
                 <File Id="fil667A469A41484C463AA12DD3F993A673" KeyPath="yes" Source="$(var.CarbonSourcePath)\Firewall\Enable-FirewallStatefulFtp.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp67922617EEEDFBD9BCE0460AD1152FD8" Directory="dirE90575487A04894898FCF770F18F0DE0" Guid="{60A31DBB-892C-4932-8749-8062C3AD0499}">
+            <Component Win64="yes" Id="cmp67922617EEEDFBD9BCE0460AD1152FD8" Directory="dirE90575487A04894898FCF770F18F0DE0" Guid="{2EAB6048-6C05-4225-A485-EB3C1F1F4BF3}">
                 <File Id="filB1F859D8CF824A8D95421774B4539D32" KeyPath="yes" Source="$(var.CarbonSourcePath)\Firewall\Get-FirewallRule.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp99060454CE271AC79FBB29D4259EC4E2" Directory="dirE90575487A04894898FCF770F18F0DE0" Guid="{6D484F5D-690D-4E42-8F89-00B15ADC3512}">
+            <Component Win64="yes" Id="cmp99060454CE271AC79FBB29D4259EC4E2" Directory="dirE90575487A04894898FCF770F18F0DE0" Guid="{AA1260F0-0232-4507-BC8B-A78E3EB133E7}">
                 <File Id="filEA56018E003470730163096D37138F9F" KeyPath="yes" Source="$(var.CarbonSourcePath)\Firewall\Test-FirewallStatefulFtp.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp3F5F0DF2D92F6F980E155AA9A43E75ED" Directory="dirA003AC878DF72030852B9AB523E02272" Guid="{A5D5292F-B6F8-47B7-B1D8-94C1648FFFAC}">
+            <Component Win64="yes" Id="cmp3F5F0DF2D92F6F980E155AA9A43E75ED" Directory="dirA003AC878DF72030852B9AB523E02272" Guid="{B3178720-631F-467C-A23A-A6DEB3F02F2A}">
                 <File Id="fil8C1E713AED29C73D05EE363A43D6AFC8" KeyPath="yes" Source="$(var.CarbonSourcePath)\HostsFile\Get-PathToHostsFile.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp9B15F9338F44CB08D7C47D91830FAA62" Directory="dirA003AC878DF72030852B9AB523E02272" Guid="{F99E3F43-D771-4157-8B54-540E0A8B245F}">
+            <Component Win64="yes" Id="cmp9B15F9338F44CB08D7C47D91830FAA62" Directory="dirA003AC878DF72030852B9AB523E02272" Guid="{C4051AD7-C315-47BB-9512-8CAE66DD3A3D}">
                 <File Id="filB1C79D1132E53CF36D0904BC9E784112" KeyPath="yes" Source="$(var.CarbonSourcePath)\HostsFile\Remove-HostsEntry.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpF49CE6EADEBF25E862B89E4D25EA9A93" Directory="dirA003AC878DF72030852B9AB523E02272" Guid="{79819B48-D772-4E88-844C-18E3A7629554}">
+            <Component Win64="yes" Id="cmpF49CE6EADEBF25E862B89E4D25EA9A93" Directory="dirA003AC878DF72030852B9AB523E02272" Guid="{670A1359-7E06-4EDC-AEAC-F9AB1139BD11}">
                 <File Id="filEF1FC06AB3695F49D2484C50F200AF3A" KeyPath="yes" Source="$(var.CarbonSourcePath)\HostsFile\Reset-HostsFile.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpFAEB3E2319FDA1A533722E445AA1D624" Directory="dirA003AC878DF72030852B9AB523E02272" Guid="{5E58AE39-762D-42CA-8016-277011E6DEBC}">
+            <Component Win64="yes" Id="cmpFAEB3E2319FDA1A533722E445AA1D624" Directory="dirA003AC878DF72030852B9AB523E02272" Guid="{3BF0A65E-9466-4ACE-9BC1-115BF12CBD2C}">
                 <File Id="fil79C26209B505A4057E92CF9F8BEC731F" KeyPath="yes" Source="$(var.CarbonSourcePath)\HostsFile\Set-HostsEntry.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp683D862EF08F9EA5116DB42F9127BB6A" Directory="dir43922934A9552B984E12698636706286" Guid="{1D1FF330-AD2B-411B-9A82-EC89E195C0C8}">
+            <Component Win64="yes" Id="cmp683D862EF08F9EA5116DB42F9127BB6A" Directory="dir43922934A9552B984E12698636706286" Guid="{C90BC142-FEC0-4477-BA32-C9047DE716F8}">
                 <File Id="filB791CBE32B69C731602D3B111A47D0C9" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Add-IisDefaultDocument.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpA4DD3CC6CF8D3129464F9CAC8094446F" Directory="dir43922934A9552B984E12698636706286" Guid="{7EB357AD-5511-49B3-94F4-71D7944FD601}">
+            <Component Win64="yes" Id="cmpA4DD3CC6CF8D3129464F9CAC8094446F" Directory="dir43922934A9552B984E12698636706286" Guid="{A633C7F4-022A-4917-A85A-68C2980F6132}">
                 <File Id="filC8C6D5191747707B473813ED3A70211C" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Add-IisServerManagerMember.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpFA5756729E520EDCA5B4D14487B58294" Directory="dir43922934A9552B984E12698636706286" Guid="{80BAF366-D45B-40EE-820A-97D7E3DD9515}">
+            <Component Win64="yes" Id="cmpFA5756729E520EDCA5B4D14487B58294" Directory="dir43922934A9552B984E12698636706286" Guid="{A725CFE3-2BF3-4724-B988-E5E5ECB702C5}">
                 <File Id="filBF0E5CCBEBBD2D308FBDA5795FB1A934" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Disable-IisSecurityAuthentication.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp420D82EA0F98448D73E89F2C7BCD8814" Directory="dir43922934A9552B984E12698636706286" Guid="{EA3CF1DD-4D47-4AF1-922C-3141731BFB17}">
+            <Component Win64="yes" Id="cmp420D82EA0F98448D73E89F2C7BCD8814" Directory="dir43922934A9552B984E12698636706286" Guid="{AD0EA5FA-E7C1-427B-861C-897638CCB26D}">
                 <File Id="filED5C07589D5CC5C9ED92996B14E7DC54" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Enable-IisDirectoryBrowsing.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpC0DAB853B2541AE8CDFA4EE1A946F418" Directory="dir43922934A9552B984E12698636706286" Guid="{ED8C4CFB-2974-4A75-9F92-2826DFC7C592}">
+            <Component Win64="yes" Id="cmpC0DAB853B2541AE8CDFA4EE1A946F418" Directory="dir43922934A9552B984E12698636706286" Guid="{DBE2B58B-E05D-4001-95A7-5B37D481CA57}">
                 <File Id="fil40E94606B8134912A78F016D58EE0069" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Enable-IisSecurityAuthentication.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpEED615298D112DA0895584CDA28FB7B6" Directory="dir43922934A9552B984E12698636706286" Guid="{A428124C-A431-488A-8923-C51D34A11E3D}">
+            <Component Win64="yes" Id="cmpEED615298D112DA0895584CDA28FB7B6" Directory="dir43922934A9552B984E12698636706286" Guid="{4915F850-C257-474B-9816-ED0F2F617898}">
                 <File Id="filE1103EFC26925F473704D49C5FC853D5" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Enable-IisSsl.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpB769952C94DBFCDB47B433CCEC30E731" Directory="dir43922934A9552B984E12698636706286" Guid="{8C5907E8-AF22-4C2B-9C3E-CB7E0D9BA82E}">
+            <Component Win64="yes" Id="cmpB769952C94DBFCDB47B433CCEC30E731" Directory="dir43922934A9552B984E12698636706286" Guid="{3017B9D6-694B-4CE7-80C5-8C5BACB85846}">
                 <File Id="fil6A401B69194EA000B2D8DA5FAE7666AF" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Get-IisApplication.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpB6DBB6101C61A1C429E534CA18217A97" Directory="dir43922934A9552B984E12698636706286" Guid="{07EEDA70-5077-4C82-9652-1E8B3C00A080}">
+            <Component Win64="yes" Id="cmpB6DBB6101C61A1C429E534CA18217A97" Directory="dir43922934A9552B984E12698636706286" Guid="{47E40707-15DD-4D46-B72E-B7462CFE934A}">
                 <File Id="fil95834A5414858DBA12622E1FBC4EC0E9" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Get-IisAppPool.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp13DABC5B6A93BCA4B2C579266A04BDF3" Directory="dir43922934A9552B984E12698636706286" Guid="{B756E605-6B1F-4842-8174-C2E4893BE7A9}">
+            <Component Win64="yes" Id="cmp13DABC5B6A93BCA4B2C579266A04BDF3" Directory="dir43922934A9552B984E12698636706286" Guid="{B6CDB8A7-E145-4894-9587-89145309C167}">
                 <File Id="fil28CB75E0DFE72867F0A9B56EC38608E9" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Get-IisConfigurationSection.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpB57D47B75EE948248D02B95263279AFA" Directory="dir43922934A9552B984E12698636706286" Guid="{CDA2EEFC-AA6F-4780-8358-0A5B5E30951C}">
+            <Component Win64="yes" Id="cmpB57D47B75EE948248D02B95263279AFA" Directory="dir43922934A9552B984E12698636706286" Guid="{372A041E-297A-463E-8F42-47AB1FEB778F}">
                 <File Id="fil9E3832FE6D57DEE8968AD4E2DC234660" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Get-IisHttpHeader.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp6CFE9A1F75FD8BF1D7C1605D50416CBC" Directory="dir43922934A9552B984E12698636706286" Guid="{ACAF1A67-669C-4492-8D90-833E0BF17DBE}">
+            <Component Win64="yes" Id="cmp6CFE9A1F75FD8BF1D7C1605D50416CBC" Directory="dir43922934A9552B984E12698636706286" Guid="{425B3783-7516-484A-840A-691AA6B11806}">
                 <File Id="fil3C41798A7197DCEB89A6506A92C4B06B" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Get-IisHttpRedirect.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp5B603165042EB28D1C4931EAE5094807" Directory="dir43922934A9552B984E12698636706286" Guid="{CA340433-3425-4F81-87DE-731C2FD5AEB5}">
+            <Component Win64="yes" Id="cmp5B603165042EB28D1C4931EAE5094807" Directory="dir43922934A9552B984E12698636706286" Guid="{443A3AA7-155C-4FB8-B7E3-37F858DBE9C4}">
                 <File Id="fil54835EA42417CBEA4641F60BED127A2E" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Get-IisMimeMap.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp53F273B89EDA1D5575578BC35A1F9A4E" Directory="dir43922934A9552B984E12698636706286" Guid="{76146ABB-BB40-4692-A576-9DC5BA710D5A}">
+            <Component Win64="yes" Id="cmp53F273B89EDA1D5575578BC35A1F9A4E" Directory="dir43922934A9552B984E12698636706286" Guid="{7519279F-66EB-4178-811B-2EEB83EA69E3}">
                 <File Id="fil2885A3C350EE35BFE89D6DE677FF63CE" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Get-IisSecurityAuthentication.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpC6DE7DC9AD44D1C714A10FBBDD82C805" Directory="dir43922934A9552B984E12698636706286" Guid="{C1A01E25-7304-4D5B-BE5A-BA7C5B41921D}">
+            <Component Win64="yes" Id="cmpC6DE7DC9AD44D1C714A10FBBDD82C805" Directory="dir43922934A9552B984E12698636706286" Guid="{252DBF06-6AC2-4BAD-A2C1-9C1B0140A993}">
                 <File Id="fil5F505D4335BD1DCF1CEE04478C68BB6E" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Get-IisVersion.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp9B5C2CB657E636774128E812D209E407" Directory="dir43922934A9552B984E12698636706286" Guid="{5D34FCEB-0961-4F0B-861C-EDDEDA065F52}">
+            <Component Win64="yes" Id="cmp9B5C2CB657E636774128E812D209E407" Directory="dir43922934A9552B984E12698636706286" Guid="{E2D72D23-58FF-4E81-AF61-0D7B709EEEC2}">
                 <File Id="fil3E8ED3493B70A97E8D412A96E78C1BCA" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Get-IisWebsite.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp281641ECA69FCE679CA4705AAA0B4EF2" Directory="dir43922934A9552B984E12698636706286" Guid="{A6D936EB-E418-4B10-98D3-74CC27327853}">
+            <Component Win64="yes" Id="cmp281641ECA69FCE679CA4705AAA0B4EF2" Directory="dir43922934A9552B984E12698636706286" Guid="{426C3249-27E1-4B0F-B095-AAFABC696648}">
                 <File Id="fil287AB7955B19DE052FEAB41DEEEBFE6E" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Install-IisApplication.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpBE28D45402F45BC7C410FB984F5C5BDD" Directory="dir43922934A9552B984E12698636706286" Guid="{0E6E3F0A-1D1E-41A8-B025-FED6AC8DDFFB}">
+            <Component Win64="yes" Id="cmpBE28D45402F45BC7C410FB984F5C5BDD" Directory="dir43922934A9552B984E12698636706286" Guid="{3DCADD97-2FFA-4B0B-AA68-6BE5D7195182}">
                 <File Id="filDD79326ED53CE8A928AF87F1E284D33B" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Install-IisAppPool.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpBE6A994920871834547B658B5500D96F" Directory="dir43922934A9552B984E12698636706286" Guid="{C43F5969-D6B4-41D6-9493-EC99F599A81E}">
+            <Component Win64="yes" Id="cmpBE6A994920871834547B658B5500D96F" Directory="dir43922934A9552B984E12698636706286" Guid="{A60AEC91-F1C1-4E57-9E13-BD6BA7C58D47}">
                 <File Id="fil68DF2EE29CF093C2A253D911C7F797C7" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Install-IisVirtualDirectory.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp5539A67A3C3BD83C861C9BA55C86CE64" Directory="dir43922934A9552B984E12698636706286" Guid="{F11F272E-EB0A-4308-8B26-0839B46B5749}">
+            <Component Win64="yes" Id="cmp5539A67A3C3BD83C861C9BA55C86CE64" Directory="dir43922934A9552B984E12698636706286" Guid="{A3AF01E5-4299-4764-ACF9-652B43345C25}">
                 <File Id="filC9586EFA3C3F383CE00CB663E4684B14" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Install-IisWebsite.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp0B86E4021F58ED787EC4E03B098270F7" Directory="dir43922934A9552B984E12698636706286" Guid="{353982C9-637F-4F1B-A664-ED8EE500A4F9}">
+            <Component Win64="yes" Id="cmp0B86E4021F58ED787EC4E03B098270F7" Directory="dir43922934A9552B984E12698636706286" Guid="{10D83C79-9F43-4FC3-9D4A-BEDC5FA17CC8}">
                 <File Id="fil8E51A7C20A1A2C71F6BF7048E501968A" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Invoke-AppCmd.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp79DC3836688CF0F358E6B7C9EEFB688F" Directory="dir43922934A9552B984E12698636706286" Guid="{60F69728-A862-4BD7-9811-EB09B19205DE}">
+            <Component Win64="yes" Id="cmp79DC3836688CF0F358E6B7C9EEFB688F" Directory="dir43922934A9552B984E12698636706286" Guid="{6389139F-BA61-4CD2-9970-E5BD2621D94F}">
                 <File Id="fil35D925B6ADE4EBF7F31DC076475E6BB8" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Join-IisVirtualPath.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpCE0968DE6464CD0B4A415665FD291794" Directory="dir43922934A9552B984E12698636706286" Guid="{007F460D-3B64-43B0-891D-ED26C1E233A7}">
+            <Component Win64="yes" Id="cmpCE0968DE6464CD0B4A415665FD291794" Directory="dir43922934A9552B984E12698636706286" Guid="{41E98FFF-3D12-4C2E-ACF5-9532C5CEAB24}">
                 <File Id="filA1B0BF9A5A06B5DAB2DA3F72290989BB" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Lock-IisConfigurationSection.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpD2CEAF402055253701A9D743FCDD4C56" Directory="dir43922934A9552B984E12698636706286" Guid="{FFE03952-1604-43F1-89E6-CA563E54C1D6}">
+            <Component Win64="yes" Id="cmpD2CEAF402055253701A9D743FCDD4C56" Directory="dir43922934A9552B984E12698636706286" Guid="{06EBD65C-FED6-46F1-BB82-F4CC6FA883B6}">
                 <File Id="filA781F878590DB015BFB524FED0866F80" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Remove-IisMimeMap.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp76F569B9F653212823D71B435153ACDA" Directory="dir43922934A9552B984E12698636706286" Guid="{1E1FC859-6F70-48D6-B13F-E35DECA57EA1}">
+            <Component Win64="yes" Id="cmp76F569B9F653212823D71B435153ACDA" Directory="dir43922934A9552B984E12698636706286" Guid="{38DE9A52-1BEC-400C-9D88-839E37EC073B}">
                 <File Id="fil64076FE3DCDF114C54C2CF2EE1B5AA4C" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Set-IisHttpHeader.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp898483379A080847847ACDD050578CAC" Directory="dir43922934A9552B984E12698636706286" Guid="{21BDF128-E4FE-4733-A5D1-574A00E40A60}">
+            <Component Win64="yes" Id="cmp898483379A080847847ACDD050578CAC" Directory="dir43922934A9552B984E12698636706286" Guid="{86113643-1642-4BCC-93F9-9CBF2A1158C6}">
                 <File Id="filCBAB9262BE03CC62566C0C29BE02217B" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Set-IisHttpRedirect.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp4DBA587875C7031B4A64C9A08AA22B02" Directory="dir43922934A9552B984E12698636706286" Guid="{F6C04BF1-1132-4F89-8CEF-1AF8F336E11D}">
+            <Component Win64="yes" Id="cmp4DBA587875C7031B4A64C9A08AA22B02" Directory="dir43922934A9552B984E12698636706286" Guid="{4018464A-09A4-4C52-94E3-FD74B700FE2B}">
                 <File Id="filD28B9956F02FAAC42C4800CC4DD61B49" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Set-IisMimeMap.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpFBA33E175817B8DC6CC28020D252685A" Directory="dir43922934A9552B984E12698636706286" Guid="{CB23360C-B898-4ED0-9698-B619C5E9DD51}">
+            <Component Win64="yes" Id="cmpFBA33E175817B8DC6CC28020D252685A" Directory="dir43922934A9552B984E12698636706286" Guid="{786FD8AC-A99F-4E5C-AE3D-04E7DD0012D9}">
                 <File Id="fil6C6D3E0C95857FA6C925532BF57FA9D1" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Set-IisWebsiteID.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp719CDFE78DDCA0332B2A54C41BF8C75D" Directory="dir43922934A9552B984E12698636706286" Guid="{75DED49A-861A-4EE4-9778-FC9CDC75F34C}">
+            <Component Win64="yes" Id="cmp719CDFE78DDCA0332B2A54C41BF8C75D" Directory="dir43922934A9552B984E12698636706286" Guid="{29B7B3C4-1337-44B4-9DC1-EAE8FAA1D093}">
                 <File Id="filF07485A53DF46125F08D9CB633BB688C" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Set-IisWebsiteSslCertificate.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp35029146B8FEA6A3CD957997F285F071" Directory="dir43922934A9552B984E12698636706286" Guid="{212A8D9F-B716-41A5-998D-E7F44F7A6EC5}">
+            <Component Win64="yes" Id="cmp35029146B8FEA6A3CD957997F285F071" Directory="dir43922934A9552B984E12698636706286" Guid="{3F544524-F8C7-4F01-A0CD-B8C8FFBE4C39}">
                 <File Id="fil3A38022CFA6179A796587CB822E65680" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Set-IisWindowsAuthentication.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp76B8D90751163361B7F62F4FCCB25C1E" Directory="dir43922934A9552B984E12698636706286" Guid="{8A7643B6-B31C-4F85-8BF2-B184FAE1385F}">
+            <Component Win64="yes" Id="cmp76B8D90751163361B7F62F4FCCB25C1E" Directory="dir43922934A9552B984E12698636706286" Guid="{55F61600-83C2-4AE5-B12C-2DE6B2A3CE84}">
                 <File Id="filD46673198EBB1131771C513AF962D08D" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Test-IisAppPool.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp1CBE889D578D9E8CD61D96CF1C236C4E" Directory="dir43922934A9552B984E12698636706286" Guid="{B3F68928-0E23-42F4-A160-35EBB9FCC8D5}">
+            <Component Win64="yes" Id="cmp1CBE889D578D9E8CD61D96CF1C236C4E" Directory="dir43922934A9552B984E12698636706286" Guid="{A0EC6F2C-838F-4040-BCD9-37CB1B5E626D}">
                 <File Id="filEA82D32DC9D258AD58D52C4060A15008" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Test-IisConfigurationSection.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpEED2F932504AC0E3C6EB23F433340197" Directory="dir43922934A9552B984E12698636706286" Guid="{5EA7D704-E365-4753-B434-8DA155970425}">
+            <Component Win64="yes" Id="cmpEED2F932504AC0E3C6EB23F433340197" Directory="dir43922934A9552B984E12698636706286" Guid="{56C5C7BC-B46F-4C8A-94C4-3190E7A1484C}">
                 <File Id="filEA88B5F6C3ED525D2054EEEE43B6A384" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Test-IisSecurityAuthentication.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp4E04F70B67B30FF593182196F9C27C6A" Directory="dir43922934A9552B984E12698636706286" Guid="{A3542B02-1EB3-476E-A4C1-113FBD5330D1}">
+            <Component Win64="yes" Id="cmp4E04F70B67B30FF593182196F9C27C6A" Directory="dir43922934A9552B984E12698636706286" Guid="{4F65D744-914C-41FA-86B8-54B522CA05CF}">
                 <File Id="filE2907D11370C7127043509442930B9F3" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Test-IisWebsite.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp7F9897F2EE9C9A5109E9E865BECEF11C" Directory="dir43922934A9552B984E12698636706286" Guid="{6F70204B-EB62-4ACE-A3BE-EA1AFD6E864F}">
+            <Component Win64="yes" Id="cmp7F9897F2EE9C9A5109E9E865BECEF11C" Directory="dir43922934A9552B984E12698636706286" Guid="{0C0D64F6-21D6-4A5B-B85E-589137BBE620}">
                 <File Id="fil467DD88BB1B118BDAD7339FBD9BC687F" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Uninstall-IisAppPool.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpC2248D9AED6CF6FE744DB46F6964CF07" Directory="dir43922934A9552B984E12698636706286" Guid="{B970BB5B-7DAD-4AFA-8817-2DBB2A5F9B3A}">
+            <Component Win64="yes" Id="cmpC2248D9AED6CF6FE744DB46F6964CF07" Directory="dir43922934A9552B984E12698636706286" Guid="{FE28D1F4-6D09-4F83-95CF-555B1A642C94}">
                 <File Id="fil2A70DD074775ABCB3ADEDDC4632C2ED8" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Uninstall-IisWebsite.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp9D9971BFB29363C81F2025E31F9E67E8" Directory="dir43922934A9552B984E12698636706286" Guid="{69FAD0E5-0970-4A79-83B4-EB555E845AED}">
+            <Component Win64="yes" Id="cmp9D9971BFB29363C81F2025E31F9E67E8" Directory="dir43922934A9552B984E12698636706286" Guid="{8B991BA9-1B76-4DB2-ADD6-170F71F2A852}">
                 <File Id="fil25230B96F973445AC2BF2A4F23B93708" KeyPath="yes" Source="$(var.CarbonSourcePath)\IIS\Unlock-IisConfigurationSection.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpD4BAFA40F6FBE94F0F428CEFEFF98D69" Directory="dirE006D9768CE7227EE9F85436092CAF41" Guid="{19540204-F7BC-423E-A512-97C4680ADBBD}">
+            <Component Win64="yes" Id="cmpD4BAFA40F6FBE94F0F428CEFEFF98D69" Directory="dirE006D9768CE7227EE9F85436092CAF41" Guid="{0BA48140-E62A-4720-8F08-9A2DE98D9729}">
                 <File Id="filC2B6A3D6A5A867A121AFC322F34E2D8B" KeyPath="yes" Source="$(var.CarbonSourcePath)\INI\Remove-IniEntry.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpA7A1F80901F68285A435A0DEA5B4AF48" Directory="dirE006D9768CE7227EE9F85436092CAF41" Guid="{C3C52E12-BBC3-4BB1-A3B3-45B045749E29}">
+            <Component Win64="yes" Id="cmpA7A1F80901F68285A435A0DEA5B4AF48" Directory="dirE006D9768CE7227EE9F85436092CAF41" Guid="{D257FC9D-D35F-4BF7-B309-850FE84B07B0}">
                 <File Id="fil959EAB7D022DDD7F7DF9D205335F8935" KeyPath="yes" Source="$(var.CarbonSourcePath)\INI\Set-IniEntry.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp8FC3A8FE78E08EDF2D101960EE09B922" Directory="dirE006D9768CE7227EE9F85436092CAF41" Guid="{77699ABC-8BD2-4E28-9F7C-97775EAD9C06}">
+            <Component Win64="yes" Id="cmp8FC3A8FE78E08EDF2D101960EE09B922" Directory="dirE006D9768CE7227EE9F85436092CAF41" Guid="{A1E387B7-3130-478E-BAFE-1C7FE655C9F6}">
                 <File Id="fil4C3D877E9F93AD6BA7B272CD7AF7562A" KeyPath="yes" Source="$(var.CarbonSourcePath)\INI\Split-Ini.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp1F032893853F78962621E371DDDE0A97" Directory="dir64CB01B196F9591132E0B4761A77BB8C" Guid="{E974CE91-0396-4186-8267-A7E32C9BCAF1}">
+            <Component Win64="yes" Id="cmp1F032893853F78962621E371DDDE0A97" Directory="dir64CB01B196F9591132E0B4761A77BB8C" Guid="{A758D90F-3C9E-46ED-B0F1-F202E86420E5}">
                 <File Id="fil381FB082FD7146DC1AB4C665AA44C70D" KeyPath="yes" Source="$(var.CarbonSourcePath)\InternetExplorer\Disable-IEEnhancedSecurityConfiguration.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp43561FF35EBBE1D0D4708F884B85DA9E" Directory="dir64CB01B196F9591132E0B4761A77BB8C" Guid="{E5312CAB-8954-45C4-8D67-0A5060E0409E}">
+            <Component Win64="yes" Id="cmp43561FF35EBBE1D0D4708F884B85DA9E" Directory="dir64CB01B196F9591132E0B4761A77BB8C" Guid="{CACFE68F-02FF-411D-A470-858DF516A9A8}">
                 <File Id="filFB816440A410EE0EA4736DCF5AFDFDD0" KeyPath="yes" Source="$(var.CarbonSourcePath)\InternetExplorer\Enable-IEActivationPermission.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp81A223E72E172C771BB31071D9860160" Directory="dirCF4C6641F2F081D2E52DF284E2EDABFA" Guid="{18869F36-E02B-4E83-ABFA-9E7AAFF516EE}">
+            <Component Win64="yes" Id="cmp81A223E72E172C771BB31071D9860160" Directory="dirCF4C6641F2F081D2E52DF284E2EDABFA" Guid="{6B107822-FDBD-4595-9E87-0B65DCE96B54}">
                 <File Id="fil0E045D52925F588747CFC16596B131A2" KeyPath="yes" Source="$(var.CarbonSourcePath)\MSI\Invoke-WindowsInstaller.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpC3A554C865C68FAE504B5B526758EEE7" Directory="dirBD3276627BD1F4DBA76F89C0AB0B544D" Guid="{680638FD-589E-4558-A44F-E69DC927E9F1}">
+            <Component Win64="yes" Id="cmpC3A554C865C68FAE504B5B526758EEE7" Directory="dirBD3276627BD1F4DBA76F89C0AB0B544D" Guid="{EF8EC0DB-99CD-48FF-9653-995754D448E3}">
                 <File Id="fil2E93D465BE4EDFC423A84D33638BA574" KeyPath="yes" Source="$(var.CarbonSourcePath)\MSMQ\Get-MsmqMessageQueue.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpA12501EE2EEAB4C0E5D7B6D2D2D2D43E" Directory="dirBD3276627BD1F4DBA76F89C0AB0B544D" Guid="{3C968A81-1629-4C83-886A-6ABEB39729D8}">
+            <Component Win64="yes" Id="cmpA12501EE2EEAB4C0E5D7B6D2D2D2D43E" Directory="dirBD3276627BD1F4DBA76F89C0AB0B544D" Guid="{4DF44398-3241-4DB4-B122-843560B11BD8}">
                 <File Id="filFD22531DC7247952984F9E5017FC4322" KeyPath="yes" Source="$(var.CarbonSourcePath)\MSMQ\Get-MsmqMessageQueuePath.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp3327D2B708A08B500E8084BB3787D6A9" Directory="dirBD3276627BD1F4DBA76F89C0AB0B544D" Guid="{E4B4630F-ABC9-4B72-82D1-8E337A61CD45}">
+            <Component Win64="yes" Id="cmp3327D2B708A08B500E8084BB3787D6A9" Directory="dirBD3276627BD1F4DBA76F89C0AB0B544D" Guid="{4A21D179-5C0D-4F65-89B1-E0566FB4D6F9}">
                 <File Id="filED0DB6F775B29B96F247443297959053" KeyPath="yes" Source="$(var.CarbonSourcePath)\MSMQ\Grant-MsmqMessageQueuePermission.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp1C6E259FBD980D87971355C785EBA449" Directory="dirBD3276627BD1F4DBA76F89C0AB0B544D" Guid="{AC59C7D8-DCA8-40A5-988F-FBE85733A320}">
+            <Component Win64="yes" Id="cmp1C6E259FBD980D87971355C785EBA449" Directory="dirBD3276627BD1F4DBA76F89C0AB0B544D" Guid="{8059B2A8-4C65-40E9-B641-6B2248624C72}">
                 <File Id="filAE4336C76068681D0ABEE3980AE77932" KeyPath="yes" Source="$(var.CarbonSourcePath)\MSMQ\Install-Msmq.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp5D6A4B5886A320E0160054BA1A1E9BA4" Directory="dirBD3276627BD1F4DBA76F89C0AB0B544D" Guid="{B63A20CE-EC35-4C60-BBB4-AEB9D383825D}">
+            <Component Win64="yes" Id="cmp5D6A4B5886A320E0160054BA1A1E9BA4" Directory="dirBD3276627BD1F4DBA76F89C0AB0B544D" Guid="{40B65356-FD37-43C6-8352-88A2C3853CA8}">
                 <File Id="fil59207771750C4AB36E727C06BF3ECFA1" KeyPath="yes" Source="$(var.CarbonSourcePath)\MSMQ\Install-MsmqMessageQueue.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpE66563019A000C239816F7283223FDB7" Directory="dirBD3276627BD1F4DBA76F89C0AB0B544D" Guid="{B463247D-E956-4EB9-8E91-6F6AEB12E91E}">
+            <Component Win64="yes" Id="cmpE66563019A000C239816F7283223FDB7" Directory="dirBD3276627BD1F4DBA76F89C0AB0B544D" Guid="{6674E5EC-17B6-49D8-B0B8-DC965F6DF05C}">
                 <File Id="fil53E9355D52E28BB06A0A15D5B5EC9DB6" KeyPath="yes" Source="$(var.CarbonSourcePath)\MSMQ\Reset-MsmqQueueManagerID.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpEF0A1A1D80B2D0B03E615FF1DEA00248" Directory="dirBD3276627BD1F4DBA76F89C0AB0B544D" Guid="{F250AA2A-BDF1-42E6-A853-B1BD2D458F0B}">
+            <Component Win64="yes" Id="cmpEF0A1A1D80B2D0B03E615FF1DEA00248" Directory="dirBD3276627BD1F4DBA76F89C0AB0B544D" Guid="{B84EDF01-CB0B-459F-B1AA-317D35ED87D9}">
                 <File Id="filDF60BB409F22E134692C312C646F1FAF" KeyPath="yes" Source="$(var.CarbonSourcePath)\MSMQ\Test-MsmqMessageQueue.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpD72F5A46F847F57387757EEC1D171592" Directory="dirBD3276627BD1F4DBA76F89C0AB0B544D" Guid="{BCC09D09-D89C-48B9-9BB4-703964058B9C}">
+            <Component Win64="yes" Id="cmpD72F5A46F847F57387757EEC1D171592" Directory="dirBD3276627BD1F4DBA76F89C0AB0B544D" Guid="{7DA3BC34-050C-4B9C-A546-203027D57178}">
                 <File Id="filB009387425574187A55197463D24CE43" KeyPath="yes" Source="$(var.CarbonSourcePath)\MSMQ\Uninstall-MsmqMessageQueue.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp7351FBEE3F27362702B732A32DE261E1" Directory="dirA01DC86114E744EF33434250FD5AF7F1" Guid="{465ED9A8-EDDC-47B2-9A8F-D45B120D2117}">
+            <Component Win64="yes" Id="cmp7351FBEE3F27362702B732A32DE261E1" Directory="dirA01DC86114E744EF33434250FD5AF7F1" Guid="{210D4000-0B13-4F1B-9DC0-5B37D28D9516}">
                 <File Id="fil61D4B5158E3F30C26498C5F04BEFD40C" KeyPath="yes" Source="$(var.CarbonSourcePath)\Network\Get-IPAddress.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp28435F993D03A892F8374C09B9106903" Directory="dirA01DC86114E744EF33434250FD5AF7F1" Guid="{606249DB-3569-48AB-89D3-EF2620B347AD}">
+            <Component Win64="yes" Id="cmp28435F993D03A892F8374C09B9106903" Directory="dirA01DC86114E744EF33434250FD5AF7F1" Guid="{7B981B49-A604-4AF5-AAED-EB0253107E06}">
                 <File Id="filCCF431712331FE682076ED85FA8B52C7" KeyPath="yes" Source="$(var.CarbonSourcePath)\Network\Test-IPAddress.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpF2A511A6EBE14F3D3DF0DF017785E0DF" Directory="dir9E05280F4C99E8505AD13318CF1D27F1" Guid="{538C37DD-F162-4CD6-AA43-C50F98EC0C33}">
+            <Component Win64="yes" Id="cmpF2A511A6EBE14F3D3DF0DF017785E0DF" Directory="dir9E05280F4C99E8505AD13318CF1D27F1" Guid="{B91B1C96-357A-452C-80E5-DAE11954F804}">
                 <File Id="filADCA0C3B80A879C201A1DE3F5B2DA5CE" KeyPath="yes" Source="$(var.CarbonSourcePath)\Path\Get-PathProvider.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp34E26CAAD047977E0C3F5F0CFDB9CADB" Directory="dir9E05280F4C99E8505AD13318CF1D27F1" Guid="{7B4EB406-522B-4F3D-A691-A88717D030B0}">
+            <Component Win64="yes" Id="cmp34E26CAAD047977E0C3F5F0CFDB9CADB" Directory="dir9E05280F4C99E8505AD13318CF1D27F1" Guid="{6A88FB3B-C2E9-4008-822E-C3B11F88CEBF}">
                 <File Id="filC144AF84574A69D45FAA13260A755A58" KeyPath="yes" Source="$(var.CarbonSourcePath)\Path\Resolve-FullPath.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp302C98A71271A571613226F64301C7D5" Directory="dir9E05280F4C99E8505AD13318CF1D27F1" Guid="{61C27CA6-7102-45CC-9DDC-B08EAC4A5A76}">
+            <Component Win64="yes" Id="cmp302C98A71271A571613226F64301C7D5" Directory="dir9E05280F4C99E8505AD13318CF1D27F1" Guid="{39B3BB8D-9FF8-4087-9560-97350915B26E}">
                 <File Id="fil73875C7116B55291B37E29ADBEAD53D0" KeyPath="yes" Source="$(var.CarbonSourcePath)\Path\Resolve-PathCase.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpA63375EB34C073682E79C1536C3B5094" Directory="dir9E05280F4C99E8505AD13318CF1D27F1" Guid="{4757E045-DC06-472D-A9CB-92EEE0CF5D08}">
+            <Component Win64="yes" Id="cmpA63375EB34C073682E79C1536C3B5094" Directory="dir9E05280F4C99E8505AD13318CF1D27F1" Guid="{EBD08893-D515-42EE-BA82-ADE3DA6B0B01}">
                 <File Id="fil7D5D37E96779F81241AC6B26278D1E0A" KeyPath="yes" Source="$(var.CarbonSourcePath)\Path\Resolve-RelativePath.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpFCD79FCFF1A4FE8E21EB2204A300B6DC" Directory="dir9E05280F4C99E8505AD13318CF1D27F1" Guid="{61164736-EF2B-408C-9AED-4307567CB3DC}">
+            <Component Win64="yes" Id="cmpFCD79FCFF1A4FE8E21EB2204A300B6DC" Directory="dir9E05280F4C99E8505AD13318CF1D27F1" Guid="{973FA205-9ED4-47A3-AD1E-3FA9691C590D}">
                 <File Id="filF958858D2B7F5786FEFED28F55D43525" KeyPath="yes" Source="$(var.CarbonSourcePath)\Path\Test-UncPath.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp2B0C5835221715D89946C90B2F943A5E" Directory="dir96211988A1429F8569E20677A7D35C83" Guid="{50105C9D-5BB7-44FE-88E6-2C9680E06F05}">
+            <Component Win64="yes" Id="cmp2B0C5835221715D89946C90B2F943A5E" Directory="dir96211988A1429F8569E20677A7D35C83" Guid="{0F874F7A-9AA5-419F-961C-67EC8EB5DA0C}">
                 <File Id="fil204E9461C63A77E2CB3014A6F196799F" KeyPath="yes" Source="$(var.CarbonSourcePath)\PerformanceCounters\Get-PerformanceCounter.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpF0DE99F24D106911B892792D5048BF2A" Directory="dir96211988A1429F8569E20677A7D35C83" Guid="{DB34A822-02A3-4259-9825-17DF09F3DDFC}">
+            <Component Win64="yes" Id="cmpF0DE99F24D106911B892792D5048BF2A" Directory="dir96211988A1429F8569E20677A7D35C83" Guid="{D9D03C19-A14E-49EF-8B48-873473EAFE30}">
                 <File Id="filDF8D3EF41F781C9CAC8FC55769C769A7" KeyPath="yes" Source="$(var.CarbonSourcePath)\PerformanceCounters\Install-PerformanceCounter.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpD403419C81E8FAF073929D80F8A95435" Directory="dir96211988A1429F8569E20677A7D35C83" Guid="{759CC201-834F-4493-B55F-AF647D926D86}">
+            <Component Win64="yes" Id="cmpD403419C81E8FAF073929D80F8A95435" Directory="dir96211988A1429F8569E20677A7D35C83" Guid="{E7A475C8-49F7-46A3-BB53-3E7C24FBF895}">
                 <File Id="filC52E4C998D35B65155498BFFC97F9199" KeyPath="yes" Source="$(var.CarbonSourcePath)\PerformanceCounters\Test-PerformanceCounter.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp59D7FF415ED5A40FA8D2707B93117960" Directory="dir96211988A1429F8569E20677A7D35C83" Guid="{A28952BB-7D67-4F0C-8578-AE772C5882B1}">
+            <Component Win64="yes" Id="cmp59D7FF415ED5A40FA8D2707B93117960" Directory="dir96211988A1429F8569E20677A7D35C83" Guid="{740F72DA-B7E4-473A-B28F-74399B2CC7FC}">
                 <File Id="fil511EEC2DD58051C1164C3277B26D3371" KeyPath="yes" Source="$(var.CarbonSourcePath)\PerformanceCounters\Test-PerformanceCounterCategory.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp9D878D00B91E7EFF95F103AD8AE952DF" Directory="dir96211988A1429F8569E20677A7D35C83" Guid="{BA865F39-662D-4CCB-AFFE-A1EAD35F06E1}">
+            <Component Win64="yes" Id="cmp9D878D00B91E7EFF95F103AD8AE952DF" Directory="dir96211988A1429F8569E20677A7D35C83" Guid="{A01D8861-FC68-4107-BCDE-4D48544734B3}">
                 <File Id="fil79FE844F53385828D24BEB227F4C2725" KeyPath="yes" Source="$(var.CarbonSourcePath)\PerformanceCounters\Uninstall-PerformanceCounterCategory.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpA72F16890F3063FF0D6C323A876888E4" Directory="dir0233E80F38FD0CFC16042A8BA072EEF3" Guid="{A090097C-550B-46C7-B53C-DCEA02CFCA3C}">
+            <Component Win64="yes" Id="cmpA72F16890F3063FF0D6C323A876888E4" Directory="dir0233E80F38FD0CFC16042A8BA072EEF3" Guid="{3D329D5F-B60C-479E-9566-D12ECDFC2114}">
                 <File Id="fil84185527560A4AFE02874BF7FA6586CD" KeyPath="yes" Source="$(var.CarbonSourcePath)\PowerShell\Add-TrustedHost.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp57BE493B11E6813DCD99ACB9DBE3C02E" Directory="dir0233E80F38FD0CFC16042A8BA072EEF3" Guid="{18F1711C-4EA8-40B5-B3BD-FBE01C8044FA}">
+            <Component Win64="yes" Id="cmp57BE493B11E6813DCD99ACB9DBE3C02E" Directory="dir0233E80F38FD0CFC16042A8BA072EEF3" Guid="{93D6EE9C-85BD-4D4B-911E-90B1E3AE5EA4}">
                 <File Id="filFB698B138812D48C87B5878FB987B8B2" KeyPath="yes" Source="$(var.CarbonSourcePath)\PowerShell\Clear-TrustedHost.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp5E44CF6608550E2FCE2D7F2A1901D1C7" Directory="dir0233E80F38FD0CFC16042A8BA072EEF3" Guid="{2CB403D8-9725-46B1-B215-2C748D805D2C}">
+            <Component Win64="yes" Id="cmp5E44CF6608550E2FCE2D7F2A1901D1C7" Directory="dir0233E80F38FD0CFC16042A8BA072EEF3" Guid="{C706EF00-63D2-4C30-BE69-D2EA3CBB3579}">
                 <File Id="fil0A878E540D74534E23BD182CCBECE606" KeyPath="yes" Source="$(var.CarbonSourcePath)\PowerShell\Complete-Job.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp8452096DFF2B1B4F3EBEF3F3E720CB58" Directory="dir0233E80F38FD0CFC16042A8BA072EEF3" Guid="{777FEB23-3479-4970-A8CC-D0BC464B17F5}">
+            <Component Win64="yes" Id="cmp8452096DFF2B1B4F3EBEF3F3E720CB58" Directory="dir0233E80F38FD0CFC16042A8BA072EEF3" Guid="{293245A6-B026-4C29-8624-D62DCE8CA6DB}">
                 <File Id="filAADB0E47DFD3F926BBBF661D3BFA97DA" KeyPath="yes" Source="$(var.CarbonSourcePath)\PowerShell\Get-PowershellPath.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp0CF7D53D1177447F24D13ACA85B790B2" Directory="dir0233E80F38FD0CFC16042A8BA072EEF3" Guid="{39E1F7A2-3643-49E0-A5A0-F6BF093E34BC}">
+            <Component Win64="yes" Id="cmp0CF7D53D1177447F24D13ACA85B790B2" Directory="dir0233E80F38FD0CFC16042A8BA072EEF3" Guid="{18FDBA4C-7196-437B-B7DE-B7D62B581EFA}">
                 <File Id="fil6AE81BEF692ADEFEE7D5C10E73956701" KeyPath="yes" Source="$(var.CarbonSourcePath)\PowerShell\Get-TrustedHost.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp0E8C4F909897F0E70CA0FC108A6F7503" Directory="dir0233E80F38FD0CFC16042A8BA072EEF3" Guid="{7E180C36-1519-4D26-B2E9-92BA3439CB7B}">
+            <Component Win64="yes" Id="cmp0E8C4F909897F0E70CA0FC108A6F7503" Directory="dir0233E80F38FD0CFC16042A8BA072EEF3" Guid="{3BB232FD-919F-4A1D-82A7-5125AB348186}">
                 <File Id="fil912653BF33FC913F20EA3424AFB9E093" KeyPath="yes" Source="$(var.CarbonSourcePath)\PowerShell\Invoke-PowerShell.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp8D9A2A75518B44849A488A8B7B076FDE" Directory="dir0233E80F38FD0CFC16042A8BA072EEF3" Guid="{B72BD000-F930-4460-8E70-5916D77A33FB}">
+            <Component Win64="yes" Id="cmp8D9A2A75518B44849A488A8B7B076FDE" Directory="dir0233E80F38FD0CFC16042A8BA072EEF3" Guid="{BEA7098F-72F8-4C35-BEC6-98DAE3DD7A4A}">
                 <File Id="fil5ED8FA4B94656F1874035211095AE624" KeyPath="yes" Source="$(var.CarbonSourcePath)\PowerShell\Set-TrustedHost.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp174EB7592852EFBB8F3C100D0FFDB939" Directory="dir0233E80F38FD0CFC16042A8BA072EEF3" Guid="{61C9AE6B-CFC7-4DBB-862C-C556D1A234A1}">
+            <Component Win64="yes" Id="cmp174EB7592852EFBB8F3C100D0FFDB939" Directory="dir0233E80F38FD0CFC16042A8BA072EEF3" Guid="{288BBE20-885F-4C76-BBCE-A89B9D7D686B}">
                 <File Id="fil0F762054616ED8E02BE17442FBECE0A8" KeyPath="yes" Source="$(var.CarbonSourcePath)\PowerShell\Test-PowerShellIs32Bit.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpD4EE38C4D79B0336621EDC13F203417E" Directory="dir0233E80F38FD0CFC16042A8BA072EEF3" Guid="{6AEAAFDC-C52B-4CE9-BF1B-DBA17A9CF6DF}">
+            <Component Win64="yes" Id="cmpD4EE38C4D79B0336621EDC13F203417E" Directory="dir0233E80F38FD0CFC16042A8BA072EEF3" Guid="{B1BCF3BF-6664-4129-B520-D6DE58B31E7D}">
                 <File Id="fil76F1A72D60B5993C23CECFB31ED9C3F8" KeyPath="yes" Source="$(var.CarbonSourcePath)\PowerShell\Test-PowerShellIs64Bit.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp6A8E021AE3007A8617CF73A1898B7FB2" Directory="dirB914E302E91044829E8E8B18B24B96E6" Guid="{382C0A0F-AE3B-4B1C-901E-73CD5B656642}">
+            <Component Win64="yes" Id="cmp6A8E021AE3007A8617CF73A1898B7FB2" Directory="dirB914E302E91044829E8E8B18B24B96E6" Guid="{41C9761F-DBD2-4EE8-8637-3DCEF30B5EC7}">
                 <File Id="filF64D85A4ED5491CD7F1CA2E60AEFE7CB" KeyPath="yes" Source="$(var.CarbonSourcePath)\Privileges\Get-Privilege.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpADC5DFB9C5A93598AAF047B4D95D92FB" Directory="dirB914E302E91044829E8E8B18B24B96E6" Guid="{F0243EBE-ED84-4350-AF71-A0B25FD46BBF}">
+            <Component Win64="yes" Id="cmpADC5DFB9C5A93598AAF047B4D95D92FB" Directory="dirB914E302E91044829E8E8B18B24B96E6" Guid="{D3FD35CB-F58B-4F24-8C6A-26E4718B0B8A}">
                 <File Id="fil5E2CBB0080C06A369FF11A5FF9257C82" KeyPath="yes" Source="$(var.CarbonSourcePath)\Privileges\Grant-Privilege.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpEE60092388315A89F26525D9D32A593D" Directory="dirB914E302E91044829E8E8B18B24B96E6" Guid="{73EEDCD8-E90B-413E-9C3E-4B2569818728}">
+            <Component Win64="yes" Id="cmpEE60092388315A89F26525D9D32A593D" Directory="dirB914E302E91044829E8E8B18B24B96E6" Guid="{96D6B622-28EE-471F-B311-67E2CEA8F56A}">
                 <File Id="fil5A4C8F3018C780162921B41046353733" KeyPath="yes" Source="$(var.CarbonSourcePath)\Privileges\Revoke-Privilege.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp12F36BD6A4328283007C0115FB400B58" Directory="dirB914E302E91044829E8E8B18B24B96E6" Guid="{50F7CA1F-2D1B-4A1E-90AA-F7CBB8F32775}">
+            <Component Win64="yes" Id="cmp12F36BD6A4328283007C0115FB400B58" Directory="dirB914E302E91044829E8E8B18B24B96E6" Guid="{8230B1BE-82CF-4FA2-99A7-32E703714C73}">
                 <File Id="fil8C681707B10B527A63CC39BA88CC56C4" KeyPath="yes" Source="$(var.CarbonSourcePath)\Privileges\Test-Privilege.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp999EDB74B69C879413AAAC4AC36DF765" Directory="dir907D4CFFE7D2B98BFD922AA3160B8CA3" Guid="{57463F65-E100-434A-ACBF-E847FBD322B3}">
+            <Component Win64="yes" Id="cmp999EDB74B69C879413AAAC4AC36DF765" Directory="dir907D4CFFE7D2B98BFD922AA3160B8CA3" Guid="{18A07A64-44D5-400C-AD6E-C9E94D892CCD}">
                 <File Id="filAC34D7343A546A2310762544170C7CE9" KeyPath="yes" Source="$(var.CarbonSourcePath)\Registry\Get-RegistryKeyValue.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp1BD0AF897D766E021AE8EC12FE0893A9" Directory="dir907D4CFFE7D2B98BFD922AA3160B8CA3" Guid="{8862C1BA-0BA8-4FAB-827C-2E9B84487511}">
+            <Component Win64="yes" Id="cmp1BD0AF897D766E021AE8EC12FE0893A9" Directory="dir907D4CFFE7D2B98BFD922AA3160B8CA3" Guid="{95B62221-126A-4600-898D-83B9F60E2A42}">
                 <File Id="fil026B341F55326ADBEE41E11AF1250504" KeyPath="yes" Source="$(var.CarbonSourcePath)\Registry\Install-RegistryKey.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp7A9EE2BA54641FA271FED98674058311" Directory="dir907D4CFFE7D2B98BFD922AA3160B8CA3" Guid="{37CD6970-5D10-47A9-A1C5-45BD100462CA}">
+            <Component Win64="yes" Id="cmp7A9EE2BA54641FA271FED98674058311" Directory="dir907D4CFFE7D2B98BFD922AA3160B8CA3" Guid="{1A208BDF-C35B-451A-87E4-A7FBBF6C0D0C}">
                 <File Id="filF94EE3F7DF584067EA975EFCF438B9EE" KeyPath="yes" Source="$(var.CarbonSourcePath)\Registry\Remove-RegistryKeyValue.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp9251376FE5D3166A5423055086645609" Directory="dir907D4CFFE7D2B98BFD922AA3160B8CA3" Guid="{D95EEADD-76CD-4796-B966-DDFF4917CFFC}">
+            <Component Win64="yes" Id="cmp9251376FE5D3166A5423055086645609" Directory="dir907D4CFFE7D2B98BFD922AA3160B8CA3" Guid="{4A91C9A2-AE00-4D85-95EE-CCB59131FEB9}">
                 <File Id="fil12175811D668B1C7CC697D45555EFBDF" KeyPath="yes" Source="$(var.CarbonSourcePath)\Registry\Set-RegistryKeyValue.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpAE45E4A065F4DEE4CE92C0501690FF5E" Directory="dir907D4CFFE7D2B98BFD922AA3160B8CA3" Guid="{044A38CA-7302-4A99-A085-855CE14204A8}">
+            <Component Win64="yes" Id="cmpAE45E4A065F4DEE4CE92C0501690FF5E" Directory="dir907D4CFFE7D2B98BFD922AA3160B8CA3" Guid="{DDE8DC6D-0EC8-4094-BBB7-BF5B3C05B53C}">
                 <File Id="fil09E09FBF2CE08C631518A704E64D6032" KeyPath="yes" Source="$(var.CarbonSourcePath)\Registry\Test-RegistryKeyValue.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpF3710672B2CAF376D3656F03A657C6D4" Directory="dirDF4EBB1CA6C630D9BE96EB6B40071CAE" Guid="{ECB24375-35DF-4458-B838-BC6FD91B927F}">
+            <Component Win64="yes" Id="cmpF3710672B2CAF376D3656F03A657C6D4" Directory="dirDF4EBB1CA6C630D9BE96EB6B40071CAE" Guid="{260470FE-3BBE-42DE-A14D-97B7B5F058AD}">
                 <File Id="filBC25A66C6A08F8DCB101F40AC888BD94" KeyPath="yes" Source="$(var.CarbonSourcePath)\Security\Assert-AdminPrivilege.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp00D7041434ADE2333A1C9C9F9B931F49" Directory="dirDF4EBB1CA6C630D9BE96EB6B40071CAE" Guid="{C684589E-B37A-40BF-9119-04B5A2FCCCCF}">
+            <Component Win64="yes" Id="cmp00D7041434ADE2333A1C9C9F9B931F49" Directory="dirDF4EBB1CA6C630D9BE96EB6B40071CAE" Guid="{868A1145-E46F-4B85-9414-2E5884322269}">
                 <File Id="fil11D5634C6E869CC650115A56BACD0C8E" KeyPath="yes" Source="$(var.CarbonSourcePath)\Security\Convert-SecureStringToString.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp78D7B1E18F1642C5668B45C76133C259" Directory="dirDF4EBB1CA6C630D9BE96EB6B40071CAE" Guid="{462AD9FF-25A3-40AC-9F8E-70468CC6EF47}">
+            <Component Win64="yes" Id="cmp78D7B1E18F1642C5668B45C76133C259" Directory="dirDF4EBB1CA6C630D9BE96EB6B40071CAE" Guid="{68A9C713-7B2C-4CAA-98B3-D832FCE29A0B}">
                 <File Id="filDF372D4A9572B4BAB996CA89B497DCB1" KeyPath="yes" Source="$(var.CarbonSourcePath)\Security\ConvertTo-InheritanceFlag.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp443A5A9272F971EBDBA1887AD4F0FE21" Directory="dirDF4EBB1CA6C630D9BE96EB6B40071CAE" Guid="{13EA0642-F71E-4EE4-90F2-7A7A95E8A0F8}">
+            <Component Win64="yes" Id="cmp443A5A9272F971EBDBA1887AD4F0FE21" Directory="dirDF4EBB1CA6C630D9BE96EB6B40071CAE" Guid="{44B6049B-0580-4032-8856-FA87FA526B77}">
                 <File Id="filC0CCBC9F8AFF9EC6E97EEC8E27764850" KeyPath="yes" Source="$(var.CarbonSourcePath)\Security\ConvertTo-PropagationFlag.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp06C1C1B30BBF8C1B54ADD9C91B0AF1CD" Directory="dirDF4EBB1CA6C630D9BE96EB6B40071CAE" Guid="{C417AAB2-64F1-4427-B488-6D0747514828}">
+            <Component Win64="yes" Id="cmp06C1C1B30BBF8C1B54ADD9C91B0AF1CD" Directory="dirDF4EBB1CA6C630D9BE96EB6B40071CAE" Guid="{1FC701C2-0756-4091-A06D-D740E8BAF206}">
                 <File Id="fil41C095735F7F9FD915C0A1D873F9180B" KeyPath="yes" Source="$(var.CarbonSourcePath)\Security\ConvertTo-ProviderAccessControlRights.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp86BF896708D64D459CC59468CDD20FE8" Directory="dirDF4EBB1CA6C630D9BE96EB6B40071CAE" Guid="{C15060B1-549D-439C-A316-0D016C64C850}">
+            <Component Win64="yes" Id="cmp86BF896708D64D459CC59468CDD20FE8" Directory="dirDF4EBB1CA6C630D9BE96EB6B40071CAE" Guid="{DAA9F201-5CB9-40B3-BE5C-A880EFD6E85F}">
                 <File Id="filCEFE40C945BE6508FCD94A43BCFAD00B" KeyPath="yes" Source="$(var.CarbonSourcePath)\Security\Get-Permission.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp1469792EC8AE017203A401D6B839E6C5" Directory="dirDF4EBB1CA6C630D9BE96EB6B40071CAE" Guid="{10D21357-DD0F-4E1C-9F0E-1E681841A141}">
+            <Component Win64="yes" Id="cmp1469792EC8AE017203A401D6B839E6C5" Directory="dirDF4EBB1CA6C630D9BE96EB6B40071CAE" Guid="{5A1EB0D5-B2E6-46DF-8819-279888064348}">
                 <File Id="fil0A8142966F5938A9D4A72D126DB27548" KeyPath="yes" Source="$(var.CarbonSourcePath)\Security\Grant-Permission.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpBD3057CF74FED9E8B35D1C9816630114" Directory="dirDF4EBB1CA6C630D9BE96EB6B40071CAE" Guid="{2E0AEC11-9DA3-4CE0-AE2E-55CC45106778}">
+            <Component Win64="yes" Id="cmpBD3057CF74FED9E8B35D1C9816630114" Directory="dirDF4EBB1CA6C630D9BE96EB6B40071CAE" Guid="{C4C6227C-FEC8-46E8-8613-9606DE623511}">
                 <File Id="fil3DFB07AAF05544A8204F5C26F0B77ED8" KeyPath="yes" Source="$(var.CarbonSourcePath)\Security\New-Credential.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpFBAA7F84B48CE5DDCE014BD0946AC97E" Directory="dirDF4EBB1CA6C630D9BE96EB6B40071CAE" Guid="{B4B24525-7498-43F1-AB08-1A2766FF8291}">
+            <Component Win64="yes" Id="cmpFBAA7F84B48CE5DDCE014BD0946AC97E" Directory="dirDF4EBB1CA6C630D9BE96EB6B40071CAE" Guid="{41FBA6C2-C075-426D-8575-1A3118D2F170}">
                 <File Id="fil0C0BAE6D99200CDCDF5319EEF244BE2B" KeyPath="yes" Source="$(var.CarbonSourcePath)\Security\Protect-Acl.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp4501137EB6DAF8B8C55265F0488330ED" Directory="dirDF4EBB1CA6C630D9BE96EB6B40071CAE" Guid="{312A5A4F-CA61-4FC3-A7E0-2CEE3857D0A5}">
+            <Component Win64="yes" Id="cmp4501137EB6DAF8B8C55265F0488330ED" Directory="dirDF4EBB1CA6C630D9BE96EB6B40071CAE" Guid="{4AA6B72C-D3CA-4529-981C-C547A0CB247A}">
                 <File Id="fil13EBB334863D40EC5971E33BD1C6DEA4" KeyPath="yes" Source="$(var.CarbonSourcePath)\Security\Test-AdminPrivilege.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp841A31B7FE7036EC57460F7032FB6EA6" Directory="dirDF4EBB1CA6C630D9BE96EB6B40071CAE" Guid="{75D96BF7-9A78-493E-BF67-DEAFEB65243B}">
+            <Component Win64="yes" Id="cmp841A31B7FE7036EC57460F7032FB6EA6" Directory="dirDF4EBB1CA6C630D9BE96EB6B40071CAE" Guid="{1282581B-4C72-4000-A036-E48ED51268A9}">
                 <File Id="fil89A8074DECACA62BBF1CA03DBB6F48DC" KeyPath="yes" Source="$(var.CarbonSourcePath)\Security\Test-Permission.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpD966A6B83202B8A53EEE4E78F233DB65" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{BB678AF5-C81A-4CFC-B90D-C27918E1400B}">
+            <Component Win64="yes" Id="cmpD966A6B83202B8A53EEE4E78F233DB65" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{DDDD647E-10B8-45E7-AB86-85B8B70988AB}">
                 <File Id="fil9182E02066ABCAC2800F989149CC985C" KeyPath="yes" Source="$(var.CarbonSourcePath)\Service\Assert-Service.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpE104C4AD28997A2EDB8B4275EF31B287" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{DCFE20BE-035C-4B86-9C16-A3BA07F48B65}">
+            <Component Win64="yes" Id="cmpE104C4AD28997A2EDB8B4275EF31B287" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{EF9F2736-B75B-4D4F-AE3D-E1BE183BF514}">
                 <File Id="fil69D6F143BC747DE2855B65C4DA618A7A" KeyPath="yes" Source="$(var.CarbonSourcePath)\Service\Get-ServiceAcl.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpE241A36AEB14F739EB4D25290DBD6A3E" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{0C7DD223-26E7-4FC7-8969-FD264EF1ADE0}">
+            <Component Win64="yes" Id="cmpE241A36AEB14F739EB4D25290DBD6A3E" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{C31FADF6-CBE0-4E8F-9CD7-6E6D6AD4EAB1}">
                 <File Id="fil1115E99B27844CE0D7D0B18AFEA8A942" KeyPath="yes" Source="$(var.CarbonSourcePath)\Service\Get-ServicePermission.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp899392BF76E3344FFC9333ED49E3817B" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{3C9E8819-A70C-4D20-83B8-1B5727975F03}">
+            <Component Win64="yes" Id="cmp899392BF76E3344FFC9333ED49E3817B" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{58D7C76D-40CC-4E69-BE5B-108DB33D5049}">
                 <File Id="fil74B6620E748756BA10D199F2C3CC6922" KeyPath="yes" Source="$(var.CarbonSourcePath)\Service\Get-ServiceSecurityDescriptor.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp0C4A6B26E616C939B67058A8A2BF382D" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{F6725099-6DC4-494B-B6B3-3CE95C705462}">
+            <Component Win64="yes" Id="cmp0C4A6B26E616C939B67058A8A2BF382D" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{A56ED187-A971-4992-9D27-8AFB0AA064CC}">
                 <File Id="fil8B3024524B5890FFF5A5A3B064342EAC" KeyPath="yes" Source="$(var.CarbonSourcePath)\Service\Grant-ServiceControlPermission.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp5C25231A11CC8481686ACED22AB13417" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{FDBF1D50-7043-4F88-965B-78961FF2CC31}">
+            <Component Win64="yes" Id="cmp5C25231A11CC8481686ACED22AB13417" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{968853E4-5042-4E3D-9416-0914C4E96065}">
                 <File Id="fil98C7592383B6762E05EDC65D89E44AF0" KeyPath="yes" Source="$(var.CarbonSourcePath)\Service\Grant-ServicePermission.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp639735AEF9B518374C564395E99D4F45" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{1A0CBB92-E977-42C5-A20A-A1F12F136808}">
+            <Component Win64="yes" Id="cmp639735AEF9B518374C564395E99D4F45" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{A7F427DC-39F9-4A73-8F2C-9254036DAA98}">
                 <File Id="fil8E14B35AFE7D0C89BE799AE45E5FEB82" KeyPath="yes" Source="$(var.CarbonSourcePath)\Service\Install-Service.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpDC9B29839DEA519AF5B4128340868BCD" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{27541E3E-5CAE-4AD6-B888-3735F6AD0514}">
+            <Component Win64="yes" Id="cmpDC9B29839DEA519AF5B4128340868BCD" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{30A0DF05-8993-4B58-B004-F3EF0FDED688}">
                 <File Id="filCAADCC84BAA7D7267EB70146A1402AD1" KeyPath="yes" Source="$(var.CarbonSourcePath)\Service\Restart-RemoteService.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp63DB9C01BAF8CFDB5A0DE2F0BF5D12DA" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{ED37CECA-64B8-4FF7-984F-28EA3BA800B1}">
+            <Component Win64="yes" Id="cmp63DB9C01BAF8CFDB5A0DE2F0BF5D12DA" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{43ABD11D-EA16-4415-99BF-69D6910CA6E8}">
                 <File Id="filEBE278073C98E38176A9E7D03B05BFB5" KeyPath="yes" Source="$(var.CarbonSourcePath)\Service\Revoke-ServicePermission.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp1614643E59D40D67B240A652342F8884" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{B235E670-A199-4B1E-918C-81D301CB812D}">
+            <Component Win64="yes" Id="cmp1614643E59D40D67B240A652342F8884" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{D36820C4-E122-4575-A389-3D1297E07575}">
                 <File Id="filA7D22E2D47B518E2469BC0256036640D" KeyPath="yes" Source="$(var.CarbonSourcePath)\Service\Set-ServiceAcl.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpEC157071E2350B95FDABED2EF7EFBC6C" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{40D6D5BD-5FCE-4C4D-B129-620C9D9C1555}">
+            <Component Win64="yes" Id="cmpEC157071E2350B95FDABED2EF7EFBC6C" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{1E3D0BC9-3860-46B4-893D-96C4FF7DC1B0}">
                 <File Id="fil7B30D7F900A5B589BBE4FAA3FB542B08" KeyPath="yes" Source="$(var.CarbonSourcePath)\Service\Test-Service.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpCD1E256AC534B2C6EFA9281C403D1429" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{D7DE077E-10FA-4344-865E-5448BE602C17}">
+            <Component Win64="yes" Id="cmpCD1E256AC534B2C6EFA9281C403D1429" Directory="dirB322264EB634D81AD09ACDFC7A7F9366" Guid="{29B9F379-6851-48D1-A79A-C2E78D5BA1ED}">
                 <File Id="fil28B4F04BFEF34617F9A582A5F67E48EB" KeyPath="yes" Source="$(var.CarbonSourcePath)\Service\Uninstall-Service.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp0D351E389D9ABC5D7562DF71A6EFFCE9" Directory="dirE126E107168C7DF736ACC536D8639463" Guid="{7597B102-7458-4D5E-A25D-6A48291E7C43}">
+            <Component Win64="yes" Id="cmp0D351E389D9ABC5D7562DF71A6EFFCE9" Directory="dirE126E107168C7DF736ACC536D8639463" Guid="{3222D60A-B65D-49DC-A64D-D551A98E6418}">
                 <File Id="fil23F35624F8B46BDF89179028A3BB305E" KeyPath="yes" Source="$(var.CarbonSourcePath)\Shares\Install-SmbShare.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpD3C9C6B7374AB13A5110B9439E2C9608" Directory="dirB11E6E41D45D7DA6765A7AD9E111F982" Guid="{4EEB490F-DCC7-49C8-B5F7-0504490A5AF4}">
+            <Component Win64="yes" Id="cmpD3C9C6B7374AB13A5110B9439E2C9608" Directory="dirB11E6E41D45D7DA6765A7AD9E111F982" Guid="{A73CCF93-6ABB-4F21-984B-6209D2C1832D}">
                 <File Id="filEA7A3D93923C5597962EF7DAE895FDF9" KeyPath="yes" Source="$(var.CarbonSourcePath)\Text\ConvertFrom-Base64.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp09BF50E340FABE6FACEFF2A4E47E3ACB" Directory="dirB11E6E41D45D7DA6765A7AD9E111F982" Guid="{624E10C7-E24C-4E38-9AF9-E0C7DCC957BB}">
+            <Component Win64="yes" Id="cmp09BF50E340FABE6FACEFF2A4E47E3ACB" Directory="dirB11E6E41D45D7DA6765A7AD9E111F982" Guid="{A33FF766-B878-468E-8321-CC9F7E338D62}">
                 <File Id="filE53528024512ACB6F06245C6E3FDE49D" KeyPath="yes" Source="$(var.CarbonSourcePath)\Text\ConvertTo-Base64.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpE9108D9FF335A03BC3953DB945B4BCF5" Directory="dir0B6B897C0FFFCEAE33149413F344860A" Guid="{6A637E4F-3413-44AB-8186-A5EE8DEE89DF}">
+            <Component Win64="yes" Id="cmpE9108D9FF335A03BC3953DB945B4BCF5" Directory="dir0B6B897C0FFFCEAE33149413F344860A" Guid="{2938C4EE-B8CD-4F84-ADA7-E6531DD0D9AB}">
                 <File Id="filA8F09C1BE7D80D876B8E6CF9FAD6D902" KeyPath="yes" Source="$(var.CarbonSourcePath)\UsersAndGroups\Add-GroupMember.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpE0D9002F28DCBB03518DCC8E1FEE6ED6" Directory="dir0B6B897C0FFFCEAE33149413F344860A" Guid="{0A4BE6DF-3ECC-47CD-9C63-9F0146A915FE}">
+            <Component Win64="yes" Id="cmpE0D9002F28DCBB03518DCC8E1FEE6ED6" Directory="dir0B6B897C0FFFCEAE33149413F344860A" Guid="{40540C3A-9951-4900-8F9F-9C823FDAEF16}">
                 <File Id="fil0B157ED4885E9B8FE757C05C11ECCEE6" KeyPath="yes" Source="$(var.CarbonSourcePath)\UsersAndGroups\Get-WmiLocalUserAccount.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp3649705D5AF3C75D0D763B76418E69E3" Directory="dir0B6B897C0FFFCEAE33149413F344860A" Guid="{1963DFCB-FE0C-41A2-AEAB-96817173A8BF}">
+            <Component Win64="yes" Id="cmp3649705D5AF3C75D0D763B76418E69E3" Directory="dir0B6B897C0FFFCEAE33149413F344860A" Guid="{EB7AD79E-E214-4B06-B3B0-1B633CF3D24F}">
                 <File Id="filFE1FBC38371131DEBC8A5827A25880E0" KeyPath="yes" Source="$(var.CarbonSourcePath)\UsersAndGroups\Install-Group.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp77F28CF3979D2BC2E793792DBB3FA36F" Directory="dir0B6B897C0FFFCEAE33149413F344860A" Guid="{C563891A-BEC7-47F8-B6C3-1854CACBB769}">
+            <Component Win64="yes" Id="cmp77F28CF3979D2BC2E793792DBB3FA36F" Directory="dir0B6B897C0FFFCEAE33149413F344860A" Guid="{6A95151F-C78B-4285-A9D4-9C93F85BE805}">
                 <File Id="filE9D7BAB6843B81804B5B230A4CD0E94B" KeyPath="yes" Source="$(var.CarbonSourcePath)\UsersAndGroups\Install-User.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpDE5B1C5C9AF51C6F11A13A7A1E952785" Directory="dir0B6B897C0FFFCEAE33149413F344860A" Guid="{45215C35-AF8B-493F-AB04-BAF28F74BD8B}">
+            <Component Win64="yes" Id="cmpDE5B1C5C9AF51C6F11A13A7A1E952785" Directory="dir0B6B897C0FFFCEAE33149413F344860A" Guid="{7BDF390E-1032-4BCC-B431-BE25256C83F4}">
                 <File Id="filB1B1390562153982B9DFC3B056BEFDDF" KeyPath="yes" Source="$(var.CarbonSourcePath)\UsersAndGroups\Resolve-IdentityName.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp3E510A1A8EB79561AC5B3FD7FD2C3158" Directory="dir0B6B897C0FFFCEAE33149413F344860A" Guid="{062F303F-6692-4FD0-ABEF-05118DF6B5F5}">
+            <Component Win64="yes" Id="cmp3E510A1A8EB79561AC5B3FD7FD2C3158" Directory="dir0B6B897C0FFFCEAE33149413F344860A" Guid="{EBBACEF3-EA66-4024-AFE6-00E3A671452D}">
                 <File Id="fil34AC02DB86DD8960FFA51FFD2CFCDFC6" KeyPath="yes" Source="$(var.CarbonSourcePath)\UsersAndGroups\Test-Identity.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp578FB7FA280CA06932323703F290CF60" Directory="dir0B6B897C0FFFCEAE33149413F344860A" Guid="{E0F2DBB8-ED99-4CBC-BE66-4970FFBDE7F3}">
+            <Component Win64="yes" Id="cmp578FB7FA280CA06932323703F290CF60" Directory="dir0B6B897C0FFFCEAE33149413F344860A" Guid="{2DD4FB35-1436-481A-A83D-F7C52891F035}">
                 <File Id="fil05E6D66F864D4D8AD8204DF7A7E7B673" KeyPath="yes" Source="$(var.CarbonSourcePath)\UsersAndGroups\Test-User.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp6EC8D1A1E51FD7FC7B9192B07175E3AD" Directory="dir0B6B897C0FFFCEAE33149413F344860A" Guid="{7ED191C9-6DC5-4AE3-914C-856B6F087A4B}">
+            <Component Win64="yes" Id="cmp6EC8D1A1E51FD7FC7B9192B07175E3AD" Directory="dir0B6B897C0FFFCEAE33149413F344860A" Guid="{256D16ED-A0AF-4F07-885E-D14D3F06BD33}">
                 <File Id="fil46654AD7C1BCB3A0C47F84730C75D476" KeyPath="yes" Source="$(var.CarbonSourcePath)\UsersAndGroups\Uninstall-User.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp9BC955DDF4356E04A4A25CF634817CCD" Directory="dirD39BEE5181E98FFC4AEC7093FD175DEF" Guid="{1626A313-E6DD-41BF-86DC-D461EF7425DB}">
+            <Component Win64="yes" Id="cmp9BC955DDF4356E04A4A25CF634817CCD" Directory="dirD39BEE5181E98FFC4AEC7093FD175DEF" Guid="{046013A1-CF6C-4062-A814-B63ADD138460}">
                 <File Id="filC6CEEE41AB0665FC37A73A0A96395CD3" KeyPath="yes" Source="$(var.CarbonSourcePath)\WindowsFeatures\Assert-WindowsFeatureFunctionsSupported.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp40A85E153B49B7ABE332E9599FA00B41" Directory="dirD39BEE5181E98FFC4AEC7093FD175DEF" Guid="{195BA21A-8C3D-4C11-94A5-922467E50842}">
+            <Component Win64="yes" Id="cmp40A85E153B49B7ABE332E9599FA00B41" Directory="dirD39BEE5181E98FFC4AEC7093FD175DEF" Guid="{205D86F1-2AE2-4F2F-BD67-451969799717}">
                 <File Id="fil58B15A1B1C82A8DB851E979A60C431DB" KeyPath="yes" Source="$(var.CarbonSourcePath)\WindowsFeatures\Get-WindowsFeature.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpD9CAF90F174D03F4C7FB1D12F5259BB3" Directory="dirD39BEE5181E98FFC4AEC7093FD175DEF" Guid="{4512B67C-72D4-44BF-8F23-7B0E715AC865}">
+            <Component Win64="yes" Id="cmpD9CAF90F174D03F4C7FB1D12F5259BB3" Directory="dirD39BEE5181E98FFC4AEC7093FD175DEF" Guid="{DB6451BE-2731-44DE-9192-0329CFF0BEC6}">
                 <File Id="fil28E2AA94730120F419EE51FB85CA0DBE" KeyPath="yes" Source="$(var.CarbonSourcePath)\WindowsFeatures\Install-WindowsFeature.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp60B3BE16854D7D35862BB85F0FBBEB9F" Directory="dirD39BEE5181E98FFC4AEC7093FD175DEF" Guid="{624ACD76-C9D3-4DE0-9D3A-9F3B7B97C5A6}">
+            <Component Win64="yes" Id="cmp60B3BE16854D7D35862BB85F0FBBEB9F" Directory="dirD39BEE5181E98FFC4AEC7093FD175DEF" Guid="{0F1226FF-BFBF-475D-9BB3-DAFDA48935B1}">
                 <File Id="fil2664A4304CB1FBCF6368F3EC51A01AA7" KeyPath="yes" Source="$(var.CarbonSourcePath)\WindowsFeatures\Resolve-WindowsFeatureName.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp3C8E804186540A773209085E5586004C" Directory="dirD39BEE5181E98FFC4AEC7093FD175DEF" Guid="{A24C0D9D-32B2-469B-A541-5E6B7BFFC7B8}">
+            <Component Win64="yes" Id="cmp3C8E804186540A773209085E5586004C" Directory="dirD39BEE5181E98FFC4AEC7093FD175DEF" Guid="{09AAC425-4AB9-4249-ACF3-3ADD8C48FDAB}">
                 <File Id="fil8E32D30FC8C9FCE612F74306BD460E6A" KeyPath="yes" Source="$(var.CarbonSourcePath)\WindowsFeatures\Test-WindowsFeature.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmp26D72C3B664D99AD83B0EBD45EF3DC46" Directory="dirD39BEE5181E98FFC4AEC7093FD175DEF" Guid="{EABAF584-BF68-4699-84EB-84CC938ACBBB}">
+            <Component Win64="yes" Id="cmp26D72C3B664D99AD83B0EBD45EF3DC46" Directory="dirD39BEE5181E98FFC4AEC7093FD175DEF" Guid="{9BD192B6-B74D-4E72-AE13-6264524CE73F}">
                 <File Id="fil3D6F763A2046F4BD29AB866C9E76A1FC" KeyPath="yes" Source="$(var.CarbonSourcePath)\WindowsFeatures\Uninstall-WindowsFeature.ps1" />
             </Component>
-            <Component Win64="yes" Id="cmpD6654580964ACA4569C1C9DAC22E1487" Directory="dir10A1CC53C2FD1B31C0D97E9B5D605DE3" Guid="{01E89539-2BF0-4A72-A40C-82D8B7196731}">
+            <Component Win64="yes" Id="cmpD6654580964ACA4569C1C9DAC22E1487" Directory="dir10A1CC53C2FD1B31C0D97E9B5D605DE3" Guid="{84019456-066E-4BA8-9C0F-2F51A81EC437}">
                 <File Id="filDFA6BE1CCFC0F121AA5CFF62CD4631DE" KeyPath="yes" Source="$(var.CarbonSourcePath)\Xml\Convert-XmlFile.ps1" />
             </Component>
         </ComponentGroup>

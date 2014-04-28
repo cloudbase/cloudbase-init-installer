@@ -52,6 +52,21 @@ var MsiActionStatus =
     Ignore: 5  // skip remaining actions; this is not an error.
 };
 
+var FSO_FOR_READING = 1;
+var FSO_FOR_WRITING = 2;
+var FSO_FOR_APPENDING = 8;
+
+var FSO_SPECIAL_FOLDER_WINDOWS = 0;
+var FSO_SPECIAL_FOLDER_SYSTEM = 1;
+var FSO_SPECIAL_FOLDER_TEMP = 2;
+
+var SID_ADMINISTRATORS = "S-1-5-32-544";
+var SID_USERS = "S-1-5-32-545";
+
+String.prototype.endsWith = function (suffix) {
+    return this.indexOf(suffix, this.length - suffix.length) !== -1;
+};
+
 // spool an informational message into the MSI log, if it is enabled.
 function logMessage(msg) {
     var record = Session.Installer.CreateRecord(0);
@@ -266,30 +281,163 @@ function deleteViewRecords(view) {
     }
 }
 
+function getShortPath(path) {
+    var fso = new ActiveXObject("Scripting.FileSystemObject");
+    return fso.GetFile(path).ShortPath;
+}
+
+function checkBoxValueToBool(str) {
+    return (str && str.length > 0 ? true : false).toString();
+}
+
+function writeConfigFile(path, configSections) {
+    var fso = new ActiveXObject("Scripting.FileSystemObject");
+    var fs = fso.OpenTextFile(path, 2, true);
+
+    logMessage("Writing file " + path);
+
+    for (section in configSections) {
+        fs.WriteLine("[" + section + "]");
+        config = configSections[section]
+        for (var k in config)
+            fs.WriteLine(k + "=" + config[k]);
+    }
+    fs.Close();
+}
+
+function appendFile(srcPath, destPath) {
+    var fso = new ActiveXObject("Scripting.FileSystemObject");
+
+    fs = fso.OpenTextFile(srcPath, FSO_FOR_READING);
+    fd = fso.OpenTextFile(destPath, FSO_FOR_APPENDING);
+
+    while (!fs.AtEndOfStream) {
+        var l = fs.ReadLine();
+        fd.WriteLine(l);
+    }
+
+    fs.Close();
+    fd.Close();
+}
+
+function generateSelfSignedX509Cert(opensslBinPath, x509CertFilePath, commonName, keyFilePath) {
+    var fso = new ActiveXObject("Scripting.FileSystemObject");
+    var combineCertKey = false;
+
+    var certPath = fso.GetParentFolderName(x509CertFilePath);
+
+    if (typeof keyFilePath == 'undefined') {
+        keyFilePath = fso.BuildPath(certPath, "key.pem");
+        combineCertKey = true;
+    }
+
+    var opensslConf = fso.BuildPath(certPath, fso.GetTempName());
+
+    f = fso.CreateTextFile(opensslConf, true);
+    f.WriteLine("[ req ]\n" +
+                "prompt = no\n" +
+                "basicConstraints = CA:false\n" +
+                "distinguished_name = self_signed_distinguished_name\n" +
+                "[ self_signed_distinguished_name ]\n" +
+                "commonName = " + commonName + "\n" +
+                "stateOrProvinceName = Self Signed\n" +
+                "countryName = --\n" +
+                "emailAddress = selfsigned@selfsigned\n" +
+                "organizationName = Self Signed\n");
+    f.Close();
+
+    var env = { "OPENSSL_CONF": opensslConf }
+    var opensslPath = fso.BuildPath(opensslBinPath, "openssl.exe");
+
+    var cmd = "\"" + opensslPath + "\" req -x509 -nodes -days 3650 -newkey rsa:2048 " +
+              "-keyout \"" + keyFilePath + "\" " +
+              "-out \"" + x509CertFilePath + "\"";
+
+    runCommand(cmd, 0, env);
+
+    fso.DeleteFile(opensslConf, true);
+
+    if (combineCertKey) {
+        appendFile(keyFilePath, x509CertFilePath);
+        fso.DeleteFile(keyFilePath, true);
+    }
+}
+
+function removeUsersACEFromPath(path) {
+    var fso = new ActiveXObject("Scripting.FileSystemObject");
+    f = fso.GetSpecialFolder(FSO_SPECIAL_FOLDER_SYSTEM);
+
+    var icaclsPath = fso.BuildPath(f, "icacls.exe");
+    runCommand(icaclsPath + " \"" + path + "\" /inheritance:d");
+    runCommand(icaclsPath + " \"" + path + "\" /remove:g *" + SID_USERS);
+}
+
+function getNativeSystem32Dir() {
+    var shell = new ActiveXObject("WScript.Shell");
+    var sysdir = shell.ExpandEnvironmentStrings("%WINDIR%\\SYSNATIVE");
+
+    var fso = new ActiveXObject("Scripting.FileSystemObject");
+    if (!fso.FolderExists(sysdir))
+        sysdir = shell.ExpandEnvironmentStrings("%WINDIR%\\System32");
+
+    return sysdir;
+}
+
+function removeUserFromWinlogonSpecialAccounts(userName) {
+    runCommand(getNativeSystem32Dir() + "\\reg.exe DELETE \"HKLM\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\SpecialAccounts\\UserList\" /f /v " + userName);
+}
+
+function addUserToWinlogonSpecialAccounts(userName) {
+    runCommand(getNativeSystem32Dir() + "\\reg.exe ADD \"HKLM\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\SpecialAccounts\\UserList\" /f /t REG_DWORD /d 0 /v " + userName);
+}
+
 var commonIncludeFileName = "82311161-875A-4587-A86C-9784581D8F56.js";
+var commonIncludeBinaryNamePrefix = 'ActionsCommon';
 
-// Awful workaround to include common js features
-function createCommonIncludeFileAction() {
-    var view = Session.Database.OpenView("SELECT `Data` FROM `Binary` where `Name` = 'ActionsCommon'");
-    view.Execute();
-    var record = view.Fetch();
-    var size = record.DataSize(1);
-    var data = record.ReadStream(1, size, 2);
-
+function getCommonIncludeFilePath() {
     // Cannot use the user's %TEMP% folder as the file needs to be accessed also by non impersonated scripts
     var shell = new ActiveXObject("WScript.Shell");
     var windir = shell.ExpandEnvironmentStrings("%WINDIR%");
-    var path = windir + "\\Temp\\" + commonIncludeFileName;
+    return windir + "\\Temp\\" + commonIncludeFileName;
+}
+
+// Awful workaround to include common js features
+function createCommonIncludeFileAction() {
+    var view = Session.Database.OpenView("SELECT `Name`, `Data` FROM `Binary`");
+    view.Execute();
+
+    var record;
+    while ((record = view.Fetch()) != null) {
+        view.Modify(MsiViewModify.Delete, record);
+        var name = record.StringData(1);
+
+        if (name.indexOf(commonIncludeBinaryNamePrefix) == 0)
+            break;
+    }
+
+    if (!record)
+        throwException(-1, 'Cannot find binary data starting with: ' + commonIncludeBinaryNamePrefix);
+
+    var size = record.DataSize(2);
+    var data = record.ReadStream(2, size, 2);
+
+    var commonIncludeFilePath = getCommonIncludeFilePath();
 
     var fso = new ActiveXObject("Scripting.FileSystemObject");
-    var fs = fso.OpenTextFile(path, 2, true);
+    var fs = fso.OpenTextFile(commonIncludeFilePath, 2, true);
     fs.Write(data);
     fs.Close();
 
     return MsiActionStatus.Ok;
 }
 
-function getShortPath(path) {
+function deleteCommonIncludeFileAction() {
     var fso = new ActiveXObject("Scripting.FileSystemObject");
-    return fso.GetFile(path).ShortPath;
+    var commonIncludeFilePath = getCommonIncludeFilePath();
+
+    if (fso.FileExists(commonIncludeFilePath)) {
+        fso.DeleteFile(commonIncludeFilePath, true);
+    }
+
+    return MsiActionStatus.Ok;
 }

@@ -50,6 +50,7 @@
     <Content Include="Actions\GenericActions.js" />
     <Content Include="Actions\PythonActions.js" />
     <Content Include="Actions\SysprepActions.js" />
+    <Content Include="Actions\UserActions.js" />
     <Content Include="Binaries\bsdtar.COPYING" />
     <Content Include="Binaries\bsdtar.exe" />
     <Content Include="Binaries\Elevate_x64.exe" />

@@ -7,6 +7,7 @@
     <Binary Id="ConfFileActions" SourceFile="Actions\ConfFileActions.js" />
     <Binary Id="ConfigDlgActions" SourceFile="Actions\ConfigDlgActions.js" />
     <Binary Id="SysprepActions" SourceFile="Actions\SysprepActions.js" />
+    <Binary Id="UserActions" SourceFile="Actions\UserActions.js" />
     <Binary Id="UtilsActionsDLL" SourceFile="UtilsActions.dll" />
 
     <CustomAction Id="GenerateRandomPassword"
@@ -47,6 +48,11 @@
                   Value="[INSTALLDIR]|[CLOUDBASEINITCONFFOLDER]|[VersionNT64]" />
     <CustomAction Id="UpdateUnattendXmlAction" BinaryKey="SysprepActions" JScriptCall="updateUnattendXmlAction" Execute="deferred"
                   Return="check" Impersonate="no" />
+
+    <CustomAction Id="AddUserToWinlogonSpecialAccounts_Prop" Return="check" Property="AddUserToWinlogonSpecialAccounts" Value="cloudbase-init" />
+    <CustomAction Id="AddUserToWinlogonSpecialAccounts"
+              BinaryKey="UserActions"
+              JScriptCall="addUserToWinlogonSpecialAccountsAction" Execute="deferred" Return="check" Impersonate="no" />
 
     <CustomAction Id="RunSysprep" BinaryKey="SysprepActions" JScriptCall="runSysprepAction" Execute="immediate" Impersonate="yes" Return="check" />
   </Fragment>

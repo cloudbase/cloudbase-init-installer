@@ -67,6 +67,9 @@
       <Custom Action="AssignUserRights_Prop" After="CostFinalize" />
       <Custom Action="AssignUserRights" Before="InstallFinalize"><![CDATA[REMOVE <> "ALL"]]></Custom>
 
+      <Custom Action="AddUserToWinlogonSpecialAccounts_Prop" After="CostFinalize" />
+      <Custom Action="AddUserToWinlogonSpecialAccounts" Before="InstallFinalize"><![CDATA[REMOVE <> "ALL"]]></Custom>
+
       <Custom Action="PyWin32PostInstall_Prop" After="CostFinalize" />
       <Custom Action="PyWin32PostInstall" Before="InstallFinalize">NOT Installed</Custom>
     </InstallExecuteSequence>
@@ -162,7 +165,7 @@
 
     <Component Id="CloudbaseInitService" Directory="BINFOLDER" Guid="{234DDD41-5BA4-4777-A0B0-8462D47777E3}">
 
-      <util:User Id="cloudbaseinituser" LogonAsService="yes" CreateUser="yes" CanNotChangePassword="yes" Disabled="no" Name="Cloudbase-Init"
+      <util:User Id="cloudbaseinituser" LogonAsService="yes" CreateUser="yes" CanNotChangePassword="yes" Disabled="no" Name="cloudbase-init"
                  Password="[GENERATED_PASSWORD]" PasswordExpired="no" PasswordNeverExpires="yes" RemoveOnUninstall="yes" UpdateIfExists="yes">
         <util:GroupRef Id="AdministratorsGroup"/>
       </util:User>
@@ -177,7 +180,7 @@
                DisplayName="Cloud Initialization Service"
                Description="Service wrapper for cloudbase-init"
                Start="auto"
-               Account=".\Cloudbase-Init"
+               Account=".\cloudbase-init"
                Password="[GENERATED_PASSWORD]"
                ErrorControl="ignore"
                Interactive="no">
