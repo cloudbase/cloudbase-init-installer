@@ -23,6 +23,11 @@
                   BinaryKey="ActionsCommon"
                   JScriptCall="createCommonIncludeFileAction" />
 
+    <CustomAction Id="DeleteCommonIncludeFile"
+              BinaryKey="ActionsCommon"
+              JScriptCall="deleteCommonIncludeFileAction"
+              Execute="deferred" Return="check" Impersonate="no" />
+
     <CustomAction Id="InitConfigDlg"
                   BinaryKey="ConfigDlgActions"
                   JScriptCall="initConfigDlgAction" />

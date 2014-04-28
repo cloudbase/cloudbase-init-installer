@@ -56,22 +56,24 @@
       <Custom Action="GenerateRandomPassword" After="CostFinalize" />
 
       <Custom Action="UpdatePythonShellInScripts_Prop" After="CostFinalize" />
-      <Custom Action="UpdatePythonShellInScripts" Before="InstallFinalize">NOT Installed</Custom>
+      <Custom Action="UpdatePythonShellInScripts" Before="DeleteCommonIncludeFile">NOT Installed</Custom>
 
       <Custom Action="GenerateCloudbaseInitConfFile_Prop" After="CostFinalize" />
-      <Custom Action="GenerateCloudbaseInitConfFile" Before="InstallFinalize"><![CDATA[REMOVE <> "ALL"]]></Custom>
+      <Custom Action="GenerateCloudbaseInitConfFile" Before="DeleteCommonIncludeFile"><![CDATA[REMOVE <> "ALL"]]></Custom>
 
       <Custom Action="UpdateUnattendXmlAction_Prop" After="CostFinalize" />
-      <Custom Action="UpdateUnattendXmlAction" Before="InstallFinalize"><![CDATA[REMOVE <> "ALL"]]></Custom>
+      <Custom Action="UpdateUnattendXmlAction" Before="DeleteCommonIncludeFile"><![CDATA[REMOVE <> "ALL"]]></Custom>
 
       <Custom Action="AssignUserRights_Prop" After="CostFinalize" />
       <Custom Action="AssignUserRights" Before="InstallFinalize"><![CDATA[REMOVE <> "ALL"]]></Custom>
 
       <Custom Action="AddUserToWinlogonSpecialAccounts_Prop" After="CostFinalize" />
-      <Custom Action="AddUserToWinlogonSpecialAccounts" Before="InstallFinalize"><![CDATA[REMOVE <> "ALL"]]></Custom>
+      <Custom Action="AddUserToWinlogonSpecialAccounts" Before="DeleteCommonIncludeFile"><![CDATA[REMOVE <> "ALL"]]></Custom>
 
       <Custom Action="PyWin32PostInstall_Prop" After="CostFinalize" />
-      <Custom Action="PyWin32PostInstall" Before="InstallFinalize">NOT Installed</Custom>
+      <Custom Action="PyWin32PostInstall" Before="DeleteCommonIncludeFile">NOT Installed</Custom>
+
+      <Custom Action="DeleteCommonIncludeFile" Before="InstallFinalize" />
     </InstallExecuteSequence>
 
     <InstallUISequence>
