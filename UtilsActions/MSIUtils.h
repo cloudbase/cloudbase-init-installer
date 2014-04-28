@@ -82,6 +82,7 @@ void LogException(MSIHANDLE hInstall, const MessageException& ex);
 void LogException(MSIHANDLE hInstall, const std::exception& ex);
 void GetGUID(PWSTR guid);
 void Split(PCWSTR str, WCHAR delim, std::vector<std::wstring> &elems);
+std::wstring GetPropertyValue(MSIHANDLE hInstall, PCWSTR propertyName);
 void SplitCustomData(MSIHANDLE hInstall, std::vector<std::wstring> &data, WCHAR delim = L'|');
 void WriteLogFile(PWSTR path, PCWSTR msg);
 void WriteLogFile(PWSTR path, PCSTR msg);

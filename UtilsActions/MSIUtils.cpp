@@ -153,14 +153,17 @@ void Split(PCWSTR str, WCHAR delim, vector<wstring> &elems) {
 		elems.push_back(L"");
 }
 
+wstring GetPropertyValue(MSIHANDLE hInstall, PCWSTR propertyName)
+{
+	WCHAR data[2048];
+	DWORD bufSize = sizeof(data) / sizeof(WCHAR);
+	CheckRetVal(::MsiGetProperty(hInstall, propertyName, data, &bufSize));
+    return data;
+}
+
 void SplitCustomData(MSIHANDLE hInstall, vector<wstring> &data, WCHAR delim)
 {
-	WCHAR customActionData[2048];
-	DWORD bufSize = sizeof(customActionData) / sizeof(WCHAR);
-
-	CheckRetVal(::MsiGetProperty(hInstall, L"CustomActionData", customActionData, &bufSize));
-
-	Split(customActionData, delim, data);
+	Split(GetPropertyValue(hInstall, L"CustomActionData").c_str(), delim, data);
 }
 
 void CheckRetVal(HRESULT hres)

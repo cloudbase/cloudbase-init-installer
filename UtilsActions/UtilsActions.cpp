@@ -13,7 +13,8 @@
 using namespace std;
 
 #define PASSWORD_LENGTH 20
-#define PASSWORD_MSI_PROPERTY L"GENERATED_PASSWORD"
+#define PASSWORD_MSI_PROPERTY_NAME_PROPERTY L"GENERATED_PASSWORD_PROPERTY_NAME"
+#define PASSWORD_MSI_DEFAULT_PROPERTY_NAME L"GENERATED_PASSWORD"
 
 wstring GenerateRandomPassword()
 {
@@ -183,9 +184,18 @@ UINT __stdcall GenerateRandomPasswordAction(MSIHANDLE hInstall)
     try
     {
         wstring& password = GenerateRandomPassword();
-        retValue = ::MsiSetProperty(hInstall, PASSWORD_MSI_PROPERTY, password.c_str());
+
+        wstring propertyName = GetPropertyValue(hInstall, PASSWORD_MSI_PROPERTY_NAME_PROPERTY);
+        if(propertyName.empty())
+            propertyName = PASSWORD_MSI_DEFAULT_PROPERTY_NAME;
+
+        LogMessage(hInstall, (L"Random password property name: " + propertyName).c_str());
+
+        CheckRetVal(::MsiSetProperty(hInstall, propertyName.c_str(), password.c_str()));
 
         LogMessage(hInstall, L"Random password generated");
+
+        retValue = ERROR_SUCCESS;
     }
     catch(MessageException& ex)
     {
