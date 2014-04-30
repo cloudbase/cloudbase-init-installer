@@ -14,22 +14,6 @@ function loadCommonIncludeFile(fileName) {
 eval(loadCommonIncludeFile(commonIncludeFileName));
 // End workaround
 
-function checkBoxValueToBool(str) {
-    return (str && str.length > 0 ? true : false).toString();
-}
-
-function writeConfigFile(path, config) {
-    var fso = new ActiveXObject("Scripting.FileSystemObject");
-    var fs = fso.OpenTextFile(path, 2, true);
-
-    logMessage("Writing file " + path);
-
-    fs.WriteLine("[DEFAULT]");
-    for (var k in config)
-        fs.WriteLine(k + "=" + config[k]);
-    fs.Close();
-}
-
 function writeCloudbaseInitConfFileAction() {
     try {
         logMessage("Writing cloudbase-init.conf file");
