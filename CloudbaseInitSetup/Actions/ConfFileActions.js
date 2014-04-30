@@ -84,7 +84,7 @@ function writeCloudbaseInitConfFileAction() {
             config["maas_oauth_token_secret"] = maasOAuthTokenSecret;
         }
 
-        writeConfigFile(cloudbaseInitConfFile, config);
+        writeConfigFile(cloudbaseInitConfFile, { "DEFAULT": config });
 
         var cloudbaseInitConfFileUnattend = cloudbaseInitConfFolder + "cloudbase-init-unattend.conf";
 
@@ -97,7 +97,7 @@ function writeCloudbaseInitConfFileAction() {
         config["stop_service_on_exit"] = false;
         config["logfile"] = "cloudbase-init-unattend.log";
 
-        writeConfigFile(cloudbaseInitConfFileUnattend, config);
+        writeConfigFile(cloudbaseInitConfFileUnattend, { "DEFAULT": config });
 
         return MsiActionStatus.Ok;
     }
