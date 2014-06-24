@@ -2,6 +2,6 @@
 <?if $(var.Platform) = "x64" ?>
   <?define PlatformSystemFolder = "System64Folder" ?>
 <?else ?>
-  <?define PlatformSystemFolder = "System32Folder" ?>
+  <?define PlatformSystemFolder = "SystemFolder" ?>
 <?endif ?>
 <Include />
