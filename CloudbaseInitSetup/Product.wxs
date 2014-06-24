@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
   <Product Id="{ED85F19F-057A-4EE6-BC8D-F576DEACE78D}" Name="Cloudbase-Init" Language="1033" Version="1.0.0.0" Manufacturer="Cloudbase Solutions Srl" UpgradeCode="BA8F3CDD-9340-4852-8515-CF0BD5CA20E3">
-    <Package InstallerVersion="300" Compressed="yes" InstallScope="perMachine" InstallPrivileges="elevated" Platform="x64"/>
+    <?include $(sys.CURRENTDIR)\Config.wxi?>
+    <Package InstallerVersion="300" Compressed="yes" InstallScope="perMachine" InstallPrivileges="elevated" Platform="$(var.Platform)"/>
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate EmbedCab="yes" CompressionLevel="mszip" />
@@ -106,13 +107,13 @@
     </DirectoryRef>
 
     <DirectoryRef Id="CLOUDBASEINITCONFFOLDER">
-      <Component Id="CloudbaseInitConfFolder" Guid="{7A719841-4A02-4DA6-8114-C784251CBA9D}">
+      <Component Id="CloudbaseInitConfFolder" Guid="{7A719841-4A02-4DA6-8114-C784251CBA9D}" Win64="no">
         <File Id="Unattend.xml" Source="Unattend.xml" Checksum="yes" KeyPath="yes" />
       </Component>
     </DirectoryRef>
 
     <DirectoryRef Id="LOGFOLDER">
-      <Component Id="CloudbaseInitLogFolder" Guid="{3D4E7A44-01FE-4DE9-83B5-689B7E8C671B}">
+      <Component Id="CloudbaseInitLogFolder" Guid="{3D4E7A44-01FE-4DE9-83B5-689B7E8C671B}" Win64="no">
         <CreateFolder />
       </Component>
     </DirectoryRef>
@@ -125,7 +126,7 @@
 
   <Fragment>
     <DirectoryRef Id="TARGETDIR">
-      <Directory Id="System64Folder" Name="System64Folder">
+      <Directory Id="PlatformSystemFolder" Name="$(var.PlatformSystemFolder)">
         <Directory Id="WindowsPowerShell" Name="WindowsPowerShell">
           <Directory Id="v1.0" Name="v1.0">
             <Directory Id="PowershellModules" Name="Modules" />
@@ -143,17 +144,17 @@
   </Fragment>
 
   <Fragment>
-    <Component Id="ElevateUtils" Directory="BINFOLDER" Guid="{90A6F90D-34DF-4226-B368-0C2AA4F08BB8}">
+    <Component Id="ElevateUtils" Directory="BINFOLDER" Guid="{90A6F90D-34DF-4226-B368-0C2AA4F08BB8}" Win64="no">
       <File Id="Elevate_x86.exe" Source="Binaries\Elevate_x86.exe" Checksum="yes" />
       <File Id="Elevate_x64.exe" Source="Binaries\Elevate_x64.exe" KeyPath="yes" Checksum="yes" />
     </Component>
 
-    <Component Id="bsdtar" Directory="BINFOLDER" Guid="{1DBADEF2-ED7B-4F98-845C-4E049D7E26F0}">
+    <Component Id="bsdtar" Directory="BINFOLDER" Guid="{1DBADEF2-ED7B-4F98-845C-4E049D7E26F0}" Win64="no">
       <File Id="bsdtar.exe" Source="Binaries\bsdtar.exe" KeyPath="yes" Checksum="yes" />
       <File Id="bsdtar.COPYING" Source="Binaries\bsdtar.COPYING" Checksum="yes" />
     </Component>
 
-    <Component Id="SetSetupComplete" Directory="BINFOLDER" Guid="{4507F735-3BD0-403B-96C9-6959B6B617C1}">
+    <Component Id="SetSetupComplete" Directory="BINFOLDER" Guid="{4507F735-3BD0-403B-96C9-6959B6B617C1}" Win64="no">
       <File Id="SetSetupComplete.cmd" Source="SetSetupComplete.cmd" Checksum="yes" KeyPath="yes" />
     </Component>    
   </Fragment>
@@ -165,7 +166,7 @@
     <util:Group Id="AdministratorsGroup" Name="Administrators"/>
     <Property Id="GENERATED_PASSWORD" Hidden="yes" />
 
-    <Component Id="CloudbaseInitService" Directory="BINFOLDER" Guid="{234DDD41-5BA4-4777-A0B0-8462D47777E3}">
+    <Component Id="CloudbaseInitService" Directory="BINFOLDER" Guid="{234DDD41-5BA4-4777-A0B0-8462D47777E3}" Win64="no">
 
       <util:User Id="cloudbaseinituser" LogonAsService="yes" CreateUser="yes" CanNotChangePassword="yes" Disabled="no" Name="cloudbase-init"
                  Password="[GENERATED_PASSWORD]" PasswordExpired="no" PasswordNeverExpires="yes" RemoveOnUninstall="yes" UpdateIfExists="yes">

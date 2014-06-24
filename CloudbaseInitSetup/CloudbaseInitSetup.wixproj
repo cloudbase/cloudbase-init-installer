@@ -17,9 +17,19 @@
     <DefineConstants>Debug</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <OutputPath>bin\$(Configuration)\$(platform)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
     <DefineConstants>Python27SourcePath=C:\Python27_CloudbaseInit;CarbonSourcePath=Carbon</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DefineConstants>Debug</DefineConstants>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <DefineConstants>Python27SourcePath=C:\Python27_CloudbaseInit;CarbonSourcePath=Carbon</DefineConstants>
+    <OutputPath>bin\$(Configuration)\$(platform)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Carbon.wxs" />
@@ -242,6 +252,7 @@
     <Content Include="SetSetupComplete.cmd" />
     <Content Include="Unattend.xml" />
     <Content Include="UtilsActions.dll" />
+    <Content Include="Config.wxi" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Actions\" />

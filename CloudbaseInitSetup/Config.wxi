@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?if $(var.Platform) = "x64" ?>
+  <?define PlatformSystemFolder = "System64Folder" ?>
+<?else ?>
+  <?define PlatformSystemFolder = "System32Folder" ?>
+<?endif ?>
+<Include />

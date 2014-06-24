@@ -25,4 +25,13 @@
       </xsl:attribute>
     </xsl:copy>
   </xsl:template>
+
+  <xsl:template match='wix:Wix/wix:Fragment/wix:ComponentGroup/wix:Component'>
+    <xsl:copy>
+      <xsl:attribute name="Win64">
+        <xsl:text>no</xsl:text>
+      </xsl:attribute>
+      <xsl:apply-templates select="@*|node()"/>
+    </xsl:copy>
+  </xsl:template>
 </xsl:stylesheet>

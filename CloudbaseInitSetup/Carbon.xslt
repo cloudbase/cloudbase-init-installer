@@ -13,6 +13,8 @@
     </xsl:copy>
   </xsl:template>
 
+<!-- Currently the transformation is unused, since Win64 is set accordingly with the build platform -->  
+<!--
   <xsl:template match='wix:Wix/wix:Fragment/wix:ComponentGroup/wix:Component'>
     <xsl:copy>
       <xsl:attribute name="Win64">
@@ -21,5 +23,5 @@
       <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
   </xsl:template>
-
+-->
 </xsl:stylesheet>
