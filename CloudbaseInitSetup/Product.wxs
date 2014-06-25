@@ -126,7 +126,7 @@
 
   <Fragment>
     <DirectoryRef Id="TARGETDIR">
-      <Directory Id="PlatformSystemFolder" Name="$(var.PlatformSystemFolder)">
+      <Directory Id="$(var.PlatformSystemFolder)">
         <Directory Id="WindowsPowerShell" Name="WindowsPowerShell">
           <Directory Id="v1.0" Name="v1.0">
             <Directory Id="PowershellModules" Name="Modules" />
