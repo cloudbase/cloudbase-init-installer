@@ -44,7 +44,7 @@
                   Execute="deferred" Return="check" Impersonate="no" />
 
     <CustomAction Id="GenerateCloudbaseInitConfFile_Prop" Return="check" Property="GenerateCloudbaseInitConfFile"
-                  Value="[CLOUDBASEINITCONFFOLDER]|[BINFOLDER]|[LOGFOLDER]|[USERNAME]|[INJECTMETADATAPASSWORD]|[USERGROUPS]|[NETWORKADAPTERNAME]|[LOGGINGSERIALPORTNAME]|[MAAS_METADATA_URL]|[MAAS_OAUTH_CONSUMER_KEY]|[MAAS_OAUTH_CONSUMER_SECRET]|[MAAS_OAUTH_TOKEN_KEY]|[MAAS_OAUTH_TOKEN_SECRET]" />
+                  Value="[CLOUDBASEINITCONFFOLDER]|[BINFOLDER]|[LOGFOLDER]|[USERNAME]|[INJECTMETADATAPASSWORD]|[USERGROUPS]|[NETWORKADAPTERNAME]|[LOGGINGSERIALPORTNAME]|[MAAS_METADATA_URL]|[MAAS_OAUTH_CONSUMER_KEY]|[MAAS_OAUTH_CONSUMER_SECRET]|[MAAS_OAUTH_TOKEN_KEY]|[MAAS_OAUTH_TOKEN_SECRET]|[LOCALSCRIPTSFOLDER]" />
     <CustomAction Id="GenerateCloudbaseInitConfFile"
               BinaryKey="ConfFileActions"
               JScriptCall="writeCloudbaseInitConfFileAction" Execute="deferred" Return="check" Impersonate="no" />

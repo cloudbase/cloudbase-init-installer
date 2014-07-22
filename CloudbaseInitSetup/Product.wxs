@@ -103,6 +103,10 @@
     </DirectoryRef>
 
     <DirectoryRef Id="INSTALLDIR">
+      <Directory Id="LOCALSCRIPTSFOLDER" Name="LocalScripts" />
+    </DirectoryRef>
+
+    <DirectoryRef Id="INSTALLDIR">
       <Directory Id="CLOUDBASEINITCONFFOLDER" Name="conf" />
     </DirectoryRef>
 
@@ -118,9 +122,16 @@
       </Component>
     </DirectoryRef>
 
+    <DirectoryRef Id="LOCALSCRIPTSFOLDER">
+      <Component Id="CloudbaseInitLocalScriptsFolder" Guid="{0A86796A-BD49-455A-83C7-B91FD4B150D3}" Win64="no">
+        <CreateFolder />
+      </Component>
+    </DirectoryRef>
+
     <ComponentGroup Id="CloudbaseInitFolders">
       <ComponentRef Id="CloudbaseInitConfFolder" />
       <ComponentRef Id="CloudbaseInitLogFolder" />
+      <ComponentRef Id="CloudbaseInitLocalScriptsFolder" />
     </ComponentGroup>
   </Fragment>
 

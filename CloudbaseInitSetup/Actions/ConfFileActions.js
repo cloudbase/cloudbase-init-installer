@@ -34,6 +34,7 @@ function writeCloudbaseInitConfFileAction() {
         var maasOAuthConsumerSecret = trim(data[i++]);
         var maasOAuthTokenKey = trim(data[i++]);
         var maasOAuthTokenSecret = trim(data[i++]);
+        var localScriptsFolder = trim(data[i++]);
 
         var cloudbaseInitConfFile = cloudbaseInitConfFolder + "cloudbase-init.conf";
 
@@ -58,7 +59,8 @@ function writeCloudbaseInitConfFileAction() {
             "logfile": "cloudbase-init.log",
             "logging_serial_port_settings": trim(loggingSerialPortSettings),
             "mtu_use_dhcp_config": true,
-            "ntp_use_dhcp_config": true
+            "ntp_use_dhcp_config": true,
+            "local_scripts_path": localScriptsFolder
         };
 
         if (maasMetadataUrl) {
