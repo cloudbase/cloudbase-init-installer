@@ -97,8 +97,8 @@ function getWmiCimV2Svc() {
 }
 
 var OSArchitectures = {
-    X86: "32-bit",
-    X64: "64-bit"
+    X86: "32",
+    X64: "64"
 }
 
 function getWindowsArchitecture() {
@@ -160,7 +160,7 @@ function runCommandElevated(cmd, wait) {
     elevateCmd = Session.Property("BINFOLDER") + "\\Elevate_";
 
     osArch = getWindowsArchitecture();
-    if (osArch == OSArchitectures.X64)
+    if (osArch.indexOf(OSArchitectures.X64) == 0)
         elevateCmd += "x64";
     else
         elevateCmd += "x86";

@@ -60,3 +60,16 @@ function replaceVarInFileAction() {
         return MsiActionStatus.Abort;
     }
 }
+
+function getAdministratorsGroup() {
+    try{
+        var parts = Session.Property("WIX_ACCOUNT_ADMINISTRATORS").split("\\");
+        Session.Property("ACCOUNT_ADMINISTRATORS_NAME") = parts[parts.length == 1 ? 0 : 1];
+
+        return MsiActionStatus.Ok;
+    }
+    catch (ex) {
+        logException(ex);
+        return MsiActionStatus.Abort;
+    }
+}
