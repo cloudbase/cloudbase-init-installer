@@ -15,9 +15,7 @@
         </Control>
 
         <Control Type="Text" Id="groupsText" Width="220" Height="12" X="10" Y="118" Text="User's local &amp;groups (comma separated list):" />
-        <Control Type="Edit" Id="groupsEdit" Width="200" Height="17" X="10" Y="132" Property="USERGROUPS">
-          <Property Id="USERGROUPS" Value="Administrators" />
-        </Control>
+        <Control Type="Edit" Id="groupsEdit" Width="200" Height="17" X="10" Y="132" Property="USERGROUPS" />
 
         <Control Type="ComboBox" Property="dummy" Id="DummyComboBox" Width="0" Height="0" X="0" Y="0" Disabled="yes" Hidden="yes">
           <ComboBox Property="dummy">
