@@ -80,6 +80,8 @@
     <InstallUISequence>
       <!-- Create the JS common include files for UI actions, note that this is not executed in unattended mode -->
       <Custom Action="CreateCommonIncludeFile" Before="CostFinalize"></Custom>
+      <Custom Action="GetAdministratorsGroup" After="CostFinalize" />
+      <Custom Action="SetUserGroupsAction" After="GetAdministratorsGroup" />
     </InstallUISequence>
   </Product>
 
@@ -171,10 +173,7 @@
   </Fragment>
     
   <Fragment>
-    <!--
-    TODO: Split [WIX_ACCOUNT_ADMINISTRATORS] on "\" and get the localized name of the group instead of hardcoding it
-    -->
-    <util:Group Id="AdministratorsGroup" Name="Administrators"/>
+    <util:Group Id="AdministratorsGroup" Name="[ACCOUNT_ADMINISTRATORS_NAME]" />
     <Property Id="GENERATED_PASSWORD" Hidden="yes" />
 
     <Component Id="CloudbaseInitService" Directory="BINFOLDER" Guid="{234DDD41-5BA4-4777-A0B0-8462D47777E3}" Win64="no">
