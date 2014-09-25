@@ -165,11 +165,6 @@ function getWmiCimV2Svc() {
     return GetObject("winmgmts:\\\\.\\root\\cimv2");
 }
 
-var OSArchitectures = {
-    X86: "32-bit",
-    X64: "64-bit"
-}
-
 function getWindowsArchitecture() {
     var wmiSvc = getWmiCimV2Svc();
     var q = wmiSvc.InstancesOf("Win32_OperatingSystem")
