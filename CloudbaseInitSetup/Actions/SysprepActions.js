@@ -97,16 +97,16 @@ function getWmiCimV2Svc() {
 }
 
 var OSArchitectures = {
-    X86: "32-bit",
-    X64: "64-bit"
+    X86: "32",
+    X64: "64"
 }
 
 function getWindowsArchitecture() {
     var wmiSvc = getWmiCimV2Svc();
-    var q = wmiSvc.InstancesOf("Win32_OperatingSystem")
-    var os = new Enumerator(q).item()
+    var q = wmiSvc.InstancesOf("Win32_Processor");
+    var os = new Enumerator(q).item();
     // NOTE: does not work on Windows XP / 2003
-    return os.OSArchitecture
+    return os.AddressWidth
 }
 
 function runCommand(cmd, expectedReturnValue, envVars, windowStyle, waitOnReturn) {
@@ -160,7 +160,7 @@ function runCommandElevated(cmd, wait) {
     elevateCmd = Session.Property("BINFOLDER") + "\\Elevate_";
 
     osArch = getWindowsArchitecture();
-    if (osArch == OSArchitectures.X64)
+    if (osArch.toString() == OSArchitectures.X64)
         elevateCmd += "x64";
     else
         elevateCmd += "x86";
