@@ -52,7 +52,7 @@ try
 
     PipInstall $python_dir "distribute"
 
-    PullInstall "cloudbase-init" "https://github.com/cloudbase/cloudbase-init.git"
+    PullInstall "cloudbase-init" "https://github.com/stackforge/cloudbase-init.git"
 
     cd $cloudbaseInitInstallerDir\CloudbaseInitSetup
 
