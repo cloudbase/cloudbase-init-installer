@@ -51,11 +51,15 @@
     <WixVariable Id="WixUIDialogBmp" Value="images\dlgbmp.bmp" />
     <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
 
+    <SetProperty Action="SetUserGroupsAction" Id="USERGROUPS" Value="[ACCOUNT_ADMINISTRATORS_NAME]"
+                 After="GetAdministratorsGroup" Sequence="both">
+      NOT USERGROUPS
+    </SetProperty>
+
     <InstallExecuteSequence>
       <Custom Action="CreateCommonIncludeFile" After="CostFinalize" />
 
       <Custom Action="GetAdministratorsGroup" After="CostFinalize" />
-      <Custom Action="SetUserGroupsAction" After="GetAdministratorsGroup" />
 
       <Custom Action="GenerateRandomPassword" After="CostFinalize" />
 
@@ -84,7 +88,6 @@
       <!-- Create the JS common include files for UI actions, note that this is not executed in unattended mode -->
       <Custom Action="CreateCommonIncludeFile" Before="CostFinalize"></Custom>
       <Custom Action="GetAdministratorsGroup" After="CostFinalize" />
-      <Custom Action="SetUserGroupsAction" After="GetAdministratorsGroup" />
     </InstallUISequence>
   </Product>
 

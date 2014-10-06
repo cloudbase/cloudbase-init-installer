@@ -86,20 +86,3 @@ function initConfigDlgAction() {
         return MsiActionStatus.Abort;
     }
 }
-
-function setUserGroupsAction() {
-    try{
-        var usergroupsProperty = Session.Property("USERGROUPS");
-
-        if (!usergroupsProperty){
-            var administratorsProperty = Session.Property("ACCOUNT_ADMINISTRATORS_NAME");
-            Session.Property("USERGROUPS") = administratorsProperty;
-        }
-
-        return MsiActionStatus.Ok;
-    }
-    catch (ex) {
-        logException(ex);
-        return MsiActionStatus.Abort;
-    }
-}
