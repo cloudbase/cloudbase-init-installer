@@ -13,6 +13,7 @@
       <ComponentGroupRef Id="Python27ComponentGroup" />
       <ComponentGroupRef Id="CloudbaseInitFolders" />
       <ComponentRef Id="CloudbaseInitService" />
+      <ComponentRef Id="RegistryEntries" />
       <ComponentRef Id="ElevateUtils" />
       <ComponentRef Id="bsdtar" />
       <ComponentRef Id="SetSetupComplete" />
@@ -177,7 +178,17 @@
       <File Id="SetSetupComplete.cmd" Source="SetSetupComplete.cmd" Checksum="yes" KeyPath="yes" />
     </Component>    
   </Fragment>
-    
+
+  <Fragment>
+    <DirectoryRef Id="TARGETDIR">
+      <Component Id="RegistryEntries" Guid="{263CF16A-E720-43FB-975C-89D4BDFD2C59}">
+          <RegistryKey Root="HKLM" Key="System\Setup" Action="createAndRemoveOnUninstall">
+              <RegistryValue Type="string" Name="UnattendFile" Value="[CLOUDBASEINITCONFFOLDER]Unattend.xml" KeyPath="yes"/>
+          </RegistryKey>
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+
   <Fragment>
     <util:Group Id="AdministratorsGroup" Name="[ACCOUNT_ADMINISTRATORS_NAME]" />
     <Property Id="GENERATED_PASSWORD" Hidden="yes" />

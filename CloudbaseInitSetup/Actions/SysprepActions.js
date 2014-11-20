@@ -181,11 +181,6 @@ function runSysprepAction() {
 
         cmd = "\"%SystemRoot%\\System32\\Sysprep\\sysprep.exe\" /generalize /oobe";
 
-        var confFolder = Session.Property("CLOUDBASEINITCONFFOLDER");
-        // Sysprep.exe doesn't work with paths containing spaces
-        var unattendXmlPath = getShortPath(confFolder + "\\Unattend.xml")
-        cmd += " /unattend:\"" + unattendXmlPath + "\"";
-
         var shutdown = parseInt(Session.Property("SYSPREPSHUTDOWN"));
         if (!shutdown)
             cmd += " /quit";
