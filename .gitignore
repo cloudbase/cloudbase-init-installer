@@ -59,6 +59,9 @@ dlldata.c
 *.svclog
 *.scc
 
+# Python compiled modules
+*.pyc
+
 # Chutzpah Test files
 _Chutzpah*
 
