@@ -1,4 +1,4 @@
-#!c:\Python27\python.exe
+#!C:\OpenStack\cloudbase-init-installer\Python27_Template\python.exe
 # EASY-INSTALL-ENTRY-SCRIPT: 'pip==1.2.1','console_scripts','pip-2.7'
 __requires__ = 'pip==1.2.1'
 import sys
