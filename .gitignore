@@ -61,6 +61,7 @@ dlldata.c
 
 # Python compiled modules
 *.pyc
+*.pyo
 
 # Chutzpah Test files
 _Chutzpah*
