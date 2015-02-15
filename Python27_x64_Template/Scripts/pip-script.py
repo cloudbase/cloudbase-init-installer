@@ -1,10 +1,10 @@
-#!C:\Python27_x64_279\python.exe
-# EASY-INSTALL-ENTRY-SCRIPT: 'pip==1.5.6','console_scripts','pip'
-__requires__ = 'pip==1.5.6'
+#!C:\OpenStack\cloudbase-init-installer\Python27_x64_Template\python.exe
+# EASY-INSTALL-ENTRY-SCRIPT: 'pip==6.0.8','console_scripts','pip'
+__requires__ = 'pip==6.0.8'
 import sys
 from pkg_resources import load_entry_point
 
 if __name__ == '__main__':
     sys.exit(
-        load_entry_point('pip==1.5.6', 'console_scripts', 'pip')()
+        load_entry_point('pip==6.0.8', 'console_scripts', 'pip')()
     )
