@@ -23,15 +23,9 @@
           </ComboBox>
         </Control>
 
-        <Control Type="Text" Id="NetworkAdapterText" Width="146" Height="12" X="10" Y="158" Text="&amp;Network adapter to configure:">
+        <Control Type="Text" Id="LoggingSerialPortNameText" Width="146" Height="12" X="10" Y="158" Text="&amp;Serial port for logging:">
         </Control>
-        <Control Type="ComboBox" Property="NETWORKADAPTERNAME" Id="NetworkAdapterComboBox" Width="350" Height="16" X="10" Y="172" ComboList="yes">
-          <ComboBox Property="NETWORKADAPTERNAME" />
-        </Control>
-
-        <Control Type="Text" Id="LoggingSerialPortNameText" Width="146" Height="12" X="10" Y="198" Text="&amp;Serial port for logging:">
-        </Control>
-        <Control Type="ComboBox" Property="LOGGINGSERIALPORTNAME" Id="LoggingSerialPortNameComboBox" Width="100" Height="16" X="10" Y="212" ComboList="yes">
+        <Control Type="ComboBox" Property="LOGGINGSERIALPORTNAME" Id="LoggingSerialPortNameComboBox" Width="100" Height="16" X="10" Y="172" ComboList="yes">
           <ComboBox Property="LOGGINGSERIALPORTNAME" />
         </Control>
 

@@ -27,7 +27,6 @@ function writeCloudbaseInitConfFileAction() {
         var userName = data[i++];
         var injectMetadataPassword = data[i++];
         var userGroups = data[i++];
-        var networkAdapterName = data[i++];
         var loggingSerialPortName = data[i++];
         var maasMetadataUrl = trim(data[i++]);
         var maasOAuthConsumerKey = trim(data[i++]);
@@ -49,7 +48,6 @@ function writeCloudbaseInitConfFileAction() {
             "username": trim(userName),
             "groups": trim(userGroups),
             "inject_user_password": checkBoxValueToBool(injectMetadataPassword),
-            "network_adapter": trim(networkAdapterName),
             "config_drive_raw_hhd": "true",
             "config_drive_cdrom": "true",
             "bsdtar_path": bsdtarPath,
