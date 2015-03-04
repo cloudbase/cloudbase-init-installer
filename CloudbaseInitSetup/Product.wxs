@@ -15,6 +15,7 @@
       <ComponentRef Id="CloudbaseInitService" />
       <ComponentRef Id="ElevateUtils" />
       <ComponentRef Id="bsdtar" />
+      <ComponentRef Id="mtools" />
       <ComponentRef Id="SetSetupComplete" />
       <!--
       <ComponentRef Id="CleanupPyWin32Folder" />
@@ -171,6 +172,12 @@
     <Component Id="bsdtar" Directory="BINFOLDER" Guid="{1DBADEF2-ED7B-4F98-845C-4E049D7E26F0}" Win64="no">
       <File Id="bsdtar.exe" Source="Binaries\bsdtar.exe" KeyPath="yes" Checksum="yes" />
       <File Id="bsdtar.COPYING" Source="Binaries\bsdtar.COPYING" Checksum="yes" />
+    </Component>
+
+    <Component Id="mtools" Directory="BINFOLDER" Guid="{8C5507A2-2C7D-49C0-A39B-AC74D0479C58}" Win64="no">
+      <File Id="mdir.exe" Source="Binaries\mdir.exe" KeyPath="yes" Checksum="yes" />
+      <File Id="mcopy.exe" Source="Binaries\mcopy.exe" Checksum="yes" />
+      <File Id="mtools.COPYING" Source="Binaries\mtools.COPYING" Checksum="yes" />
     </Component>
 
     <Component Id="SetSetupComplete" Directory="BINFOLDER" Guid="{4507F735-3BD0-403B-96C9-6959B6B617C1}" Win64="no">
