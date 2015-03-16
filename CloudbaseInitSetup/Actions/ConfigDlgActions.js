@@ -45,37 +45,10 @@ function setupLoggingSerialPortsComboBox() {
     view.Close();
 }
 
-function getNetworkAdapters() {
-    var property = "NETWORKADAPTERNAME";
-    var view = getComboBoxView(property);
-
-    deleteViewRecords(view);
-
-    var osVersion = getWindowsVersion()
-
-    var wmiSvc = getWmiCimV2Svc();
-
-    var query = "SELECT * FROM Win32_NetworkAdapter WHERE AdapterTypeId = 0 AND MACAddress IS NOT NULL"
-    if (osVersion[0] >= 6)
-        query += " AND PhysicalAdapter = True"
-
-    var networkAdapters = wmiSvc.ExecQuery(query)
-    var index = 1;
-    for (var e = new Enumerator(networkAdapters) ; !e.atEnd() ; e.moveNext()) {
-        // On XP / 2003 check the DeviceID to avoid including Miniport and other not relevant adapters
-        var networkAdapter = e.item();
-        if (osVersion[0] >= 6 || networkAdapter.PNPDeviceID.indexOf("PCI") == 0)
-            addComboBoxEntry(view, property, index++, networkAdapter.Name, networkAdapter.Name);
-    }
-
-    view.Close();
-}
-
 function initConfigDlgAction() {
     try {
         logMessage("Initializing ConfigDlg");
 
-        getNetworkAdapters();
         setupLoggingSerialPortsComboBox();
 
         return MsiActionStatus.Ok;
