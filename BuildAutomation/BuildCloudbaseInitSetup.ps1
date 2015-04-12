@@ -1,3 +1,7 @@
+Param(
+  [string]$SignX509Thumbprint
+)
+
 $ErrorActionPreference = "Stop"
 
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
@@ -41,7 +45,6 @@ try
         if ($LastExitCode) { throw "pip install failed" }
     }
 
-    $sign_cert_thumbprint = "65c29b06eb665ce202676332e8129ac48d613c61"
     $ftpsCredentials = GetCredentialsFromFile "$ENV:UserProfile\ftps.txt"
 
     # Make sure that we don't have temp files from a previous build
@@ -64,9 +67,16 @@ try
 
         $msi_path = "bin\Release\$platform\CloudbaseInitSetup.msi"
 
-        ExecRetry {
-            signtool.exe sign /sha1 $sign_cert_thumbprint /t http://timestamp.verisign.com/scripts/timstamp.dll /v $msi_path
-            if ($LastExitCode) { throw "signtool failed" }
+        if($SignX509Thumbprint)
+        {
+            ExecRetry {
+                signtool.exe sign /sha1 $SignX509Thumbprint /t http://timestamp.verisign.com/scripts/timstamp.dll /v $msi_path
+                if ($LastExitCode) { throw "signtool failed" }
+            }
+        }
+        else
+        {
+            Write-Warning "MSI not signed"
         }
     }
 
