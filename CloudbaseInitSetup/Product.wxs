@@ -176,6 +176,7 @@
 
     <Component Id="mtools" Directory="BINFOLDER" Guid="{8C5507A2-2C7D-49C0-A39B-AC74D0479C58}" Win64="no">
       <File Id="mdir.exe" Source="Binaries\mdir.exe" KeyPath="yes" Checksum="yes" />
+      <File Id="mlabel.exe" Source="Binaries\mlabel.exe" Checksum="yes" />
       <File Id="mcopy.exe" Source="Binaries\mcopy.exe" Checksum="yes" />
       <File Id="mtools.COPYING" Source="Binaries\mtools.COPYING" Checksum="yes" />
     </Component>
