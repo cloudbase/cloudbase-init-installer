@@ -15,7 +15,6 @@ $ENV:HOME = $ENV:USERPROFILE
 $python_dir = "C:\Python27_CloudbaseInit"
 
 $ENV:PATH += ";$ENV:ProgramFiles (x86)\Git\bin\"
-$ENV:PATH += ";C:\Tools\AlexFTPS-1.1.0"
 $ENV:PATH += ";$python_dir\;$python_dir\scripts"
 
 $basepath = "C:\OpenStack\build\cloudbase-init"
@@ -44,8 +43,6 @@ try
         python $python_dir\scripts\pip-2.7-script.py install -U "pbr>=0.8"
         if ($LastExitCode) { throw "pip install failed" }
     }
-
-    $ftpsCredentials = GetCredentialsFromFile "$ENV:UserProfile\ftps.txt"
 
     # Make sure that we don't have temp files from a previous build
     $python_build_path = "$ENV:LOCALAPPDATA\Temp\pip_build_$ENV:USERNAME"
@@ -78,19 +75,6 @@ try
         else
         {
             Write-Warning "MSI not signed"
-        }
-    }
-
-    $ftpsUsername = $ftpsCredentials.UserName
-    $ftpsPassword = $ftpsCredentials.GetNetworkCredential().Password
-
-    foreach ($platform in @("x86", "x64"))
-    {
-        $msi_path = "bin\Release\$platform\CloudbaseInitSetup.msi"
-
-        ExecRetry {
-            &ftps -h www.cloudbase.it -ssl All -U $ftpsUsername -P $ftpsPassword -sslInvalidServerCertHandling Accept -p $msi_path "/cloudbase.it/main/downloads/CloudbaseInitSetup_Beta_$platform.msi"
-            if ($LastExitCode) { throw "ftps failed" }
         }
     }
 
