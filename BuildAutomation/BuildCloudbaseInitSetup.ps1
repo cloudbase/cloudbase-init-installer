@@ -40,7 +40,8 @@ try
     CheckCopyDir $python_template_dir $python_dir
 
     ExecRetry {
-        python $python_dir\scripts\pip-2.7-script.py install -U "pbr>=0.8"
+        # Forces pbr version to 0.10, due to issues with requirements in 0.11
+        python $python_dir\scripts\pip-2.7-script.py install -U "pbr==0.10"
         if ($LastExitCode) { throw "pip install failed" }
     }
 
