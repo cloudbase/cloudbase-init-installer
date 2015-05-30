@@ -87,6 +87,8 @@ function PullInstall($path, $url)
         python setup.py build --force
         if ($LastExitCode) { throw "python setup.py build failed" }
 
+        python -m pip install -r requirements.txt
+
         python setup.py install --force
         if ($LastExitCode) { throw "python setup.py install failed" }
 
