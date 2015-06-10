@@ -392,7 +392,7 @@ function addUserToWinlogonSpecialAccounts(userName) {
 function updatePythonScriptExes(pythonExePath, specs) {
     // Update executables
     var cmd = '"' + pythonExePath + '" -c "import os; import sys;' +
-    '"from pip._vendor.distlib import scripts;' +
+    'from pip._vendor.distlib import scripts;' +
     'specs = \'' + specs + '\';' +
     'scripts_path = os.path.join(os.path.dirname(sys.executable), \'Scripts\');' +
     'm = scripts.ScriptMaker(None, scripts_path);' +
