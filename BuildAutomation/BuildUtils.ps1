@@ -165,9 +165,9 @@ function PullInstallRelease($project, $release, $version)
     InstallRelease $project $version
 }
 
-function PipInstall($python_dir, $package)
+function PipInstall($package)
 {
-    python "$python_dir\Scripts\pip-script.py" install $package --force
+    python -m pip install $package
     if ($LastExitCode) { throw "pip install failed on package: $package" }
 }
 

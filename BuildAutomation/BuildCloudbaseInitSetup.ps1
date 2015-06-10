@@ -45,11 +45,8 @@ try
         Remove-Item -Recurse -Force $python_build_path
     }
 
-    ExecRetry {
-        PipInstall $python_dir "pbr<1.0,>=0.11"
-    }
-
-    PipInstall $python_dir "distribute"
+    ExecRetry { PipInstall "pbr<1.0,>=0.11" }
+    ExecRetry { PipInstall "distribute" }
 
     PullInstall "cloudbase-init" "https://github.com/stackforge/cloudbase-init.git"
 
