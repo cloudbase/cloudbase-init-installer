@@ -67,5 +67,8 @@
               JScriptCall="addUserToWinlogonSpecialAccountsAction" Execute="deferred" Return="check" Impersonate="no" />
 
     <CustomAction Id="RunSysprep" BinaryKey="SysprepActions" JScriptCall="runSysprepAction" Execute="immediate" Impersonate="yes" Return="check" />
+
+    <CustomAction Id="SetServiceUserCloudbaseInit" Property="CloudbaseInitServiceUser" Value=".\cloudbase-init" Execute="immediate" />
+    <CustomAction Id="SetServiceUserLocalSystem" Property="CloudbaseInitServiceUser" Value="LocalSystem" Execute="immediate" />
   </Fragment>
 </Wix>

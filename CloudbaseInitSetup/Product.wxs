@@ -12,6 +12,7 @@
              ConfigurableDirectory="INSTALLDIR" Display="expand">
       <ComponentGroupRef Id="Python27ComponentGroup" />
       <ComponentGroupRef Id="CloudbaseInitFolders" />
+      <ComponentRef Id="CloudbaseInitServiceUser" />
       <ComponentRef Id="CloudbaseInitService" />
       <ComponentRef Id="ElevateUtils" />
       <ComponentRef Id="bsdtar" />
@@ -44,6 +45,7 @@
     See: http://technet.microsoft.com/en-us/library/bb457125.aspx
     -->
     <Property Id="SERVICE_USER_RIGHTS" Value="SeAssignPrimaryTokenPrivilege" />
+    <Property Id="RUN_SERVICE_AS_LOCAL_SYSTEM" />
 
     <UIRef Id="MyWixUI_FeatureTree" />
     <UIRef Id="WixUI_ErrorProgressText" />
@@ -61,8 +63,9 @@
       <Custom Action="CreateCommonIncludeFile" After="CostFinalize" />
 
       <Custom Action="GetAdministratorsGroup" After="CostFinalize" />
-
       <Custom Action="GenerateRandomPassword" After="CostFinalize" />
+      <Custom Action="SetServiceUserCloudbaseInit" After="CostFinalize">NOT RUN_SERVICE_AS_LOCAL_SYSTEM</Custom>
+      <Custom Action="SetServiceUserLocalSystem" After="CostFinalize">RUN_SERVICE_AS_LOCAL_SYSTEM</Custom>
 
       <Custom Action="UpdatePythonShellInScripts_Prop" After="CostFinalize" />
       <Custom Action="UpdatePythonShellInScripts" Before="DeleteCommonIncludeFile">NOT Installed</Custom>
@@ -74,7 +77,7 @@
       <Custom Action="UpdateUnattendXmlAction" Before="DeleteCommonIncludeFile"><![CDATA[REMOVE <> "ALL"]]></Custom>
 
       <Custom Action="AssignUserRights_Prop" After="CostFinalize" />
-      <Custom Action="AssignUserRights" Before="InstallFinalize"><![CDATA[REMOVE <> "ALL"]]></Custom>
+      <Custom Action="AssignUserRights" Before="InstallFinalize"><![CDATA[REMOVE <> "ALL" AND NOT RUN_SERVICE_AS_LOCAL_SYSTEM]]></Custom>
 
       <Custom Action="AddUserToWinlogonSpecialAccounts_Prop" After="CostFinalize" />
       <Custom Action="AddUserToWinlogonSpecialAccounts" Before="DeleteCommonIncludeFile"><![CDATA[REMOVE <> "ALL"]]></Custom>
@@ -190,13 +193,16 @@
     <util:Group Id="AdministratorsGroup" Name="[ACCOUNT_ADMINISTRATORS_NAME]" />
     <Property Id="GENERATED_PASSWORD" Hidden="yes" />
 
-    <Component Id="CloudbaseInitService" Directory="BINFOLDER" Guid="{234DDD41-5BA4-4777-A0B0-8462D47777E3}" Win64="no">
-
+    <Component Id="CloudbaseInitServiceUser" Directory="BINFOLDER" Guid="{EC63E5DF-931D-45F7-9762-6E3B2693F031}" Win64="no">
+      <Condition>NOT RUN_SERVICE_AS_LOCAL_SYSTEM</Condition>
+      <CreateFolder />
       <util:User Id="cloudbaseinituser" LogonAsService="yes" CreateUser="yes" CanNotChangePassword="yes" Disabled="no" Name="cloudbase-init"
                  Password="[GENERATED_PASSWORD]" PasswordExpired="no" PasswordNeverExpires="yes" RemoveOnUninstall="yes" UpdateIfExists="yes">
         <util:GroupRef Id="AdministratorsGroup"/>
       </util:User>
+    </Component>
 
+    <Component Id="CloudbaseInitService" Directory="BINFOLDER" Guid="{234DDD41-5BA4-4777-A0B0-8462D47777E3}" Win64="no">
       <File Id="OpenStackService.exe" Source="Binaries\OpenStackService.exe" KeyPath="yes" Checksum="yes" />
       <ServiceInstall
                Arguments='cloudbase-init "[INSTALLDIR]Python27\Scripts\cloudbase-init.exe" --config-file "[CLOUDBASEINITCONFFOLDER]cloudbase-init.conf"'
@@ -207,7 +213,7 @@
                DisplayName="Cloud Initialization Service"
                Description="Service wrapper for cloudbase-init"
                Start="auto"
-               Account=".\cloudbase-init"
+               Account="[CloudbaseInitServiceUser]"
                Password="[GENERATED_PASSWORD]"
                ErrorControl="ignore"
                Interactive="no">
