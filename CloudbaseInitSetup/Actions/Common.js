@@ -386,6 +386,17 @@ function addUserToWinlogonSpecialAccounts(userName) {
     runCommand(getNativeSystem32Dir() + "\\reg.exe ADD \"HKLM\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\SpecialAccounts\\UserList\" /f /t REG_DWORD /d 0 /v " + userName);
 }
 
+function updatePythonScriptExes(pythonExePath, specs) {
+    // Update executables
+    var cmd = '"' + pythonExePath + '" -c "import os; import sys;' +
+    '"from pip._vendor.distlib import scripts;' +
+    'specs = \'' + specs + '\';' +
+    'scripts_path = os.path.join(os.path.dirname(sys.executable), \'Scripts\');' +
+    'm = scripts.ScriptMaker(None, scripts_path);' +
+    'm.executable = sys.executable;m.make(specs)"';
+    runCommand(cmd);
+}
+
 var commonIncludeFileName = "82311161-875A-4587-A86C-9784581D8F56.js";
 var commonIncludeBinaryNamePrefix = 'ActionsCommon';
 
