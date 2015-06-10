@@ -41,7 +41,7 @@ try
 
     ExecRetry {
         # Forces pbr version to 0.10, due to issues with requirements in 0.11
-        python $python_dir\scripts\pip-2.7-script.py install -U "pbr==0.10"
+        python -m pip install -U "pbr==0.10"
         if ($LastExitCode) { throw "pip install failed" }
     }
 
@@ -52,6 +52,12 @@ try
     }
 
     PipInstall $python_dir "distribute"
+
+    ExecRetry {
+        # Update pbr
+        python -m pip install "pbr<1.0,>=0.11"
+        if ($LastExitCode) { throw "pip install failed" }
+    }
 
     PullInstall "cloudbase-init" "https://github.com/stackforge/cloudbase-init.git"
 
