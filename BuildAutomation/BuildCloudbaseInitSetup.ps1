@@ -1,5 +1,6 @@
 Param(
-  [string]$SignX509Thumbprint
+  [string]$SignX509Thumbprint,
+  [string]$release = $null
 )
 
 $ErrorActionPreference = "Stop"
@@ -46,9 +47,15 @@ try
     }
 
     ExecRetry { PipInstall "pbr<1.0,>=0.11" }
-    ExecRetry { PipInstall "distribute" }
 
-    PullInstall "cloudbase-init" "https://github.com/stackforge/cloudbase-init.git"
+    if ($release)
+    {
+        ExecRetry { PipInstall "cloudbase-init==$release" }
+    }
+    else
+    {
+        ExecRetry { PullInstall "cloudbase-init" "https://github.com/stackforge/cloudbase-init.git" }
+    }
 
     cd $cloudbaseInitInstallerDir\CloudbaseInitSetup
 
