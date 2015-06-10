@@ -207,6 +207,9 @@ function runCommand(cmd, expectedReturnValue, envVars, windowStyle, waitOnReturn
     if (typeof waitOnReturn == 'undefined')
         waitOnReturn = true;
 
+    if (typeof expectedReturnValue == 'undefined')
+        expectedReturnValue = 0;
+
     var retVal = shell.run(cmd, windowStyle, waitOnReturn);
 
     if (waitOnReturn && expectedReturnValue != undefined && expectedReturnValue != null && retVal != expectedReturnValue)
