@@ -14,8 +14,8 @@ $ENV:HOME = $ENV:USERPROFILE
 
 $python_dir = "C:\Python27_CloudbaseInit"
 
+$ENV:PATH = "$python_dir\;$python_dir\scripts;$ENV:PATH"
 $ENV:PATH += ";$ENV:ProgramFiles (x86)\Git\bin\"
-$ENV:PATH += ";$python_dir\;$python_dir\scripts"
 
 $basepath = "C:\OpenStack\build\cloudbase-init"
 CheckDir $basepath
