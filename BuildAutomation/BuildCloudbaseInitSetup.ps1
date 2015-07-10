@@ -64,6 +64,8 @@ try
         ExecRetry { PullInstall "cloudbase-init" "https://github.com/stackforge/cloudbase-init.git" }
     }
 
+    ExecRetry { PipInstall "wmi" }
+
     cd $cloudbaseInitInstallerDir\CloudbaseInitSetup
 
     #&msbuild CloudbaseInitSetup.sln /m /p:Platform=$platform /p:Configuration=`"Release $platform`"  /p:DefineConstants=`"Python27SourcePath=$python_dir`;CarbonSourcePath=Carbon`"
