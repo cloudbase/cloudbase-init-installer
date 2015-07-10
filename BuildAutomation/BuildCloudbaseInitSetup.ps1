@@ -1,6 +1,6 @@
 Param(
   [string]$SignX509Thumbprint,
-  [string]$platform = "x64"
+  [string]$platform = "x64",
   [string]$release = $null
 )
 
