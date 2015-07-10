@@ -63,7 +63,7 @@
     <Content Include="Actions\UserActions.js" />
     <Content Include="Binaries\x64\bsdtar.COPYING" />
     <Content Include="Binaries\x64\bsdtar.exe" />
-    <Content Include="Binaries\x64\Elevate_x64.exe" />
+    <Content Include="Binaries\x64\Elevate.exe" />
     <Content Include="Binaries\x64\mcopy.exe" />
     <Content Include="Binaries\x64\mdir.exe" />
     <Content Include="Binaries\x64\mlabel.exe" />
@@ -79,7 +79,7 @@
     <Content Include="Binaries\x64\OpenStackService.exe" />
     <Content Include="Binaries\x86\bsdtar.COPYING" />
     <Content Include="Binaries\x86\bsdtar.exe" />
-    <Content Include="Binaries\x86\Elevate_x86.exe" />
+    <Content Include="Binaries\x86\Elevate.exe" />
     <Content Include="Binaries\x86\mcopy.exe" />
     <Content Include="Binaries\x86\mdir.exe" />
     <Content Include="Binaries\x86\mlabel.exe" />

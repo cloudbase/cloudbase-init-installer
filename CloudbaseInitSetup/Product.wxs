@@ -182,11 +182,7 @@
 
   <Fragment>
     <Component Id="ElevateUtils" Directory="BINFOLDER" Guid="{90A6F90D-34DF-4226-B368-0C2AA4F08BB8}" Win64="$(var.Win64)">
-      <?if $(var.Platform) = x64 ?>
-        <File Id="Elevate_x64.exe" Source="Binaries\x64\Elevate_x64.exe" KeyPath="yes" Checksum="yes" />
-      <?else ?>
-        <File Id="Elevate_x86.exe" Source="Binaries\x86\Elevate_x86.exe" KeyPath="yes" Checksum="yes" />
-      <?endif ?>
+      <File Id="Elevate.exe" Source="Binaries\$(var.Platform)\Elevate.exe" KeyPath="yes" Checksum="yes" />
     </Component>
 
     <Component Id="bsdtar" Directory="BINFOLDER" Guid="{1DBADEF2-ED7B-4F98-845C-4E049D7E26F0}" Win64="$(var.Win64)">

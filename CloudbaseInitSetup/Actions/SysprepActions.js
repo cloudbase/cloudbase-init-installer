@@ -157,15 +157,7 @@ function getShortPath(path) {
 
 
 function runCommandElevated(cmd, wait) {
-    elevateCmd = Session.Property("BINFOLDER") + "\\Elevate_";
-
-    osArch = getWindowsArchitecture();
-    if (osArch.toString() == OSArchitectures.X64)
-        elevateCmd += "x64";
-    else
-        elevateCmd += "x86";
-
-    elevateCmd = "\"" + elevateCmd + "\"";
+    elevateCmd = "\"" + Session.Property("BINFOLDER") + "\\Elevate.exe\"";
     if (wait)
         elevateCmd += " -wait";
     elevateCmd += " " + cmd;
