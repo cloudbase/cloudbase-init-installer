@@ -6,6 +6,8 @@
 
   <xsl:output method="xml" indent="yes" />
 
+  <xsl:param name="platform"/>
+
   <xsl:strip-space elements="*"/>
 
   <xsl:template match="@*|node()">
@@ -29,7 +31,14 @@
   <xsl:template match='wix:Wix/wix:Fragment/wix:ComponentGroup/wix:Component'>
     <xsl:copy>
       <xsl:attribute name="Win64">
-        <xsl:text>no</xsl:text>
+          <xsl:choose>
+            <xsl:when test="$platform = 'x64'">
+              <xsl:text>yes</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:text>no</xsl:text>
+            </xsl:otherwise>
+          </xsl:choose>
       </xsl:attribute>
       <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>

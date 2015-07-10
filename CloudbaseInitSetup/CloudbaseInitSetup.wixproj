@@ -61,11 +61,39 @@
     <Content Include="Actions\PythonActions.js" />
     <Content Include="Actions\SysprepActions.js" />
     <Content Include="Actions\UserActions.js" />
-    <Content Include="Binaries\bsdtar.COPYING" />
-    <Content Include="Binaries\bsdtar.exe" />
-    <Content Include="Binaries\Elevate_x64.exe" />
-    <Content Include="Binaries\Elevate_x86.exe" />
-    <Content Include="Binaries\OpenStackService.exe" />
+    <Content Include="Binaries\x64\bsdtar.COPYING" />
+    <Content Include="Binaries\x64\bsdtar.exe" />
+    <Content Include="Binaries\x64\Elevate_x64.exe" />
+    <Content Include="Binaries\x64\mcopy.exe" />
+    <Content Include="Binaries\x64\mdir.exe" />
+    <Content Include="Binaries\x64\mlabel.exe" />
+    <Content Include="Binaries\x64\msys2dll\msys-2.0.dll" />
+    <Content Include="Binaries\x64\msys2dll\msys-bz2-1.dll" />
+    <Content Include="Binaries\x64\msys2dll\msys-iconv-2.dll" />
+    <Content Include="Binaries\x64\msys2dll\msys-lzma-5.dll" />
+    <Content Include="Binaries\x64\msys2dll\msys-lzo2-2.dll" />
+    <Content Include="Binaries\x64\msys2dll\msys-nettle-6.dll" />
+    <Content Include="Binaries\x64\msys2dll\msys-xml2-2.dll" />
+    <Content Include="Binaries\x64\msys2dll\msys-z.dll" />
+    <Content Include="Binaries\x64\mtools.COPYING" />
+    <Content Include="Binaries\x64\OpenStackService.exe" />
+    <Content Include="Binaries\x86\bsdtar.COPYING" />
+    <Content Include="Binaries\x86\bsdtar.exe" />
+    <Content Include="Binaries\x86\Elevate_x86.exe" />
+    <Content Include="Binaries\x86\mcopy.exe" />
+    <Content Include="Binaries\x86\mdir.exe" />
+    <Content Include="Binaries\x86\mlabel.exe" />
+    <Content Include="Binaries\x86\msys2dll\msys-2.0.dll" />
+    <Content Include="Binaries\x86\msys2dll\msys-bz2-1.dll" />
+    <Content Include="Binaries\x86\msys2dll\msys-gcc_s-1.dll" />
+    <Content Include="Binaries\x86\msys2dll\msys-iconv-2.dll" />
+    <Content Include="Binaries\x86\msys2dll\msys-lzma-5.dll" />
+    <Content Include="Binaries\x86\msys2dll\msys-lzo2-2.dll" />
+    <Content Include="Binaries\x86\msys2dll\msys-nettle-6.dll" />
+    <Content Include="Binaries\x86\msys2dll\msys-xml2-2.dll" />
+    <Content Include="Binaries\x86\msys2dll\msys-z.dll" />
+    <Content Include="Binaries\x86\mtools.COPYING" />
+    <Content Include="Binaries\x86\OpenStackService.exe" />
     <Content Include="Carbon.xslt" />
     <Content Include="Carbon\about_Carbon.help.txt" />
     <Content Include="Carbon\ActiveDirectory\Find-ADUser.ps1" />
@@ -247,7 +275,9 @@
     <Content Include="images\dlgbmp.bmp" />
     <Content Include="License.rtf" />
     <Content Include="Microsoft_VC90_CRT_x86.msm" />
+    <Content Include="Microsoft_VC90_CRT_x86_x64.msm" />
     <Content Include="policy_9_0_Microsoft_VC90_CRT_x86.msm" />
+    <Content Include="policy_9_0_Microsoft_VC90_CRT_x86_x64.msm" />
     <Content Include="Python27.xslt" />
     <Content Include="SetSetupComplete.cmd" />
     <Content Include="Unattend.xml" />
@@ -257,6 +287,10 @@
   <ItemGroup>
     <Folder Include="Actions\" />
     <Folder Include="Binaries\" />
+    <Folder Include="Binaries\x64\" />
+    <Folder Include="Binaries\x64\msys2dll\" />
+    <Folder Include="Binaries\x86\" />
+    <Folder Include="Binaries\x86\msys2dll\" />
     <Folder Include="Carbon\" />
     <Folder Include="Carbon\ActiveDirectory\" />
     <Folder Include="Carbon\bin\" />
@@ -291,8 +325,8 @@
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <Target Name="BeforeBuild">
-    <HeatDirectory DirectoryRefId="INSTALLDIR" OutputFile="Python27.wxs" Directory="C:\Python27_CloudbaseInit" ComponentGroupName="Python27ComponentGroup" ToolPath="$(WixToolPath)" PreprocessorVariable="var.Python27SourcePath" GenerateGuidsNow="true" SuppressCom="true" SuppressRegistry="true" KeepEmptyDirectories="true" Transforms="Python27.xslt">
-    </HeatDirectory>
+    <HeatDirectory DirectoryRefId="INSTALLDIR" OutputFile="Python27_tmp.wxs" Directory="C:\Python27_CloudbaseInit" ComponentGroupName="Python27ComponentGroup" ToolPath="$(WixToolPath)" PreprocessorVariable="var.Python27SourcePath" GenerateGuidsNow="true" SuppressCom="true" SuppressRegistry="true" KeepEmptyDirectories="true" />
+    <XslTransformation XmlInputPaths="Python27_tmp.wxs" XslInputPath="Python27.xslt" OutputPaths="Python27.wxs" Parameters="&lt;Parameter Name='platform' Value='$(Platform)'/&gt;" />
     <HeatDirectory DirectoryRefId="PowershellModules" OutputFile="Carbon.wxs" Directory="Carbon" ComponentGroupName="CarbonComponentGroup" ToolPath="$(WixToolPath)" PreprocessorVariable="var.CarbonSourcePath" GenerateGuidsNow="true" SuppressCom="true" SuppressRegistry="true" KeepEmptyDirectories="true" Transforms="Carbon.xslt">
     </HeatDirectory>
   </Target>

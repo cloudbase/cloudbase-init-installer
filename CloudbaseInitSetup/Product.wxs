@@ -7,6 +7,14 @@
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate EmbedCab="yes" CompressionLevel="mszip" />
 
+    <?if $(var.Platform) = x64 ?>
+    <?define Win64 = "yes" ?>
+    <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
+    <?else ?>
+    <?define Win64 = "no" ?>
+    <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+    <?endif ?>
+
     <Feature Id="CloudbaseInit" Title="Windows Cloud Init" Level="1" Absent="disallow" InstallDefault="local" TypicalDefault="install" AllowAdvertise="no"
              Description="Installs and configures the cloudbase-init service."
              ConfigurableDirectory="INSTALLDIR" Display="expand">
@@ -15,6 +23,7 @@
       <ComponentRef Id="CloudbaseInitServiceUser" />
       <ComponentRef Id="CloudbaseInitService" />
       <ComponentRef Id="ElevateUtils" />
+      <ComponentRef Id="msys2dll" />
       <ComponentRef Id="bsdtar" />
       <ComponentRef Id="mtools" />
       <ComponentRef Id="SetSetupComplete" />
@@ -97,7 +106,7 @@
 
   <Fragment>
     <Directory Id="TARGETDIR" Name="SourceDir">
-      <Directory Id="ProgramFilesFolder">
+      <Directory Id="$(var.PlatformProgramFilesFolder)">
         <Directory Id="CompanyFolder" Name="Cloudbase Solutions">
           <Directory Id="INSTALLDIR" Name="Cloudbase-Init" />
         </Directory>
@@ -123,19 +132,19 @@
     </DirectoryRef>
 
     <DirectoryRef Id="CLOUDBASEINITCONFFOLDER">
-      <Component Id="CloudbaseInitConfFolder" Guid="{7A719841-4A02-4DA6-8114-C784251CBA9D}" Win64="no">
+      <Component Id="CloudbaseInitConfFolder" Guid="{7A719841-4A02-4DA6-8114-C784251CBA9D}" Win64="$(var.Win64)">
         <File Id="Unattend.xml" Source="Unattend.xml" Checksum="yes" KeyPath="yes" />
       </Component>
     </DirectoryRef>
 
     <DirectoryRef Id="LOGFOLDER">
-      <Component Id="CloudbaseInitLogFolder" Guid="{3D4E7A44-01FE-4DE9-83B5-689B7E8C671B}" Win64="no">
+      <Component Id="CloudbaseInitLogFolder" Guid="{3D4E7A44-01FE-4DE9-83B5-689B7E8C671B}" Win64="$(var.Win64)">
         <CreateFolder />
       </Component>
     </DirectoryRef>
 
     <DirectoryRef Id="LOCALSCRIPTSFOLDER">
-      <Component Id="CloudbaseInitLocalScriptsFolder" Guid="{0A86796A-BD49-455A-83C7-B91FD4B150D3}" Win64="no">
+      <Component Id="CloudbaseInitLocalScriptsFolder" Guid="{0A86796A-BD49-455A-83C7-B91FD4B150D3}" Win64="$(var.Win64)">
         <CreateFolder />
       </Component>
     </DirectoryRef>
@@ -161,30 +170,52 @@
 
   <Fragment>
     <DirectoryRef Id="TARGETDIR">
-      <Merge Id="VC90Redist" SourceFile="Microsoft_VC90_CRT_x86.msm" DiskId="1" Language="0" />
-      <Merge Id="VC90Policy" SourceFile="policy_9_0_Microsoft_VC90_CRT_x86.msm" DiskId="1" Language="0" />
+      <?if $(var.Platform) = x64 ?>
+        <Merge Id="VC90Redist" SourceFile="Microsoft_VC90_CRT_x86_x64.msm" DiskId="1" Language="0" />
+        <Merge Id="VC90Policy" SourceFile="policy_9_0_Microsoft_VC90_CRT_x86_x64.msm" DiskId="1" Language="0" />
+      <?else ?>
+        <Merge Id="VC90Redist" SourceFile="Microsoft_VC90_CRT_x86.msm" DiskId="1" Language="0" />
+        <Merge Id="VC90Policy" SourceFile="policy_9_0_Microsoft_VC90_CRT_x86.msm" DiskId="1" Language="0" />
+      <?endif ?>
     </DirectoryRef>
   </Fragment>
 
   <Fragment>
-    <Component Id="ElevateUtils" Directory="BINFOLDER" Guid="{90A6F90D-34DF-4226-B368-0C2AA4F08BB8}" Win64="no">
-      <File Id="Elevate_x86.exe" Source="Binaries\Elevate_x86.exe" Checksum="yes" />
-      <File Id="Elevate_x64.exe" Source="Binaries\Elevate_x64.exe" KeyPath="yes" Checksum="yes" />
+    <Component Id="ElevateUtils" Directory="BINFOLDER" Guid="{90A6F90D-34DF-4226-B368-0C2AA4F08BB8}" Win64="$(var.Win64)">
+      <?if $(var.Platform) = x64 ?>
+        <File Id="Elevate_x64.exe" Source="Binaries\x64\Elevate_x64.exe" KeyPath="yes" Checksum="yes" />
+      <?else ?>
+        <File Id="Elevate_x86.exe" Source="Binaries\x86\Elevate_x86.exe" KeyPath="yes" Checksum="yes" />
+      <?endif ?>
     </Component>
 
-    <Component Id="bsdtar" Directory="BINFOLDER" Guid="{1DBADEF2-ED7B-4F98-845C-4E049D7E26F0}" Win64="no">
-      <File Id="bsdtar.exe" Source="Binaries\bsdtar.exe" KeyPath="yes" Checksum="yes" />
-      <File Id="bsdtar.COPYING" Source="Binaries\bsdtar.COPYING" Checksum="yes" />
+    <Component Id="bsdtar" Directory="BINFOLDER" Guid="{1DBADEF2-ED7B-4F98-845C-4E049D7E26F0}" Win64="$(var.Win64)">
+      <File Id="bsdtar.exe" Source="Binaries\$(var.Platform)\bsdtar.exe" KeyPath="yes" Checksum="yes" />
+      <File Id="bsdtar.COPYING" Source="Binaries\$(var.Platform)\bsdtar.COPYING" Checksum="yes" />
     </Component>
 
-    <Component Id="mtools" Directory="BINFOLDER" Guid="{8C5507A2-2C7D-49C0-A39B-AC74D0479C58}" Win64="no">
-      <File Id="mdir.exe" Source="Binaries\mdir.exe" KeyPath="yes" Checksum="yes" />
-      <File Id="mlabel.exe" Source="Binaries\mlabel.exe" Checksum="yes" />
-      <File Id="mcopy.exe" Source="Binaries\mcopy.exe" Checksum="yes" />
-      <File Id="mtools.COPYING" Source="Binaries\mtools.COPYING" Checksum="yes" />
+    <Component Id="mtools" Directory="BINFOLDER" Guid="{8C5507A2-2C7D-49C0-A39B-AC74D0479C58}" Win64="$(var.Win64)">
+      <File Id="mdir.exe" Source="Binaries\$(var.Platform)\mdir.exe" KeyPath="yes" Checksum="yes" />
+      <File Id="mlabel.exe" Source="Binaries\$(var.Platform)\mlabel.exe" Checksum="yes" />
+      <File Id="mcopy.exe" Source="Binaries\$(var.Platform)\mcopy.exe" Checksum="yes" />
+      <File Id="mtools.COPYING" Source="Binaries\$(var.Platform)\mtools.COPYING" Checksum="yes" />
     </Component>
 
-    <Component Id="SetSetupComplete" Directory="BINFOLDER" Guid="{4507F735-3BD0-403B-96C9-6959B6B617C1}" Win64="no">
+    <Component Id="msys2dll" Directory="BINFOLDER" Guid="{E4355090-AD54-4E0B-80F6-3180A64FB520}" Win64="$(var.Win64)">
+      <File Id="msys_2.0.dll" Source="Binaries\$(var.Platform)\msys2dll\msys-2.0.dll" KeyPath="yes" Checksum="yes" />
+      <File Id="msys_bz2_1.dll" Source="Binaries\$(var.Platform)\msys2dll\msys-bz2-1.dll" Checksum="yes" />
+      <File Id="msys_iconv_2.dll" Source="Binaries\$(var.Platform)\msys2dll\msys-iconv-2.dll" Checksum="yes" />
+      <File Id="msys_lzma_5.dll" Source="Binaries\$(var.Platform)\msys2dll\msys-lzma-5.dll" Checksum="yes" />
+      <File Id="msys_lzo2_2.dll" Source="Binaries\$(var.Platform)\msys2dll\msys-lzo2-2.dll" Checksum="yes" />
+      <File Id="msys_nettle_6.dll" Source="Binaries\$(var.Platform)\msys2dll\msys-nettle-6.dll" Checksum="yes" />
+      <File Id="msys_xml2_2.dll" Source="Binaries\$(var.Platform)\msys2dll\msys-xml2-2.dll" Checksum="yes" />
+      <File Id="msys_z.dll" Source="Binaries\$(var.Platform)\msys2dll\msys-z.dll" Checksum="yes" />
+      <?if $(var.Platform) = x86 ?>
+        <File Id="msys_gcc_s_1.dll" Source="Binaries\$(var.Platform)\msys2dll\msys-gcc_s-1.dll" Checksum="yes" />
+      <?endif ?>
+    </Component>
+
+    <Component Id="SetSetupComplete" Directory="BINFOLDER" Guid="{4507F735-3BD0-403B-96C9-6959B6B617C1}" Win64="$(var.Win64)">
       <File Id="SetSetupComplete.cmd" Source="SetSetupComplete.cmd" Checksum="yes" KeyPath="yes" />
     </Component>    
   </Fragment>
@@ -193,7 +224,7 @@
     <util:Group Id="AdministratorsGroup" Name="[ACCOUNT_ADMINISTRATORS_NAME]" />
     <Property Id="GENERATED_PASSWORD" Hidden="yes" />
 
-    <Component Id="CloudbaseInitServiceUser" Directory="BINFOLDER" Guid="{EC63E5DF-931D-45F7-9762-6E3B2693F031}" Win64="no">
+    <Component Id="CloudbaseInitServiceUser" Directory="BINFOLDER" Guid="{EC63E5DF-931D-45F7-9762-6E3B2693F031}" Win64="$(var.Win64)">
       <Condition>NOT RUN_SERVICE_AS_LOCAL_SYSTEM</Condition>
       <CreateFolder />
       <util:User Id="cloudbaseinituser" LogonAsService="yes" CreateUser="yes" CanNotChangePassword="yes" Disabled="no" Name="cloudbase-init"
@@ -202,8 +233,8 @@
       </util:User>
     </Component>
 
-    <Component Id="CloudbaseInitService" Directory="BINFOLDER" Guid="{234DDD41-5BA4-4777-A0B0-8462D47777E3}" Win64="no">
-      <File Id="OpenStackService.exe" Source="Binaries\OpenStackService.exe" KeyPath="yes" Checksum="yes" />
+    <Component Id="CloudbaseInitService" Directory="BINFOLDER" Guid="{234DDD41-5BA4-4777-A0B0-8462D47777E3}" Win64="$(var.Win64)">
+      <File Id="OpenStackService.exe" Source="Binaries\$(var.Platform)\OpenStackService.exe" KeyPath="yes" Checksum="yes" />
       <ServiceInstall
                Arguments='cloudbase-init "[INSTALLDIR]Python27\Scripts\cloudbase-init.exe" --config-file "[CLOUDBASEINITCONFFOLDER]cloudbase-init.conf"'
                Id="CloudbaseInitServiceInstaller"
