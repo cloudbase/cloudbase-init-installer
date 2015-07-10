@@ -16,6 +16,8 @@ bld/
 [Bb]in/
 [Oo]bj/
 
+!CloudbaseInitSetup/Binaries/x64
+!CloudbaseInitSetup/Binaries/x86
 !CloudbaseInitSetup/Carbon/[Bb]in/
 
 CloudbaseInitSetup/Python27.wxs
