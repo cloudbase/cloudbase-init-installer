@@ -66,9 +66,16 @@ try
 
     ExecRetry { PipInstall "wmi" }
 
+    $version = &"$python_dir\python.exe" -c "from cloudbaseinit import version; print version.get_version()"
+    if ($LastExitCode -or !$version.Length) { throw "Unable to get cloudbase-init version" }
+    Write-Host "Cloudbase-Init version: $version"
+
+    $msi_version = $version.Substring(0, $version.LastIndexOf('.')) + ".0"
+    Write-Host "Cloudbase-Init MSI version: $msi_version"
+
     cd $cloudbaseInitInstallerDir
 
-    &msbuild CloudbaseInitSetup.sln /m /p:Platform=$platform /p:Configuration=`"Release`"  /p:DefineConstants=`"Python27SourcePath=$python_dir`;CarbonSourcePath=Carbon`"
+    &msbuild CloudbaseInitSetup.sln /m /p:Platform=$platform /p:Configuration=`"Release`"  /p:DefineConstants=`"Python27SourcePath=$python_dir`;CarbonSourcePath=Carbon`;Version=$msi_version`"
     if ($LastExitCode) { throw "MSBuild failed" }
 
     $msi_path = "CloudbaseInitSetup\bin\Release\$platform\CloudbaseInitSetup.msi"
