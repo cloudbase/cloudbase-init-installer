@@ -66,13 +66,12 @@ try
 
     ExecRetry { PipInstall "wmi" }
 
-    cd $cloudbaseInitInstallerDir\CloudbaseInitSetup
+    cd $cloudbaseInitInstallerDir
 
-    #&msbuild CloudbaseInitSetup.sln /m /p:Platform=$platform /p:Configuration=`"Release $platform`"  /p:DefineConstants=`"Python27SourcePath=$python_dir`;CarbonSourcePath=Carbon`"
-    &msbuild CloudbaseInitSetup.wixproj /m /p:Platform=$platform /p:Configuration=`"Release`"  /p:DefineConstants=`"Python27SourcePath=$python_dir`;CarbonSourcePath=Carbon`"
+    &msbuild CloudbaseInitSetup.sln /m /p:Platform=$platform /p:Configuration=`"Release`"  /p:DefineConstants=`"Python27SourcePath=$python_dir`;CarbonSourcePath=Carbon`"
     if ($LastExitCode) { throw "MSBuild failed" }
 
-    $msi_path = "bin\Release\$platform\CloudbaseInitSetup.msi"
+    $msi_path = "CloudbaseInitSetup\bin\Release\$platform\CloudbaseInitSetup.msi"
 
     if($SignX509Thumbprint)
     {

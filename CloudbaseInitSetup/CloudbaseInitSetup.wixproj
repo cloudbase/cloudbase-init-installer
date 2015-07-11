@@ -77,6 +77,7 @@
     <Content Include="Binaries\x64\msys2dll\msys-z.dll" />
     <Content Include="Binaries\x64\mtools.COPYING" />
     <Content Include="Binaries\x64\OpenStackService.exe" />
+    <Content Include="Binaries\x64\UtilsActions.dll" />
     <Content Include="Binaries\x86\bsdtar.COPYING" />
     <Content Include="Binaries\x86\bsdtar.exe" />
     <Content Include="Binaries\x86\Elevate.exe" />
@@ -94,6 +95,7 @@
     <Content Include="Binaries\x86\msys2dll\msys-z.dll" />
     <Content Include="Binaries\x86\mtools.COPYING" />
     <Content Include="Binaries\x86\OpenStackService.exe" />
+    <Content Include="Binaries\x86\UtilsActions.dll" />
     <Content Include="Carbon.xslt" />
     <Content Include="Carbon\about_Carbon.help.txt" />
     <Content Include="Carbon\ActiveDirectory\Find-ADUser.ps1" />
@@ -281,7 +283,6 @@
     <Content Include="Python27.xslt" />
     <Content Include="SetSetupComplete.cmd" />
     <Content Include="Unattend.xml" />
-    <Content Include="UtilsActions.dll" />
     <Content Include="Config.wxi" />
   </ItemGroup>
   <ItemGroup>

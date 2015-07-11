@@ -23,7 +23,8 @@ bld/
 CloudbaseInitSetup/Python27.wxs
 CloudbaseInitSetup/Python27_tmp.wxs
 CloudbaseInitSetup/Carbon.wxs
-CloudbaseInitSetup/UtilsActions.dll
+CloudbaseInitSetup/Binaries/x64/UtilsActions.dll
+CloudbaseInitSetup/Binaries/x86/UtilsActions.dll
 
 # MSTest test Results
 [Tt]est[Rr]esult*/

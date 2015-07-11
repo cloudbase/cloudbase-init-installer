@@ -8,7 +8,7 @@
     <Binary Id="ConfigDlgActions" SourceFile="Actions\ConfigDlgActions.js" />
     <Binary Id="SysprepActions" SourceFile="Actions\SysprepActions.js" />
     <Binary Id="UserActions" SourceFile="Actions\UserActions.js" />
-    <Binary Id="UtilsActionsDLL" SourceFile="UtilsActions.dll" />
+    <Binary Id="UtilsActionsDLL" SourceFile="Binaries\$(var.Platform)\UtilsActions.dll" />
 
     <CustomAction Id="GenerateRandomPassword"
                   BinaryKey="UtilsActionsDLL"
