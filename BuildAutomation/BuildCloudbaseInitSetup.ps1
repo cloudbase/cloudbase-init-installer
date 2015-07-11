@@ -65,6 +65,7 @@ try
     }
 
     ExecRetry { PipInstall "wmi" }
+    ExecRetry { PipInstall "comtypes" }
 
     $version = &"$python_dir\python.exe" -c "from cloudbaseinit import version; print version.get_version()"
     if ($LastExitCode -or !$version.Length) { throw "Unable to get cloudbase-init version" }
