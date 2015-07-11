@@ -135,7 +135,7 @@
       <ModuleDefinitionFile>UtilsActions.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(SolutionDir)\$(Configuration)\$(TargetFileName) "$(SolutionDir)CloudbaseInitSetup\Binaries\x86\"
+      <Command>copy "$(OutputPath)\$(TargetFileName)" "$(SolutionDir)CloudbaseInitSetup\Binaries\x86\"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -162,7 +162,7 @@
       <ModuleDefinitionFile>UtilsActions.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(SolutionDir)\$(Configuration)\$(TargetFileName) "$(SolutionDir)CloudbaseInitSetup\Binaries\x64\"
+      <Command>copy "$(OutputPath)\$(TargetFileName)" "$(SolutionDir)CloudbaseInitSetup\Binaries\x64\"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
