@@ -18,6 +18,7 @@ $python_dir = "C:\Python27_CloudbaseInit"
 
 $ENV:PATH = "$python_dir\;$python_dir\scripts;$ENV:PATH"
 $ENV:PATH += ";$ENV:ProgramFiles (x86)\Git\bin\"
+$ENV:WIX = "${ENV:ProgramFiles(x86)}\WiX Toolset v3.9\"
 
 $basepath = "C:\OpenStack\build\cloudbase-init"
 CheckDir $basepath
