@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
-  <Product Id="{ED85F19F-057A-4EE6-BC8D-F576DEACE78D}" Name="Cloudbase-Init" Language="1033" Version="$(var.Version)" Manufacturer="Cloudbase Solutions Srl" UpgradeCode="BA8F3CDD-9340-4852-8515-CF0BD5CA20E3">
+  <Product Id="{ED85F19F-057A-4EE6-BC8D-F576DEACE78D}" Name="Cloudbase-Init $(var.VersionStr)" Language="1033" Version="$(var.Version)" Manufacturer="Cloudbase Solutions Srl" UpgradeCode="BA8F3CDD-9340-4852-8515-CF0BD5CA20E3">
     <?include $(sys.CURRENTDIR)\Config.wxi?>
     <Package InstallerVersion="300" Compressed="yes" InstallScope="perMachine" InstallPrivileges="elevated" Platform="$(var.Platform)"/>
 

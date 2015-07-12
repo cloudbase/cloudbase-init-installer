@@ -76,7 +76,7 @@ try
 
     cd $cloudbaseInitInstallerDir
 
-    &msbuild CloudbaseInitSetup.sln /m /p:Platform=$platform /p:Configuration=`"Release`"  /p:DefineConstants=`"Python27SourcePath=$python_dir`;CarbonSourcePath=Carbon`;Version=$msi_version`"
+    &msbuild CloudbaseInitSetup.sln /m /p:Platform=$platform /p:Configuration=`"Release`"  /p:DefineConstants=`"Python27SourcePath=$python_dir`;CarbonSourcePath=Carbon`;Version=$msi_version`;VersionStr=$version`"
     if ($LastExitCode) { throw "MSBuild failed" }
 
     $msi_path = "CloudbaseInitSetup\bin\Release\$platform\CloudbaseInitSetup.msi"

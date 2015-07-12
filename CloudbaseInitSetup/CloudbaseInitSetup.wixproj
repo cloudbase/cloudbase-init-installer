@@ -19,7 +19,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>bin\$(Configuration)\$(platform)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
-    <DefineConstants>Python27SourcePath=C:\Python27_CloudbaseInit;CarbonSourcePath=Carbon;Version=1.0.0.0</DefineConstants>
+    <DefineConstants>Python27SourcePath=C:\Python27_CloudbaseInit;CarbonSourcePath=Carbon;Version=1.0.0.0;VersionStr=1.0.0.0</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <DefineConstants>Debug</DefineConstants>
@@ -27,7 +27,7 @@
     <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
-    <DefineConstants>Python27SourcePath=C:\Python27_CloudbaseInit;CarbonSourcePath=Carbon;Version=1.0.0.0</DefineConstants>
+    <DefineConstants>Python27SourcePath=C:\Python27_CloudbaseInit;CarbonSourcePath=Carbon;Version=1.0.0.0;VersionStr=1.0.0.0</DefineConstants>
     <OutputPath>bin\$(Configuration)\$(platform)\</OutputPath>
     <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
