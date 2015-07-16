@@ -57,7 +57,7 @@ function writeCloudbaseInitConfFileAction() {
             "debug": "true",
             "logdir": trim(logFolder),
             "logfile": "cloudbase-init.log",
-            "default_log_levels": "comtypes=INFO,suds=INFO,iso8601=WARN",
+            "default_log_levels": "comtypes=INFO,suds=INFO,iso8601=WARN,requests=WARN",
             "logging_serial_port_settings": trim(loggingSerialPortSettings),
             "mtu_use_dhcp_config": true,
             "ntp_use_dhcp_config": true,
