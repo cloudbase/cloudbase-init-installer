@@ -85,6 +85,7 @@ function writeCloudbaseInitConfFileAction() {
         config["allow_reboot"] = false;
         config["stop_service_on_exit"] = false;
         config["logfile"] = "cloudbase-init-unattend.log";
+        config["check_latest_version"] = false;
 
         writeConfigFile(cloudbaseInitConfFileUnattend, { "DEFAULT": config });
 
