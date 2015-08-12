@@ -84,15 +84,7 @@ function PullInstall($path, $url)
         # Remove Python compiled files
         Get-ChildItem  -include "*.pyc" -recurse | foreach ($_) {remove-item $_.fullname}
 
-        python setup.py build --force
-        if ($LastExitCode) { throw "python setup.py build failed" }
-
-        python setup.py install --force
-        if ($LastExitCode) { throw "python setup.py install failed" }
-
-        # Workaround for a setup related issue
-        python setup.py install
-        if ($LastExitCode) { throw "python setup.py install failed" }
+        PipInstall .
     }
     finally
     {
@@ -148,8 +140,7 @@ function InstallRelease($project, $version)
         $projectVer = "$project-$version"
         cd ".\dist"
         cd $projectVer
-        &python setup.py install --force
-        if ($LastExitCode) { throw "python setup.py build failed" }
+        PipInstall .
         cd ..
         Remove-Item -Recurse -Force $projectVer
     }
