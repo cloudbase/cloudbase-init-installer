@@ -50,7 +50,7 @@ try
         Remove-Item -Recurse -Force $python_build_path
     }
 
-    ExecRetry { PipInstall "pbr>=1.6.0" }
+    ExecRetry { PipInstall "pbr>=1.5.0" }
 
     if ($release)
     {
