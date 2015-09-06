@@ -20,10 +20,10 @@
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:attribute name="FileSource">
-        <xsl:text>$(var.Python27SourcePath)</xsl:text>
+        <xsl:text>$(var.PythonSourcePath)</xsl:text>
       </xsl:attribute>
       <xsl:attribute name="Name">
-        <xsl:text>Python27</xsl:text>
+        <xsl:text>Python</xsl:text>
       </xsl:attribute>
     </xsl:copy>
   </xsl:template>

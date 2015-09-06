@@ -18,7 +18,7 @@
     <Feature Id="CloudbaseInit" Title="Windows Cloud Init" Level="1" Absent="disallow" InstallDefault="local" TypicalDefault="install" AllowAdvertise="no"
              Description="Installs and configures the cloudbase-init service."
              ConfigurableDirectory="INSTALLDIR" Display="expand">
-      <ComponentGroupRef Id="Python27ComponentGroup" />
+      <ComponentGroupRef Id="PythonComponentGroup" />
       <ComponentGroupRef Id="CloudbaseInitFolders" />
       <ComponentRef Id="CloudbaseInitServiceUser" />
       <ComponentRef Id="CloudbaseInitService" />
@@ -232,7 +232,7 @@
     <Component Id="CloudbaseInitService" Directory="BINFOLDER" Guid="{234DDD41-5BA4-4777-A0B0-8462D47777E3}" Win64="$(var.Win64)">
       <File Id="OpenStackService.exe" Source="Binaries\$(var.Platform)\OpenStackService.exe" KeyPath="yes" Checksum="yes" />
       <ServiceInstall
-               Arguments='cloudbase-init "[INSTALLDIR]Python27\Scripts\cloudbase-init.exe" --config-file "[CLOUDBASEINITCONFFOLDER]cloudbase-init.conf"'
+               Arguments='cloudbase-init "[INSTALLDIR]Python\Scripts\cloudbase-init.exe" --config-file "[CLOUDBASEINITCONFFOLDER]cloudbase-init.conf"'
                Id="CloudbaseInitServiceInstaller"
                Type="ownProcess"
                Vital="yes"

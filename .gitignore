@@ -20,8 +20,8 @@ bld/
 !CloudbaseInitSetup/Binaries/x86
 !CloudbaseInitSetup/Carbon/[Bb]in/
 
-CloudbaseInitSetup/Python27.wxs
-CloudbaseInitSetup/Python27_tmp.wxs
+CloudbaseInitSetup/Python.wxs
+CloudbaseInitSetup/Python_tmp.wxs
 CloudbaseInitSetup/Carbon.wxs
 CloudbaseInitSetup/Binaries/x64/UtilsActions.dll
 CloudbaseInitSetup/Binaries/x86/UtilsActions.dll
