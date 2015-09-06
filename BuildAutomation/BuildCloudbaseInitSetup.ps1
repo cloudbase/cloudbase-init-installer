@@ -1,6 +1,7 @@
 Param(
-  [string]$SignX509Thumbprint,
   [string]$platform = "x64",
+  [string]$pythonversion = "2.7",
+  [string]$SignX509Thumbprint = $null,
   [string]$release = $null
 )
 
@@ -18,6 +19,7 @@ $python_dir = "C:\Python27_CloudbaseInit"
 
 $ENV:PATH = "$python_dir\;$python_dir\scripts;$ENV:PATH"
 $ENV:PATH += ";$ENV:ProgramFiles (x86)\Git\bin\"
+$ENV:PATH += ";$ENV:ProgramFiles\7-zip\"
 
 $basepath = "C:\OpenStack\build\cloudbase-init"
 CheckDir $basepath
@@ -32,18 +34,13 @@ try
     CheckRemoveDir $ENV:TMPDIR
     mkdir $ENV:TMPDIR
 
-    $cloudbaseInitInstallerDir = "cloudbase-init-installer"
+    $cloudbaseInitInstallerDir = join-Path $basepath "cloudbase-init-installer"
     ExecRetry {
         # Make sure to have a private key that matches a github deployer key in $ENV:HOME\.ssh\id_rsa
         GitClonePull $cloudbaseInitInstallerDir "git@github.com:/cloudbase/cloudbase-init-installer.git"
     }
 
-    if($platform -eq "x64") {
-        $python_template_dir = "$cloudbaseInitInstallerDir\Python27_x64_Template"
-    }
-    else {
-        $python_template_dir = "$cloudbaseInitInstallerDir\Python27_Template"
-    }
+    $python_template_dir = join-path $cloudbaseInitInstallerDir "Python$($pythonversion.replace('.', ''))_${platform}_Template"
 
     CheckCopyDir $python_template_dir $python_dir
 
@@ -53,7 +50,7 @@ try
         Remove-Item -Recurse -Force $python_build_path
     }
 
-    ExecRetry { PipInstall "pbr<1.0,>=0.11" }
+    ExecRetry { PipInstall "pbr>=1.6.0" }
 
     if ($release)
     {
@@ -64,10 +61,28 @@ try
         ExecRetry { PullInstall "cloudbase-init" "https://github.com/stackforge/cloudbase-init.git" }
     }
 
+    # TODO: use a version of pip that supports requirements-windows
     ExecRetry { PipInstall "wmi" }
     ExecRetry { PipInstall "comtypes" }
 
-    $version = &"$python_dir\python.exe" -c "from cloudbaseinit import version; print version.get_version()"
+    $zip_path = join-path $cloudbaseInitInstallerDir "CloudbaseInitSetup\bin\Release\$platform\CloudbaseInitSetup.zip"
+
+    pushd $python_dir
+    try
+    {
+        if (Test-Path $zip_path) {
+            del $zip_path
+        }
+
+        # Don't include base dir in archive
+        CreateZip $zip_path *
+    }
+    finally
+    {
+        popd
+    }
+
+    $version = &"$python_dir\python.exe" -c "from cloudbaseinit import version; print(version.get_version())"
     if ($LastExitCode -or !$version.Length) { throw "Unable to get cloudbase-init version" }
     Write-Host "Cloudbase-Init version: $version"
 
@@ -79,7 +94,7 @@ try
     &msbuild CloudbaseInitSetup.sln /m /p:Platform=$platform /p:Configuration=`"Release`"  /p:DefineConstants=`"Python27SourcePath=$python_dir`;CarbonSourcePath=Carbon`;Version=$msi_version`;VersionStr=$version`"
     if ($LastExitCode) { throw "MSBuild failed" }
 
-    $msi_path = "CloudbaseInitSetup\bin\Release\$platform\CloudbaseInitSetup.msi"
+    $msi_path = join-path $cloudbaseInitInstallerDir "CloudbaseInitSetup\bin\Release\$platform\CloudbaseInitSetup.msi"
 
     if($SignX509Thumbprint)
     {

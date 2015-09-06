@@ -85,11 +85,19 @@ function PullInstall($path, $url)
         Get-ChildItem  -include "*.pyc" -recurse | foreach ($_) {remove-item $_.fullname}
 
         PipInstall .
+
+
     }
     finally
     {
         popd
     }
+}
+
+function CreateZip($zipPath, $path)
+{
+    &7z.exe a -r $zipPath $path
+    if ($LastExitCode) { throw "7z.exe failed to create archive: $archive"}
 }
 
 function Expand7z($archive, $outputDir = ".")
