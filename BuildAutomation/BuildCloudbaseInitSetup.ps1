@@ -51,7 +51,7 @@ try
     }
 
     ExecRetry { PipInstall "pbr>=1.5.0" }
-
+    ExecRetry { PipInstall "pip>=7.0.0" }
     if ($release)
     {
         ExecRetry { PipInstall "cloudbase-init==$release" }
@@ -60,10 +60,6 @@ try
     {
         ExecRetry { PullInstall "cloudbase-init" "https://github.com/stackforge/cloudbase-init.git" }
     }
-
-    # TODO: use a version of pip that supports requirements-windows
-    ExecRetry { PipInstall "wmi" }
-    ExecRetry { PipInstall "comtypes" }
 
     $release_dir = join-path $cloudbaseInitInstallerDir "CloudbaseInitSetup\bin\Release\$platform"
     $bin_dir = join-path $cloudbaseInitInstallerDir "CloudbaseInitSetup\Binaries\$platform"
