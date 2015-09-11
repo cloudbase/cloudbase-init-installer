@@ -23,7 +23,6 @@
       <ComponentRef Id="CloudbaseInitServiceUser" />
       <ComponentRef Id="CloudbaseInitService" />
       <ComponentRef Id="ElevateUtils" />
-      <ComponentRef Id="msys2dll" />
       <ComponentRef Id="bsdtar" />
       <ComponentRef Id="mtools" />
       <ComponentRef Id="SetSetupComplete" />
@@ -203,20 +202,6 @@
       <File Id="mlabel.exe" Source="Binaries\$(var.Platform)\mlabel.exe" Checksum="yes" />
       <File Id="mcopy.exe" Source="Binaries\$(var.Platform)\mcopy.exe" Checksum="yes" />
       <File Id="mtools.COPYING" Source="Binaries\$(var.Platform)\mtools.COPYING" Checksum="yes" />
-    </Component>
-
-    <Component Id="msys2dll" Directory="BINFOLDER" Guid="{E4355090-AD54-4E0B-80F6-3180A64FB520}" Win64="$(var.Win64)">
-      <File Id="msys_2.0.dll" Source="Binaries\$(var.Platform)\msys2dll\msys-2.0.dll" KeyPath="yes" Checksum="yes" />
-      <File Id="msys_bz2_1.dll" Source="Binaries\$(var.Platform)\msys2dll\msys-bz2-1.dll" Checksum="yes" />
-      <File Id="msys_iconv_2.dll" Source="Binaries\$(var.Platform)\msys2dll\msys-iconv-2.dll" Checksum="yes" />
-      <File Id="msys_lzma_5.dll" Source="Binaries\$(var.Platform)\msys2dll\msys-lzma-5.dll" Checksum="yes" />
-      <File Id="msys_lzo2_2.dll" Source="Binaries\$(var.Platform)\msys2dll\msys-lzo2-2.dll" Checksum="yes" />
-      <File Id="msys_nettle_6.dll" Source="Binaries\$(var.Platform)\msys2dll\msys-nettle-6.dll" Checksum="yes" />
-      <File Id="msys_xml2_2.dll" Source="Binaries\$(var.Platform)\msys2dll\msys-xml2-2.dll" Checksum="yes" />
-      <File Id="msys_z.dll" Source="Binaries\$(var.Platform)\msys2dll\msys-z.dll" Checksum="yes" />
-      <?if $(var.Platform) = x86 ?>
-        <File Id="msys_gcc_s_1.dll" Source="Binaries\$(var.Platform)\msys2dll\msys-gcc_s-1.dll" Checksum="yes" />
-      <?endif ?>
     </Component>
 
     <Component Id="SetSetupComplete" Directory="BINFOLDER" Guid="{4507F735-3BD0-403B-96C9-6959B6B617C1}" Win64="$(var.Win64)">
