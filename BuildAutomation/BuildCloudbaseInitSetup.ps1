@@ -65,16 +65,27 @@ try
     ExecRetry { PipInstall "wmi" }
     ExecRetry { PipInstall "comtypes" }
 
-    $zip_path = join-path $cloudbaseInitInstallerDir "CloudbaseInitSetup\bin\Release\$platform\CloudbaseInitSetup.zip"
+    $release_dir = join-path $cloudbaseInitInstallerDir "CloudbaseInitSetup\bin\Release\$platform"
+    $bin_dir = join-path $cloudbaseInitInstallerDir "CloudbaseInitSetup\Binaries\$platform"
 
-    pushd $python_dir
+    $zip_content_dir = join-path $release_dir "zip_content"
+    CheckRemoveDir $zip_content_dir
+    mkdir $zip_content_dir
+
+    $python_dir_release = join-path $zip_content_dir "Python"
+    $bin_dir_release = join-path $zip_content_dir "Bin"
+
+    CheckCopyDir $python_dir $python_dir_release
+    CheckCopyDir $bin_dir $bin_dir_release
+
+    $zip_path = join-path $release_dir "CloudbaseInitSetup.zip"
+    if (Test-Path $zip_path) {
+        del $zip_path
+    }
+
+    pushd $zip_content_dir
     try
     {
-        if (Test-Path $zip_path) {
-            del $zip_path
-        }
-
-        # Don't include base dir in archive
         CreateZip $zip_path *
     }
     finally
