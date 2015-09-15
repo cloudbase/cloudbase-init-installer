@@ -85,8 +85,6 @@ function PullInstall($path, $url)
         Get-ChildItem  -include "*.pyc" -recurse | foreach ($_) {remove-item $_.fullname}
 
         PipInstall .
-
-
     }
     finally
     {
