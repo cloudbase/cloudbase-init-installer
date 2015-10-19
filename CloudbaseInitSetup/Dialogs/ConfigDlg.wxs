@@ -2,7 +2,7 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
     <UI>
-      <Dialog Id="ConfigDlg" Width="370" Height="270">
+      <Dialog Id="ConfigDlg" Width="370" Height="270" Title="!(loc.WelcomeDlg_Title)">
 
         <Control Type="Text" Id="usernameText" Width="77" Height="12" X="10" Y="52" Text="&amp;Username:" />
         <Control Type="Edit" Id="usernameEdit" Width="150" Height="17" X="10" Y="66" Property="USERNAME">
