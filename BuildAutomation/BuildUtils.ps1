@@ -69,9 +69,9 @@ function GitClonePull($path, $url, $branch="master")
     }
 }
 
-function PullInstall($path, $url)
+function PullInstall($path, $url, $branch="master")
 {
-    GitClonePull $path $url
+    GitClonePull $path $url $branch
 
     pushd .
     try

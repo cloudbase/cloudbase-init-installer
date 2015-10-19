@@ -1,8 +1,14 @@
 Param(
   [string]$platform = "x64",
-  [string]$pythonversion = "2.7",
+  [string]$pythonversion = "3.4",
   [string]$SignX509Thumbprint = $null,
-  [string]$release = $null
+  [string]$release = $null,
+  # Cloudbase-Init repo details
+  [string]$CloudbaseInitRepoUrl = "https://github.com/stackforge/cloudbase-init.git",
+  [string]$CloudbaseInitRepoBranch = "master",
+  # Use an already available installer or clone a new one.
+  [switch]$ClonePullInstallerRepo = $true,
+  [string]$InstallerDir = $null
 )
 
 $ErrorActionPreference = "Stop"
@@ -34,10 +40,30 @@ try
     CheckRemoveDir $ENV:TMPDIR
     mkdir $ENV:TMPDIR
 
-    $cloudbaseInitInstallerDir = join-Path $basepath "cloudbase-init-installer"
-    ExecRetry {
-        # Make sure to have a private key that matches a github deployer key in $ENV:HOME\.ssh\id_rsa
-        GitClonePull $cloudbaseInitInstallerDir "git@github.com:/cloudbase/cloudbase-init-installer.git"
+    if ($ClonePullInstallerRepo)
+    {
+        # Clone a new installer repo no matter what.
+        $cloudbaseInitInstallerDir = join-Path $basepath "cloudbase-init-installer"
+        ExecRetry {
+            # Make sure to have a private key that matches a github deployer key in $ENV:HOME\.ssh\id_rsa
+            GitClonePull $cloudbaseInitInstallerDir "git@github.com:/cloudbase/cloudbase-init-installer.git"
+        }
+    }
+    else
+    {
+        if (!$InstallerDir)
+        {
+            # No path provided, so use the current installer script path.
+            $InstallerDir = (Join-Path -Path $PSScriptRoot -ChildPath ..\ -Resolve)
+        }
+        if (Test-Path $InstallerDir)
+        {
+            $cloudbaseInitInstallerDir = $InstallerDir
+        }
+        else
+        {
+            throw "Installer path not present: $InstallerDir"
+        }
     }
 
     $python_template_dir = join-path $cloudbaseInitInstallerDir "Python$($pythonversion.replace('.', ''))_${platform}_Template"
@@ -58,7 +84,7 @@ try
     }
     else
     {
-        ExecRetry { PullInstall "cloudbase-init" "https://github.com/stackforge/cloudbase-init.git" }
+        ExecRetry { PullInstall "cloudbase-init" $CloudbaseInitRepoUrl $CloudbaseInitRepoBranch }
     }
 
     $release_dir = join-path $cloudbaseInitInstallerDir "CloudbaseInitSetup\bin\Release\$platform"
