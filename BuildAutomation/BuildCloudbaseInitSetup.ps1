@@ -119,7 +119,16 @@ try
     if ($LastExitCode -or !$version.Length) { throw "Unable to get cloudbase-init version" }
     Write-Host "Cloudbase-Init version: $version"
 
-    $msi_version = $version.Substring(0, $version.LastIndexOf('.')) + ".0"
+    try
+    {
+        [int]::Parse($version.Substring($version.LastIndexOf('.') + 1))
+        $msi_version = $version + ".0"
+    }
+    catch
+    {
+        $msi_version = $version.Substring(0, $version.LastIndexOf('.')) + ".0"
+    }
+
     Write-Host "Cloudbase-Init MSI version: $msi_version"
 
     cd $cloudbaseInitInstallerDir
