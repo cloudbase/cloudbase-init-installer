@@ -121,8 +121,9 @@ try
 
     try
     {
-        [int]::Parse($version.Substring($version.LastIndexOf('.') + 1))
+        [int]::Parse($version.Substring($version.LastIndexOf('.') + 1)) | out-null
         $msi_version = $version + ".0"
+        Write-Host "This is a tagged stable release"
     }
     catch
     {
