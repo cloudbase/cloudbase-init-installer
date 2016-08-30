@@ -81,7 +81,7 @@ function writeCloudbaseInitConfFileAction() {
             config["metadata_services"] = "cloudbaseinit.metadata.services.configdrive.ConfigDriveService,cloudbaseinit.metadata.services.httpservice.HttpService,cloudbaseinit.metadata.services.ec2service.EC2Service,cloudbaseinit.metadata.services.maasservice.MaaSHttpService";
         }
 
-        config["plugins"] = "cloudbaseinit.plugins.common.mtu.MTUPlugin,cloudbaseinit.plugins.common.sethostname.SetHostNamePlugin";
+        config["plugins"] = "cloudbaseinit.plugins.common.mtu.MTUPlugin,cloudbaseinit.plugins.common.sethostname.SetHostNamePlugin,cloudbaseinit.plugins.windows.extendvolumes.ExtendVolumesPlugin";
         config["allow_reboot"] = false;
         config["stop_service_on_exit"] = false;
         config["logfile"] = "cloudbase-init-unattend.log";
