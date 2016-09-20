@@ -77,7 +77,7 @@ try
     }
 
     ExecRetry { PipInstall "pbr>=1.5.0" }
-    ExecRetry { PipInstall "pip>=7.0.0" }
+    ExecRetry { PipInstall "pip>=7.0.0" -update $true }
     if ($release)
     {
         ExecRetry { PipInstall "cloudbase-init==$release" }
