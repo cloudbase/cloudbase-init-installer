@@ -162,10 +162,20 @@ function PullInstallRelease($project, $release, $version)
     InstallRelease $project $version
 }
 
-function PipInstall($package)
+function PipInstall($package, $allow_dev=$false, $update=$false)
 {
-    python -m pip install $package
-    if ($LastExitCode) { throw "pip install failed on package: $package" }
+    $dev = ""
+    if ($allow_dev) {
+        $dev = "--pre"
+    }
+
+    $u = ""
+    if($update) {
+        $u = "-U"
+    }
+
+    python -m pip install $dev $u $package
+    if ($LastExitCode) { throw "pip install $dev failed on package: $package" }
 }
 
 function SetVCVars($version="12.0")
