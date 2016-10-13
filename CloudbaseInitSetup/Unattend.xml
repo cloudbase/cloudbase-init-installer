@@ -21,9 +21,9 @@
       <RunSynchronous>
         <RunSynchronousCommand wcm:action="add">
           <Order>1</Order>
-          <Path>"%INSTALLDIR%Python\Scripts\cloudbase-init.exe" --config-file "%CLOUDBASEINITCONFFOLDER%cloudbase-init-unattend.conf"</Path>
+          <Path>cmd.exe /c ""%INSTALLDIR%Python\Scripts\cloudbase-init.exe" --config-file "%CLOUDBASEINITCONFFOLDER%cloudbase-init-unattend.conf" && exit 1 || exit 2"</Path>
           <Description>Run Cloudbase-Init to set the hostname</Description>
-          <WillReboot>Always</WillReboot>
+          <WillReboot>OnRequest</WillReboot>
         </RunSynchronousCommand>
       </RunSynchronous>
     </component>
