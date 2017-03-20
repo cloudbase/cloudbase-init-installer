@@ -57,7 +57,7 @@
     Comma separated list of user rights. "SeServiceLogonRight" is already assigned.
     See: http://technet.microsoft.com/en-us/library/bb457125.aspx
     -->
-    <Property Id="SERVICE_USER_RIGHTS" Value="SeAssignPrimaryTokenPrivilege" />
+    <Property Id="SERVICE_USER_RIGHTS" Value="SeAssignPrimaryTokenPrivilege, SeIncreaseQuotaPrivilege" />
     <Property Id="RUN_SERVICE_AS_LOCAL_SYSTEM" />
 
     <UIRef Id="MyWixUI_FeatureTree" />
