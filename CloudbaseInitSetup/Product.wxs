@@ -206,9 +206,9 @@
 
     <Component Id="SetSetupComplete" Directory="BINFOLDER" Guid="{4507F735-3BD0-403B-96C9-6959B6B617C1}" Win64="$(var.Win64)">
       <File Id="SetSetupComplete.cmd" Source="SetSetupComplete.cmd" Checksum="yes" KeyPath="yes" />
-    </Component>    
+    </Component>
   </Fragment>
-    
+
   <Fragment>
     <util:Group Id="AdministratorsGroup" Name="[ACCOUNT_ADMINISTRATORS_NAME]" />
     <Property Id="GENERATED_PASSWORD" Hidden="yes" />
@@ -230,8 +230,8 @@
                Type="ownProcess"
                Vital="yes"
                Name="cloudbase-init"
-               DisplayName="Cloud Initialization Service"
-               Description="Service wrapper for cloudbase-init"
+               DisplayName="Cloudbase-Init"
+               Description="Cloud Initialization Service"
                Start="auto"
                Account="[CloudbaseInitServiceUser]"
                Password="[GENERATED_PASSWORD]"
