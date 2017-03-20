@@ -29,6 +29,10 @@
           <ComboBox Property="LOGGINGSERIALPORTNAME" />
         </Control>
 
+        <Control Type="CheckBox" Id="runServiceAsLocalSystem" Width="200" Height="17" X="10" Y="198" Text="Run Cloudbase-Init service as &amp;LocalSystem" CheckBoxValue="1"
+                 ToolTip="Run the Cloudbase-Init service as LocalSystem instead of the Cloudbase-Init user. This might prevent some userdata scripts to run properly." Property="RUN_SERVICE_AS_LOCAL_SYSTEM">
+        </Control>
+
         <Control Id="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Text="&amp;Back">
           <Publish Event="NewDialog" Value="CustomizeDlg">1</Publish>
         </Control>
