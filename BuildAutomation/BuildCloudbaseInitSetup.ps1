@@ -86,6 +86,7 @@ try
     # We comment out the following libs from the constraints file, ensuring
     # that we're going to stick with the requested versions.
     $(gc $upper_constraints_file) -replace '^(netifaces)', '# $1' | sc $upper_constraints_file
+    $env:PIP_CONSTRAINT = $upper_constraints_file
 
     if ($release)
     {
