@@ -76,9 +76,16 @@ try
         Remove-Item -Recurse -Force $python_build_path
     }
 
-    ExecRetry { PipInstall "pbr>=1.5.0" }
-    ExecRetry { PipInstall "pip>=7.0.0" -update $true }
+    ExecRetry { PipInstall "pip" -update $true }
+    ExecRetry { PipInstall "wheel" -update $true }
+    # 0.10.5 does not have wheels for Python 3.4
     ExecRetry { PipInstall "netifaces==0.10.4" }
+
+    ExecRetry { PullInstall "requirements" "https://github.com/openstack/requirements" }
+    $upper_constraints_file = $(Resolve-Path ".\requirements\upper-constraints.txt").Path
+    # We comment out the following libs from the constraints file, ensuring
+    # that we're going to stick with the requested versions.
+    $(gc $upper_constraints_file) -replace '^(netifaces)', '# $1' | sc $upper_constraints_file
 
     if ($release)
     {
