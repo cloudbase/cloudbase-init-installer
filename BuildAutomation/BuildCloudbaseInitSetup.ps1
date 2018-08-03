@@ -8,7 +8,8 @@ Param(
   [string]$CloudbaseInitRepoBranch = "master",
   # Use an already available installer or clone a new one.
   [switch]$ClonePullInstallerRepo = $true,
-  [string]$InstallerDir = $null
+  [string]$InstallerDir = $null,
+  [string]$VSRedistDir = "C:\VSRedist"
 )
 
 $ErrorActionPreference = "Stop"
@@ -141,6 +142,21 @@ try
     }
 
     Write-Host "Cloudbase-Init MSI version: $msi_version"
+
+    $installer_sources_dir = join-path $cloudbaseInitInstallerDir "CloudbaseInitSetup"
+
+    if($platform -eq "x64")
+    {
+        copy "${VSRedistDir}\Microsoft_VC100_CRT_x64.msm" $installer_sources_dir
+        copy "${VSRedistDir}\Microsoft_VC90_CRT_x86_x64.msm" $installer_sources_dir
+        copy "${VSRedistDir}\policy_9_0_Microsoft_VC90_CRT_x86_x64.msm" $installer_sources_dir
+    }
+    else
+    {
+        copy "${VSRedistDir}\Microsoft_VC100_CRT_x86.msm" $installer_sources_dir
+        copy "${VSRedistDir}\Microsoft_VC90_CRT_x86.msm" $installer_sources_dir
+        copy "${VSRedistDir}\policy_9_0_Microsoft_VC90_CRT_x86.msm" $installer_sources_dir
+    }
 
     cd $cloudbaseInitInstallerDir
 
