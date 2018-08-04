@@ -178,12 +178,12 @@ function PipInstall($package, $allow_dev=$false, $update=$false)
     if ($LastExitCode) { throw "pip install $dev failed on package: $package" }
 }
 
-function SetVCVars($version="12.0")
+function SetVCVars($version="12.0", $platform="x86_amd64")
 {
     pushd "$ENV:ProgramFiles (x86)\Microsoft Visual Studio $version\VC\"
     try
     {
-        cmd /c "vcvarsall.bat&set" |
+        cmd /c "vcvarsall.bat $platform & set" |
         foreach {
           if ($_ -match "=") {
             $v = $_.split("="); set-item -force -path "ENV:\$($v[0])"  -value "$($v[1])"
