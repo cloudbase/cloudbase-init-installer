@@ -83,6 +83,7 @@ try
     ExecRetry { PullInstall "requirements" "https://github.com/openstack/requirements" }
     $upper_constraints_file = $(Resolve-Path ".\requirements\upper-constraints.txt").Path
     $env:PIP_CONSTRAINT = $upper_constraints_file
+    $env:PIP_NO_BINARIES = "cloudbase-init"
 
     if ($release)
     {
