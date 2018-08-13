@@ -26,9 +26,6 @@
       <ComponentRef Id="bsdtar" />
       <ComponentRef Id="mtools" />
       <ComponentRef Id="SetSetupComplete" />
-      <!--
-      <ComponentRef Id="CleanupPyWin32Folder" />
-      -->
 
       <Feature Id="VC140Redist" Title="Visual C++ 14.0 Runtime" AllowAdvertise="no" Display="hidden" Level="1">
         <MergeRef Id="VC140Redist" />
@@ -98,9 +95,6 @@
 
       <Custom Action="AddUserToWinlogonSpecialAccounts_Prop" After="CostFinalize" />
       <Custom Action="AddUserToWinlogonSpecialAccounts" Before="DeleteCommonIncludeFile"><![CDATA[REMOVE <> "ALL"]]></Custom>
-
-      <Custom Action="PyWin32PostInstall_Prop" After="CostFinalize" />
-      <Custom Action="PyWin32PostInstall" Before="DeleteCommonIncludeFile">NOT Installed</Custom>
 
       <Custom Action="DeleteCommonIncludeFile" Before="InstallFinalize" />
     </InstallExecuteSequence>

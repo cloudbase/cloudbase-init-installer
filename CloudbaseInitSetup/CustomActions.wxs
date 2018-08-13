@@ -44,12 +44,6 @@
               BinaryKey="PythonActions"
               JScriptCall="updatePythonShellInScriptsAction" Execute="deferred" Return="check" Impersonate="no" />
 
-    <CustomAction Id="PyWin32PostInstall_Prop" Property="PyWin32PostInstall"
-                  Value='"[INSTALLDIR]Python\python.exe" "[INSTALLDIR]Python\Scripts\pywin32_postinstall.py" -install -silent -quiet|0|Cannot find the Microsoft VC90 CRT x86 DLL. Please install the VC++ 2008 SP1 x86 redistributable package before installing this software.'
-                  Execute="immediate" />
-    <CustomAction Id="PyWin32PostInstall" BinaryKey="GenericActions" JScriptCall="runCommandAction"
-                  Execute="deferred" Return="check" Impersonate="no" />
-
     <CustomAction Id="GenerateCloudbaseInitConfFile_Prop" Return="check" Property="GenerateCloudbaseInitConfFile"
                   Value="[CLOUDBASEINITCONFFOLDER]|[BINFOLDER]|[LOGFOLDER]|[USERNAME]|[INJECTMETADATAPASSWORD]|[USERGROUPS]|[LOGGINGSERIALPORTNAME]|[MAAS_METADATA_URL]|[MAAS_OAUTH_CONSUMER_KEY]|[MAAS_OAUTH_CONSUMER_SECRET]|[MAAS_OAUTH_TOKEN_KEY]|[MAAS_OAUTH_TOKEN_SECRET]|[LOCALSCRIPTSFOLDER]" />
     <CustomAction Id="GenerateCloudbaseInitConfFile"
