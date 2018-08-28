@@ -31,15 +31,6 @@
         <MergeRef Id="VC140Redist" />
       </Feature>
 
-      <Feature Id="VC100Redist" Title="Visual C++ 10.0 Runtime" AllowAdvertise="no" Display="hidden" Level="1">
-        <MergeRef Id="VC100Redist" />
-      </Feature>
-
-      <Feature Id="VC90Redist" Title="Visual C++ 9.0 Runtime" AllowAdvertise="no" Display="hidden" Level="1">
-        <MergeRef Id="VC90Redist" />
-        <MergeRef Id="VC90Policy" />
-      </Feature>
-
       <Feature Id="Carbon" Title="Carbon PowerShell Module" AllowAdvertise="no" Level="1" InstallDefault="followParent" Absent="allow"
                Description="Carbon is an open source PowerShell module with lots of features for deployment automation. More info: http://get-carbon.org/">
         <ComponentGroupRef Id="CarbonComponentGroup" />
@@ -175,14 +166,8 @@
       <?if $(var.Platform) = x64 ?>
         <!-- TODO: use a variable to select the correct CRT version -->
         <Merge Id="VC140Redist" SourceFile="Microsoft_VC140_CRT_x64.msm" DiskId="1" Language="0" />
-        <Merge Id="VC100Redist" SourceFile="Microsoft_VC100_CRT_x64.msm" DiskId="1" Language="0" />
-        <Merge Id="VC90Redist" SourceFile="Microsoft_VC90_CRT_x86_x64.msm" DiskId="1" Language="0" />
-        <Merge Id="VC90Policy" SourceFile="policy_9_0_Microsoft_VC90_CRT_x86_x64.msm" DiskId="1" Language="0" />
       <?else ?>
         <Merge Id="VC140Redist" SourceFile="Microsoft_VC140_CRT_x86.msm" DiskId="1" Language="0" />
-        <Merge Id="VC100Redist" SourceFile="Microsoft_VC100_CRT_x86.msm" DiskId="1" Language="0" />
-        <Merge Id="VC90Redist" SourceFile="Microsoft_VC90_CRT_x86.msm" DiskId="1" Language="0" />
-        <Merge Id="VC90Policy" SourceFile="policy_9_0_Microsoft_VC90_CRT_x86.msm" DiskId="1" Language="0" />
       <?endif ?>
     </DirectoryRef>
   </Fragment>
