@@ -1,15 +1,15 @@
 Param(
   [string]$platform = "x64",
-  [string]$pythonversion = "3.4",
+  [string]$pythonversion = "3.6",
   [string]$SignX509Thumbprint = $null,
   [string]$release = $null,
   # Cloudbase-Init repo details
-  [string]$CloudbaseInitRepoUrl = "https://github.com/stackforge/cloudbase-init.git",
+  [string]$CloudbaseInitRepoUrl = "https://github.com/openstack/cloudbase-init.git",
   [string]$CloudbaseInitRepoBranch = "master",
   # Use an already available installer or clone a new one.
   [switch]$ClonePullInstallerRepo = $true,
   [string]$InstallerDir = $null,
-  [string]$VSRedistDir = "C:\VSRedist"
+  [string]$VSRedistDir = "${ENV:ProgramFiles(x86)}\Common Files\Merge Modules"
 )
 
 $ErrorActionPreference = "Stop"
@@ -46,8 +46,7 @@ try
         # Clone a new installer repo no matter what.
         $cloudbaseInitInstallerDir = join-Path $basepath "cloudbase-init-installer"
         ExecRetry {
-            # Make sure to have a private key that matches a github deployer key in $ENV:HOME\.ssh\id_rsa
-            GitClonePull $cloudbaseInitInstallerDir "git@github.com:/cloudbase/cloudbase-init-installer.git"
+            GitClonePull $cloudbaseInitInstallerDir "https://github.com/cloudbase/cloudbase-init-installer.git"
         }
     }
     else
