@@ -61,7 +61,8 @@ function writeCloudbaseInitConfFileAction() {
             "logging_serial_port_settings": trim(loggingSerialPortSettings),
             "mtu_use_dhcp_config": true,
             "ntp_use_dhcp_config": true,
-            "local_scripts_path": localScriptsFolder
+            "local_scripts_path": localScriptsFolder,
+            "check_latest_version": true
         };
 
         if (maasMetadataUrl) {
