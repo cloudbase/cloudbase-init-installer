@@ -55,8 +55,8 @@ function writeCloudbaseInitConfFileAction() {
             "mtools_path": binFolder,
             "verbose": "true",
             "debug": "true",
-            "logdir": trim(logFolder),
-            "logfile": "cloudbase-init.log",
+            "log_dir": trim(logFolder),
+            "log_file": "cloudbase-init.log",
             "default_log_levels": "comtypes=INFO,suds=INFO,iso8601=WARN,requests=WARN",
             "logging_serial_port_settings": trim(loggingSerialPortSettings),
             "mtu_use_dhcp_config": true,
@@ -85,7 +85,7 @@ function writeCloudbaseInitConfFileAction() {
         config["plugins"] = "cloudbaseinit.plugins.common.mtu.MTUPlugin,cloudbaseinit.plugins.common.sethostname.SetHostNamePlugin,cloudbaseinit.plugins.windows.extendvolumes.ExtendVolumesPlugin";
         config["allow_reboot"] = false;
         config["stop_service_on_exit"] = false;
-        config["logfile"] = "cloudbase-init-unattend.log";
+        config["log_file"] = "cloudbase-init-unattend.log";
         config["check_latest_version"] = false;
 
         writeConfigFile(cloudbaseInitConfFileUnattend, { "DEFAULT": config });
