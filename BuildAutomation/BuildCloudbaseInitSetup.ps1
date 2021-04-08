@@ -9,7 +9,8 @@ Param(
   # Use an already available installer or clone a new one.
   [switch]$ClonePullInstallerRepo = $true,
   [string]$InstallerDir = $null,
-  [string]$VSRedistDir = "${ENV:ProgramFiles(x86)}\Common Files\Merge Modules"
+  [string]$VSRedistDir = "${ENV:ProgramFiles(x86)}\Common Files\Merge Modules",
+  [string]$SignTimestampUrl = "http://timestamp.digicert.com?alg=sha256"
 )
 
 $ErrorActionPreference = "Stop"
@@ -160,7 +161,7 @@ try
     {
         ExecRetry {
             Write-Host "Signing MSI with certificate: $SignX509Thumbprint"
-            signtool.exe sign /sha1 $SignX509Thumbprint /t http://timestamp.verisign.com/scripts/timstamp.dll /v $msi_path
+            signtool.exe sign /sha1 $SignX509Thumbprint /t $SignTimestampUrl /v $msi_path
             if ($LastExitCode) { throw "signtool failed" }
         }
     }
