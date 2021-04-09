@@ -161,7 +161,7 @@ try
     {
         ExecRetry {
             Write-Host "Signing MSI with certificate: $SignX509Thumbprint"
-            signtool.exe sign /sha1 $SignX509Thumbprint /t $SignTimestampUrl /v $msi_path
+            signtool.exe sign /sha1 $SignX509Thumbprint /tr $SignTimestampUrl /td SHA256 /v $msi_path
             if ($LastExitCode) { throw "signtool failed" }
         }
     }
