@@ -29,7 +29,7 @@ $ENV:PATH = "$python_dir\;$python_dir\scripts;$ENV:PATH"
 $ENV:PATH += ";$ENV:ProgramFiles (x86)\Git\bin\"
 $ENV:PATH += ";$ENV:ProgramFiles\7-zip\"
 
-$basepath = "C:\OpenStack\build\cloudbase-init"
+$basepath = "C:\build\cloudbase-init"
 CheckDir $basepath
 
 pushd .
