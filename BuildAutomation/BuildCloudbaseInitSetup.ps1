@@ -4,7 +4,7 @@ Param(
   [string]$SignX509Thumbprint = $null,
   [string]$release = $null,
   # Cloudbase-Init repo details
-  [string]$CloudbaseInitRepoUrl = "https://github.com/openstack/cloudbase-init.git",
+  [string]$CloudbaseInitRepoUrl = "https://github.com/cloudbase/cloudbase-init.git",
   [string]$CloudbaseInitRepoBranch = "master",
   # Use an already available installer or clone a new one.
   [switch]$ClonePullInstallerRepo = $true,
