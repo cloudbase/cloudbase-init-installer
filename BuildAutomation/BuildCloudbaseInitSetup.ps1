@@ -79,6 +79,7 @@ try
 
     ExecRetry { PipInstall "pip" -update $true }
     ExecRetry { PipInstall "wheel" -update $true }
+    ExecRetry { PipInstall "setuptools" -update $true }
 
     ExecRetry { PullInstall "requirements" "https://github.com/openstack/requirements" }
     $upper_constraints_file = $(Resolve-Path ".\requirements\upper-constraints.txt").Path
