@@ -1,5 +1,10 @@
 ## Cloudbase-Init Installer code
 
+### Build requirements
+
+The project currently requires Visual Studio 2019 with v141 build tools.
+TODO: ``UtilsActions`` project uses APIs that have been removed from more recent toolset versions and will have to be updated.
+
 ### How the Python template folder has been created
 
 ```powershell
