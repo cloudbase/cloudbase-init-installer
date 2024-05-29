@@ -180,9 +180,27 @@ function PipInstall($package, $allow_dev=$false, $update=$false)
 
 function SetVCVars($version="2019", $platform="x86_amd64") {
 
-    pushd "$ENV:ProgramFiles (x86)\Microsoft Visual Studio\$version\Enterprise\VC\Auxiliary\Build"
-    try
-    {
+    $vsInstallTypes = @("Community", "Enterprise")
+    $vsInstallArchTypes = @("$ENV:ProgramFiles (x86)", "$ENV:ProgramFiles")
+    $vsInstallBuildFolder = $null
+
+    foreach ($vsInstallArchType in $vsInstallArchTypes) {
+        foreach ($vsInstallType in $vsInstallTypes) {
+            $vsInstallBuildFolderCheck = "${vsInstallArchType}\Microsoft Visual Studio\$version\${vsInstallType}\VC\Auxiliary\Build"
+            if (Test-Path $vsInstallBuildFolderCheck) {
+                $vsInstallBuildFolder = $vsInstallBuildFolderCheck
+                break
+            } else {
+                Write-Host "${vsInstallBuildFolderCheck} does not exist"
+            }
+        }
+    }
+    if ($vsInstallBuildFolder -eq $null) {
+        throw "Visual Studio installation has not been found"
+    }
+
+    pushd $vsInstallBuildFolder
+    try {
         cmd /c "vcvarsall.bat $platform & set" |
         foreach {
           if ($_ -match "=") {
@@ -190,8 +208,7 @@ function SetVCVars($version="2019", $platform="x86_amd64") {
           }
         }
     }
-    finally
-    {
+    finally {
         popd
     }
 }
