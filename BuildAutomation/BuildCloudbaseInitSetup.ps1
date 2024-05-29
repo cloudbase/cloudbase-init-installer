@@ -1,6 +1,6 @@
 Param(
   [string]$platform = "x64",
-  [string]$pythonversion = "3.11_6",
+  [string]$pythonversion = "3.11_9",
   [string]$SignX509Thumbprint = $null,
   [string]$release = $null,
   # Cloudbase-Init repo details
