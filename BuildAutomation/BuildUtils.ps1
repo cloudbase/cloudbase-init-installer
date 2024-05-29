@@ -178,9 +178,9 @@ function PipInstall($package, $allow_dev=$false, $update=$false)
     if ($LastExitCode) { throw "pip install $dev failed on package: $package" }
 }
 
-function SetVCVars($version="14.0", $platform="x86_amd64")
-{
-    pushd "$ENV:ProgramFiles (x86)\Microsoft Visual Studio $version\VC\"
+function SetVCVars($version="2019", $platform="x86_amd64") {
+
+    pushd "$ENV:ProgramFiles (x86)\Microsoft Visual Studio\$version\Enterprise\VC\Auxiliary\Build"
     try
     {
         cmd /c "vcvarsall.bat $platform & set" |
