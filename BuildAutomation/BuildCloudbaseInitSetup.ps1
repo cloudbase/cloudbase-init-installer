@@ -18,7 +18,14 @@ $ErrorActionPreference = "Stop"
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
 . "$scriptPath\BuildUtils.ps1"
 
-SetVCVars "2019" "x86_amd64"
+$platformVCVarsRequired = "x86_amd64"
+# On Visual Studio 2019, the mixed x86_amd64 VC variables
+# make compilation for x86 use the x64 functions
+if ($platform -eq "x86") {
+    $platformVCVarsRequired = "x86"
+}
+
+SetVCVars "2019" $platformVCVarsRequired
 
 # Needed for SSH
 $ENV:HOME = $ENV:USERPROFILE
