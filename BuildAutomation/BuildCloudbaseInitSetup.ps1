@@ -11,7 +11,8 @@ Param(
   [switch]$ClonePullInstallerRepo = $true,
   [string]$InstallerDir = $null,
   [string]$VSRedistDir = "${ENV:ProgramFiles(x86)}\Common Files\Merge Modules",
-  [string]$SignTimestampUrl = "http://timestamp.digicert.com?alg=sha256"
+  [string]$SignTimestampUrl = "http://timestamp.digicert.com?alg=sha256",
+  [switch]$InstallEmbededPython
 )
 
 $ErrorActionPreference = "Stop"
@@ -24,6 +25,8 @@ $PythonInstallerSha1Hash = @{
     "python-installer-3.12.3-x86.exe" = "FF180F8EA0B126E5A0FAF0A22EC50E96E5B9C5AB";
     "python-installer-3.13.0b1-x64.exe" = "46ADF56A03D91D39EA4E8B6F5FFB080C824BDFDA";
     "python-installer-3.13.0b1-x86.exe" = "62E6FE0D5C9267275ABDD36302F327EB4E68C794";
+    "python-installer-3.12.3-embed-x64.zip" = "77558B39C2C8CBE056949DD49F445851911B76A7";
+    "python-installer-3.12.3-embed-x86.zip" = "E24BB06C194DE9A3EC695F63079F3793992E8DA1";
 }
 
 $platformVCVarsRequired = "x86_amd64"
@@ -47,42 +50,8 @@ $ENV:PATH += ";$ENV:ProgramFiles\7-zip\"
 $basepath = "C:\build\cloudbase-init"
 CheckDir $basepath
 
-pushd .
-try
-{
-    cd $basepath
-
-    # Don't use the default pip temp directory to avoid concurrency issues
-    $ENV:TMPDIR = Join-Path $basepath "temp"
-    CheckRemoveDir $ENV:TMPDIR
-    mkdir $ENV:TMPDIR
-
-    if ($ClonePullInstallerRepo)
-    {
-        # Clone a new installer repo no matter what.
-        $cloudbaseInitInstallerDir = join-Path $basepath "cloudbase-init-installer"
-        ExecRetry {
-            GitClonePull $cloudbaseInitInstallerDir "https://github.com/cloudbase/cloudbase-init-installer.git"
-        }
-    }
-    else
-    {
-        if (!$InstallerDir)
-        {
-            # No path provided, so use the current installer script path.
-            $InstallerDir = (Join-Path -Path $PSScriptRoot -ChildPath ..\ -Resolve)
-        }
-        if (Test-Path $InstallerDir)
-        {
-            $cloudbaseInitInstallerDir = $InstallerDir
-        }
-        else
-        {
-            throw "Installer path not present: $InstallerDir"
-        }
-    }
-
-    $python_template_dir = join-path $cloudbaseInitInstallerDir "Python$($pythonversion.replace('.', ''))_${platform}_Template"
+function Install-PythonFromInstaller {
+    param($python_template_dir)
 
     ExecRetry -maxRetryCount 3 {
         $pythonVersionInstaller = $pythonversion.Replace("-",".").Replace("_",".").Trim()
@@ -131,6 +100,85 @@ try
         }
         Write-Host "Installed Python ${pythonVersionInstaller} to ${python_template_dir}"
     }
+}
+
+function Install-PythonEmbedded {
+    param($python_template_dir)
+
+    ExecRetry -maxRetryCount 3 {
+        $pythonVersionInstaller = $pythonversion.Replace("-",".").Replace("_",".").Trim()
+        $pythonVersionInstallerSuffix = $pythonVersionInstaller
+        if ($pythonversionPrelease) {
+            $pythonVersionInstallerSuffix = $pythonversionPrelease
+        }
+        $pythonArchInstaller = "-win32"
+        if ($platform -eq "x64") {
+            $pythonArchInstaller = "-amd64"
+        }
+        $pythonInstallerName = "python-installer-${pythonVersionInstallerSuffix}-embed-${platform}.zip"
+        $pythonInstallerPath = (Join-Path $pwd $pythonInstallerName)
+        $PythonInstallerUrl = "https://www.python.org/ftp/python/${pythonVersionInstaller}/python-${pythonVersionInstallerSuffix}-embed${pythonArchInstaller}.zip"
+        DownloadFile $PythonInstallerUrl $pythonInstallerPath
+        $expectedSha1Hash = $PythonInstallerSha1Hash[$pythonInstallerName]
+        if (!$expectedSha1Hash) {
+            throw "expected Sha1 Hash for ${pythonInstallerPath} is not configured"
+        }
+        $sha1Hash  = (Get-FileHash -Algorithm SHA1 $pythonInstallerPath).Hash
+        if ($sha1Hash -ne $expectedSha1Hash) {
+            throw "$pythonInstallerPath SHA1 hash is: ${sha1Hash}. Expected hash: ${expectedSha1Hash}"
+        }
+        if ($python_template_dir -and (Test-Path $python_template_dir)) {
+            Remove-Item -Force -Recurse "${python_template_dir}"
+        }
+        Expand-Archive $pythonInstallerPath -DestinationPath $python_template_dir
+
+        Write-Host "Installed Python ${pythonVersionInstaller} to ${python_template_dir}"
+    }
+}
+
+pushd .
+try
+{
+    cd $basepath
+
+    # Don't use the default pip temp directory to avoid concurrency issues
+    $ENV:TMPDIR = Join-Path $basepath "temp"
+    CheckRemoveDir $ENV:TMPDIR
+    mkdir $ENV:TMPDIR
+
+    if ($ClonePullInstallerRepo)
+    {
+        # Clone a new installer repo no matter what.
+        $cloudbaseInitInstallerDir = join-Path $basepath "cloudbase-init-installer"
+        ExecRetry {
+            GitClonePull $cloudbaseInitInstallerDir "https://github.com/cloudbase/cloudbase-init-installer.git"
+        }
+    }
+    else
+    {
+        if (!$InstallerDir)
+        {
+            # No path provided, so use the current installer script path.
+            $InstallerDir = (Join-Path -Path $PSScriptRoot -ChildPath ..\ -Resolve)
+        }
+        if (Test-Path $InstallerDir)
+        {
+            $cloudbaseInitInstallerDir = $InstallerDir
+        }
+        else
+        {
+            throw "Installer path not present: $InstallerDir"
+        }
+    }
+
+
+    $python_template_dir = join-path $cloudbaseInitInstallerDir "Python$($pythonversion.replace('.', ''))_${platform}_Template"
+
+    if ($InstallEmbededPython) {
+        Install-PythonEmbedded $python_template_dir
+    } else {
+        Install-PythonFromInstaller $python_template_dir
+    }
 
     CheckCopyDir $python_template_dir $python_dir
 
@@ -138,6 +186,16 @@ try
     $python_build_path = "$ENV:LOCALAPPDATA\Temp\pip_build_$ENV:USERNAME"
     if (Test-Path $python_build_path) {
         Remove-Item -Recurse -Force $python_build_path
+    }
+
+    if ($InstallEmbededPython) {
+        try {
+            DownloadFile "https://bootstrap.pypa.io/get-pip.py" "${scriptPath}\get-pip.py"
+            & python.exe "${scriptPath}\get-pip.py"
+            Out-File -Append -InputObject "Lib\site-packages" -Encoding ascii $python_dir\python*._pth
+        } finally {
+            Remove-Item -Force -ErrorAction SilentlyContinue "${scriptPath}\get-pip.py"
+        }
     }
 
     ExecRetry { PipInstall "pip" -update $true }
