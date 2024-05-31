@@ -1,6 +1,7 @@
 Param(
   [string]$platform = "x64",
-  [string]$pythonversion = "3.11_9",
+  [string]$pythonversion = "3.12.3",
+  [string]$pythonversionPrelease = "",
   [string]$SignX509Thumbprint = $null,
   [string]$release = $null,
   # Cloudbase-Init repo details
@@ -10,13 +11,23 @@ Param(
   [switch]$ClonePullInstallerRepo = $true,
   [string]$InstallerDir = $null,
   [string]$VSRedistDir = "${ENV:ProgramFiles(x86)}\Common Files\Merge Modules",
-  [string]$SignTimestampUrl = "http://timestamp.digicert.com?alg=sha256"
+  [string]$SignTimestampUrl = "http://timestamp.digicert.com?alg=sha256",
+  [switch]$InstallEmbededPython
 )
 
 $ErrorActionPreference = "Stop"
 
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
 . "$scriptPath\BuildUtils.ps1"
+
+$PythonInstallerSha1Hash = @{
+    "python-installer-3.12.3-x64.exe" = "B1207FBA545A75841E2DBCA2AD4F17B26414E0C1";
+    "python-installer-3.12.3-x86.exe" = "FF180F8EA0B126E5A0FAF0A22EC50E96E5B9C5AB";
+    "python-installer-3.13.0b1-x64.exe" = "46ADF56A03D91D39EA4E8B6F5FFB080C824BDFDA";
+    "python-installer-3.13.0b1-x86.exe" = "62E6FE0D5C9267275ABDD36302F327EB4E68C794";
+    "python-installer-3.12.3-embed-x64.zip" = "77558B39C2C8CBE056949DD49F445851911B76A7";
+    "python-installer-3.12.3-embed-x86.zip" = "E24BB06C194DE9A3EC695F63079F3793992E8DA1";
+}
 
 $platformVCVarsRequired = "x86_amd64"
 # On Visual Studio 2019, the mixed x86_amd64 VC variables
@@ -38,6 +49,92 @@ $ENV:PATH += ";$ENV:ProgramFiles\7-zip\"
 
 $basepath = "C:\build\cloudbase-init"
 CheckDir $basepath
+
+function Install-PythonFromInstaller {
+    param($python_template_dir)
+
+    ExecRetry -maxRetryCount 3 {
+        $pythonVersionInstaller = $pythonversion.Replace("-",".").Replace("_",".").Trim()
+        $pythonVersionInstallerSuffix = $pythonVersionInstaller
+        if ($pythonversionPrelease) {
+            $pythonVersionInstallerSuffix = $pythonversionPrelease
+        }
+        $pythonArchInstaller = ""
+        if ($platform -eq "x64") {
+            $pythonArchInstaller = "-amd64"
+        }
+        $pythonInstallerName = "python-installer-${pythonVersionInstallerSuffix}-${platform}.exe"
+        $pythonInstallerPath = (Join-Path $pwd $pythonInstallerName)
+        $PythonInstallerUrl = "https://www.python.org/ftp/python/${pythonVersionInstaller}/python-${pythonVersionInstallerSuffix}${pythonArchInstaller}.exe"
+        DownloadFile $PythonInstallerUrl $pythonInstallerPath
+        $expectedSha1Hash = $PythonInstallerSha1Hash[$pythonInstallerName]
+        if (!$expectedSha1Hash) {
+            throw "expected Sha1 Hash for ${pythonInstallerPath} is not configured"
+        }
+        $sha1Hash  = (Get-FileHash -Algorithm SHA1 $pythonInstallerPath).Hash
+        if ($sha1Hash -ne $expectedSha1Hash) {
+            throw "$pythonInstallerPath SHA1 hash is: ${sha1Hash}. Expected hash: ${expectedSha1Hash}"
+        }
+
+        try {
+            Write-Host "Trying to uninstall Python ${pythonVersionInstaller} to ${python_template_dir}"
+            $installProcess  = Start-Process -PassThru -Wait $pythonInstallerPath `
+                -ArgumentList "/silent /uninstall"
+            $installProcess.WaitForExit()
+            if ($installProcess.ExitCode -ne 0) {
+                Write-Host "Failed to uninstall ${pythonVersionInstaller} from ${python_template_dir}. Exit code: $($installProcess.ExitCode)"
+            } else {
+                Write-Host "Uninstalled Python ${pythonVersionInstaller} from ${python_template_dir}"
+            }
+            if ($python_template_dir -and (Test-Path $python_template_dir)) {
+                Remove-Item -Force -Recurse "${python_template_dir}"
+            }
+        } catch {Write-Host $_}
+
+        Write-Host "Trying to install Python ${pythonVersionInstaller} to ${python_template_dir}"
+        $installProcess  = Start-Process -PassThru -Wait $pythonInstallerPath `
+            -ArgumentList "/silent TargetDir=${python_template_dir} Include_test=0 Include_tcltk=0 Include_launcher=0 Include_doc=0"
+        $installProcess.WaitForExit()
+        if ($installProcess.ExitCode -ne 0) {
+            throw "Failed to install ${pythonVersionInstaller} to ${python_template_dir}. Exit code: $($installProcess.ExitCode)"
+        }
+        Write-Host "Installed Python ${pythonVersionInstaller} to ${python_template_dir}"
+    }
+}
+
+function Install-PythonEmbedded {
+    param($python_template_dir)
+
+    ExecRetry -maxRetryCount 3 {
+        $pythonVersionInstaller = $pythonversion.Replace("-",".").Replace("_",".").Trim()
+        $pythonVersionInstallerSuffix = $pythonVersionInstaller
+        if ($pythonversionPrelease) {
+            $pythonVersionInstallerSuffix = $pythonversionPrelease
+        }
+        $pythonArchInstaller = "-win32"
+        if ($platform -eq "x64") {
+            $pythonArchInstaller = "-amd64"
+        }
+        $pythonInstallerName = "python-installer-${pythonVersionInstallerSuffix}-embed-${platform}.zip"
+        $pythonInstallerPath = (Join-Path $pwd $pythonInstallerName)
+        $PythonInstallerUrl = "https://www.python.org/ftp/python/${pythonVersionInstaller}/python-${pythonVersionInstallerSuffix}-embed${pythonArchInstaller}.zip"
+        DownloadFile $PythonInstallerUrl $pythonInstallerPath
+        $expectedSha1Hash = $PythonInstallerSha1Hash[$pythonInstallerName]
+        if (!$expectedSha1Hash) {
+            throw "expected Sha1 Hash for ${pythonInstallerPath} is not configured"
+        }
+        $sha1Hash  = (Get-FileHash -Algorithm SHA1 $pythonInstallerPath).Hash
+        if ($sha1Hash -ne $expectedSha1Hash) {
+            throw "$pythonInstallerPath SHA1 hash is: ${sha1Hash}. Expected hash: ${expectedSha1Hash}"
+        }
+        if ($python_template_dir -and (Test-Path $python_template_dir)) {
+            Remove-Item -Force -Recurse "${python_template_dir}"
+        }
+        Expand-Archive $pythonInstallerPath -DestinationPath $python_template_dir
+
+        Write-Host "Installed Python ${pythonVersionInstaller} to ${python_template_dir}"
+    }
+}
 
 pushd .
 try
@@ -74,7 +171,14 @@ try
         }
     }
 
+
     $python_template_dir = join-path $cloudbaseInitInstallerDir "Python$($pythonversion.replace('.', ''))_${platform}_Template"
+
+    if ($InstallEmbededPython) {
+        Install-PythonEmbedded $python_template_dir
+    } else {
+        Install-PythonFromInstaller $python_template_dir
+    }
 
     CheckCopyDir $python_template_dir $python_dir
 
@@ -82,6 +186,16 @@ try
     $python_build_path = "$ENV:LOCALAPPDATA\Temp\pip_build_$ENV:USERNAME"
     if (Test-Path $python_build_path) {
         Remove-Item -Recurse -Force $python_build_path
+    }
+
+    if ($InstallEmbededPython) {
+        try {
+            DownloadFile "https://bootstrap.pypa.io/get-pip.py" "${scriptPath}\get-pip.py"
+            & python.exe "${scriptPath}\get-pip.py"
+            Out-File -Append -InputObject "Lib\site-packages" -Encoding ascii $python_dir\python*._pth
+        } finally {
+            Remove-Item -Force -ErrorAction SilentlyContinue "${scriptPath}\get-pip.py"
+        }
     }
 
     ExecRetry { PipInstall "pip" -update $true }
