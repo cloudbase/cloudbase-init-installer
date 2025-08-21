@@ -1,6 +1,6 @@
 Param(
   [string]$platform = "x64",
-  [string]$pythonversion = "3.12_10",
+  [string]$pythonversion = "3.13_7",
   [string]$SignX509Thumbprint = $null,
   [string]$release = $null,
   # Cloudbase-Init repo details
@@ -90,6 +90,14 @@ try
 
     ExecRetry { PullInstall "requirements" "https://github.com/openstack/requirements" }
     $upper_constraints_file = $(Resolve-Path ".\requirements\upper-constraints.txt").Path
+
+    # We comment out the following libs from the constraints file, ensuring
+    # that we're going to stick with the requested versions.
+    $ignored_constraints = @("cryptography", "urllib3")
+    $(gc $upper_constraints_file) `
+        -replace "^($($ignored_constraints -join '|')) ?[<>=]", '# $1' | `
+        sc $upper_constraints_file
+
     $env:PIP_CONSTRAINT = $upper_constraints_file
     $env:PIP_NO_BINARIES = "cloudbase-init"
 
