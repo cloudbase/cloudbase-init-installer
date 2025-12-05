@@ -387,8 +387,70 @@ function ImportCertificateUser($pfxPath, $pfxPassword) {
 }
 
 function ChechFileHash($path, $hash, $algorithm="SHA1") {
-    $h = Get-Filehash -Algorithm $algorithm $path
-    if ($h.Hash.ToUpper() -ne $hash.ToUpper()) {
-        throw "Hash comparison failed for file: $path"
+    $actualHash = (Get-Filehash -Algorithm $algorithm $path).Hash.ToUpper()
+    if ($actualHash -ne $hash.ToUpper()) {
+        throw "Hash comparison failed for file: $path. Expected hash: ${hash}. Actual hash: ${actualHash}"
     }
+}
+
+
+function DownloadInstall-PythonMsi($platform, $python_template_dir, $pythonVersion, $PythonMsiChecksum, $algorithm="SHA1") {
+    $platformSuffix = ""
+    if ($platform -eq "x64") {
+      $platformSuffix = "-amd64"
+    }
+
+    if (Test-Path $python_template_dir) {
+      throw "$python_template_dir folder already exists"
+    }
+
+    $pythonInstallerPath = Join-Path (Resolve-Path "${python_template_dir}/..").Path "/python-${pythonVersion}${platformSuffix}.exe"
+    $pythonVersionEscaped = $pythonVersion.replace("_",".")
+    $PythonMsiUrl = "https://www.python.org/ftp/python/${pythonVersionEscaped}/python-${pythonVersionEscaped}${platformSuffix}.exe"
+
+    if ($python_template_dir -and (Test-Path $python_template_dir)) {
+      throw "Python template directory already exists"
+    }
+
+    $tmp_python_template_dir = "${python_template_dir}_tmp"
+    if ($tmp_python_template_dir -and (Test-Path $tmp_python_template_dir)) {
+      throw "Python temp template directory already exists"
+    }
+
+    try {
+        ExecRetry { DownloadFile $PythonMsiUrl $pythonInstallerPath }
+        ChechFileHash $pythonInstallerPath $PythonMsiChecksum $algorithm
+
+        Write-Host "Trying to uninstall Python using $pythonInstallerPath"
+        Start-Process -FilePath "${pythonInstallerPath}" -NoNewWindow -Wait `
+            -ArgumentList @("/quiet", "/uninstall")
+
+        $package = Get-Package -Name "Python ${pythonVersionEscaped}*" -ErrorAction SilentlyContinue
+        if ($package) {
+          throw "Python package was already installed"
+        }
+
+        Write-Host "Installing Python using $pythonInstallerPath"
+        Start-Process -FilePath "${pythonInstallerPath}" -NoNewWindow -Wait `
+            -ArgumentList @("/quiet", "TargetDir=${tmp_python_template_dir}","Include_test=0","Include_tcltk=0","Include_launcher=0","Include_doc=0")
+
+        Copy-Item -Recurse $tmp_python_template_dir $python_template_dir
+
+     } finally {
+
+        Start-Process -FilePath "${pythonInstallerPath}" -NoNewWindow -Wait `
+            -ArgumentList @("/quiet", "/uninstall")
+
+        if (Test-Path $pythonInstallerPath) {
+            Remove-Item $pythonInstallerPath
+        }
+
+        if (Test-Path $tmp_python_template_dir) {
+            Remove-Item $tmp_python_template_dir -Recurse -Force
+        }
+      }
+      if (!(Test-Path $python_template_dir)) {
+        throw "$python_template_dir has not been created"
+      }
+
 }

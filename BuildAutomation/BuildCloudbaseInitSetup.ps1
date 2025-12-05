@@ -10,7 +10,8 @@ Param(
   [switch]$ClonePullInstallerRepo = $true,
   [string]$InstallerDir = $null,
   [string]$VSRedistDir = "${ENV:ProgramFiles(x86)}\Common Files\Merge Modules",
-  [string]$SignTimestampUrl = "http://timestamp.digicert.com?alg=sha256"
+  [string]$SignTimestampUrl = "http://timestamp.digicert.com?alg=sha256",
+  [string]$PythonMsiChecksum = $null
 )
 
 $ErrorActionPreference = "Stop"
@@ -75,6 +76,10 @@ try
     }
 
     $python_template_dir = join-path $cloudbaseInitInstallerDir "Python$($pythonversion.replace('.', ''))_${platform}_Template"
+
+    if ($PythonMsiChecksum) {
+        DownloadInstall-PythonMsi $platform $python_template_dir $pythonversion $PythonMsiChecksum
+    }
 
     CheckCopyDir $python_template_dir $python_dir
 
