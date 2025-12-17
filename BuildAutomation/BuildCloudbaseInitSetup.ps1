@@ -88,15 +88,18 @@ try
     ExecRetry { PipInstall "wheel" -update $true }
     ExecRetry { PipInstall "setuptools" -update $true }
 
-    ExecRetry { PullInstall "requirements" "https://github.com/openstack/requirements" }
+    # The upper-constraints file now exists in the cloudbase-init repository
+    ExecRetry { GitClonePull "requirements" "https://github.com/cloudbase/cloudbase-init" }
+
+    $upper_constraints_path = ".\requirements\upper-constraints.txt"
+    if (!(Test-Path $upper_constraints_path)) {
+        Write-Host "upper-constraints.txt does not exist in the cloudbase-init repository, using https://github.com/openstack/requirements"
+        Remove-Item -Recurse -Force ".\requirements"
+        ExecRetry { GitClonePull "requirements" "https://github.com/openstack/requirements" }
+    }
+
     $upper_constraints_file = $(Resolve-Path ".\requirements\upper-constraints.txt").Path
 
-    # We comment out the following libs from the constraints file, ensuring
-    # that we're going to stick with the requested versions.
-    $ignored_constraints = @("cryptography", "urllib3")
-    $(gc $upper_constraints_file) `
-        -replace "^($($ignored_constraints -join '|')) ?[<>=]", '# $1' | `
-        sc $upper_constraints_file
 
     $env:PIP_CONSTRAINT = $upper_constraints_file
     $env:PIP_NO_BINARIES = "cloudbase-init"
