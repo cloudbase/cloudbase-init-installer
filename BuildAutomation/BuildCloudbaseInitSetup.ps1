@@ -88,18 +88,22 @@ try
     ExecRetry { PipInstall "wheel" -update $true }
     ExecRetry { PipInstall "setuptools" -update $true }
 
-    # The upper-constraints file now exists in the cloudbase-init repository
-    ExecRetry { GitClonePull "requirements" "https://github.com/cloudbase/cloudbase-init" }
-
-    $upper_constraints_path = ".\requirements\upper-constraints.txt"
-    if (!(Test-Path $upper_constraints_path)) {
-        Write-Host "upper-constraints.txt does not exist in the cloudbase-init repository, using https://github.com/openstack/requirements"
+    if (Test-Path ".\requirements") {
         Remove-Item -Recurse -Force ".\requirements"
-        ExecRetry { GitClonePull "requirements" "https://github.com/openstack/requirements" }
     }
 
-    $upper_constraints_file = $(Resolve-Path ".\requirements\upper-constraints.txt").Path
+    mkdir ".\requirements"
+    $upper_constraints_path = ".\requirements\upper-constraints.txt"
+    $upper_constraints_file = Join-Path (Resolve-Path ".\requirements") "upper-constraints.txt"
+    try {
+        ExecRetry { DownloadFile "https://raw.githubusercontent.com/cloudbase/cloudbase-init/refs/heads/${CloudbaseInitRepoBranch}/upper-constraints.txt" $upper_constraints_file }
+    } catch {
+        ExecRetry { DownloadFile "https://raw.githubusercontent.com/openstack/requirements/refs/heads/master/upper-constraints.txt" $upper_constraints_file }
+    }
 
+    if (!(Test-Path $upper_constraints_file)) {
+      throw "${upper_constraints_file} does not exist"
+    }
 
     $env:PIP_CONSTRAINT = $upper_constraints_file
     $env:PIP_NO_BINARIES = "cloudbase-init"
