@@ -171,13 +171,17 @@ try
 
     $installer_sources_dir = join-path $cloudbaseInitInstallerDir "CloudbaseInitSetup"
 
-    if($platform -eq "x64")
+
+    if ($VSRedistDir)
     {
-        copy "${VSRedistDir}\Microsoft_VC140_CRT_x64.msm" $installer_sources_dir
-    }
-    else
-    {
-        copy "${VSRedistDir}\Microsoft_VC140_CRT_x86.msm" $installer_sources_dir
+        if($platform -eq "x64")
+        {
+            copy "${VSRedistDir}\Microsoft_VC140_CRT_x64.msm" $installer_sources_dir
+        }
+        else
+        {
+            copy "${VSRedistDir}\Microsoft_VC140_CRT_x86.msm" $installer_sources_dir
+        }
     }
 
     cd $cloudbaseInitInstallerDir
