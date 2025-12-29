@@ -18,6 +18,8 @@ Param(
 $ErrorActionPreference = "Stop"
 
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
+$repoRootPath = split-path -parent $scriptPath
+
 . "$scriptPath\BuildUtils.ps1"
 
 $platformVCVarsRequired = "x86_amd64"
@@ -36,7 +38,7 @@ $python_dir = "C:\Python_CloudbaseInit"
 $basepath = "C:\build\cloudbase-init"
 
 if ($RelativePythonDirPath) {
-    $python_dir = Join-Path $scriptPath "Python_CloudbaseInit"
+    $python_dir = Join-Path $repoRootPath "CloudbaseInitSetup\Python_CloudbaseInit"
     $basepath = Join-path $scriptPath "build\cloudbase-init"
 }
 
