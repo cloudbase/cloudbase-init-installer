@@ -25,8 +25,11 @@ jobs:
             -ClonePullInstallerRepo:$false ^
             -PythonVersion ${{ matrix.python_version }} ^
             -Platform ${{ matrix.platform }} ^
-            -VCVars "2022" -RelativePythonDirPath:$true ^
-            -CloudbaseInitRepoUrl ${{ matrix.cbsinit_repo }} -CloudbaseInitRepoBranch ${{ matrix.cbsinit_branch }}
+            -VCVars "2022" ^
+            -RelativePythonDirPath:$true ^
+            -VSRedistDir "''" ^
+            -CloudbaseInitRepoUrl ${{ matrix.cbsinit_repo }} ^
+            -CloudbaseInitRepoBranch ${{ matrix.cbsinit_branch }}
     - uses: actions/upload-artifact@v4
       with:
         name: "CloudbaseInit_${{ matrix.platform }}_MSI_${{ matrix.cbsinit_branch }}"
