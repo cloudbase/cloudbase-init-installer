@@ -309,10 +309,9 @@
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <Target Name="BeforeBuild">
-    <HeatDirectory DirectoryRefId="INSTALLDIR" OutputFile="Python_tmp.wxs" Directory="C:\Python_CloudbaseInit" ComponentGroupName="PythonComponentGroup" ToolPath="$(WixToolPath)" PreprocessorVariable="var.PythonSourcePath" GenerateGuidsNow="true" SuppressCom="true" SuppressRegistry="true" KeepEmptyDirectories="true" />
+    <HeatDirectory DirectoryRefId="INSTALLDIR" OutputFile="Python_tmp.wxs" Directory="C:\Python_CloudbaseInit" ComponentGroupName="PythonComponentGroup" ToolPath="$(WixToolPath)" PreprocessorVariable="var.PythonSourcePath" GenerateGuidsNow="true" SuppressCom="true" SuppressRegistry="true" KeepEmptyDirectories="true" RunAsSeparateProcess="true" />
     <XslTransformation XmlInputPaths="Python_tmp.wxs" XslInputPath="Python.xslt" OutputPaths="Python.wxs" Parameters="&lt;Parameter Name='platform' Value='$(Platform)'/&gt;" />
-    <HeatDirectory DirectoryRefId="PowershellModules" OutputFile="Carbon.wxs" Directory="Carbon" ComponentGroupName="CarbonComponentGroup" ToolPath="$(WixToolPath)" PreprocessorVariable="var.CarbonSourcePath" GenerateGuidsNow="true" SuppressCom="true" SuppressRegistry="true" KeepEmptyDirectories="true" Transforms="Carbon.xslt">
-    </HeatDirectory>
+    <HeatDirectory DirectoryRefId="PowershellModules" OutputFile="Carbon.wxs" Directory="Carbon" ComponentGroupName="CarbonComponentGroup" ToolPath="$(WixToolPath)" PreprocessorVariable="var.CarbonSourcePath" GenerateGuidsNow="true" SuppressCom="true" SuppressRegistry="true" KeepEmptyDirectories="true" Transforms="Carbon.xslt" RunAsSeparateProcess="true" />
   </Target>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.
