@@ -1,0 +1,33 @@
+name: Cloudbase-Init build MSI retest
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: windows-2025
+    strategy:
+      max-parallel: 100
+      matrix:
+        cbsinit_repo: ['https://github.com/cloudbase/cloudbase-init']
+        cbsinit_branch: ['master']
+        python_version: ['3.13_10']
+        platform: ['x64']
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v2
+    - name: Build msi
+      shell: cmd
+      run: 
+        powershell.exe .\BuildAutomation\BuildCloudbaseInitSetup.ps1 ^
+            -ClonePullInstallerRepo:$false -CreateZip:$false ^
+            -PythonVersion ${{ matrix.python_version }} ^
+            -Platform ${{ matrix.platform }} ^
+            -SetVCEnvVars:$true -RelativePythonDirPath:$true ^
+            -CloudbaseInitRepoUrl ${{ matrix.cbsinit_repo }} -CloudbaseInitRepoBranch ${{ matrix.cbsinit_branch }}
+    - uses: actions/upload-artifact@v4
+      with:
+        name: "CloudbaseInit_${{ matrix.platform }}_MSI_${{ matrix.cbsinit_branch }}"
+        path: 'CloudbaseInitSetup/bin/release/${{ matrix.platform }}/CloudbaseInitSetup.msi'
