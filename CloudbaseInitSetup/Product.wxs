@@ -27,10 +27,6 @@
       <ComponentRef Id="mtools" />
       <ComponentRef Id="SetSetupComplete" />
 
-      <Feature Id="VC140Redist" Title="Visual C++ 14.0 Runtime" AllowAdvertise="no" Display="hidden" Level="1">
-        <MergeRef Id="VC140Redist" />
-      </Feature>
-
       <Feature Id="Carbon" Title="Carbon PowerShell Module" AllowAdvertise="no" Level="1" InstallDefault="followParent" Absent="allow"
                Description="Carbon is an open source PowerShell module with lots of features for deployment automation. More info: http://get-carbon.org/">
         <ComponentGroupRef Id="CarbonComponentGroup" />
@@ -158,17 +154,6 @@
           </Directory>
         </Directory>
       </Directory>
-    </DirectoryRef>
-  </Fragment>
-
-  <Fragment>
-    <DirectoryRef Id="TARGETDIR">
-      <?if $(var.Platform) = x64 ?>
-        <!-- TODO: use a variable to select the correct CRT version -->
-        <Merge Id="VC140Redist" SourceFile="Microsoft_VC140_CRT_x64.msm" DiskId="1" Language="0" />
-      <?else ?>
-        <Merge Id="VC140Redist" SourceFile="Microsoft_VC140_CRT_x86.msm" DiskId="1" Language="0" />
-      <?endif ?>
     </DirectoryRef>
   </Fragment>
 
