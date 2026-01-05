@@ -21,12 +21,12 @@ jobs:
       uses: microsoft/setup-msbuild@v2
     - name: Build msi
       shell: cmd
-      run: 
+      run:
         powershell.exe .\BuildAutomation\BuildCloudbaseInitSetup.ps1 ^
             -ClonePullInstallerRepo:$false ^
             -PythonVersion ${{ matrix.python_version }} ^
             -Platform ${{ matrix.platform }} ^
-            -VCVars "2022" ^
+            -VCVars "automatic" ^
             -RelativePythonDirPath:$true ^
             -VSRedistDir "''" ^
             -CloudbaseInitRepoUrl ${{ matrix.cbsinit_repo }} ^

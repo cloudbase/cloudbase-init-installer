@@ -180,19 +180,25 @@ function PipInstall($package, $allow_dev=$false, $update=$false)
 
 function SetVCVars($version="2019", $platform="x86_amd64") {
 
+    $preferedVersions = @("$version")
+    if ($version -eq "automatic") {
+        $preferedVersions = @("18", "2022", "2019", "2017")
+    }
     $vsInstallTypes = @("Community", "Enterprise")
     $vsInstallArchTypes = @("$ENV:ProgramFiles (x86)", "$ENV:ProgramFiles")
     $vsInstallBuildFolder = $null
 
     foreach ($vsInstallArchType in $vsInstallArchTypes) {
         foreach ($vsInstallType in $vsInstallTypes) {
-            $vsInstallBuildFolderCheck = "${vsInstallArchType}\Microsoft Visual Studio\$version\${vsInstallType}\VC\Auxiliary\Build"
+          foreach ($preferedVersion in $preferedVersions) {
+            $vsInstallBuildFolderCheck = "${vsInstallArchType}\Microsoft Visual Studio\${preferedVersion}\${vsInstallType}\VC\Auxiliary\Build"
             if (Test-Path $vsInstallBuildFolderCheck) {
                 $vsInstallBuildFolder = $vsInstallBuildFolderCheck
                 break
             } else {
                 Write-Host "${vsInstallBuildFolderCheck} does not exist"
             }
+	  }
         }
     }
     if ($vsInstallBuildFolder -eq $null) {
