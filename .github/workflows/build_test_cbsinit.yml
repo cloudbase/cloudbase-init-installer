@@ -50,7 +50,7 @@ jobs:
         $Erroractionpreference = "Continue"
         $log = "install.log"
         touch $log
-        $msiPath = "CloudbaseInitSetup/bin/release/${{ matrix.platform }}/CloudbaseInitSetup.msi"
+        $msiPath = (Resolve-Path "CloudbaseInitSetup/bin/release/${{ matrix.platform }}/CloudbaseInitSetup.msi").Path
         Write-Output $msiPath
         echo $msiPath
         $procMain = Start-Process "msiexec" "/i `"$msiPath`" /qn /l*! `"$log`"" -NoNewWindow -PassThru
