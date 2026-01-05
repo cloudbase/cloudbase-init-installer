@@ -5,7 +5,7 @@ on: [push, pull_request]
 jobs:
   build:
 
-    runs-on: windows-2025
+    runs-on: ['windows-2025', 'windows-2019', 'windows-2022']
     strategy:
       max-parallel: 100
       matrix:
