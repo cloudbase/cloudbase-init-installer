@@ -11,7 +11,7 @@ jobs:
         os: ['windows-2025', 'windows-2019', 'windows-2022']
         cbsinit_repo: ['https://github.com/cloudbase/cloudbase-init']
         cbsinit_branch: ['master']
-        python_version: ['3.13_10']
+        python_version: ['3.13_13']
         platform: ['x64']
         cloud: [openstack] 
 
