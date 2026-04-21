@@ -10,7 +10,9 @@ Param(
   [switch]$ClonePullInstallerRepo = $true,
   [string]$InstallerDir = $null,
   [string]$VSRedistDir = "${ENV:ProgramFiles(x86)}\Common Files\Merge Modules",
-  [string]$SignTimestampUrl = "http://timestamp.digicert.com?alg=sha256"
+  [string]$SignTimestampUrl = "http://timestamp.digicert.com?alg=sha256",
+  [string]$CloudbaseInitInstallerRepoUrl = "https://github.com/cloudbase/cloudbase-init-installer.git",
+  [string]$CloudbaseInitInstallerRepoBranch = "master",
 )
 
 $ErrorActionPreference = "Stop"
@@ -54,7 +56,7 @@ try
         # Clone a new installer repo no matter what.
         $cloudbaseInitInstallerDir = join-Path $basepath "cloudbase-init-installer"
         ExecRetry {
-            GitClonePull $cloudbaseInitInstallerDir "https://github.com/cloudbase/cloudbase-init-installer.git"
+            GitClonePull $cloudbaseInitInstallerDir $CloudbaseInitInstallerRepoUrl $CloudbaseInitInstallerRepoBranch
         }
     }
     else
