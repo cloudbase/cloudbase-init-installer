@@ -1,4 +1,4 @@
-name: Cloudbase-Init build MSI retest
+name: Cloudbase-Init - build and functionally test MSI
 
 on: [push, pull_request]
 
@@ -43,7 +43,7 @@ jobs:
             & "../bin/mkisofs.exe" -o "../../cloudbase-init-config-drive.iso" -ignore-error -ldots -allow-lowercase -allow-multidot -l -publisher "cbsl" -quiet -J -r -V "config-2" "cloudbase-init-metadata" 2>&1 | %{ "$_" }
         } catch {}
         popd
-    - name: Run Cloudbase-Init
+    - name: Install MSI and functionally test Cloudbase-Init
       shell: powershell
       run: |
         $Erroractionpreference = "Continue"
