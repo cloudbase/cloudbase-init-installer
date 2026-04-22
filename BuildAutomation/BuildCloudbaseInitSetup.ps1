@@ -11,8 +11,7 @@ Param(
   [string]$InstallerDir = $null,
   [string]$VSRedistDir = "${ENV:ProgramFiles(x86)}\Common Files\Merge Modules",
   [string]$SignTimestampUrl = "http://timestamp.digicert.com?alg=sha256",
-  [string]$VCVars="2019",
-  [switch]$RelativePythonDirPath
+  [string]$VCVars="2019"
 )
 
 $ErrorActionPreference = "Stop"
@@ -34,13 +33,8 @@ SetVCVars $VCVars $platformVCVarsRequired
 # Needed for SSH
 $ENV:HOME = $ENV:USERPROFILE
 
-$python_dir = "C:\Python_CloudbaseInit"
-$basepath = "C:\build\cloudbase-init"
-
-if ($RelativePythonDirPath) {
-    $python_dir = Join-Path $repoRootPath "CloudbaseInitSetup\Python_CloudbaseInit"
-    $basepath = Join-path $scriptPath "build\cloudbase-init"
-}
+$python_dir = Join-Path $repoRootPath "CloudbaseInitSetup\Python_CloudbaseInit"
+$basepath = Join-path $scriptPath "build\cloudbase-init"
 
 $ENV:PATH = "$python_dir\;$python_dir\scripts;$ENV:PATH"
 $ENV:PATH += ";$ENV:ProgramFiles (x86)\Git\bin\"

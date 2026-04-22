@@ -27,7 +27,6 @@ jobs:
             -PythonVersion ${{ matrix.python_version }} ^
             -Platform ${{ matrix.platform }} ^
             -VCVars "automatic" ^
-            -RelativePythonDirPath:$true ^
             -VSRedistDir "''" ^
             -CloudbaseInitRepoUrl ${{ matrix.cbsinit_repo }} ^
             -CloudbaseInitRepoBranch ${{ matrix.cbsinit_branch }}
