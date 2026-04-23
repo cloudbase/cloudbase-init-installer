@@ -8,7 +8,6 @@ Param(
   [string]$CloudbaseInitRepoBranch = "master",
   # Use an already available installer or clone a new one.
   [switch]$ClonePullInstallerRepo = $true,
-  [string]$InstallerDir = $null,
   [string]$VSRedistDir = "${ENV:ProgramFiles(x86)}\Common Files\Merge Modules",
   [string]$SignTimestampUrl = "http://timestamp.digicert.com?alg=sha256",
   [string]$VCVars="2019"
@@ -33,10 +32,8 @@ SetVCVars $VCVars $platformVCVarsRequired
 # Needed for SSH
 $ENV:HOME = $ENV:USERPROFILE
 
-$python_dir = Join-Path $repoRootPath "CloudbaseInitSetup\Python_CloudbaseInit"
 $basepath = Join-path $scriptPath "build\cloudbase-init"
 
-$ENV:PATH = "$python_dir\;$python_dir\scripts;$ENV:PATH"
 $ENV:PATH += ";$ENV:ProgramFiles (x86)\Git\bin\"
 $ENV:PATH += ";$ENV:ProgramFiles\7-zip\"
 
@@ -62,11 +59,7 @@ try
     }
     else
     {
-        if (!$InstallerDir)
-        {
-            # No path provided, so use the current installer script path.
-            $InstallerDir = (Join-Path -Path $PSScriptRoot -ChildPath ..\ -Resolve)
-        }
+        $InstallerDir = (Join-Path -Path $PSScriptRoot -ChildPath ..\ -Resolve)
         if (Test-Path $InstallerDir)
         {
             $cloudbaseInitInstallerDir = $InstallerDir
@@ -76,6 +69,8 @@ try
             throw "Installer path not present: $InstallerDir"
         }
     }
+    $python_dir = join-path $cloudbaseInitInstallerDir "CloudbaseInitSetup\Python_CloudbaseInit"
+    $ENV:PATH = "$python_dir\;$python_dir\scripts;$ENV:PATH"
 
     $python_template_dir = join-path $cloudbaseInitInstallerDir "Python$($pythonversion.replace('.', ''))_${platform}_Template"
 
