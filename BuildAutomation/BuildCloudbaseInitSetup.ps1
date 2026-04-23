@@ -27,6 +27,9 @@ if ($platform -eq "x86") {
     $platformVCVarsRequired = "x86"
 }
 
+# Fix required to allow for >= 255 characters paths. Required for Python folder bundling.
+Set-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1
+
 SetVCVars $VCVars $platformVCVarsRequired
 
 # Needed for SSH
