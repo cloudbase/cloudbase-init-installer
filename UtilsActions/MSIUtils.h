@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 #include <vector>
 #include <Ntstatus.h>
 #include <LsaLookup.h>

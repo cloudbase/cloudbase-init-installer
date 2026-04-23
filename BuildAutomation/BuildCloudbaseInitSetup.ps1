@@ -10,12 +10,15 @@ Param(
   [switch]$ClonePullInstallerRepo = $true,
   [string]$InstallerDir = $null,
   [string]$VSRedistDir = "${ENV:ProgramFiles(x86)}\Common Files\Merge Modules",
-  [string]$SignTimestampUrl = "http://timestamp.digicert.com?alg=sha256"
+  [string]$SignTimestampUrl = "http://timestamp.digicert.com?alg=sha256",
+  [string]$VCVars="2019"
 )
 
 $ErrorActionPreference = "Stop"
 
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
+$repoRootPath = split-path -parent $scriptPath
+
 . "$scriptPath\BuildUtils.ps1"
 
 $platformVCVarsRequired = "x86_amd64"
@@ -25,18 +28,18 @@ if ($platform -eq "x86") {
     $platformVCVarsRequired = "x86"
 }
 
-SetVCVars "2019" $platformVCVarsRequired
+SetVCVars $VCVars $platformVCVarsRequired
 
 # Needed for SSH
 $ENV:HOME = $ENV:USERPROFILE
 
-$python_dir = "C:\Python_CloudbaseInit"
+$python_dir = Join-Path $repoRootPath "CloudbaseInitSetup\Python_CloudbaseInit"
+$basepath = Join-path $scriptPath "build\cloudbase-init"
 
 $ENV:PATH = "$python_dir\;$python_dir\scripts;$ENV:PATH"
 $ENV:PATH += ";$ENV:ProgramFiles (x86)\Git\bin\"
 $ENV:PATH += ";$ENV:ProgramFiles\7-zip\"
 
-$basepath = "C:\build\cloudbase-init"
 CheckDir $basepath
 
 pushd .
@@ -164,13 +167,17 @@ try
 
     $installer_sources_dir = join-path $cloudbaseInitInstallerDir "CloudbaseInitSetup"
 
-    if($platform -eq "x64")
+
+    if ($VSRedistDir)
     {
-        copy "${VSRedistDir}\Microsoft_VC140_CRT_x64.msm" $installer_sources_dir
-    }
-    else
-    {
-        copy "${VSRedistDir}\Microsoft_VC140_CRT_x86.msm" $installer_sources_dir
+        if($platform -eq "x64")
+        {
+            copy "${VSRedistDir}\Microsoft_VC140_CRT_x64.msm" $installer_sources_dir
+        }
+        else
+        {
+            copy "${VSRedistDir}\Microsoft_VC140_CRT_x86.msm" $installer_sources_dir
+        }
     }
 
     cd $cloudbaseInitInstallerDir

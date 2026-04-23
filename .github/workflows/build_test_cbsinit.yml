@@ -1,0 +1,101 @@
+name: Cloudbase-Init - build and functionally test MSI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      max-parallel: 100
+      matrix:
+        os: ['windows-2022']
+        cbsinit_repo: ['https://github.com/cloudbase/cloudbase-init']
+        cbsinit_branch: ['master']
+        python_version: ['3.13_13']
+        platform: ['x64']
+        cloud: [openstack] 
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v2
+    - name: Build msi
+      shell: cmd
+      run:
+        powershell.exe .\BuildAutomation\BuildCloudbaseInitSetup.ps1 ^
+            -ClonePullInstallerRepo:$false ^
+            -PythonVersion ${{ matrix.python_version }} ^
+            -Platform ${{ matrix.platform }} ^
+            -VCVars "automatic" ^
+            -VSRedistDir "''" ^
+            -CloudbaseInitRepoUrl ${{ matrix.cbsinit_repo }} ^
+            -CloudbaseInitRepoBranch ${{ matrix.cbsinit_branch }}
+    - uses: actions/upload-artifact@v4
+      with:
+        name: "CloudbaseInit_${{ matrix.platform }}_${{ matrix.os }}_MSI_${{ matrix.cbsinit_branch }}"
+        path: 'CloudbaseInitSetup/bin/release/${{ matrix.platform }}/CloudbaseInitSetup.msi'
+    - name: Download external dependencies
+      shell: powershell
+      run: |
+        try { git clone "https://github.com/ader1990/cloudbase-init-test-resources-1" -b "add_openstack_packet_check" cbs-test-res }catch{}
+        pushd "cbs-test-res/${{ matrix.cloud }}"
+        try {
+            & "../bin/mkisofs.exe" -o "../../cloudbase-init-config-drive.iso" -ignore-error -ldots -allow-lowercase -allow-multidot -l -publisher "cbsl" -quiet -J -r -V "config-2" "cloudbase-init-metadata" 2>&1 | %{ "$_" }
+        } catch {}
+        popd
+    - name: Install MSI and functionally test Cloudbase-Init
+      shell: powershell
+      run: |
+        $Erroractionpreference = "Continue"
+        $log = "install.log"
+        touch $log
+        $msiPath = (Resolve-Path "CloudbaseInitSetup/bin/release/${{ matrix.platform }}/CloudbaseInitSetup.msi").Path
+        Write-Output $msiPath
+        echo $msiPath
+        $procMain = Start-Process "msiexec" "/i `"$msiPath`" /qn /l*! `"$log`"" -NoNewWindow -PassThru
+        $procLog = Start-Process "powershell" "Get-Content -Path `"$log`" -Wait" -NoNewWindow -PassThru
+        $procMain.WaitForExit()
+        $procLog.Kill()
+        Mount-DiskImage -ImagePath (Resolve-Path ./cloudbase-init-config-drive.iso) | Out-Null
+        Get-PSDrive | Out-Null
+        mkdir "./metadata" | Out-Null
+        cp -recurse -force "$((Get-DiskImage (Resolve-Path './cloudbase-init-config-drive.iso') | Get-Volume).DriveLetter):\*" "./metadata";
+        if (Test-path ".\metadata\openstack\latest\network_data.json.template") {
+            (Get-Content ".\metadata\openstack\latest\network_data.json.template").Replace("REPLACE_MAC_ADDRESS", ((Get-NetAdapter Ethernet).macaddress).Replace("-",":")) | Set-Content ".\metadata\openstack\latest\network_data.json" -Encoding Ascii
+        }
+        $pythonPath = "C:\\Program Files\Cloudbase Solutions\Cloudbase-Init\Python\python.exe"
+        Write-Output "Python version:"
+        & $pythonPath --version
+        $cloudbaseInitPath = "C:\\Program Files\Cloudbase Solutions\Cloudbase-Init\Python\Scripts\cloudbase-init.exe"
+        $pipAuditPath = "C:\\Program Files\Cloudbase Solutions\Cloudbase-Init\Python\Scripts\pip-audit.exe"
+        if (!(Test-Path $pythonPath)) {
+            $pythonPath = "C:\\Program Files (x86)\Cloudbase Solutions\Cloudbase-Init\Python\python.exe"
+            $cloudbaseInitPath = "C:\\Program Files (x86)\Cloudbase Solutions\Cloudbase-Init\Python\Scripts\cloudbase-init.exe"
+            $pipAuditPath = "C:\\Program Files (x86)\Cloudbase Solutions\Cloudbase-Init\Python\Scripts\pip-audit.exe"
+        }
+        Start-Process -FilePath $pythonPath -ArgumentList "-m http.server" -NoNewWindow -WorkingDirectory (Resolve-Path("./metadata")) 2>&1 >> http_server.log
+        cd "cbs-test-res/${{ matrix.cloud }}/"
+        try {
+            $logs = & $cloudbaseInitPath --noreset_service_password --config-file ./cloudbase-init.conf
+        } catch {}
+        echo $logs
+        $errors = $($logs | Where-Object {$_ -like "*error*"})
+        $pluginExecution = $($logs | Where-Object {$_ -like "*Plugins execution done*"})
+        if ($errors -or !$pluginExecution) {
+            Write-Output $logs
+            Write-Output "Errors found in the execution $($errors.Length)"
+            Write-Output $errors
+            $userPass501Err = "plugin 'SetUserPasswordPlugin' failed with error '501 Server Error: Unsupported method ('POST') for url"
+            if ($errors.Length -gt 20 -and $errors.length -lt 34 -and $errors[0].indexOf($userPass501Err) -gt -1) {
+              Write-Output "Expected errors"
+            } else {
+               Write-Output $("Unexpected error lines: " + $errors.Length + " and found: " + $errors[0].indexOf($userPass501Err))
+               exit 1
+            }
+        }
+        & $pythonPath -m pip install pip-audit
+        $pipAuditLogs = & $pipAuditPath
+        Write-Output "$pipAuditLogs"
+        if ($LASTEXITCODE) {
+          throw "pip audit failed"
+        }
