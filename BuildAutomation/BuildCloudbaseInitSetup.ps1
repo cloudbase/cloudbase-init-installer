@@ -12,7 +12,8 @@ Param(
   [string]$SignTimestampUrl = "http://timestamp.digicert.com?alg=sha256",
   [string]$VCVars = "2019",
   [switch]$InstallOfficialPythonMsi = $false,
-  [string]$OfficialPythonMsiChecksum = "C10234D0D9BD89F6F6DD55BAE28EDE0F97EE0DF4"
+  [string]$OfficialPythonMsiChecksum = "C10234D0D9BD89F6F6DD55BAE28EDE0F97EE0DF4",
+  [switch]$RemovePythonPycs = $false
 )
 
 $ErrorActionPreference = "Stop"
@@ -128,6 +129,12 @@ try
         ExecRetry { PullInstall "cloudbase-init" $CloudbaseInitRepoUrl $CloudbaseInitRepoBranch }
     }
 
+    if ($RemovePythonPycs) {
+        pushd $python_dir
+            Get-ChildItem -Path .\ -Recurse -Include *__pycache__ | foreach ($_) { Remove-Item $_.FullName -Force -Recurse}
+            Get-ChildItem -Path .\ -Recurse -Include *.pyc | foreach ($_) { Remove-Item $_.FullName -Force -Recurse}
+        popd
+    }
     $release_dir = join-path $cloudbaseInitInstallerDir "CloudbaseInitSetup\bin\Release\$platform"
     $bin_dir = join-path $cloudbaseInitInstallerDir "CloudbaseInitSetup\Binaries\$platform"
 
