@@ -123,6 +123,10 @@ try
         ExecRetry { PullInstall "cloudbase-init" $CloudbaseInitRepoUrl $CloudbaseInitRepoBranch }
     }
 
+    pushd $python_dir
+	Get-ChildItem -Path .\ -Recurse -Include *__pycache__ | foreach ($_) { Remove-Item $_.FullName -Force -Recurse}
+	Get-ChildItem -Path .\ -Recurse -Include *.pyc | foreach ($_) { Remove-Item $_.FullName -Force -Recurse}
+    popd
     $release_dir = join-path $cloudbaseInitInstallerDir "CloudbaseInitSetup\bin\Release\$platform"
     $bin_dir = join-path $cloudbaseInitInstallerDir "CloudbaseInitSetup\Binaries\$platform"
 
