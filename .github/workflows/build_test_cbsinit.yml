@@ -23,7 +23,7 @@ jobs:
       shell: cmd
       run:
         powershell.exe .\BuildAutomation\BuildCloudbaseInitSetup.ps1 ^
-            -ClonePullInstallerRepo:$false ^
+            -ClonePullInstallerRepo:$true ^
             -PythonVersion ${{ matrix.python_version }} ^
             -Platform ${{ matrix.platform }} ^
             -VCVars "automatic" ^
