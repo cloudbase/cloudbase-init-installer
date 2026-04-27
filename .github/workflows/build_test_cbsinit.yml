@@ -11,7 +11,7 @@ jobs:
         os: ['windows-2022']
         cbsinit_repo: ['https://github.com/cloudbase/cloudbase-init']
         cbsinit_branch: ['master']
-        python_version: ['3.14_4']
+        python_version: ['3.14_3']
         platform: ['x64']
         cloud: [openstack] 
 
@@ -29,7 +29,8 @@ jobs:
             -VCVars "automatic" ^
             -VSRedistDir "''" ^
             -CloudbaseInitRepoUrl ${{ matrix.cbsinit_repo }} ^
-            -CloudbaseInitRepoBranch ${{ matrix.cbsinit_branch }}
+            -CloudbaseInitRepoBranch ${{ matrix.cbsinit_branch }} ^
+            -PythonMsiChecksum "06A2D048C4BDCABA0C924265C37DD0C5EB373821"
     - uses: actions/upload-artifact@v7
       with:
         name: "CloudbaseInit_${{ matrix.platform }}_${{ matrix.os }}_MSI_${{ matrix.cbsinit_branch }}"

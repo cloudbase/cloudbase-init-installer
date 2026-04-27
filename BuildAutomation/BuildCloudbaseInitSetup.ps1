@@ -10,7 +10,8 @@ Param(
   [switch]$ClonePullInstallerRepo = $true,
   [string]$VSRedistDir = "${ENV:ProgramFiles(x86)}\Common Files\Merge Modules",
   [string]$SignTimestampUrl = "http://timestamp.digicert.com?alg=sha256",
-  [string]$VCVars="2019"
+  [string]$VCVars="2019",
+  [string]$PythonMsiChecksum = $null
 )
 
 $ErrorActionPreference = "Stop"
@@ -77,6 +78,10 @@ try
 
     $python_template_dir = join-path $cloudbaseInitInstallerDir "Python$($pythonversion.replace('.', ''))_${platform}_Template"
 
+    if ($PythonMsiChecksum) {
+        DownloadInstall-PythonMsi $platform $python_template_dir $pythonversion $PythonMsiChecksum
+    }
+
     CheckCopyDir $python_template_dir $python_dir
 
     # Make sure that we don't have temp files from a previous build
@@ -118,6 +123,10 @@ try
         ExecRetry { PullInstall "cloudbase-init" $CloudbaseInitRepoUrl $CloudbaseInitRepoBranch }
     }
 
+    pushd $python_dir
+	Get-ChildItem -Path .\ -Recurse -Include *__pycache__ | foreach ($_) { Remove-Item $_.FullName -Force -Recurse}
+	Get-ChildItem -Path .\ -Recurse -Include *.pyc | foreach ($_) { Remove-Item $_.FullName -Force -Recurse}
+    popd
     $release_dir = join-path $cloudbaseInitInstallerDir "CloudbaseInitSetup\bin\Release\$platform"
     $bin_dir = join-path $cloudbaseInitInstallerDir "CloudbaseInitSetup\Binaries\$platform"
 
