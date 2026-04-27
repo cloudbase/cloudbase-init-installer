@@ -30,7 +30,7 @@ jobs:
             -VSRedistDir "''" ^
             -CloudbaseInitRepoUrl ${{ matrix.cbsinit_repo }} ^
             -CloudbaseInitRepoBranch ${{ matrix.cbsinit_branch }} ^
-            -PythonMsiChecksum "not a real checksum"
+            -PythonMsiChecksum "C10234D0D9BD89F6F6DD55BAE28EDE0F97EE0DF4"
     - uses: actions/upload-artifact@v7
       with:
         name: "CloudbaseInit_${{ matrix.platform }}_${{ matrix.os }}_MSI_${{ matrix.cbsinit_branch }}"
