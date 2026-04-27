@@ -79,6 +79,7 @@ try
     $python_template_dir = join-path $cloudbaseInitInstallerDir "Python$($pythonversion.replace('.', ''))_${platform}_Template"
 
     if ($PythonMsiChecksum) {
+        Remove-Item -Recurse -Force $python_template_dir -ErrorAction SilentlyContinue
         DownloadInstall-PythonMsi $platform $python_template_dir $pythonversion $PythonMsiChecksum
     }
 
