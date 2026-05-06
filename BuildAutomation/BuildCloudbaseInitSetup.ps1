@@ -10,7 +10,9 @@ Param(
   [switch]$ClonePullInstallerRepo = $true,
   [string]$VSRedistDir = "${ENV:ProgramFiles(x86)}\Common Files\Merge Modules",
   [string]$SignTimestampUrl = "http://timestamp.digicert.com?alg=sha256",
-  [string]$VCVars="2019"
+  [string]$VCVars = "2019",
+  [switch]$InstallOfficialPythonMsi = $false,
+  [string]$OfficialPythonMsiChecksum = "C10234D0D9BD89F6F6DD55BAE28EDE0F97EE0DF4"
 )
 
 $ErrorActionPreference = "Stop"
@@ -76,6 +78,14 @@ try
     $ENV:PATH = "$python_dir\;$python_dir\scripts;$ENV:PATH"
 
     $python_template_dir = join-path $cloudbaseInitInstallerDir "Python$($pythonversion.replace('.', ''))_${platform}_Template"
+
+    if ($InstallOfficialPythonMsi) {
+        if (!$OfficialPythonMsiChecksum) {
+            throw "Please set a OfficialPythonMsiChecksum parameter value."
+        }
+        Remove-Item -Recurse -Force $python_template_dir -ErrorAction SilentlyContinue
+        DownloadInstall-PythonMsi $platform $python_template_dir $pythonversion $OfficialPythonMsiChecksum
+    }
 
     CheckCopyDir $python_template_dir $python_dir
 
