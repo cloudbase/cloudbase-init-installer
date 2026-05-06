@@ -460,3 +460,51 @@ function DownloadInstall-PythonMsi($platform, $python_template_dir, $pythonVersi
       }
 
 }
+
+function DownloadInstall-PythonUsingPyManager($platform, $python_template_dir, $pythonVersion) {
+    $pythonManagerUrl = "https://www.python.org/ftp/python/pymanager/python-manager-26.1.msix"
+    $pythonManagerPath = Join-Path (Resolve-Path "${python_template_dir}/..").Path "/python-manager.exe"
+
+    $pythonManagerPackage = Get-AppPackage -Name PythonSoftwareFoundation.PythonManager -ErrorAction SilentlyContinue
+
+    if (!$pythonManagerPackage) {
+        ExecRetry { DownloadFile $pythonManagerUrl $pythonManagerPath }
+        Add-AppPackage -Path $pythonManagerPath
+    }
+
+    $platformSuffix = ""
+    if ($platform -eq "x86") {
+        $platformSuffix = "-32"
+    }
+    if ($platform -eq "arm64") {
+        $platformSuffix = "-arm64"
+    }
+
+    if (Test-Path $python_template_dir) {
+        throw "$python_template_dir folder already exists"
+    }
+
+    $pythonVersionEscaped = $pythonVersion.replace("_",".") + $platformSuffix
+    pymanager.exe install --target=$python_template_dir --force --update $pythonVersionEscaped
+    if ($LASTEXITCODE) {
+        throw "Failed to install python in directory: ${python_template_dir}"
+    }
+
+    if (!(Test-Path $python_template_dir)) {
+        throw "$python_template_dir has not been created"
+    }
+
+    & "$python_template_dir/python.exe" --version
+    if ($LASTEXITCODE) {
+        throw "Failed to run python in directory: ${python_template_dir}"
+    }
+
+    Remove-Item -Force -Recurse "$python_template_dir/DLLs/_tkinter.pyd"
+    Remove-Item -Force -Recurse "$python_template_dir/DLLs/tcl*.dll"
+    Remove-Item -Force -Recurse "$python_template_dir/DLLs/tk*.dll"
+    Remove-Item -Force -Recurse "$python_template_dir/Doc"
+    Remove-Item -Force -Recurse "$python_template_dir/Lib/tkinter"
+    Remove-Item -Force -Recurse "$python_template_dir/Lib/turtle.py"
+    Remove-Item -Force -Recurse "$python_template_dir/Lib/turtledemo"
+    Remove-Item -Force -Recurse "$python_template_dir/tcl"
+}
