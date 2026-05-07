@@ -97,6 +97,15 @@ try
 
     CheckCopyDir $python_template_dir $python_dir
 
+    $pythonGetPipUrl = "https://bootstrap.pypa.io/get-pip.py"
+    $pythonGetPipPath = Join-Path (Resolve-Path "${python_dir}/..").Path "/get-pip.py"
+    ExecRetry { DownloadFile $pythonGetPipUrl $pythonGetPipPath }
+
+    & python.exe "${pythonGetPipPath}"
+    if ($LASTEXITCODE) {
+        throw "Failed to install pip in directory: ${python_dir}"
+    }
+
     # Make sure that we don't have temp files from a previous build
     $python_build_path = "$ENV:LOCALAPPDATA\Temp\pip_build_$ENV:USERNAME"
     if (Test-Path $python_build_path) {
