@@ -484,7 +484,7 @@ function DownloadInstall-PythonUsingPyManager($platform, $python_template_dir, $
         throw "$python_template_dir folder already exists"
     }
 
-    $pythonVersionEscaped = $pythonVersion.replace("_",".") + $platformSuffix
+    $pythonVersionEscaped = "PythonEmbed\" + $pythonVersion.replace("_",".") + $platformSuffix
     pymanager.exe install --target=$python_template_dir --force --update $pythonVersionEscaped
     if ($LASTEXITCODE) {
         throw "Failed to install python in directory: ${python_template_dir}"
@@ -499,12 +499,12 @@ function DownloadInstall-PythonUsingPyManager($platform, $python_template_dir, $
         throw "Failed to run python in directory: ${python_template_dir}"
     }
 
-    Remove-Item -Force -Recurse "$python_template_dir/DLLs/_tkinter.pyd"
-    Remove-Item -Force -Recurse "$python_template_dir/DLLs/tcl*.dll"
-    Remove-Item -Force -Recurse "$python_template_dir/DLLs/tk*.dll"
-    Remove-Item -Force -Recurse "$python_template_dir/Doc"
-    Remove-Item -Force -Recurse "$python_template_dir/Lib/tkinter"
-    Remove-Item -Force -Recurse "$python_template_dir/Lib/turtle.py"
-    Remove-Item -Force -Recurse "$python_template_dir/Lib/turtledemo"
-    Remove-Item -Force -Recurse "$python_template_dir/tcl"
+    Remove-Item -Force -Recurse "$python_template_dir/DLLs/_tkinter.pyd" -ErrorAction SilentlyContinue
+    Remove-Item -Force -Recurse "$python_template_dir/DLLs/tcl*.dll" -ErrorAction SilentlyContinue
+    Remove-Item -Force -Recurse "$python_template_dir/DLLs/tk*.dll" -ErrorAction SilentlyContinue
+    Remove-Item -Force -Recurse "$python_template_dir/Doc" -ErrorAction SilentlyContinue
+    Remove-Item -Force -Recurse "$python_template_dir/Lib/tkinter" -ErrorAction SilentlyContinue
+    Remove-Item -Force -Recurse "$python_template_dir/Lib/turtle.py" -ErrorAction SilentlyContinue
+    Remove-Item -Force -Recurse "$python_template_dir/Lib/turtledemo" -ErrorAction SilentlyContinue
+    Remove-Item -Force -Recurse "$python_template_dir/tcl" -ErrorAction SilentlyContinue
 }
