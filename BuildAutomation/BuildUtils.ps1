@@ -499,6 +499,15 @@ function DownloadInstall-PythonUsingPyManager($platform, $python_template_dir, $
         throw "Failed to run python in directory: ${python_template_dir}"
     }
 
+    $pythonGetPipUrl = "https://bootstrap.pypa.io/get-pip.py"
+    $pythonGetPipPath = Join-Path (Resolve-Path "${python_template_dir}/..").Path "/get-pip.py"
+    ExecRetry { DownloadFile $pythonGetPipUrl $pythonGetPipPath }
+
+    & "$python_template_dir/python.exe" "${pythonGetPipPath}"
+    if ($LASTEXITCODE) {
+        throw "Failed to install pip in directory: ${python_template_dir}"
+    }
+
     Remove-Item -Force -Recurse "$python_template_dir/DLLs/_tkinter.pyd" -ErrorAction SilentlyContinue
     Remove-Item -Force -Recurse "$python_template_dir/DLLs/tcl*.dll" -ErrorAction SilentlyContinue
     Remove-Item -Force -Recurse "$python_template_dir/DLLs/tk*.dll" -ErrorAction SilentlyContinue
