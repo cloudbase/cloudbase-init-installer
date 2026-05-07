@@ -500,6 +500,7 @@ function DownloadInstall-PythonUsingPyManager($platform, $python_template_dir, $
     }
 
     Out-File -Append -InputObject "Lib\site-packages" -Encoding ascii $python_template_dir\python*._pth
+    Out-File -Append -InputObject "libs" -Encoding ascii $python_template_dir\python*._pth
 
     # fix Cannot open include file: 'pyconfig.h'
     $gitTag = $pythonVersion.replace("_",".")
