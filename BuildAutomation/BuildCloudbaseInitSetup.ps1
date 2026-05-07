@@ -115,6 +115,11 @@ try
     }
 
     ExecRetry { PipInstall "pip" -update $true }
+    # When using embed Python, pbr needs to be reinstalled so that the project builds
+    # Warning received: UserWarning: Unknown distribution option: 'pbr'
+    # pbr is already installed but most likely this is a problem with knowing where it is,
+    # and reinstalling fixing the issue
+    ExecRetry { PipInstall "pbr" -update $true }
     ExecRetry { PipInstall "wheel" -update $true }
     ExecRetry { PipInstall "setuptools" -update $true }
 
