@@ -502,19 +502,17 @@ function DownloadInstall-PythonUsingPyManager($platform, $python_template_dir, $
     Out-File -Append -InputObject "Lib\site-packages" -Encoding ascii $python_template_dir\python*._pth
     Out-File -Append -InputObject "libs" -Encoding ascii $python_template_dir\python*._pth
 
-    # fix Cannot open include file: 'pyconfig.h'
-    $gitTag = $pythonVersion.replace("_",".")
-    git clone --no-checkout --depth=1 --filter=tree:0 https://github.com/python/cpython --branch "v${gitTag}"
-    pushd cpython
-        git sparse-checkout set --no-cone /Include
-        git checkout
-    popd
+    $python_template_dir_full = $python_template_dir + "_full"
+    $pythonVersionEscaped = $pythonVersion.replace("_",".") + $platformSuffix
+    pymanager.exe install --target=$python_template_dir_full --force --update $pythonVersionEscaped
+    if ($LASTEXITCODE) {
+        throw "Failed to install python in directory: ${python_template_dir_full}"
+    }
 
-    Move-Item "cpython/Include" "$python_template_dir/include"
-    ExecRetry { DownloadFile "https://raw.githubusercontent.com/python/cpython/refs/tags/v${gitTag}/PC/pyconfig.h" "${python_template_dir}/include/pyconfig.h" }
+    Move-Item $python_template_dir_full/include python_template_dir/
+    Move-Item $python_template_dir_full/libs python_template_dir/
 
-    Get-ChildItem "$python_template_dir/include"
-    Remove-Item -Force -Recurse "cpython"
+    Remove-Item -Force -Recurse "$python_template_dir_full" -ErrorAction SilentlyContinue
 
     Remove-Item -Force -Recurse "$python_template_dir/DLLs/_tkinter.pyd" -ErrorAction SilentlyContinue
     Remove-Item -Force -Recurse "$python_template_dir/DLLs/tcl*.dll" -ErrorAction SilentlyContinue
