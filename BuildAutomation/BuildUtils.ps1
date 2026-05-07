@@ -510,6 +510,8 @@ function DownloadInstall-PythonUsingPyManager($platform, $python_template_dir, $
     popd
 
     Move-Item "cpython/Include" "$python_template_dir/include"
+    ExecRetry { DownloadFile "https://raw.githubusercontent.com/python/cpython/refs/tags/v${gitTag}/PC/pyconfig.h" "${python_template_dir}/include/pyconfig.h" }
+
     Get-ChildItem "$python_template_dir/include"
     Remove-Item -Force -Recurse "cpython"
 
