@@ -499,6 +499,16 @@ function DownloadInstall-PythonUsingPyManager($platform, $python_template_dir, $
         throw "Failed to run python in directory: ${python_template_dir}"
     }
 
+    $gitTag = $pythonVersion.replace("_",".")
+    git clone --no-checkout --depth=1 --filter=tree:0 https://github.com/python/cpython --branch "v${gitTag}"
+    pushd cpython
+        git sparse-checkout set --no-cone /Include
+        git checkout
+    popd
+
+    Move-Item "cpython/Include" "$python_template_dir/Include"
+    Remove-Item -Force -Recurse "cpython"
+
     Remove-Item -Force -Recurse "$python_template_dir/DLLs/_tkinter.pyd" -ErrorAction SilentlyContinue
     Remove-Item -Force -Recurse "$python_template_dir/DLLs/tcl*.dll" -ErrorAction SilentlyContinue
     Remove-Item -Force -Recurse "$python_template_dir/DLLs/tk*.dll" -ErrorAction SilentlyContinue
