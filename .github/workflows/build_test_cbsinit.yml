@@ -9,7 +9,8 @@ jobs:
       max-parallel: 100
       matrix:
         os: ['windows-2022']
-        download_official_python_msi: ["true", "false"]
+        download_official_python_msi: ["true"]
+        remove_python_pycs: ["true"]
         cbsinit_repo: ['https://github.com/cloudbase/cloudbase-init']
         cbsinit_branch: ['master']
         python_version: ['3.14_4']
@@ -32,10 +33,11 @@ jobs:
             -CloudbaseInitRepoUrl ${{ matrix.cbsinit_repo }} ^
             -CloudbaseInitRepoBranch ${{ matrix.cbsinit_branch }} ^
             -InstallOfficialPythonMsi:$${{ matrix.download_official_python_msi }} ^
-            -OfficialPythonMsiChecksum "C10234D0D9BD89F6F6DD55BAE28EDE0F97EE0DF4"
+            -OfficialPythonMsiChecksum "C10234D0D9BD89F6F6DD55BAE28EDE0F97EE0DF4" ^
+            -RemovePythonPycs:$${{ matrix.remove_python_pycs }}
     - uses: actions/upload-artifact@v7
       with:
-        name: "CloudbaseInit_${{ matrix.platform }}_${{ matrix.os }}_MSI_${{ matrix.cbsinit_branch }}"
+        name: "CloudbaseInit_platform-${{ matrix.platform }}_build-env-os-${{ matrix.os }}_download-official-msi-${{ matrix.download_official_python_msi }}_remove-pycs-${{ matrix.remove_python_pycs }}_cbs-init-branch-${{ matrix.cbsinit_branch }}_MSI"
         path: 'CloudbaseInitSetup/bin/release/${{ matrix.platform }}/CloudbaseInitSetup.msi'
     - name: Download external dependencies
       shell: powershell
