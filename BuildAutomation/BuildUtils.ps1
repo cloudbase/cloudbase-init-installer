@@ -509,8 +509,8 @@ function DownloadInstall-PythonUsingPyManager($platform, $python_template_dir, $
         throw "Failed to install python in directory: ${python_template_dir_full}"
     }
 
-    Move-Item $python_template_dir_full/include python_template_dir/
-    Move-Item $python_template_dir_full/libs python_template_dir/
+    Move-Item $python_template_dir_full/include $python_template_dir/
+    Move-Item $python_template_dir_full/libs $python_template_dir/
 
     Remove-Item -Force -Recurse "$python_template_dir_full" -ErrorAction SilentlyContinue
 
