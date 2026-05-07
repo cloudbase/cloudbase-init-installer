@@ -106,10 +106,8 @@ try
         throw "Failed to install pip in directory: ${python_dir}"
     }
 
-    python.exe -m pip install pip --upgrade
-    python.exe -m pip install wheel --upgrade
-    python.exe -m pip install setuptools --upgrade
-
+    Out-File -Append -InputObject "Lib\site-packages" -Encoding ascii $python_dir\python*._pth
+    
     # Make sure that we don't have temp files from a previous build
     $python_build_path = "$ENV:LOCALAPPDATA\Temp\pip_build_$ENV:USERNAME"
     if (Test-Path $python_build_path) {
