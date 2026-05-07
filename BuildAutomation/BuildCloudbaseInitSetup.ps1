@@ -106,6 +106,8 @@ try
         throw "Failed to install pip in directory: ${python_dir}"
     }
 
+    python.exe -m pip install pip --upgrade
+
     # Make sure that we don't have temp files from a previous build
     $python_build_path = "$ENV:LOCALAPPDATA\Temp\pip_build_$ENV:USERNAME"
     if (Test-Path $python_build_path) {
