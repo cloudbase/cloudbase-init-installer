@@ -107,6 +107,8 @@ try
     }
 
     python.exe -m pip install pip --upgrade
+    python.exe -m pip install wheel --upgrade
+    python.exe -m pip install setuptools --upgrade
 
     # Make sure that we don't have temp files from a previous build
     $python_build_path = "$ENV:LOCALAPPDATA\Temp\pip_build_$ENV:USERNAME"
