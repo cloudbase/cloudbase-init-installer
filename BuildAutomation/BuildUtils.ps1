@@ -512,6 +512,13 @@ function DownloadInstall-PythonUsingPyManager($platform, $python_template_dir, $
     Move-Item $python_template_dir_full/include $python_template_dir/
     Move-Item $python_template_dir_full/libs $python_template_dir/
 
+    mkdir $python_template_dir\Lib\site-packages
+
+    Out-File -Append -InputObject "win32" -Encoding ascii "$python_template_dir\Lib\site-packages\pywin32.pth"
+    Out-File -Append -InputObject "win32\lib" -Encoding ascii "$python_template_dir\Lib\site-packages\pywin32.pth"
+    Out-File -Append -InputObject "Pythonwin" -Encoding ascii "$python_template_dir\Lib\site-packages\pywin32.pth"
+    Out-File -Append -InputObject "import pywin32_bootstrap" -Encoding ascii "$python_template_dir\Lib\site-packages\pywin32.pth"
+
     Remove-Item -Force -Recurse "$python_template_dir_full" -ErrorAction SilentlyContinue
 
     Remove-Item -Force -Recurse "$python_template_dir/DLLs/_tkinter.pyd" -ErrorAction SilentlyContinue
