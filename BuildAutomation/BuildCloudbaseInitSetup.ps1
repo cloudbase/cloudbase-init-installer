@@ -105,8 +105,6 @@ try
     if ($LASTEXITCODE) {
         throw "Failed to install pip in directory: ${python_dir}"
     }
-
-    Out-File -Append -InputObject "Lib\site-packages" -Encoding ascii $python_dir\python*._pth
     
     # Make sure that we don't have temp files from a previous build
     $python_build_path = "$ENV:LOCALAPPDATA\Temp\pip_build_$ENV:USERNAME"

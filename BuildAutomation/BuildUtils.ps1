@@ -499,6 +499,9 @@ function DownloadInstall-PythonUsingPyManager($platform, $python_template_dir, $
         throw "Failed to run python in directory: ${python_template_dir}"
     }
 
+    Out-File -Append -InputObject "Lib\site-packages" -Encoding ascii $python_template_dir\python*._pth
+
+    # fix Cannot open include file: 'pyconfig.h'
     $gitTag = $pythonVersion.replace("_",".")
     git clone --no-checkout --depth=1 --filter=tree:0 https://github.com/python/cpython --branch "v${gitTag}"
     pushd cpython
@@ -506,7 +509,8 @@ function DownloadInstall-PythonUsingPyManager($platform, $python_template_dir, $
         git checkout
     popd
 
-    Move-Item "cpython/Include" "$python_template_dir/Include"
+    Move-Item "cpython/Include" "$python_template_dir/include"
+    Get-ChildItem "$python_template_dir/include"
     Remove-Item -Force -Recurse "cpython"
 
     Remove-Item -Force -Recurse "$python_template_dir/DLLs/_tkinter.pyd" -ErrorAction SilentlyContinue
