@@ -101,8 +101,7 @@ jobs:
             }
         }
         & $pythonPath -m pip install pip-audit
-        & $pythonPath -m pip install venv
-        $pipAuditLogs = & $pipAuditPath
+        $pipAuditLogs = & $pipAuditPath --user
         Write-Output "$pipAuditLogs"
         if ($LASTEXITCODE) {
           throw "pip audit failed"
