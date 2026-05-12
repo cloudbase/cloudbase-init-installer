@@ -13,7 +13,8 @@ Param(
   [string]$VCVars = "2019",
   [switch]$InstallOfficialPythonMsi = $false,
   [string]$OfficialPythonMsiChecksum = "C10234D0D9BD89F6F6DD55BAE28EDE0F97EE0DF4",
-  [switch]$RemovePythonPycs = $false
+  [switch]$RemovePythonPycs = $false,
+  [switch]$InstallOfficialPythonUsingPyManager = $false
 )
 
 $ErrorActionPreference = "Stop"
@@ -80,12 +81,18 @@ try
 
     $python_template_dir = join-path $cloudbaseInitInstallerDir "Python$($pythonversion.replace('.', ''))_${platform}_Template"
 
+    # TODO(avladu): stick to just only one way to download Python, preferably the pymanager once it gets ironed out
     if ($InstallOfficialPythonMsi) {
-        if (!$OfficialPythonMsiChecksum) {
-            throw "Please set a OfficialPythonMsiChecksum parameter value."
+        if ($InstallOfficialPythonUsingPyManager) {
+                Remove-Item -Recurse -Force $python_template_dir -ErrorAction SilentlyContinue
+                DownloadInstall-PythonUsingPyManager $platform $python_template_dir $pythonversion
+        } else {
+                if (!$OfficialPythonMsiChecksum) {
+                    throw "Please set a OfficialPythonMsiChecksum parameter value."
+                }
+                Remove-Item -Recurse -Force $python_template_dir -ErrorAction SilentlyContinue
+                DownloadInstall-PythonMsi $platform $python_template_dir $pythonversion $OfficialPythonMsiChecksum
         }
-        Remove-Item -Recurse -Force $python_template_dir -ErrorAction SilentlyContinue
-        DownloadInstall-PythonMsi $platform $python_template_dir $pythonversion $OfficialPythonMsiChecksum
     }
 
     CheckCopyDir $python_template_dir $python_dir
