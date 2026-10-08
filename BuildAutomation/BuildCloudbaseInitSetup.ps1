@@ -1,6 +1,6 @@
 Param(
   [string]$platform = "x64",
-  [string]$pythonversion = "3.14_6",
+  [string]$pythonversion = "3.14_8",
   [string]$SignX509Thumbprint = $null,
   [string]$release = $null,
   # Cloudbase-Init repo details
@@ -12,7 +12,7 @@ Param(
   [string]$SignTimestampUrl = "http://timestamp.digicert.com?alg=sha256",
   [string]$VCVars = "2019",
   [switch]$InstallOfficialPythonMsi = $false,
-  [string]$OfficialPythonMsiChecksum = "F95758C1FE6F75CC33D8E65640B074676AB88CB3",
+  [string]$OfficialPythonMsiChecksum = "",
   [switch]$RemovePythonPycs = $false,
   [switch]$InstallOfficialPythonUsingPyManager = $false
 )
