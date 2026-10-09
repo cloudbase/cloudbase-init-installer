@@ -511,5 +511,5 @@ function DownloadInstall-PythonUsingPyManager($platform, $python_template_dir, $
     Remove-Item -Force -Recurse "$python_template_dir/Lib/tkinter"
     Remove-Item -Force -Recurse "$python_template_dir/Lib/turtle.py"
     Remove-Item -Force -Recurse "$python_template_dir/Lib/turtledemo"
-    Remove-Item -Force -Recurse "$python_template_dir/tcl"
+    Remove-Item -Force -Recurse "$python_template_dir/tcl" -ErrorAction SilentlyContinue
 }
