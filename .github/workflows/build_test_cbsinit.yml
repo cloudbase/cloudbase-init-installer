@@ -18,7 +18,6 @@ jobs:
         install_with_pymanager: ["true"]
         cbsinit_repo: ['https://github.com/cloudbase/cloudbase-init']
         cbsinit_branch: ['master']
-        python_version: ['3.14_8']
         platform: ['x64']
         cloud: [openstack] 
 
@@ -31,7 +30,6 @@ jobs:
       run:
         powershell.exe .\BuildAutomation\BuildCloudbaseInitSetup.ps1 ^
             -ClonePullInstallerRepo:$false ^
-            -PythonVersion ${{ matrix.python_version }} ^
             -Platform ${{ matrix.platform }} ^
             -VCVars "automatic" ^
             -VSRedistDir "''" ^
